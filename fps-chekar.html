@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Live FPS Counter & Hz Tester - Check Monitor Refresh Rate</title>
+    <meta name="description" content="The Ultimate Gaming FPS Checker. Test Real-time FPS, Screen Refresh Rate (Hz), Ghosting, and Input Lag. Supports 144Hz, 240Hz, 360Hz Monitors. Dark Mode.">
+    <meta name="keywords" content="fps tester, screen hz test, monitor refresh rate checker, ghosting test, motion blur test, online fps counter, display lag test, 144hz test, 240hz checker, gaming monitor test, xizoa tools">
+    <meta name="author" content="Xizoa Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xizoa.com/fps-checker">
+
+    <meta property="og:title" content="Live FPS Counter & Hz Tester - Xizoa Hub">
+    <meta property="og:description" content="Check Real-time FPS, Hz, and Ghosting instantly. Professional Monitor Test Tool.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Live FPS & Hz Tester",
+      "url": "https://xizoa.com/fps-checker",
+      "applicationCategory": "Utility",
+      "genre": "Gaming",
+      "operatingSystem": "All",
+      "description": "A professional tool to test gaming monitor refresh rates and frames per second."
+    }
+    </script>
+
+    <style>
+        /* --- GAMING THEME VARIABLES --- */
+        :root {
+            --bg-dark: #050505; /* SOLID BLACK/DARK */
+            --panel: #111111;   /* SOLID PANEL */
+            --neon-blue: #00f3ff; 
+            --neon-green: #0aff60; 
+            --neon-red: #ff003c;
+            --text-main: #e2e8f0; 
+            --text-muted: #94a3b8;
+            --border: 1px solid #333;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            display: flex; flex-direction: column; 
+            overflow-x: hidden; 
+            /* NO PATTERNS OR GRADIENTS HERE */
+        }
+
+        /* --- HEADER --- */
+        header { 
+            padding: 20px 30px; 
+            border-bottom: var(--border); 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: var(--panel); 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .brand { 
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; 
+            color: #fff; text-decoration: none; 
+        }
+        .brand span { color: var(--neon-blue); }
+        
+        .header-links a {
+            color: var(--text-muted); margin-left: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;
+        }
+        .header-links a:hover { color: var(--neon-blue); }
+
+        /* --- DASHBOARD GRID --- */
+        .dashboard-container { 
+            max-width: 1400px; margin: 40px auto; width: 100%; padding: 0 20px; 
+            display: grid; 
+            grid-template-columns: 1fr 380px; 
+            gap: 30px; 
+        }
+
+        /* --- METER CARD --- */
+        .meter-card { 
+            background: var(--panel); border: var(--border); border-radius: 20px; 
+            padding: 50px; position: relative; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .fps-big-number { 
+            font-family: 'Orbitron', sans-serif; font-size: 9rem; font-weight: 900; 
+            color: #fff; line-height: 1; text-shadow: 0 0 30px rgba(0, 243, 255, 0.3); 
+        }
+        .fps-label { 
+            font-size: 1.5rem; color: var(--neon-blue); font-family: 'Rajdhani', sans-serif; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin-top: 10px;
+        }
+        .status-pill { 
+            margin-top: 25px; padding: 10px 25px; border-radius: 50px; 
+            background: #222; border: 1px solid #444; 
+            color: var(--text-muted); font-size: 1rem; font-weight: 500;
+        }
+        .chart-container { width: 100%; height: 250px; margin-top: 50px; }
+
+        /* --- SIDEBAR WIDGETS --- */
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        
+        .widget-card { 
+            background: var(--panel); border: var(--border); border-radius: 16px; padding: 30px; 
+            transition: transform 0.2s;
+        }
+        .widget-card:hover { border-color: var(--neon-blue); }
+        
+        .widget-title { 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; color: #fff; 
+            margin-bottom: 15px; border-left: 4px solid var(--neon-blue); padding-left: 15px; letter-spacing: 1px;
+        }
+        
+        .btn-float { 
+            width: 100%; padding: 16px; border: none; border-radius: 8px; 
+            background: var(--neon-blue); 
+            color: #000; font-weight: 800; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; 
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center; gap: 10px; 
+        }
+        .btn-float:hover { background: #fff; }
+
+        /* --- GHOSTING TEST --- */
+        .ghosting-section { grid-column: 1 / -1; margin-top: 20px; }
+        .test-container { 
+            background: #000; border: var(--border); border-radius: 16px; padding: 30px; 
+            overflow: hidden; position: relative; height: 180px; display: flex; align-items: center; 
+        }
+        .moving-ufo { 
+            position: absolute; top: 35%; font-family: 'Orbitron', sans-serif; 
+            color: #fff; font-size: 1.8rem; white-space: nowrap; will-change: transform; 
+            display: flex; align-items: center; gap: 15px; 
+        }
+        .speed-control { 
+            margin-top: 15px; display: flex; gap: 15px; align-items: center; 
+            color: var(--text-muted); font-size: 0.95rem; 
+        }
+        input[type=range] { accent-color: var(--neon-green); width: 200px; cursor: pointer; }
+
+        /* --- BUTTONS --- */
+        .btn-download { background: var(--neon-green); color: #000; margin-top: 15px; }
+        .btn-download:hover { background: #fff; }
+
+        /* --- MASSIVE SEO CONTENT SECTION (DARK MODE) --- */
+        .wiki-section { grid-column: 1 / -1; margin-top: 60px; }
+        
+        .wiki-card { 
+            background: var(--panel); border: 1px solid #333; 
+            border-radius: 16px; padding: 50px; margin-bottom: 40px; 
+        }
+        
+        .wiki-card h2 { 
+            font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 25px; 
+            font-size: 2rem; border-bottom: 1px solid #333; padding-bottom: 15px;
+        }
+        .wiki-card h3 { 
+            color: var(--neon-blue); margin-top: 35px; margin-bottom: 15px; 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.6rem; font-weight: 700;
+        }
+        .wiki-card h4 {
+            color: #fff; font-size: 1.2rem; margin: 25px 0 10px; font-weight: 600;
+        }
+        .wiki-card p { 
+            line-height: 1.9; color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; 
+        }
+        .wiki-card ul, .wiki-card ol { 
+            margin-left: 25px; color: var(--text-muted); margin-bottom: 25px; 
+        }
+        .wiki-card li { margin-bottom: 10px; font-size: 1.05rem; }
+        .wiki-card strong { color: #fff; font-weight: 600; }
+        
+        .alert-box {
+            background: rgba(0, 243, 255, 0.05); border-left: 4px solid var(--neon-blue);
+            padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0;
+        }
+
+        /* --- FAQ --- */
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
+        .faq-q { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; cursor: pointer; font-family: 'Rajdhani', sans-serif; }
+        .faq-a { color: var(--text-muted); display: block; }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #000; border-top: var(--border); padding: 70px 20px; margin-top: auto; 
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;
+        }
+        .f-col h4 { color: #fff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
+        .f-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+        .f-col a:hover { color: var(--neon-blue); padding-left: 5px; }
+        
+        .copyright {
+            text-align: center; margin-top: 50px; color: #444; font-size: 0.9rem;
+            border-top: 1px solid #111; padding-top: 30px;
+        }
+        
+        #pipVideo { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; bottom: 0; right: 0; }
+        #reportCanvas { display: none; }
+
+        @media (max-width: 950px) { 
+            .dashboard-container { grid-template-columns: 1fr; padding: 0 15px; margin-top: 20px; } 
+            .fps-big-number { font-size: 6rem; }
+            .meter-card { padding: 30px; }
+            .wiki-card { padding: 25px; }
+            .wiki-card h2 { font-size: 1.5rem; }
+            header { padding: 15px 20px; }
+            .header-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-crosshairs"></i> XIZOA <span>HUB</span></a>
+        <div class="header-links">
+            <a href="index.html">Home</a>
+            <a href="#">Tools</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+
+    <div class="dashboard-container" id="captureArea">
+        
+        <div class="meter-card">
+            <div class="fps-big-number" id="fpsDisplay">--</div>
+            <div class="fps-label">Real-Time Hz</div>
+            <div class="status-pill"><i class="fas fa-circle-notch fa-spin"></i> <span id="statusText"> Initializing...</span></div>
+            <div class="chart-container"><canvas id="fpsChart"></canvas></div>
+        </div>
+
+        <div class="sidebar">
+            
+            <div class="widget-card" style="border-color: var(--neon-blue);">
+                <div class="widget-title">FLOATING APP WIDGET</div>
+                <p style="font-size:0.9rem; color:#aaa; margin-bottom:20px; line-height: 1.5;">
+                    Monitor your screen Hz while gaming or using other apps with PiP Mode.
+                </p>
+                <button class="btn-float" onclick="togglePiP()"><i class="fas fa-clone"></i> Start Overlay</button>
+                <canvas id="pipCanvas" width="200" height="200" style="display:none;"></canvas>
+                <video id="pipVideo" autoplay muted playsinline></video>
+            </div>
+
+            <div class="widget-card">
+                <div class="widget-title">PERFORMANCE REPORT</div>
+                <p style="font-size:0.9rem; color:#aaa; margin-bottom:20px; line-height: 1.5;">
+                    Download a high-quality proof of your screen's performance stats.
+                </p>
+                <button class="btn-float btn-download" onclick="downloadReport()"><i class="fas fa-camera"></i> Save Result</button>
+            </div>
+
+        </div>
+
+        <div class="ghosting-section">
+            <div class="widget-card" style="border:1px solid var(--neon-green);">
+                <div class="widget-title">MOTION BLUR / GHOSTING TEST</div>
+                <p style="color:#aaa; font-size:0.9rem; margin-bottom:15px;">
+                    Look at the rocket. If it leaves a "trail" or looks blurry, your monitor has ghosting issues.
+                </p>
+                
+                <div class="test-container">
+                    <div class="moving-ufo" id="ufo">
+                        <i class="fas fa-rocket" style="color:var(--neon-green); font-size:2.5rem;"></i> 
+                        <span style="letter-spacing:3px; font-weight:700;">XIZOA HZ TEST</span>
+                    </div>
+                </div>
+                
+                <div class="speed-control">
+                    <span><strong>Speed:</strong></span>
+                    <input type="range" min="5" max="30" value="12" oninput="updateSpeed(this.value)">
+                    <span id="speedVal" style="color:var(--neon-green);">1200 px/s</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="wiki-section">
+            
+            <article class="wiki-card">
+                <h2>The Ultimate Guide to FPS, Refresh Rate (Hz), and Monitor Performance</h2>
+                <p>In the high-octane world of PC gaming and content creation, your hardware's performance is the line between victory and defeat. While a powerful Graphics Card (GPU) is essential, your monitor's ability to display those frames is equally critical. Welcome to <strong>Xizoa Hub's Professional FPS Monitor</strong>, the most advanced online utility designed for gamers, developers, and hardware enthusiasts. Whether you are optimizing your PC for high-end gaming or testing your smartphone's display capabilities, accurate data is the first step toward performance.</p>
+                
+                <div class="alert-box">
+                    <strong>Why Use This Tool?</strong> Unlike basic counters, Xizoa FPS offers a complete suite including a <strong>Real-time Hertz (Hz) Tester, Motion Blur Detector, and Picture-in-Picture (PiP) Overlay</strong>. Our algorithm detects micro-stutters that standard browser counters miss.
+                </div>
+
+                <h3>FPS vs. Hz: Understanding the Difference</h3>
+                <p>One of the most common misconceptions in the gaming community is treating FPS (Frames Per Second) and Hz (Hertz) as the same metric. While they work together to produce the image you see, they originate from different sources.</p>
+                
+                <h4>1. What is FPS (Frames Per Second)?</h4>
+                <p>FPS is a measure of performance generated by your <strong>CPU (Processor) and GPU (Graphics Card)</strong>. It represents how many unique images your system can render and output every second.</p>
+                <ul>
+                    <li><strong>Low FPS (< 30):</strong> The video will look choppy, like a slideshow. Unplayable for shooters.</li>
+                    <li><strong>Standard FPS (30-60):</strong> The standard for console gaming and movies. Acceptable for RPGs.</li>
+                    <li><strong>High FPS (60-144+):</strong> The gold standard for PC gaming. Animations are fluid, and inputs feel snappy.</li>
+                </ul>
+
+                <h4>2. What is Hz (Refresh Rate)?</h4>
+                <p>Hz is a hardware limit of your <strong>Monitor or Phone Screen</strong>. It represents how many times per second the screen can physically update the pixels.</p>
+                <ul>
+                    <li><strong>60Hz:</strong> Standard office monitors. Refreshes 60 times a second.</li>
+                    <li><strong>144Hz / 240Hz / 360Hz:</strong> Dedicated Esports monitors designed for CS:GO, Valorant, and Overwatch.</li>
+                </ul>
+
+                <h3>What is Screen Ghosting?</h3>
+                <p>Have you ever moved your mouse quickly or turned your camera in a game, only to see a blurry trail behind objects? This phenomenon is called <strong>Ghosting</strong>. It occurs when the pixels on your LCD/OLED panel cannot change colors fast enough to keep up with the moving image (Pixel Response Time).</p>
+                <p>Use our <strong>Motion Blur Test</strong> above. Slide the speed to maximum. If the UFO looks sharp, your monitor is fast (1ms GtG). If it smears, you have ghosting.</p>
+
+                <h3>Optimization Guide: How to Boost FPS?</h3>
+                <ol>
+                    <li><strong>Enable Hardware Acceleration:</strong> Ensure your browser settings allow GPU usage.</li>
+                    <li><strong>Manage V-Sync:</strong> Turn V-Sync OFF for competitive games to reduce input lag, but turn it ON for story games to stop screen tearing.</li>
+                    <li><strong>Thermal Throttling:</strong> If FPS drops after 10 minutes, clean your PC's dust filters.</li>
+                </ol>
+
+                <h3>Advanced Sync Technologies: G-Sync & FreeSync</h3>
+                <p>Modern gaming monitors come with Variable Refresh Rate (VRR) technologies. Nvidia's G-Sync and AMD's FreeSync allow the monitor to adjust its Hz dynamically to match the GPU's FPS. This eliminates screen tearing without the input lag penalty of V-Sync.</p>
+                <p>To test if your G-Sync is working, run this test. If the FPS fluctuates but the motion remains tear-free, your VRR is active.</p>
+
+                <h3>Mobile Displays: 90Hz and 120Hz ProMotion</h3>
+                <p>Smartphones have evolved. Most flagships now feature high refresh rate screens. However, to save battery, they often throttle down to 60Hz when not touching the screen. Use this tool on your mobile browser to see if your phone maintains 120Hz during static web browsing or scrolling.</p>
+
+                <h3>Frequently Asked Questions (FAQ)</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-q">Does this tool work on Mobile?</div>
+                    <div class="faq-a">Yes! It is fully responsive. You can test if your phone is running at 90Hz or 120Hz (ProMotion/Adaptive Sync).</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-q">My monitor is 144Hz but this shows 60. Why?</div>
+                    <div class="faq-a">Check your OS Display Settings. Also, ensure you are using a DisplayPort cable, as old HDMI cables cap at 60Hz.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Is this tool free?</div>
+                    <div class="faq-a">Yes, Xizoa Hub provides this utility 100% free with no ads.</div>
+                </div>
+            </article>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>Xizoa Hub</h4>
+                <p>Xizoa Hub provides cutting-edge online tools for developers, designers, and gamers. Fast, Free, and Secure.</p>
+            </div>
+            <div class="f-col">
+                <h4>Gaming Tools</h4>
+                <a href="fps-checker.html">FPS Checker</a>
+                <a href="aim-trainer.html">Aim Trainer</a>
+                <a href="cps-test.html">CPS Test</a>
+            </div>
+            <div class="f-col">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Xizoa Hub • Developed by Priyanshu
+        </div>
+    </footer>
+
+    <script>
+        // --- FPS ENGINE ---
+        const fpsEl = document.getElementById('fpsDisplay');
+        const statusTxt = document.getElementById('statusText');
+        let frames = 0, lastTime = performance.now(), fpsValue = 0;
+
+        // Chart Init
+        const ctx = document.getElementById('fpsChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, 'rgba(0, 243, 255, 0.5)');
+        gradient.addColorStop(1, 'rgba(0, 243, 255, 0)');
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: Array(30).fill(''), datasets: [{ data: Array(30).fill(60), borderColor: '#00f3ff', backgroundColor: gradient, borderWidth: 2, tension: 0.4, fill: true, pointRadius: 0 }] },
+            options: { responsive: true, maintainAspectRatio: false, animation: false, scales: { x: {display:false}, y: {display:false} }, plugins: {legend:{display:false}} }
+        });
+
+        function loop() {
+            frames++;
+            const now = performance.now();
+            if (now - lastTime >= 1000) {
+                fpsValue = frames;
+                frames = 0;
+                lastTime = now;
+                
+                fpsEl.innerText = fpsValue;
+                
+                let color = '#ff003c'; 
+                let msg = ' Low Performance';
+                if(fpsValue >= 50) { color = '#00f3ff'; msg = ' Smooth (Optimal)'; }
+                if(fpsValue >= 120) { color = '#0aff60'; msg = ' Pro Gaming (High)'; }
+                
+                fpsEl.style.textShadow = `0 0 40px ${color}`;
+                statusTxt.innerText = msg;
+                statusTxt.style.color = color;
+                
+                // Chart
+                const d = chart.data.datasets[0].data; d.shift(); d.push(fpsValue);
+                chart.data.datasets[0].borderColor = color;
+                chart.update();
+
+                updatePiPCanvas(fpsValue, color);
+            }
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        // --- GHOSTING TEST ---
+        const ufo = document.getElementById('ufo');
+        let ufoPos = 0;
+        let ufoSpeed = 12;
+        
+        function updateSpeed(val) {
+            ufoSpeed = parseInt(val);
+            document.getElementById('speedVal').innerText = (val * 100) + " px/s";
+        }
+
+        function animateUfo() {
+            const containerWidth = document.querySelector('.test-container').offsetWidth;
+            ufoPos += ufoSpeed;
+            if(ufoPos > containerWidth) ufoPos = -250;
+            ufo.style.transform = `translateX(${ufoPos}px)`;
+            requestAnimationFrame(animateUfo);
+        }
+        animateUfo();
+
+        // --- PIP WIDGET ---
+        const pipCanvas = document.getElementById('pipCanvas');
+        const pipCtx = pipCanvas.getContext('2d');
+        const pipVideo = document.getElementById('pipVideo');
+
+        function updatePiPCanvas(val, color) {
+            pipCtx.fillStyle = '#0b1221';
+            pipCtx.fillRect(0, 0, 200, 200);
+            
+            pipCtx.lineWidth = 10;
+            pipCtx.strokeStyle = color;
+            pipCtx.strokeRect(0, 0, 200, 200);
+
+            pipCtx.font = 'bold 90px sans-serif';
+            pipCtx.fillStyle = color;
+            pipCtx.textAlign = 'center';
+            pipCtx.textBaseline = 'middle';
+            pipCtx.fillText(val, 100, 90);
+            
+            pipCtx.font = 'bold 20px sans-serif';
+            pipCtx.fillStyle = '#fff';
+            pipCtx.fillText('FPS / Hz', 100, 140);
+        }
+
+        async function togglePiP() {
+            try {
+                if (document.pictureInPictureElement) { await document.exitPictureInPicture(); } 
+                else { 
+                    const stream = pipCanvas.captureStream(30); 
+                    pipVideo.srcObject = stream; 
+                    await pipVideo.play(); 
+                    await pipVideo.requestPictureInPicture(); 
+                }
+            } catch (e) {
+                alert("PiP Mode requires user interaction or is not supported by this browser.");
+            }
+        }
+
+        // --- REPORT DOWNLOAD ---
+        function downloadReport() {
+            const btn = document.querySelector('.btn-download');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            const element = document.querySelector('.meter-card');
+            html2canvas(element, { scale: 2, backgroundColor: '#0b1221' }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Xizoa-FPS-Report.png';
+                link.href = canvas.toDataURL();
+                link.click();
+                btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+                setTimeout(() => btn.innerHTML = '<i class="fas fa-camera"></i> Save Result', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

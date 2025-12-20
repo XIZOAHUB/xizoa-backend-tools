@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exif Data Remover - Remove Metadata & GPS from Photos (Free)</title>
+  
+  <meta name="description" content="Remove hidden metadata, GPS location, and camera details from your photos online. Protect your privacy by cleaning Exif data before sharing. Free & Secure.">
+  
+  <meta name="keywords" content="exif remover, remove image metadata, clean photo details, remove gps from photo, image privacy tool, exif editor online, remove camera info, xizoa privacy tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Exif Data Remover - Protect Photo Privacy">
+  <meta property="og:description" content="Clean hidden GPS & Camera data from images instantly.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+
+  <style>
+    /* --- THEME: STEALTH BLUE & PRIVACY --- */
+    :root {
+      --primary: #00d2ff; /* Stealth Blue */
+      --secondary: #0077ff; /* Deep Blue */
+      --danger: #ff3333;
+      --bg-dark: #0b1015;
+      --card-bg: rgba(20, 25, 35, 0.8);
+      --glass-border: 1px solid rgba(0, 210, 255, 0.2);
+      --text-main: #e5e5e5;
+      --text-muted: #90a0b0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Secure Grid Background */
+      background-image: linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, #fff, var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- UPLOAD BOX --- */
+    .upload-box {
+      background: var(--card-bg);
+      border: 2px dashed rgba(0, 210, 255, 0.3);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+    .upload-box:hover { border-color: var(--primary); background: rgba(0, 210, 255, 0.05); }
+    .upload-icon { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+    .upload-text { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+    .upload-hint { color: var(--text-muted); font-size: 0.9rem; }
+    #fileInput { display: none; }
+
+    /* --- ANALYSIS SECTION --- */
+    .analysis-container {
+      display: none;
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      animation: slideUp 0.5s ease;
+    }
+
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .meta-item {
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 3px solid var(--danger); /* Red indicates "Exposed Data" */
+    }
+    .meta-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+    .meta-val { color: #fff; font-weight: 600; word-break: break-word; }
+
+    .warning-text {
+      background: rgba(255, 51, 51, 0.1);
+      color: #ffcccc;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+      border: 1px solid var(--danger);
+    }
+
+    button.btn-clean {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #000;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    button.btn-clean:hover { box-shadow: 0 0 25px rgba(0, 210, 255, 0.4); transform: translateY(-2px); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(20, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🔒'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080c; border-top: 1px solid #1a202c; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Exif Data <span>Remover</span></h1>
+    <p class="subtitle">Remove Hidden GPS & Camera Info from Photos</p>
+  </header>
+
+  <main>
+    
+    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon"><i class="fas fa-file-shield"></i></div>
+      <div class="upload-text">Upload Image to Scan</div>
+      <div class="upload-hint">Supports JPG, JPEG (Images with Metadata)</div>
+      <input type="file" id="fileInput" accept="image/jpeg, image/jpg">
+    </div>
+
+    <div class="analysis-container" id="analysisBox">
+      
+      <div class="warning-text">
+        <i class="fas fa-exclamation-circle"></i> <strong>Exposed Data Found:</strong> 
+        The following information is currently hidden inside your image.
+      </div>
+
+      <div class="metadata-grid">
+        <div class="meta-item">
+          <div class="meta-label">Camera Model</div>
+          <div class="meta-val" id="metaModel">Scanning...</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Date Taken</div>
+          <div class="meta-val" id="metaDate">Scanning...</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">GPS Location</div>
+          <div class="meta-val" id="metaGPS">Scanning...</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Software</div>
+          <div class="meta-val" id="metaSoft">Scanning...</div>
+        </div>
+      </div>
+
+      <button class="btn-clean" id="btnClean">
+        <i class="fas fa-broom"></i> Remove Data & Download
+      </button>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Why Remove Exif Data?</h2>
+        <p>
+          When you take a photo with a smartphone or camera, it secretly records data called **Exif** (Exchangeable Image File Format). 
+          This can include your exact **GPS coordinates** (where you live), the date/time, and device details. Hackers can use this to track you.
+        </p>
+        <p>
+          Privacy safe rakhne ke liye photo share karne se pehle uska metadata clean karna zaroori hai. Ye tool GPS aur Camera details ko delete kar deta hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 What Gets Removed?</h3>
+        <ul>
+          <li><strong>Geo-Tags:</strong> Latitude and Longitude of the photo location.</li>
+          <li><strong>Device Info:</strong> Phone model, brand, and shutter settings.</li>
+          <li><strong>Timestamps:</strong> Exact date and time the photo was taken.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Exif Data Remover is a privacy tool designed to strip sensitive metadata from images to prevent digital tracking.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="link-scanner.html"><i class="fas fa-shield-virus"></i> Link Scanner</a>
+        <a href="ip-checker.html"><i class="fas fa-globe-asia"></i> IP Checker</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const analysisBox = document.getElementById('analysisBox');
+    const btnClean = document.getElementById('btnClean');
+    
+    // Meta Fields
+    const metaModel = document.getElementById('metaModel');
+    const metaDate = document.getElementById('metaDate');
+    const metaGPS = document.getElementById('metaGPS');
+    const metaSoft = document.getElementById('metaSoft');
+
+    let originalImage = null;
+    let fileName = "";
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      fileName = file.name;
+
+      // Show box
+      analysisBox.style.display = 'block';
+      
+      // Load Image for EXIF Reading
+      EXIF.getData(file, function() {
+        // Read Exif
+        const model = EXIF.getTag(this, "Model") || "Unknown";
+        const date = EXIF.getTag(this, "DateTime") || "Unknown";
+        const soft = EXIF.getTag(this, "Software") || "Unknown";
+        const lat = EXIF.getTag(this, "GPSLatitude");
+        
+        // Update UI
+        metaModel.innerText = model;
+        metaDate.innerText = date;
+        metaSoft.innerText = soft;
+        
+        if (lat) {
+            metaGPS.innerText = "DETECTED (Risk)";
+            metaGPS.style.color = "#ff3333";
+        } else {
+            metaGPS.innerText = "None";
+            metaGPS.style.color = "#00d2ff";
+        }
+      });
+
+      // Prepare Image for Cleaning (Canvas method strips exif)
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => { originalImage = img; };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    btnClean.addEventListener('click', () => {
+      if (!originalImage) return;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = originalImage.width;
+      canvas.height = originalImage.height;
+      const ctx = canvas.getContext('2d');
+      
+      // Drawing image to canvas automatically removes metadata
+      ctx.drawImage(originalImage, 0, 0);
+
+      // Export clean image
+      const link = document.createElement('a');
+      link.download = "Cleaned_" + fileName;
+      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.click();
+
+      btnClean.innerHTML = '<i class="fas fa-check-circle"></i> Cleaned Successfully!';
+      setTimeout(() => btnClean.innerHTML = '<i class="fas fa-broom"></i> Remove Data & Download', 2000);
+    });
+  </script>
+</body>
+</html>

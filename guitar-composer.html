@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Online Guitar Tab Creator & Composer | Free PDF Download</title>
+    <meta name="description" content="Compose guitar tabs online for free. Use interactive fretboard, insert chords, practice with metronome, and download your music as professional PDF.">
+    <meta name="keywords" content="online guitar tab creator, write guitar tabs, guitar composer tool, free tab maker, guitar tab pdf generator, metronome online, xizoa music tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tools.xizoa.com/guitar-composer">
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        /* --- THEME: DARK STUDIO --- */
+        :root {
+            --bg-overlay: rgba(18, 18, 20, 0.92);
+            --panel-bg: rgba(30, 30, 36, 0.85);
+            --accent: #8c52ff; /* Purple */
+            --highlight: #00f3ff; 
+            --text: #e1e1e6; 
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+            --fret-wire: #555;
+        }
+        * { box-sizing:border-box; margin:0; padding:0; font-family: 'Outfit', sans-serif; }
+        
+        body { 
+            /* PREMIUM GUITAR BACKGROUND */
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: var(--text); min-height: 100vh; display: flex; flex-direction: column;
+        }
+
+        /* HEADER */
+        header { padding: 15px 5%; border-bottom: var(--border); background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .brand span { color: var(--accent); }
+
+        /* MAIN LAYOUT */
+        .workspace { max-width: 1200px; margin: 30px auto; padding: 0 20px; width: 100%; display: grid; gap: 30px; }
+
+        /* GLASS PANELS */
+        .control-bar, .fretboard-container, .chord-palette, .guide-card, footer {
+            background: var(--panel-bg); backdrop-filter: blur(5px); border: var(--border);
+        }
+
+        /* --- CONTROL BAR --- */
+        .control-bar {
+            padding: 15px; border-radius: 12px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;
+        }
+        .metro-box { display: flex; align-items: center; gap: 10px; background: #000; padding: 8px 15px; border-radius: 50px; border: 1px solid #333; }
+        .bpm-input { background: transparent; border: none; color: var(--highlight); width: 50px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+        .btn-action {
+            background: #2a2a35; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.2s;
+        }
+        .btn-action:hover { background: #3a3a45; color: var(--accent); }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: #7b3fe0; color: #fff; box-shadow: 0 0 20px rgba(140, 82, 255, 0.3); }
+
+        /* --- INTERACTIVE FRETBOARD --- */
+        .fretboard-container { overflow-x: auto; padding: 20px; border-radius: 12px; }
+        .neck {
+            display: grid; grid-template-rows: repeat(6, 40px);
+            width: 900px; background: #222; position: relative; border-right: 5px solid #111; box-shadow: inset 0 0 20px #000;
+        }
+        .string { width: 100%; height: 40px; position: relative; display: flex; }
+        .string::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: #c5a059; z-index: 1; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        /* String thickness */
+        .string:nth-child(1)::before { height: 4px; } .string:nth-child(2)::before { height: 3px; } .string:nth-child(3)::before { height: 2px; }
+        
+        .fret-cell {
+            flex: 1; border-right: 3px solid var(--fret-wire); position: relative; z-index: 2; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .fret-cell:hover::after { content: ''; width: 20px; height: 20px; background: rgba(140, 82, 255, 0.5); border-radius: 50%; position: absolute; }
+        .fret-cell:active::after { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
+        
+        .fret-num { display: flex; width: 900px; margin-top: 5px; color: #888; font-size: 0.8rem; font-weight: 700; }
+        .fnum { flex: 1; text-align: center; }
+
+        /* --- EDITOR AREA --- */
+        .editor-grid { display: grid; grid-template-columns: 220px 1fr; gap: 20px; }
+        
+        .chord-palette { padding: 20px; border-radius: 12px; height: fit-content; }
+        .chord-btn {
+            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #aaa; padding: 10px;
+            margin-bottom: 8px; border-radius: 6px; cursor: pointer; text-align: left; transition: 0.2s;
+            display: flex; justify-content: space-between; font-size: 0.9rem;
+        }
+        .chord-btn:hover { border-color: var(--accent); color: #fff; background: rgba(140, 82, 255, 0.1); }
+        .chord-btn span { font-family: monospace; opacity: 0.6; }
+
+        .tab-sheet {
+            background: #08080a; color: var(--highlight); font-family: 'Fira Code', monospace;
+            padding: 25px; border-radius: 12px; border: 1px solid var(--accent);
+            width: 100%; min-height: 450px; white-space: pre; overflow-x: auto; font-size: 15px; line-height: 1.5;
+            outline: none; box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* SEO SECTION */
+        .guide-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .guide-card { padding: 30px; border-radius: 16px; margin-bottom: 25px; }
+        .guide-card h2 { color: #fff; margin-bottom: 15px; font-size: 1.5rem; }
+        .guide-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
+        .guide-card p, .guide-card li { color: #bbb; line-height: 1.7; margin-bottom: 10px; }
+        .guide-card ul { margin-left: 20px; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 40px; margin-top: auto; color: #888; }
+
+        @media (max-width: 900px) {
+            .editor-grid { grid-template-columns: 1fr; }
+            .fretboard-container { overflow-x: scroll; }
+            .control-bar { justify-content: center; }
+            .chord-palette { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-music"></i> XIZOA <span>COMPOSER</span></a>
+        <div>
+            <button class="btn-action btn-primary" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Download PDF</button>
+        </div>
+    </header>
+
+    <div class="workspace">
+        
+        <div class="control-bar">
+            <div class="metro-box">
+                <i class="fas fa-stopwatch" style="color:#aaa;"></i>
+                <input type="number" id="bpm" class="bpm-input" value="120"> <span style="font-size:0.8rem; color:#666;">BPM</span>
+                <button class="btn-action" id="metroBtn" onclick="toggleMetronome()" style="padding: 5px 15px; font-size:0.8rem;">Start</button>
+            </div>
+            
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content: center;">
+                <button class="btn-action" onclick="addSpace()"><i class="fas fa-arrows-alt-h"></i> Space</button>
+                <button class="btn-action" onclick="newLine()"><i class="fas fa-level-down-alt"></i> New Line</button>
+                <button class="btn-action" onclick="clearTabs()" style="color:#ff4757; border-color: #ff4757;"><i class="fas fa-trash"></i> Clear</button>
+            </div>
+        </div>
+
+        <div class="fretboard-container">
+            <p style="color:var(--accent); font-size:0.8rem; margin-bottom:10px; font-weight:700; letter-spacing: 1px;">INTERACTIVE FRETBOARD (CLICK TO ADD NOTE)</p>
+            <div class="neck" id="neck">
+                </div>
+            <div class="fret-num" id="fretNums">
+                </div>
+        </div>
+
+        <div class="editor-grid">
+            
+            <div class="chord-palette">
+                <h4 style="color:#fff; margin-bottom:15px; font-size:0.9rem; text-transform: uppercase;">Quick Chords</h4>
+                <div class="chord-btn" onclick="insertChord('C')">C Major <span>x32010</span></div>
+                <div class="chord-btn" onclick="insertChord('G')">G Major <span>320003</span></div>
+                <div class="chord-btn" onclick="insertChord('D')">D Major <span>xx0232</span></div>
+                <div class="chord-btn" onclick="insertChord('A')">A Major <span>x02220</span></div>
+                <div class="chord-btn" onclick="insertChord('E')">E Major <span>022100</span></div>
+                <div class="chord-btn" onclick="insertChord('Am')">A Minor <span>x02210</span></div>
+                <div class="chord-btn" onclick="insertChord('Em')">E Minor <span>022000</span></div>
+                <div class="chord-btn" onclick="insertChord('F')">F Major <span>133211</span></div>
+            </div>
+
+            <div style="position:relative;">
+                <textarea id="tabSheet" class="tab-sheet" spellcheck="false" placeholder="Start clicking the fretboard above to write your tabs..."></textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="guide-section">
+        <div class="guide-card">
+            <h2>🎸 How to Write Guitar Tabs Online? (User Guide)</h2>
+            <p>Welcome to the ultimate <strong>Guitar Tab Creator</strong>. This tool lets you compose music interactively without needing complex software.</p>
+            <ul>
+                 <li><strong>Interactive Fretboard:</strong> Click any fret on the virtual neck above. The tool plays the realistic note audio and instantly writes the corresponding number onto the tablature sheet below.</li>
+                 <li><strong>Instant Chords:</strong> Don't know the shape? Use the "Quick Chords" sidebar to add common chords like C Major or G Major with one click.</li>
+                 <li><strong>Metronome Practice:</strong> Set your BPM and activate the built-in metronome to keep your rhythm tight while composing.</li>
+            </ul>
+        </div>
+        <div class="guide-card">
+            <h2>Why use an Online Guitar Composer?</h2>
+            <p>Guitar Tablature (Tabs) is the universal language for guitarists. Unlike standard sheet music, tabs show you exactly where to put your fingers on the fretboard.</p>
+            <h3>Key Benefits:</h3>
+            <ul>
+                <li><strong>Speed:</strong> Capture song ideas instantly before you forget them.</li>
+                <li><strong>Shareable:</strong> Use the <strong>PDF Download</strong> feature to print your composition for band practice or students.</li>
+                <li><strong>Free & Accessible:</strong> No installation required. Works right in your browser.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Xizoa Hub • Built for Musicians</p>
+    </footer>
+
+    <script>
+        // --- 1. INITIALIZATION & AUDIO ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        // Frequencies for open strings (High E to Low E)
+        const openStrings = [329.63, 246.94, 196.00, 146.83, 110.00, 82.41];
+        let tabLines = ["e|", "B|", "G|", "D|", "A|", "E|"];
+        
+        window.onload = function() {
+            renderFretboard();
+            updateTabDisplay();
+        };
+
+        // --- 2. RENDER FRETBOARD ---
+        function renderFretboard() {
+            const neck = document.getElementById('neck');
+            const nums = document.getElementById('fretNums');
+            for(let s=0; s<6; s++) {
+                const stringDiv = document.createElement('div');
+                stringDiv.className = 'string';
+                for(let f=0; f<=15; f++) { 
+                    const cell = document.createElement('div');
+                    cell.className = 'fret-cell';
+                    if(f===0) {
+                        cell.style.flex = "0 0 40px"; cell.style.borderRight = "4px solid #444"; cell.innerText = "0"; cell.style.color = "#888"; cell.style.fontSize = "10px";
+                    }
+                    cell.onclick = () => playAndTab(s, f);
+                    stringDiv.appendChild(cell);
+                }
+                neck.appendChild(stringDiv);
+            }
+            for(let f=0; f<=15; f++) {
+                const num = document.createElement('div'); num.className = 'fnum'; num.innerText = f;
+                if(f===0) num.style.flex = "0 0 40px"; nums.appendChild(num);
+            }
+        }
+
+        // --- 3. CORE LOGIC ---
+        function playAndTab(stringIndex, fret) {
+            const freq = openStrings[stringIndex] * Math.pow(2, fret/12);
+            playTone(freq);
+            addToTabColumn(stringIndex, fret.toString());
+        }
+
+        function playTone(freq) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle'; osc.frequency.value = freq;
+            gain.gain.value = 0.3; gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.0);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 1.0);
+        }
+
+        // --- 4. TAB ENGINE ---
+        function addToTabColumn(activeStringIdx, value) {
+            const width = value.length;
+            for(let i=0; i<6; i++) {
+                tabLines[i] += (i === activeStringIdx) ? `-${value}-` : `-${"-".repeat(width)}-`;
+            }
+            updateTabDisplay();
+        }
+
+        function insertChord(chordName) {
+            const maps = { 'C':['0','1','0','2','3','-'], 'G':['3','0','0','0','2','3'], 'D':['2','3','2','0','-','-'], 'A':['0','2','2','2','0','-'], 'E':['0','0','1','2','2','0'], 'Am':['0','1','2','2','0','-'], 'Em':['0','0','0','2','2','0'], 'F':['1','1','2','3','3','1'] };
+            const shapes = maps[chordName];
+            if(shapes) { for(let i=0; i<6; i++) tabLines[i] += `-${shapes[i]}-`; updateTabDisplay(); }
+        }
+
+        function addSpace() { for(let i=0; i<6; i++) tabLines[i] += "---"; updateTabDisplay(); }
+        function newLine() { const headers = ["e|", "B|", "G|", "D|", "A|", "E|"]; for(let i=0; i<6; i++) tabLines[i] += "\n" + headers[i]; updateTabDisplay(); }
+        function clearTabs() { if(confirm("Clear all work?")) { tabLines = ["e|", "B|", "G|", "D|", "A|", "E|"]; updateTabDisplay(); }}
+
+        function updateTabDisplay() {
+            const ta = document.getElementById('tabSheet');
+            ta.value = tabLines.join("\n"); ta.scrollTop = ta.scrollHeight;
+        }
+
+        // --- 5. PDF & METRONOME ---
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf; const doc = new jsPDF();
+            doc.setFont("courier", "normal"); doc.setFontSize(10);
+            doc.text("XIZOA STUDIO - GUITAR TABS", 10, 10); doc.text("Date: " + new Date().toLocaleDateString(), 10, 16);
+            const lines = document.getElementById('tabSheet').value.split('\n');
+            let y = 30; lines.forEach(line => { doc.text(line, 10, y); y += 5; if(y > 280) { doc.addPage(); y=20; }});
+            doc.save("guitar-tabs.pdf");
+        }
+
+        let metroInterval, metroRunning = false;
+        function toggleMetronome() {
+            const btn = document.getElementById('metroBtn');
+            if(metroRunning) { clearInterval(metroInterval); btn.innerText = "Start"; btn.style.background = "#2a2a35"; metroRunning = false; } 
+            else { const ms = 60000 / document.getElementById('bpm').value; playClick(); metroInterval = setInterval(playClick, ms); btn.innerText = "Stop"; btn.style.background = "#ff4757"; metroRunning = true; }
+        }
+        function playClick() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.type = 'square'; osc.frequency.value = 1000; gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.1); }
+    </script>
+</body>
+  </html>

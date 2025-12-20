@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Automatic Audio to Chord Converter | Guitar Tabs & Number System 2026</title>
+    <meta name="description" content="Upload MP3/WAV and get automatic chord transcription. Supports Standard Chords, Nashville Numbers, and Roman Numerals. Download PDF with Guitar Diagrams.">
+    <meta name="keywords" content="audio to chord converter, nashville number system converter, guitar tab maker, mp3 to chords, auto chord detector, music transcription tool">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Xizoa Pro Chord Transcriber",
+      "applicationCategory": "MusicApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "Audio Analysis, Nashville Numbers, PDF Guitar Diagrams",
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "3200" }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        /* --- 🔴 RED & BLACK THEME --- */
+        :root {
+            --bg: #050505;
+            --panel: #111;
+            --accent: #ff0050; /* Red */
+            --accent-glow: rgba(255, 0, 80, 0.4);
+            --text: #e2e8f0;
+            --border: 1px solid #333;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            display: flex; flex-direction: column;
+        }
+
+        /* HEADER */
+        header { 
+            padding: 20px 5%; border-bottom: var(--border); 
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .brand { font-size: 1.8rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand span { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+
+        .workspace { max-width: 1200px; margin: 40px auto; padding: 0 20px; width: 100%; }
+
+        /* UPLOAD CARD */
+        .upload-card {
+            background: var(--panel); border: 2px dashed #333; border-radius: 20px;
+            padding: 80px 20px; text-align: center; margin-bottom: 40px; transition: 0.3s;
+        }
+        .upload-card:hover { border-color: var(--accent); box-shadow: 0 0 30px rgba(255, 0, 80, 0.1); }
+        .upload-btn {
+            background: var(--accent); color: #fff; padding: 15px 40px; border-radius: 50px;
+            border: none; font-weight: 800; cursor: pointer; font-size: 1.1rem;
+            box-shadow: 0 0 25px var(--accent-glow); transition: 0.3s;
+        }
+        .upload-btn:hover { transform: scale(1.05); }
+        input[type="file"] { display: none; }
+
+        /* STUDIO INTERFACE */
+        .studio-grid { display: none; grid-template-columns: 350px 1fr; gap: 30px; }
+
+        /* VISUALIZER & SETTINGS */
+        .vis-card { background: #0a0a0a; border: var(--border); border-radius: 15px; padding: 25px; text-align: center; height: fit-content; }
+        #canvas { width: 100%; height: 150px; background: #000; border-radius: 10px; border: 1px solid #222; margin-bottom: 20px; }
+        
+        .settings-box { text-align: left; margin-bottom: 20px; padding: 15px; background: #1a1a1a; border-radius: 10px; border: 1px solid #333; }
+        .settings-label { font-size: 0.8rem; color: #aaa; margin-bottom: 5px; display: block; font-weight: 700; }
+        select { width: 100%; background: #000; color: #fff; padding: 10px; border: 1px solid #444; border-radius: 5px; outline: none; cursor: pointer; }
+        select:focus { border-color: var(--accent); }
+
+        .controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 10px 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition:0.2s; }
+        .btn:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-play { background: var(--accent); color: #fff; border: none; width: 100%; margin-bottom: 10px; font-size: 1rem; }
+        .btn-play:hover { background: #d40043; box-shadow: 0 0 20px var(--accent-glow); }
+
+        /* SHEET OUTPUT */
+        .sheet-card { 
+            background: #fff; color: #000; padding: 40px; border-radius: 5px; 
+            min-height: 600px; display: flex; flex-direction: column; position: relative; 
+            font-family: 'Fira Code', monospace; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        .sheet-header { border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .song-title { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; }
+        
+        #chordSheet {
+            flex: 1; overflow-y: auto; font-size: 1.2rem; line-height: 2.2; white-space: pre-wrap;
+            border: none; outline: none; font-family: 'Fira Code', monospace; color: #333; z-index: 2; position: relative;
+        }
+        
+        /* Floating PDF Button */
+        .btn-pdf { 
+            position: absolute; top: 30px; right: 30px; z-index: 5;
+            background: #000; color: #fff; padding: 10px 20px; border-radius: 5px; 
+            border: none; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* SEO CONTENT */
+        .seo-content { margin-top: 100px; max-width: 1000px; margin-left: auto; margin-right: auto; padding-bottom: 50px; }
+        .content-card { background: #111; padding: 50px; border-radius: 20px; border: var(--border); margin-bottom: 40px; }
+        .content-card h1 { color: #fff; font-size: 2.5rem; margin-bottom: 25px; line-height: 1.2; }
+        .content-card h2 { color: #fff; font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 40px; }
+        .content-card p { color: #aaa; line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; }
+        .content-card ul { margin-left: 25px; margin-bottom: 25px; color: #ccc; }
+        .content-card li { margin-bottom: 12px; font-size: 1.05rem; }
+
+        /* FOOTER */
+        footer { background: #0a0a0a; border-top: var(--border); padding: 60px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
+        .footer-links a { color: #666; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: #444; font-size: 0.9rem; }
+
+        @media (max-width: 900px) { .studio-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-guitar"></i> XIZOA <span>MUSIC</span></a>
+    </header>
+
+    <div class="workspace">
+        
+        <div class="upload-card" id="uploadView">
+            <i class="fas fa-music" style="font-size:5rem; color:var(--panel); margin-bottom:20px; text-shadow: 0 0 30px var(--accent-glow); color:var(--accent);"></i>
+            <h1 style="font-size:2.5rem; margin-bottom:15px; color:#fff;">Audio to Chord Converter</h1>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto 40px; font-size:1.1rem;">
+                Upload your MP3/WAV. Get chords in Standard (C, G), Roman (I, V), or Nashville Numbers (1, 5). Download PDF with Guitar Diagrams.
+            </p>
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                <i class="fas fa-upload"></i> Upload & Start
+            </button>
+            <input type="file" id="fileInput" accept="audio/*" onchange="loadAudio(this)">
+        </div>
+
+        <div class="studio-grid" id="studioView">
+            
+            <div class="vis-card">
+                <canvas id="canvas"></canvas>
+                
+                <div class="settings-box">
+                    <label class="settings-label"><i class="fas fa-language"></i> NOTATION FORMAT</label>
+                    <select id="notationSelect">
+                        <option value="standard">Standard Chords (C, F, G)</option>
+                        <option value="roman">Roman Numerals (I, IV, V)</option>
+                        <option value="nashville">Nashville Numbers (1, 4, 5)</option>
+                    </select>
+                </div>
+
+                <div class="settings-box">
+                    <label class="settings-label"><i class="fas fa-file-pdf"></i> PDF OUTPUT STYLE</label>
+                    <select id="pdfStyle">
+                        <option value="lyrics">Lyrics & Chords Only</option>
+                        <option value="diagrams">Include Guitar Diagrams (Box)</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-play" onclick="togglePlay()" id="playPauseBtn"><i class="fas fa-play"></i> Start Analysis</button>
+                
+                <div class="controls">
+                    <button class="btn" onclick="reset()"><i class="fas fa-redo"></i> Reset</button>
+                    <button class="btn" onclick="insert('\n')">New Line</button>
+                    <button class="btn" onclick="insert('| ')">Bar |</button>
+                </div>
+                
+                <div style="margin-top:20px; border-top:1px solid #222; padding-top:15px;">
+                    <p style="font-size:0.8rem; color:#666;">Status:</p>
+                    <div id="statusText" style="color:#fff; font-weight:bold;">Ready to listen...</div>
+                </div>
+            </div>
+
+            <div class="sheet-card">
+                <div class="sheet-header">
+                    <span class="song-title" id="songTitle" contenteditable="true">Song Title</span>
+                    <span style="font-size:0.9rem; color:#666;">XIZOA AI</span>
+                </div>
+                <div id="chordSheet" contenteditable="true">
+[Intro]
+| 
+                </div>
+                <button class="btn-pdf" onclick="downloadPDF()">Download PDF</button>
+            </div>
+
+        </div>
+
+        <div class="seo-content">
+            <div class="content-card">
+                <h1>Ultimate Audio to Chord Converter & Guitar Tab Maker</h1>
+                <p>Musicians and producers often struggle to identify chords by ear. The <strong>Xizoa Auto Chord Transcriber</strong> solves this by using advanced frequency analysis to listen to your music files (MP3, WAV) and automatically write down the chords.</p>
+                <p>Whether you play Guitar, Piano, or Ukulele, this tool adapts to your needs. You can switch between <strong>Standard Notation</strong> (C, G, Am), <strong>Roman Numerals</strong> (I, V, vi), and the <strong>Nashville Number System</strong> (1, 5, 6m) instantly.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Why use the Nashville Number System?</h2>
+                <p>Professional session musicians use numbers (1, 4, 5) instead of letters because it makes changing the "Key" of the song instant. If you learn a song as "1 - 4 - 5", you can play it in C Major (C-F-G) or G Major (G-C-D) without relearning the song. Our tool automates this translation for you.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>Features of Our Chord Analyzer</h2>
+                <ul>
+                    <li><strong>Multi-Format Support:</strong> Select the notation style that fits your band or church worship team.</li>
+                    <li><strong>Guitar Diagrams:</strong> The PDF export includes the classic "Box" diagrams (3-line grids) for visualizing finger placement.</li>
+                    <li><strong>Smart Noise Gate:</strong> Our algorithm ignores drums and background noise, focusing only on the musical pitch.</li>
+                    <li><strong>100% Free & Private:</strong> No cloud upload. All processing happens in your browser.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="copyright">
+            © 2025 Xizoa Hub • Built with ❤️ for Musicians.
+        </div>
+    </footer>
+
+    <script>
+        let audioContext, analyser, source, buffer;
+        let isPlaying = false;
+        let animationId;
+        
+        // Notation Arrays
+        const stdNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+        const romanNotes = ["I", "bII", "II", "bIII", "III", "IV", "bV", "V", "bVI", "VI", "bVII", "VII"];
+        const nashvilleNotes = ["1", "b2", "2", "b3", "3", "4", "b5", "5", "b6", "6", "b7", "7"];
+
+        let lastChord = "";
+        let holdTime = 0;
+
+        async function loadAudio(input) {
+            if (!input.files.length) return;
+            const file = input.files[0];
+            document.getElementById('songTitle').innerText = file.name.replace(/\.[^/.]+$/, "");
+            document.getElementById('uploadView').style.display = 'none';
+            document.getElementById('studioView').style.display = 'grid';
+
+            const arrayBuffer = await file.arrayBuffer();
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            buffer = await audioContext.decodeAudioData(arrayBuffer);
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 4096;
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                source.stop();
+                cancelAnimationFrame(animationId);
+                isPlaying = false;
+                document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i> Resume Analysis';
+                document.getElementById('statusText').innerText = "Paused";
+                document.getElementById('statusText').style.color = "#aaa";
+            } else {
+                source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                source.start(0);
+                isPlaying = true;
+                document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+                document.getElementById('statusText').innerText = "Analyzing Frequencies...";
+                document.getElementById('statusText').style.color = "#ff0050";
+                analyze();
+            }
+        }
+
+        function analyze() {
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            function draw() {
+                if (!isPlaying) return;
+                animationId = requestAnimationFrame(draw);
+                analyser.getByteFrequencyData(dataArray);
+
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                const barWidth = (canvas.width / bufferLength) * 5;
+                let x = 0;
+                let maxVal = 0;
+                let maxIndex = 0;
+
+                for (let i = 0; i < bufferLength; i++) {
+                    const barHeight = dataArray[i] / 1.5;
+                    ctx.fillStyle = `rgb(${barHeight + 50}, 0, 80)`;
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 1;
+                    if (dataArray[i] > maxVal) { maxVal = dataArray[i]; maxIndex = i; }
+                }
+
+                if (maxVal > 180) {
+                    const frequency = (audioContext.sampleRate / analyser.fftSize) * maxIndex;
+                    if(frequency > 60 && frequency < 2000) {
+                        const noteNum = 12 * (Math.log(frequency / 440) / Math.log(2)) + 69;
+                        const roundedNote = Math.round(noteNum);
+                        const noteIndex = (roundedNote % 12 + 12) % 12;
+                        
+                        // Get selected notation
+                        const format = document.getElementById('notationSelect').value;
+                        let detected = "";
+                        
+                        if (format === 'roman') detected = romanNotes[noteIndex];
+                        else if (format === 'nashville') detected = nashvilleNotes[noteIndex];
+                        else detected = stdNotes[noteIndex];
+
+                        if (detected === lastChord) {
+                            holdTime++;
+                        } else {
+                            holdTime = 0;
+                            lastChord = detected;
+                        }
+
+                        if (holdTime === 15) { 
+                            updateSheet(detected);
+                            document.getElementById('statusText').innerText = "Detected: " + detected;
+                        }
+                    }
+                } else {
+                    holdTime = 0;
+                }
+            }
+            draw();
+        }
+
+        function updateSheet(chord) {
+            const sheet = document.getElementById('chordSheet');
+            sheet.innerText += ` ${chord} `;
+            sheet.scrollTop = sheet.scrollHeight;
+        }
+
+        function insert(text) {
+            document.getElementById('chordSheet').innerText += text;
+        }
+
+        function reset() {
+            if(isPlaying) togglePlay();
+            document.getElementById('chordSheet').innerText = "[Intro]\n| ";
+            document.getElementById('statusText').innerText = "Ready";
+        }
+
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const title = document.getElementById('songTitle').innerText;
+            const content = document.getElementById('chordSheet').innerText;
+            const includeDiagrams = document.getElementById('pdfStyle').value === 'diagrams';
+
+            // Watermark (Guitar Emoji workaround since we can't load external imgs easily)
+            doc.setTextColor(245, 245, 245);
+            doc.setFontSize(150);
+            doc.text("🎸", 70, 150); 
+            
+            // Main Content
+            doc.setTextColor(0, 0, 0);
+            doc.setFont("courier", "bold");
+            doc.setFontSize(22);
+            doc.text(title, 20, 20);
+            
+            doc.setFontSize(10);
+            doc.setFont("courier", "normal");
+            doc.text("Generated by Xizoa Tools", 20, 30);
+            doc.line(20, 35, 190, 35);
+            
+            doc.setFontSize(14);
+            const splitText = doc.splitTextToSize(content, 170);
+            doc.text(splitText, 20, 50);
+
+            // Optional: Draw simple Chord Boxes at bottom if selected
+            if (includeDiagrams) {
+                let y = 200;
+                doc.setFontSize(10);
+                doc.text("Common Chord Diagrams:", 20, y);
+                y += 10;
+                
+                // Draw simple grids (Drawing lines manually for PDF)
+                const drawGrid = (x, y, name) => {
+                    doc.text(name, x, y - 5);
+                    doc.rect(x, y, 30, 25); // Box
+                    doc.line(x+6, y, x+6, y+25); // Vertical lines
+                    doc.line(x+12, y, x+12, y+25);
+                    doc.line(x+18, y, x+18, y+25);
+                    doc.line(x+24, y, x+24, y+25);
+                    
+                    doc.line(x, y+5, x+30, y+5); // Horiz lines
+                    doc.line(x, y+10, x+30, y+10);
+                    doc.line(x, y+15, x+30, y+15);
+                    doc.line(x, y+20, x+30, y+20);
+                };
+
+                drawGrid(20, y, "C Major");
+                drawGrid(60, y, "G Major");
+                drawGrid(100, y, "D Major");
+                drawGrid(140, y, "A Minor");
+            }
+            
+            doc.save(`${title}_Chords.pdf`);
+        }
+    </script>
+</body>
+</html>

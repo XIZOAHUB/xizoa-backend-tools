@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Diff Checker - Compare Text & Code Online (Free)</title>
+  
+  <meta name="description" content="Compare two text files or code snippets to find differences instantly. Highlight added and removed lines. Free online Diff Checker tool for developers and writers.">
+  
+  <meta name="keywords" content="diff checker, text compare tool, compare code, diff viewer, online difference checker, compare two strings, text diff, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Diff Checker - Compare Text Differences">
+  <meta property="og:description" content="Find the difference between two texts instantly. Green for added, Red for removed.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+
+  <style>
+    /* --- THEME: VS CODE DARK MODE --- */
+    :root {
+      --bg-dark: #1e1e1e;
+      --panel-bg: #252526;
+      --border-color: #3e3e42;
+      --text-main: #d4d4d4;
+      --primary: #007acc; /* VS Code Blue */
+      --added-bg: rgba(46, 160, 67, 0.3);
+      --added-text: #b7f0ba;
+      --removed-bg: rgba(218, 54, 51, 0.3);
+      --removed-text: #ffbba9;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 30px 20px; border-bottom: 1px solid var(--border-color); background: #181818; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 5px; }
+    .subtitle { color: #858585; font-size: 1rem; }
+
+    main { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+    /* --- EDITOR AREA --- */
+    .diff-workspace {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .editor-container {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      height: 400px;
+    }
+
+    .editor-header {
+      background: #333333;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    textarea {
+      flex: 1;
+      background: var(--panel-bg);
+      color: var(--text-main);
+      border: none;
+      padding: 15px;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      resize: none;
+      line-height: 1.5;
+    }
+    textarea:focus { box-shadow: inset 0 0 0 1px var(--primary); }
+
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    button.btn-compare {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 40px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button.btn-compare:hover { background: #0062a3; }
+
+    /* --- RESULT AREA --- */
+    .result-view {
+      background: #111;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      min-height: 100px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    span.added { background-color: var(--added-bg); color: var(--added-text); text-decoration: none; }
+    span.removed { background-color: var(--removed-bg); color: var(--removed-text); text-decoration: line-through; opacity: 0.8; }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .seo-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: #fff; margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: #a0aec0; line-height: 1.7; margin-bottom: 15px; }
+    .seo-content li { color: #a0aec0; margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🔍'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #181818; border-top: 1px solid var(--border-color); padding: 40px 20px; margin-top: auto; text-align: center; }
+    .copyright { color: #666; font-size: 0.9rem; }
+
+    @media (max-width: 768px) { .input-row { grid-template-columns: 1fr; } .editor-container { height: 250px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Diff Checker</h1>
+    <p class="subtitle">Compare Text & Find Differences Instantly</p>
+  </header>
+
+  <main>
+    
+    <div class="diff-workspace">
+      
+      <div class="input-row">
+        <div class="editor-container">
+          <div class="editor-header">
+            <span><i class="fas fa-file-alt"></i> Original Text</span>
+            <span style="color:#888; font-size:0.8rem; cursor:pointer;" onclick="document.getElementById('text1').value=''">Clear</span>
+          </div>
+          <textarea id="text1" placeholder="Paste original text or code here..."></textarea>
+        </div>
+
+        <div class="editor-container">
+          <div class="editor-header">
+            <span><i class="fas fa-file-signature"></i> Changed Text</span>
+            <span style="color:#888; font-size:0.8rem; cursor:pointer;" onclick="document.getElementById('text2').value=''">Clear</span>
+          </div>
+          <textarea id="text2" placeholder="Paste modified text or code here..."></textarea>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn-compare" id="btnCompare"><i class="fas fa-exchange-alt"></i> Compare Differences</button>
+      </div>
+
+      <div class="result-view" id="resultView">
+        </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>What is a Diff Checker?</h2>
+        <p>
+          A **Diff Checker** is a tool used by developers and writers to compare two versions of a document or code snippet. 
+          It highlights what has been added (Green) and what has been removed (Red), making it easy to spot changes.
+        </p>
+        <p>
+          Coding karte waqt ya article likhte waqt agar purani aur nayi file me antar dhoondhna ho, to ye tool best hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Best For</h3>
+        <ul>
+          <li><strong>Programmers:</strong> Debug code by comparing versions.</li>
+          <li><strong>Writers:</strong> See editing changes in articles.</li>
+          <li><strong>Students:</strong> Check differences in notes or essays.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnCompare = document.getElementById('btnCompare');
+    const text1 = document.getElementById('text1');
+    const text2 = document.getElementById('text2');
+    const resultView = document.getElementById('resultView');
+
+    btnCompare.addEventListener('click', () => {
+      const val1 = text1.value;
+      const val2 = text2.value;
+
+      if(!val1 && !val2) {
+        alert("Please paste text in both boxes to compare.");
+        return;
+      }
+
+      // Using JS Diff Library
+      // diffWords calculates differences word by word
+      const diff = Diff.diffWords(val1, val2);
+      
+      const fragment = document.createDocumentFragment();
+
+      diff.forEach((part) => {
+        // Create span element
+        const span = document.createElement('span');
+        
+        // Decide color
+        if(part.added) {
+            span.classList.add('added'); // Green
+        } else if (part.removed) {
+            span.classList.add('removed'); // Red
+        } 
+        
+        // Set text
+        span.appendChild(document.createTextNode(part.value));
+        fragment.appendChild(span);
+      });
+
+      resultView.innerHTML = "";
+      resultView.appendChild(fragment);
+      resultView.style.display = "block";
+      
+      // Scroll to result
+      resultView.scrollIntoView({behavior: "smooth"});
+    });
+  </script>
+</body>
+</html>

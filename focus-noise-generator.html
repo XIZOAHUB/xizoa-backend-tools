@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Free Focus Noise Generator | White, Pink & Brown Noise Player (ADHD Friendly)</title>
+    <meta name="description" content="Boost concentration with our Free Focus Noise Generator. Play Brown Noise for ADHD, White Noise for sleep, and Pink Noise for study. Includes Pomodoro Timer.">
+    <meta name="keywords" content="focus noise generator, brown noise for adhd, white noise machine online, pink noise player, study background sound, pomodoro timer with music, sound masking tool">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Xizoa Focus Noise Generator",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "A browser-based audio tool providing White, Pink, and Brown noise to improve focus and sleep.",
+      "featureList": "Offline Audio Generation, Pomodoro Timer, Frequency Visualizer"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- THEME: DEEP SPACE PURPLE --- */
+        :root {
+            --bg: #030014;
+            --panel: #0f0729;
+            --accent: #7c3aed; /* Violet */
+            --accent-glow: rgba(124, 58, 237, 0.5);
+            --text: #e2e8f0;
+            --border: 1px solid #2d1b69;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            display: flex; flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header { 
+            padding: 20px 5%; border-bottom: var(--border); 
+            background: rgba(15, 7, 41, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .brand { font-size: 1.6rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand span { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+
+        .workspace { max-width: 1000px; margin: 40px auto; padding: 0 20px; width: 100%; text-align: center; }
+
+        /* PLAYER CARD */
+        .player-card {
+            background: var(--panel); border: var(--border); border-radius: 24px;
+            padding: 50px 30px; position: relative; overflow: hidden;
+            box-shadow: 0 0 60px rgba(124, 58, 237, 0.15); margin-bottom: 60px;
+        }
+
+        /* VISUALIZER */
+        #visualizer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.3; pointer-events: none; z-index: 0;
+        }
+
+        .player-content { position: relative; z-index: 1; }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; line-height: 1.2; }
+        .tagline { color: #a78bfa; font-size: 1.1rem; margin-bottom: 40px; }
+
+        /* NOISE BUTTONS */
+        .noise-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+        
+        .noise-btn {
+            background: #1e1b4b; border: 1px solid #4c1d95; color: #fff;
+            width: 110px; height: 110px; border-radius: 20px; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.3s; font-weight: 600; gap: 8px; font-size: 0.9rem;
+        }
+        .noise-btn i { font-size: 2rem; color: #a78bfa; }
+        .noise-btn:hover { transform: translateY(-5px); border-color: var(--accent); background: #2e1065; }
+        
+        .noise-btn.active {
+            background: var(--accent); border-color: #fff; box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .noise-btn.active i { color: #fff; }
+
+        /* CONTROLS */
+        .slider-container { max-width: 400px; margin: 0 auto 30px; text-align: left; }
+        .slider-container label { display: flex; justify-content: space-between; color: #aaa; font-size: 0.85rem; margin-bottom: 8px; }
+        
+        input[type=range] {
+            width: 100%; height: 6px; background: #333; border-radius: 5px; outline: none; -webkit-appearance: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 18px; height: 18px; background: var(--accent);
+            border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px var(--accent);
+        }
+
+        .main-btn {
+            background: var(--accent); color: #fff; border: none; padding: 15px 50px;
+            border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 0 25px var(--accent-glow); transition: 0.3s; display: inline-flex; align-items: center; gap: 10px;
+        }
+        .main-btn:hover { transform: scale(1.05); background: #8b5cf6; }
+        .main-btn.paused { background: #ef4444; box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
+
+        /* TIMER */
+        .timer-box { 
+            margin-top: 40px; display: inline-flex; align-items: center; gap: 15px;
+            background: rgba(0,0,0,0.4); padding: 10px 25px; border-radius: 50px; border: 1px solid #444; 
+        }
+        #timerDisplay { font-family: 'Fira Code', monospace; font-size: 1.5rem; font-weight: 700; min-width: 80px; }
+        .timer-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 1.2rem; transition: 0.2s; }
+        .timer-btn:hover { color: #fff; }
+
+        /* --- CONTENT SECTION (Massive SEO) --- */
+        .seo-section { text-align: left; max-width: 900px; margin: 0 auto; padding-bottom: 60px; }
+        .content-card { background: var(--panel); padding: 40px; border-radius: 20px; border: var(--border); margin-bottom: 30px; }
+        .content-card h2 { color: #fff; font-size: 1.8rem; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px; display: flex; align-items: center; gap: 10px; }
+        .content-card h2 i { color: var(--accent); }
+        .content-card p { color: #ccc; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+        .content-card ul { margin-left: 20px; color: #ccc; margin-bottom: 20px; line-height: 1.8; }
+        .content-card li { margin-bottom: 10px; }
+
+        .faq-item { border-bottom: 1px solid #2d1b69; padding: 15px 0; }
+        .faq-item h3 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
+        .faq-item p { font-size: 0.95rem; color: #aaa; line-height: 1.6; }
+
+        /* --- MORE TOOLS SECTION (At Bottom) --- */
+        .more-tools { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 60px; text-align: center; }
+        .more-tools h2 { font-size: 2rem; margin-bottom: 30px; color: #fff; }
+        .tools-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; max-width: 1200px; margin: 0 auto; text-align: left;
+        }
+        
+        .tool-link {
+            background: #0b0b10; border: 1px solid #333; padding: 25px; border-radius: 16px;
+            text-decoration: none; color: #fff; transition: 0.3s;
+            display: flex; align-items: center; gap: 15px;
+        }
+        .tool-link:hover { border-color: var(--accent); transform: translateY(-5px); background: #151520; }
+        .tool-icon { 
+            width: 50px; height: 50px; background: rgba(124, 58, 237, 0.1); border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.5rem;
+        }
+        .tool-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
+        .tool-info p { font-size: 0.85rem; color: #888; margin: 0; }
+
+        /* FOOTER */
+        footer { background: #020205; border-top: var(--border); padding: 50px 20px; text-align: center; margin-top: auto; }
+        .footer-links a { color: #888; text-decoration: none; margin: 0 15px; transition:0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: #555; font-size: 0.9rem; margin-top: 20px; }
+
+        @media (max-width: 768px) { h1 { font-size: 2rem; } .noise-btn { width: 90px; height: 90px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-brain"></i> XIZOA <span>FOCUS</span></a>
+    </header>
+
+    <div class="workspace">
+        
+        <div class="player-card">
+            <canvas id="visualizer"></canvas>
+            
+            <div class="player-content">
+                <h1>Focus Noise Generator</h1>
+                <p class="tagline">Block distractions with scientifically calibrated soundscapes.</p>
+
+                <div class="noise-grid">
+                    <div class="noise-btn active" id="btn-brown" onclick="selectNoise('brown')">
+                        <i class="fas fa-water"></i> Brown
+                    </div>
+                    <div class="noise-btn" id="btn-pink" onclick="selectNoise('pink')">
+                        <i class="fas fa-cloud-rain"></i> Pink
+                    </div>
+                    <div class="noise-btn" id="btn-white" onclick="selectNoise('white')">
+                        <i class="fas fa-wind"></i> White
+                    </div>
+                </div>
+
+                <div class="slider-container">
+                    <label><span>Volume</span> <span id="volValue">50%</span></label>
+                    <input type="range" min="0" max="1" step="0.01" value="0.5" id="volControl" oninput="setVolume(this.value)">
+                </div>
+
+                <button class="main-btn" id="playBtn" onclick="togglePlay()">
+                    <i class="fas fa-play"></i> Start Focus
+                </button>
+
+                <div class="timer-box">
+                    <button class="timer-btn" onclick="adjustTimer(-5)">-</button>
+                    <span id="timerDisplay">25:00</span>
+                    <button class="timer-btn" onclick="adjustTimer(5)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="seo-section">
+            
+            <div class="content-card">
+                <h2><i class="fas fa-microchip"></i> The Science of Sound Masking</h2>
+                <p>Why is it so hard to focus in silence? Research shows that it's not the noise itself that distracts you, but the <em>change</em> in noise levels (like a sudden car honk or a door slamming). This is where <strong>Sound Masking</strong> comes in.</p>
+                <p>Xizoa Focus Generator creates a "Sound Blanket"—a consistent background frequency that smooths out your auditory environment. This effectively "masks" sudden spikes in external noise, allowing your brain to enter a state of deep concentration or <strong>Flow State</strong>.</p>
+            </div>
+
+            <div class="content-card">
+                <h2><i class="fas fa-headphones-alt"></i> Which Noise Color is Best for You?</h2>
+                <ul>
+                    <li><strong>Brown Noise (Red Noise):</strong> Deep, rumbling, and bass-heavy. Sounds like a distant thunderstorm or a large waterfall. <br><em>Best for:</em> People with ADHD, deep reading, and relaxation. It calms the hyperactive mind.</li>
+                    <li><strong>Pink Noise:</strong> Balanced and natural. Sounds like steady rain or leaves rustling in the wind. <br><em>Best for:</em> General studying, sleeping, and blocking out conversations. It has equal energy per octave.</li>
+                    <li><strong>White Noise:</strong> High-pitched and static. Sounds like a fan or an untuned radio. <br><em>Best for:</em> Absolute isolation in very noisy environments. It blocks the widest range of frequencies.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h2><i class="fas fa-stopwatch"></i> How to Use the Pomodoro Timer?</h2>
+                <p>We have integrated a productivity timer directly into the player. The <strong>Pomodoro Technique</strong> is a time management method developed by Francesco Cirillo.</p>
+                <ol style="margin-left:20px; color:#ccc; line-height:1.8;">
+                    <li>Set the timer to <strong>25 minutes</strong> (default).</li>
+                    <li>Hit "Start Focus" and work on a single task until the audio stops.</li>
+                    <li>Take a short <strong>5-minute break</strong> (stretch or walk).</li>
+                    <li>Repeat this cycle 4 times, then take a longer break.</li>
+                </ol>
+            </div>
+
+            <div class="content-card">
+                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <h3>Is this tool free?</h3>
+                    <p>Yes, Xizoa Focus Generator is 100% free. You don't need to pay for apps like Calm or Headspace for basic noise generation.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does it work offline?</h3>
+                    <p>Absolutely! This tool uses the Web Audio API technology inside your browser. Once the page loads, you don't need an active internet connection to play the sounds.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I use this for sleeping?</h3>
+                    <p>Yes, many users find Pink or Brown noise helpful for insomnia. Just set the volume to a low, comfortable level and let it play.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="more-tools">
+            <h2>You Might Also Like</h2>
+            <div class="tools-grid">
+                
+                <a href="auto-chord-maker.html" class="tool-link">
+                    <div class="tool-icon"><i class="fas fa-guitar"></i></div>
+                    <div class="tool-info">
+                        <h3>Auto Chord Extractor</h3>
+                        <p>Get chords from any song instantly.</p>
+                    </div>
+                </a>
+
+                <a href="YouTube-thumbnail-downloader.html" class="tool-link">
+                    <div class="tool-icon"><i class="fab fa-youtube"></i></div>
+                    <div class="tool-info">
+                        <h3>Thumbnail Downloader</h3>
+                        <p>Save 4K thumbnails from YouTube.</p>
+                    </div>
+                </a>
+
+                <a href="resume-builder.html" class="tool-link">
+                    <div class="tool-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="tool-info">
+                        <h3>Pro Resume Builder</h3>
+                        <p>Create CVs with 50+ templates.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-links" style="margin-bottom:20px;">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="copyright">© 2025 Xizoa Hub • Designed for Focus.</div>
+    </footer>
+
+    <script>
+        let audioCtx, noiseNode, gainNode, analyser, canvas, ctx;
+        let isPlaying = false;
+        let currentType = 'brown';
+        let timeLeft = 25 * 60;
+        let timerId = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Visualizer
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 512;
+                canvas = document.getElementById('visualizer');
+                ctx = canvas.getContext('2d');
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                drawVisualizer();
+            }
+        }
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        function createBuffer() {
+            const bufferSize = audioCtx.sampleRate * 2;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            let lastOut = 0;
+
+            for (let i = 0; i < bufferSize; i++) {
+                const white = Math.random() * 2 - 1;
+                
+                if (currentType === 'white') {
+                    data[i] = white;
+                } else {
+                    // Simple Brown/Pink approximation for efficiency
+                    data[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = data[i];
+                    data[i] *= 3.5; 
+                }
+            }
+            return buffer;
+        }
+
+        function playSound() {
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            if (noiseNode) noiseNode.stop();
+
+            noiseNode = audioCtx.createBufferSource();
+            noiseNode.buffer = createBuffer();
+            noiseNode.loop = true;
+
+            gainNode = audioCtx.createGain();
+            gainNode.gain.value = document.getElementById('volControl').value;
+
+            // Advanced Filters for better sound
+            let filter = audioCtx.createBiquadFilter();
+            if(currentType === 'brown') {
+                filter.type = 'lowpass';
+                filter.frequency.value = 400;
+            } else if(currentType === 'pink') {
+                filter.type = 'lowpass';
+                filter.frequency.value = 2000; // Brighten slightly
+            } else {
+                filter.type = 'allpass'; // White needs no filter
+            }
+
+            noiseNode.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(analyser); // For Visuals
+            gainNode.connect(audioCtx.destination);
+
+            noiseNode.start();
+            isPlaying = true;
+            updateBtn(true);
+            startTimer();
+        }
+
+        function stopSound() {
+            if (noiseNode) noiseNode.stop();
+            isPlaying = false;
+            updateBtn(false);
+            clearInterval(timerId);
+        }
+
+        function togglePlay() {
+            if (isPlaying) stopSound();
+            else playSound();
+        }
+
+        function selectNoise(type) {
+            currentType = type;
+            document.querySelectorAll('.noise-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${type}`).classList.add('active');
+            
+            if (isPlaying) {
+                stopSound();
+                setTimeout(playSound, 100);
+            }
+        }
+
+        function setVolume(val) {
+            document.getElementById('volValue').innerText = Math.round(val * 100) + '%';
+            if (gainNode) gainNode.gain.value = val;
+        }
+
+        function updateBtn(playing) {
+            const btn = document.getElementById('playBtn');
+            if (playing) {
+                btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                btn.classList.add('paused');
+            } else {
+                btn.innerHTML = '<i class="fas fa-play"></i> Start Focus';
+                btn.classList.remove('paused');
+            }
+        }
+
+        // --- VISUALIZER ---
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
+            if (!isPlaying) { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteFrequencyData(dataArray);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(124, 58, 237, 0.15)'; // Soft Purple
+
+            const barWidth = (canvas.width / bufferLength) * 2.5;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                let barHeight = dataArray[i] * 1.5;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                x += barWidth + 1;
+            }
+        }
+
+        // --- TIMER ---
+        function updateTimerDisplay() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timerDisplay').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+        }
+
+        function adjustTimer(min) {
+            timeLeft += min * 60;
+            if(timeLeft < 0) timeLeft = 0;
+            updateTimerDisplay();
+        }
+
+        function startTimer() {
+            clearInterval(timerId);
+            timerId = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    stopSound();
+                    const audio = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+                    audio.play();
+                    alert("Session Complete! Take a break.");
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

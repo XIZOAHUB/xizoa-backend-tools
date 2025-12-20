@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Title Generator - XIZOA HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Xizoa Theme Palette */
+            --bg-body: #050b14;
+            --bg-card: #0f172a;
+            --bg-card-hover: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.25);
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --success: #22c55e;
+            --badge-bg: rgba(6, 182, 212, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 11, 20, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--accent-cyan); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .hero h1 span { color: var(--accent-cyan); }
+        .hero p { color: var(--text-muted); margin-bottom: 40px; }
+
+        /* --- Input Area --- */
+        .search-box {
+            background: var(--bg-card);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            flex-wrap: wrap;
+        }
+
+        .search-box input {
+            flex: 2;
+            background: transparent;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .search-box select {
+            flex: 1;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0 15px;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        .btn-gen {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            min-width: 120px;
+        }
+        .btn-gen:hover { box-shadow: 0 0 15px var(--accent-glow); transform: translateY(-2px); }
+
+        /* --- Results Grid --- */
+        .results-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 20px;
+            display: none; /* Hidden initially */
+        }
+
+        .category-title {
+            margin: 30px 0 15px;
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 15px;
+        }
+
+        .titles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .title-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .title-card:hover {
+            border-color: var(--accent-cyan);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+        }
+
+        .headline-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            padding-right: 25px; /* Space for copy icon */
+        }
+
+        .seo-score {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: var(--badge-bg);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .copy-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        .title-card:hover .copy-icon { opacity: 1; color: var(--accent-cyan); }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-box { flex-direction: column; }
+            .search-box input, .search-box select, .btn-gen { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-pen-nib"></i> XIZOA <span style="color:var(--accent-cyan)">TITLES</span>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Viral Blog Post <span>Title Generator</span></h1>
+        <p>Get high CTR, SEO-optimized headlines instantly. No API required.</p>
+        
+        <div class="search-box">
+            <input type="text" id="keyword" placeholder="Enter your main keyword (e.g. Keto Diet, Python, SEO)...">
+            <select id="niche">
+                <option value="general">General / Blog</option>
+                <option value="tech">Tech & Reviews</option>
+                <option value="business">Business & Money</option>
+                <option value="guide">How-to / Education</option>
+            </select>
+            <button class="btn-gen" onclick="generateHeadlines()">Generate</button>
+        </div>
+    </div>
+
+    <div id="resultsArea" class="results-container">
+        <div class="category-title">
+            <i class="fa-solid fa-list-ol"></i> Listicle & Viral (High CTR)
+        </div>
+        <div class="titles-grid" id="listicleGrid"></div>
+
+        <div class="category-title">
+            <i class="fa-solid fa-book-open"></i> How-To & Guides (SEO Gold)
+        </div>
+        <div class="titles-grid" id="guideGrid"></div>
+
+        <div class="category-title">
+            <i class="fa-solid fa-user-secret"></i> Shocking & Curiosity (Clickbait)
+        </div>
+        <div class="titles-grid" id="secretGrid"></div>
+    </div>
+
+    <footer>
+        &copy; 2024 XIZOA HUB Tools. Optimize your content game.
+    </footer>
+
+    <script>
+        // --- THE "SMART RULES" ENGINE ---
+        
+        // Power words to inject excitement
+        const powerAdjectives = ["Insane", "Ultimate", "Proven", "Simple", "Essential", "Brilliant", "Underrated"];
+        // Odd numbers rank better in SEO
+        const numbers = [5, 7, 9, 11, 13, 21, 101];
+        const years = [new Date().getFullYear(), new Date().getFullYear() + 1];
+
+        function getRandom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateHeadlines() {
+            const keywordInput = document.getElementById('keyword').value.trim();
+            const niche = document.getElementById('niche').value;
+            
+            if (!keywordInput) {
+                alert("Please enter a keyword!");
+                return;
+            }
+
+            // Capitalize Keyword
+            const keyword = keywordInput.charAt(0).toUpperCase() + keywordInput.slice(1);
+
+            // 1. Generate Listicle Titles
+            const listicles = [
+                `${getRandom(numbers)} ${getRandom(powerAdjectives)} Ways to Master ${keyword}`,
+                `${getRandom(numbers)} Reasons Why ${keyword} is the Future`,
+                `The ${getRandom(numbers)} Best ${keyword} Tools You Need in ${years[0]}`,
+                `${getRandom(numbers)} ${keyword} Secrets Experts Don't Want You to Know`,
+                `Top ${getRandom(numbers)} ${keyword} Mistakes You Are Making (And How to Fix Them)`
+            ];
+
+            // 2. Generate Guide Titles
+            const guides = [
+                `The Ultimate Guide to ${keyword} (${years[0]} Update)`,
+                `How to Master ${keyword} in 30 Days: A Step-by-Step Plan`,
+                `${keyword} for Beginners: Everything You Need to Know`,
+                `How to Use ${keyword} to 10x Your Results`,
+                `A Complete ${keyword} Tutorial: From Zero to Hero`
+            ];
+
+            // 3. Generate Shocking/Curiosity Titles
+            const secrets = [
+                `Why Everything You Know About ${keyword} is Wrong`,
+                `Stop Doing ${keyword} Like This! (Do This Instead)`,
+                `The Dark Side of ${keyword}: What No One Tells You`,
+                `Is ${keyword} Dead in ${years[0]}? The Truth Revealed`,
+                `I Tried ${keyword} for 7 Days and Here's What Happened`
+            ];
+
+            // Render Grids
+            renderGrid('listicleGrid', listicles);
+            renderGrid('guideGrid', guides);
+            renderGrid('secretGrid', secrets);
+
+            // Show Results
+            document.getElementById('resultsArea').style.display = 'block';
+            document.getElementById('resultsArea').scrollIntoView({behavior: 'smooth'});
+        }
+
+        function renderGrid(gridId, titles) {
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = ""; // Clear old
+
+            titles.forEach(title => {
+                // Calculate Fake SEO Score (Length + Power Word check)
+                let score = 80 + Math.floor(Math.random() * 20); // Random 80-99
+                if (title.length > 60) score -= 5; // Penalty for too long
+
+                const card = document.createElement('div');
+                card.className = 'title-card';
+                card.onclick = function() { copyToClipboard(title, this); };
+                
+                card.innerHTML = `
+                    <div class="headline-text">${title}</div>
+                    <div class="seo-score">
+                        <i class="fa-solid fa-chart-bar"></i> SEO Score: ${score}/100
+                    </div>
+                    <i class="fa-regular fa-copy copy-icon"></i>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function copyToClipboard(text, cardElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Visual feedback
+                const originalBg = cardElement.style.background;
+                cardElement.style.background = "rgba(6, 182, 212, 0.2)"; // Cyan flash
+                const icon = cardElement.querySelector('.copy-icon');
+                icon.className = "fa-solid fa-check copy-icon";
+                
+                setTimeout(() => {
+                    cardElement.style.background = originalBg;
+                    icon.className = "fa-regular fa-copy copy-icon";
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>

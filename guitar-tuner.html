@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ultimate Online Guitar Tuner | Auto & Manual Mode (Mic Enabled)</title>
+    <meta name="description" content="Tune your guitar accurately for free online. Features automatic string detection (Auto Mode) and manual selection for Standard E Tuning. Uses microphone for real-time feedback.">
+    <meta name="keywords" content="online guitar tuner, auto guitar tuner, microphone tuner, standard tuning EADGBE, chromatic tuner online, guitar frequency chart, how to tune guitar, xizoa tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tools.xizoa.com/guitar-tuner">
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- THEME & BACKGROUND --- */
+        :root {
+            --bg-overlay: rgba(13, 14, 18, 0.85); /* Dark overlay so text pops */
+            --card-bg: rgba(30, 30, 30, 0.95);
+            --gold: #ffb703; --green: #2ecc71; --red: #e74c3c; --neon-blue: #00f3ff;
+            --text: #ffffff;
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        * { box-sizing:border-box; margin:0; padding:0; font-family: 'Outfit', sans-serif; }
+        
+        body { 
+            /* GUITAR BACKGROUND IMAGE */
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; 
+        }
+
+        /* Header */
+        header { width: 100%; padding: 15px 20px; background: rgba(0,0,0,0.8); border-bottom: var(--border); display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #fff; text-decoration: none; }
+        .brand span { color: var(--gold); }
+
+        /* MAIN TUNER BOX */
+        .tuner-container {
+            max-width: 600px; width: 95%; margin: 40px auto;
+            background: var(--card-bg); border-radius: 25px; padding: 40px 30px;
+            text-align: center; border: var(--border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        }
+
+        /* NEEDLE METER */
+        .meter-area {
+            width: 280px; height: 140px; margin: 0 auto 25px; position: relative; overflow: hidden;
+        }
+        .meter-bg {
+            width: 280px; height: 140px; background: radial-gradient(circle at 50% 100%, #333 0%, transparent 70%);
+            border-top-left-radius: 140px; border-top-right-radius: 140px;
+            border: 4px solid #444; border-bottom: none;
+        }
+        .needle {
+            width: 4px; height: 135px; background: var(--red);
+            position: absolute; bottom: 0; left: 50%; transform-origin: bottom center;
+            transform: translateX(-50%) rotate(0deg); transition: 0.1s ease-out;
+            border-radius: 5px; z-index: 10;
+        }
+        .center-dot {
+            width: 20px; height: 20px; background: #fff; border-radius: 50%;
+            position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); z-index: 11; box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* NOTE DISPLAY */
+        .target-note { font-family: 'Orbitron', sans-serif; font-size: 4.5rem; color: #555; margin-bottom: 5px; transition: 0.3s; }
+        .target-note.active { color: var(--gold); text-shadow: 0 0 30px var(--gold); }
+        .target-note.tuned { color: var(--green); text-shadow: 0 0 40px var(--green); }
+
+        .instruction { font-size: 1.2rem; font-weight: 600; color: #aaa; min-height: 30px; margin-bottom: 30px; }
+
+        /* START BUTTON */
+        .btn-start {
+            background: linear-gradient(45deg, var(--gold), #ff8c00); color: #000; font-weight: 800; border: none;
+            padding: 15px 40px; border-radius: 50px; cursor: pointer; font-size: 1.1rem;
+            margin-bottom: 30px; transition: 0.3s; box-shadow: 0 10px 30px rgba(255, 183, 3, 0.3);
+        }
+        .btn-start:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 183, 3, 0.5); }
+        .btn-start.active { background: var(--red); color: #fff; animation: pulse 2s infinite; box-shadow: none; }
+
+        /* STRING SELECTOR BUTTONS & AUTO */
+        .headstock-grid {
+            display: grid; grid-template-columns: 1fr auto 1fr; gap: 15px; margin-top: 20px;
+            align-items: center;
+        }
+        .string-col { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        
+        .str-btn {
+            width: 65px; height: 65px; border-radius: 50%; background: #2a2a2a;
+            border: 2px solid #444; color: #fff; font-weight: 700; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.2s; position: relative;
+        }
+        .str-btn small { font-size: 0.7rem; color: #aaa; font-weight: 400; }
+        .str-btn:hover { border-color: var(--gold); }
+        .str-btn.selected { background: var(--gold); color: #000; border-color: #fff; box-shadow: 0 0 20px var(--gold); transform: scale(1.1); }
+        .str-btn.selected small { color: #000; }
+
+        /* AUTO BUTTON */
+        .btn-auto {
+            width: 70px; height: 70px; border-radius: 15px; background: #1a1a1a; border: 2px solid var(--neon-blue);
+            color: var(--neon-blue); font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            flex-direction: column; transition: 0.3s; font-size: 0.9rem;
+        }
+        .btn-auto i { font-size: 1.5rem; margin-bottom: 5px; }
+        .btn-auto.selected { background: var(--neon-blue); color: #000; box-shadow: 0 0 25px var(--neon-blue); }
+
+        /* SEO CONTENT SECTION */
+        .seo-container { max-width: 800px; width: 95%; margin: 50px auto; }
+        .seo-card { background: var(--card-bg); padding: 40px; border-radius: 20px; margin-bottom: 30px; border: var(--border); backdrop-filter: blur(10px); }
+        .seo-card h2 { color: #fff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; font-size: 1.8rem; }
+        .seo-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.3rem; }
+        .seo-card p, .seo-card li { color: #bbb; font-size: 1.05rem; margin-bottom: 15px; line-height: 1.7; }
+        .seo-card ul, .seo-card ol { margin-left: 25px; }
+        .highlight { color: var(--green); font-weight: 700; }
+
+        /* FOOTER */
+        footer {
+            width: 100%; background: #050505; border-top: var(--border); padding: 50px 20px; margin-top: auto;
+            text-align: center; color: #888;
+        }
+        .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: var(--gold); }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(231, 76, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); } }
+        @media (max-width: 500px) { .str-btn { width: 55px; height: 55px; } .btn-auto { width: 60px; height: 60px; font-size: 0.8rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-guitar"></i> XIZOA <span>TUNER</span></a>
+    </header>
+
+    <div class="tuner-container">
+        
+        <div class="meter-area">
+            <div class="meter-bg"></div>
+            <div class="needle" id="needle"></div>
+            <div class="center-dot"></div>
+        </div>
+
+        <div class="target-note" id="noteName">--</div>
+        <div class="instruction" id="instruction">Tap 'Start Tuner' to begin</div>
+
+        <button class="btn-start" id="micBtn" onclick="toggleMic()">
+            <i class="fas fa-microphone"></i> START TUNER
+        </button>
+
+        <p style="color:#888; font-size:0.9rem; margin-bottom:15px; text-transform:uppercase; letter-spacing:1px;">Select Mode or String</p>
+        <div class="headstock-grid">
+            <div class="string-col">
+                <div class="str-btn manual-selector" onclick="selectString(0, this)">D <small>4th</small></div>
+                <div class="str-btn manual-selector" onclick="selectString(1, this)">A <small>5th</small></div>
+                <div class="str-btn manual-selector" onclick="selectString(2, this)">E <small>6th</small></div>
+            </div>
+            
+            <div class="string-col">
+                 <div class="btn-auto" id="autoBtn" onclick="toggleAutoMode()">
+                    <i class="fas fa-robot"></i> AUTO
+                </div>
+            </div>
+
+            <div class="string-col">
+                <div class="str-btn manual-selector" onclick="selectString(3, this)">G <small>3rd</small></div>
+                <div class="str-btn manual-selector" onclick="selectString(4, this)">B <small>2nd</small></div>
+                <div class="str-btn manual-selector" onclick="selectString(5, this)">E <small>1st</small></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="seo-container">
+        
+        <div class="seo-card">
+            <h2>How to Tune Your Guitar Online? (Guide)</h2>
+            <p>Welcome to the most accurate free online guitar tuner. This tool uses your device's microphone to detect the pitch of your guitar strings in real-time. It supports standard 6-string tuning (E-A-D-G-B-E).</p>
+            
+            <h3>Choose Your Mode:</h3>
+            <ul>
+                <li><strong>🤖 AUTO Mode (Recommended for Beginners):</strong> Click the central "AUTO" button. Just play any string, and the tuner will automatically guess which string it is and tell you if it's sharp or flat.</li>
+                <li><strong>🎸 Manual Mode:</strong> Select the specific string you want to tune (e.g., "6th E"). The tuner will only listen for that specific note.</li>
+            </ul>
+
+            <h3>Reading the Tuner:</h3>
+            <p>Pluck a string and watch the needle:</p>
+            <ol>
+                <li>If the needle is to the <strong>Left</strong> (Red), the note is too low. <span class="highlight">Tighten</span> the string slightly.</li>
+                <li>If the needle is to the <strong>Right</strong> (Red), the note is too high. <span class="highlight">Loosen</span> the string slightly.</li>
+                <li>When the needle hits the <strong>Center</strong> and turns <strong>Green</strong>, your string is perfectly in tune! ✅</li>
+            </ol>
+        </div>
+
+        <div class="seo-card">
+            <h2>Why Use Xizoa Web Tuner?</h2>
+            <p>Unlike mobile apps that require downloads and take up space, our web-based tuner runs directly in your browser (Chrome, Safari, Edge). It utilizes advanced audio processing algorithms to ensure highly accurate pitch detection, suitable for acoustic and electric guitars.</p>
+            <h3>Standard Tuning Frequencies Reference:</h3>
+            <ul>
+                <li>E2 (Low, Thickest) - 82.41 Hz</li>
+                <li>A2 - 110.00 Hz</li>
+                <li>D3 - 146.83 Hz</li>
+                <li>G3 - 196.00 Hz</li>
+                <li>B3 - 246.94 Hz</li>
+                <li>E4 (High, Thinnest) - 329.63 Hz</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p>© 2025 Xizoa Hub • Engineered for Musicians</p>
+    </footer>
+
+    <script>
+        // Standard Frequencies Data
+        const strings = [
+            { note: "D", freq: 146.83, index: 4 }, { note: "A", freq: 110.00, index: 5 }, { note: "E", freq: 82.41,  index: 6 },
+            { note: "G", freq: 196.00, index: 3 }, { note: "B", freq: 246.94, index: 2 }, { note: "E", freq: 329.63, index: 1 }
+        ];
+
+        let audioCtx, analyser, source;
+        let isRunning = false;
+        let isAutoMode = false;
+        let currentTarget = null;
+
+        // --- 1. START MIC ---
+        async function toggleMic() {
+            if(isRunning) { location.reload(); return; } // Stop
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                analyser = audioCtx.createAnalyser(); analyser.fftSize = 4096; // Higher precision
+                source = audioCtx.createMediaStreamSource(stream);
+                source.connect(analyser);
+                
+                isRunning = true;
+                document.getElementById('micBtn').innerHTML = "STOP TUNER";
+                document.getElementById('micBtn').classList.add('active');
+                // Start in Auto Mode by default for convenience
+                toggleAutoMode();
+                updatePitch();
+            } catch(e) {
+                alert("Microphone access is required for the tuner to work.");
+            }
+        }
+
+        // --- 2. MODE SELECTION ---
+        function toggleAutoMode() {
+            if(!isRunning) { alert("Please click START TUNER first!"); return; }
+            isAutoMode = true;
+            currentTarget = null;
+            resetUIState();
+            document.getElementById('autoBtn').classList.add('selected');
+            document.getElementById('instruction').innerText = "AUTO MODE: Play any string...";
+            document.getElementById('noteName').innerText = "AUTO";
+        }
+
+        function selectString(index, btn) {
+            if(!isRunning) { alert("Please click START TUNER first!"); return; }
+            isAutoMode = false;
+            resetUIState();
+            btn.classList.add('selected');
+            currentTarget = strings[index];
+            document.getElementById('noteName').innerText = currentTarget.note;
+            document.getElementById('noteName').className = "target-note active";
+            document.getElementById('instruction').innerText = `Manual: Pluck String ${currentTarget.index} (${currentTarget.note})`;
+        }
+
+        function resetUIState() {
+            document.querySelectorAll('.str-btn').forEach(b => b.classList.remove('selected'));
+            document.getElementById('autoBtn').classList.remove('selected');
+            document.getElementById('noteName').className = "target-note";
+        }
+
+        // --- 3. PITCH DETECTION LOOP ---
+        function updatePitch() {
+            if(!isRunning) return;
+            const buffer = new Float32Array(analyser.fftSize);
+            analyser.getFloatTimeDomainData(buffer);
+            const freq = autoCorrelate(buffer, audioCtx.sampleRate);
+            
+            if(freq > 50 && freq < 500) { // Filter reasonable guitar range
+                let targetToUse = currentTarget;
+
+                // Logic for AUTO MODE: Find nearest string frequency
+                if (isAutoMode) {
+                    let minDiff = Infinity;
+                    let closestString = null;
+                    for (let str of strings) {
+                        let diff = Math.abs(freq - str.freq);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            closestString = str;
+                        }
+                    }
+                    // Only switch if we are reasonably close to a string (reduces noise jumping)
+                    if (closestString && minDiff < 15) {
+                         targetToUse = closestString;
+                         document.getElementById('noteName').innerText = targetToUse.note;
+                         document.getElementById('noteName').classList.add('active');
+                         document.getElementById('instruction').innerText = `Detected: String ${targetToUse.index}`;
+                    }
+                }
+
+                // Calculate and display if we have a target
+                if (targetToUse) {
+                    const cents = 1200 * Math.log2(freq / targetToUse.freq);
+                    updateUI(cents);
+                }
+            }
+            requestAnimationFrame(updatePitch);
+        }
+
+        // --- UI UPDATER ---
+        function updateUI(cents) {
+            let deg = cents * 1.5; // Sensitivity
+            if(deg > 50) deg = 50; if(deg < -50) deg = -50;
+            
+            const needle = document.getElementById('needle');
+            needle.style.transform = `translateX(-50%) rotate(${deg}deg)`;
+
+            const status = document.getElementById('instruction');
+            const noteUI = document.getElementById('noteName');
+
+            if(Math.abs(cents) < 4) { // Tuned (Green window)
+                needle.style.backgroundColor = "#2ecc71";
+                status.innerText = "PERFECT! ✅"; status.style.color = "#2ecc71";
+                noteUI.classList.add('tuned');
+            } else if(cents < 0) { // Flat
+                needle.style.backgroundColor = "#e74c3c";
+                status.innerText = "Too Loose -> Tighten It (Kaso) 🔼"; status.style.color = "#e74c3c";
+                noteUI.classList.remove('tuned');
+            } else { // Sharp
+                needle.style.backgroundColor = "#e74c3c";
+                status.innerText = "Too Tight -> Loosen It (Dhila karo) 🔽"; status.style.color = "#e74c3c";
+                noteUI.classList.remove('tuned');
+            }
+        }
+
+        // --- AUTO CORRELATION (PITCH DETECTION ALGORITHM) ---
+        function autoCorrelate(buf, sampleRate) {
+            let SIZE = buf.length; let rms = 0;
+            for (let i=0;i<SIZE;i++) { let val = buf[i]; rms += val*val; }
+            rms = Math.sqrt(rms/SIZE);
+            if (rms<0.015) return -1; // Noise gate
+
+            let r1=0, r2=SIZE-1, thres=0.2;
+            for (let i=0; i<SIZE/2; i++) if (Math.abs(buf[i])<thres) { r1=i; break; }
+            for (let i=1; i<SIZE/2; i++) if (Math.abs(buf[SIZE-i])<thres) { r2=SIZE-i; break; }
+            buf = buf.slice(r1,r2); SIZE = buf.length;
+
+            let c = new Array(SIZE).fill(0);
+            for (let i=0; i<SIZE; i++) for (let j=0; j<SIZE-i; j++) c[i] = c[i] + buf[j]*buf[j+i];
+            let d=0; while (c[d]>c[d+1]) d++;
+            let maxval=-1, maxpos=-1;
+            for (let i=d; i<SIZE; i++) if (c[i] > maxval) { maxval = c[i]; maxpos = i; }
+            let T0 = maxpos;
+            let x1=c[T0-1], x2=c[T0], x3=c[T0+1]; let a = (x1 + x3 - 2*x2)/2; let b = (x3 - x1)/2;
+            if (a) T0 = T0 - b/(2*a);
+            return sampleRate/T0;
+        }
+    </script>
+</body>
+</html>

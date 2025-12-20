@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hashtag Generator - Get Viral Tags for Instagram & YouTube</title>
+  
+  <meta name="description" content="Generate trending and viral hashtags for Instagram, YouTube, TikTok, and Twitter. Boost your reach with the best hashtag generator tool. Free & Instant.">
+  
+  <meta name="keywords" content="hashtag generator, instagram hashtags, youtube tags generator, viral hashtags, best hashtags for likes, trending tags, social media growth tools, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Viral Hashtag Generator - Boost Your Reach">
+  <meta property="og:description" content="Generate best hashtags for Instagram & YouTube instantly.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: VIRAL VIOLET --- */
+    :root {
+      --primary: #8a2be2; /* BlueViolet */
+      --secondary: #00e5ff; /* Cyan */
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(25, 20, 35, 0.8);
+      --glass-border: 1px solid rgba(138, 43, 226, 0.3);
+      --text-main: #e5e5e5;
+      --text-muted: #a0aec0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Trendy Gradient */
+      background-image: radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15), transparent 30%), 
+                        radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1), transparent 30%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--secondary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.4));
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- INPUT BOX --- */
+    .search-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 15px;
+      position: relative;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 20px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); }
+
+    button.btn-gen {
+      background: linear-gradient(135deg, var(--primary), #d900ff);
+      color: #fff;
+      border: none;
+      padding: 16px 30px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    button.btn-gen:hover { box-shadow: 0 0 25px rgba(138, 43, 226, 0.5); transform: translateY(-2px); }
+
+    /* --- RESULT AREA --- */
+    .result-container {
+      display: none;
+      background: rgba(20, 20, 30, 0.6);
+      border: 1px solid var(--secondary);
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      text-align: left;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tags-output {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      word-spacing: 5px;
+    }
+    .tags-output span { color: var(--secondary); }
+
+    .action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 15px;
+    }
+
+    .tag-count { color: var(--text-muted); font-size: 0.9rem; }
+
+    .btn-copy {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--secondary);
+      border: 1px solid var(--secondary);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-copy:hover { background: var(--secondary); color: #000; box-shadow: 0 0 15px var(--secondary); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🔥'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { .input-group { flex-direction: column; } h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Hashtag <span>Generator</span></h1>
+    <p class="subtitle">Find Best Viral Hashtags for Instagram, YouTube & TikTok</p>
+  </header>
+
+  <main>
+    
+    <div class="search-box">
+      <div class="input-group">
+        <input type="text" id="keyword" placeholder="Enter topic (e.g. Gym, Travel, Gaming)..." aria-label="Topic">
+        <button class="btn-gen" id="btnGen"><i class="fas fa-bolt"></i> Generate</button>
+      </div>
+    </div>
+
+    <div class="result-container" id="resultContainer">
+      <div class="tags-output" id="tagsOutput">
+        </div>
+      <div class="action-row">
+        <span class="tag-count" id="tagCount">0 hashtags generated</span>
+        <button class="btn-copy" id="btnCopy"><i class="fas fa-copy"></i> Copy All</button>
+      </div>
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Boost Your Reach with Viral Hashtags</h2>
+        <p>
+          Struggling to get likes and followers? The right hashtags can explode your engagement. 
+          Our **AI-Powered Hashtag Generator** creates the perfect mix of trending and niche tags for your content.
+        </p>
+        <p>
+          Bas apna topic enter karein (jaise "Cricket" ya "Food") aur payein top 30 trending hashtags jo aapki post ko viral kar sakte hain.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Features</h3>
+        <ul>
+          <li><strong>Instant Generation:</strong> Get 30 relevant tags in seconds.</li>
+          <li><strong>Multi-Platform:</strong> Works for Instagram Reels, YouTube Shorts, and Twitter.</li>
+          <li><strong>Viral Strategy:</strong> Mixes high-volume and low-competition tags.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: How many hashtags should I use?</strong><br>
+        A: For Instagram, 30 is the limit. We generate exactly 30 optimized tags.</p>
+        <p><strong>Q: Is it free?</strong><br>
+        A: Yes, generate unlimited tags for free.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Hashtag Generator helps creators find the best keywords to grow their social media presence organically.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="tiktok-downloader.html"><i class="fab fa-tiktok"></i> TikTok Downloader</a>
+        <a href="insta-video-saver.html"><i class="fab fa-instagram"></i> Insta Saver</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    // --- SMART HASHTAG DATABASE ---
+    const tagDatabase = {
+      'gym': ['gym', 'fitness', 'workout', 'bodybuilding', 'motivation', 'fit', 'training', 'health', 'lifestyle', 'muscle', 'crossfit', 'gymlife', 'personaltrainer', 'exercise', 'gymmotivation', 'fitfam', 'sport', 'gains', 'weightloss', 'strong', 'powerlifting', 'cardio', 'fitnessmotivation', 'abs', 'shredded', 'nutrition', 'body', 'deadlift', 'coach', 'biceps'],
+      'tech': ['tech', 'technology', 'gadgets', 'iphone', 'apple', 'android', 'programming', 'coding', 'innovation', 'engineering', 'developer', 'software', 'computer', 'science', 'design', 'electronics', 'smartphone', 'code', 'technews', 'samsung', 'cybersecurity', 'ai', 'robotics', 'coder', 'webdesign', 'gaming', 'future', 'startup', 'linux', 'internet'],
+      'travel': ['travel', 'nature', 'photography', 'travelphotography', 'love', 'photooftheday', 'instagood', 'travelgram', 'picoftheday', 'wanderlust', 'beautiful', 'art', 'landscape', 'instagram', 'summer', 'sunset', 'explore', 'adventure', 'vacation', 'trip', 'traveling', 'happy', 'style', 'photographer', 'beach', 'life', 'mountains', 'holiday', 'photo', 'sky'],
+      'gaming': ['gaming', 'gamer', 'ps5', 'xbox', 'videogames', 'playstation', 'game', 'games', 'fortnite', 'pcgaming', 'nintendo', 'memes', 'pc', 'pubg', 'gamers', 'twitch', 'callofduty', 'gta', 'xboxone', 'esports', 'youtube', 'streamer', 'cod', 'rpg', 'gamergirl', 'minecraft', 'leagueoflegends', 'sony', 'mobilegaming', 'freefire'],
+      'food': ['food', 'foodie', 'instafood', 'foodporn', 'yummy', 'delicious', 'dinner', 'breakfast', 'lunch', 'healthyfood', 'homemade', 'tasty', 'foodstagram', 'cooking', 'love', 'foodphotography', 'dessert', 'foodgasm', 'chef', 'foodblogger', 'sweet', 'eat', 'restaurant', 'healthy', 'vegan', 'pizza', 'baking', 'chocolate', 'cake', 'foodlover'],
+      'cricket': ['cricket', 'ipl', 'viratkohli', 'rohitsharma', 'msdhoni', 'india', 't20', 'cricketlovers', 'cricketmerijaan', 'dream11', 'teamindia', 'bcci', 'rcb', 'csk', 'mumbaiindians', 'klrahul', 'cricketfans', 'hardikpandya', 'cricketer', 'worldcup', 'icc', 'love', 'abdevilliers', 'virat', 'dhoni', 'lovecricket', 'memes', 'cricketfever', 'sachintendulkar', 'kingkohli'],
+      'love': ['love', 'instagood', 'fashion', 'photooftheday', 'beautiful', 'art', 'photography', 'happy', 'picoftheday', 'cute', 'follow', 'tbt', 'nature', 'like4like', 'travel', 'instagram', 'style', 'repost', 'summer', 'instadaily', 'selfie', 'me', 'friends', 'fitness', 'girl', 'food', 'fun', 'beauty', 'smile', 'family']
+    };
+
+    const genericTags = ['viral', 'trending', 'explore', 'foryou', 'fyp', 'explorepage', 'instagood', 'reels', 'instagram', 'like', 'follow', 'memes', 'video', 'love', 'music', 'new', 'viralpost', 'youtube', 'contentcreator', 'tiktok', 'india', 'usa', 'photography', 'art', 'fashion', 'style', 'life', 'motivation', 'fun', 'happy'];
+
+    const btnGen = document.getElementById('btnGen');
+    const input = document.getElementById('keyword');
+    const resultContainer = document.getElementById('resultContainer');
+    const tagsOutput = document.getElementById('tagsOutput');
+    const tagCount = document.getElementById('tagCount');
+    const btnCopy = document.getElementById('btnCopy');
+
+    btnGen.addEventListener('click', () => {
+      let keyword = input.value.trim().toLowerCase();
+      
+      if(!keyword) {
+        alert("Please enter a topic first!");
+        return;
+      }
+
+      btnGen.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+
+      // SIMULATION DELAY
+      setTimeout(() => {
+        let tags = [];
+        
+        // Check exact match
+        if (tagDatabase[keyword]) {
+          tags = tagDatabase[keyword];
+        } else {
+          // If no match, try to mix input with generic tags
+          tags = genericTags.map(tag => tag); // Copy generic
+          // Add custom keyword variations at start
+          tags.unshift(keyword, keyword+'lover', keyword+'life', 'love'+keyword, 'best'+keyword);
+          tags = tags.slice(0, 30); // Limit to 30
+        }
+
+        // Format tags with #
+        const formattedTags = tags.map(t => `<span>#${t}</span>`).join(' ');
+        const plainTextTags = tags.map(t => `#${t}`).join(' ');
+
+        tagsOutput.innerHTML = formattedTags;
+        tagsOutput.dataset.plain = plainTextTags; // Store for copy
+        tagCount.innerText = `${tags.length} hashtags generated`;
+        
+        resultContainer.style.display = 'block';
+        btnGen.innerHTML = '<i class="fas fa-bolt"></i> Generate Again';
+      }, 1000);
+    });
+
+    btnCopy.addEventListener('click', () => {
+      const textToCopy = tagsOutput.dataset.plain;
+      if(!textToCopy) return;
+
+      navigator.clipboard.writeText(textToCopy);
+      btnCopy.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => btnCopy.innerHTML = '<i class="fas fa-copy"></i> Copy All', 2000);
+    });
+
+    // Enter Key Support
+    input.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') btnGen.click();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Glitch Text Generator - Create Zalgo & Distorted Text (Free)</title>
+  
+  <meta name="description" content="Convert normal text into Glitch (Zalgo) text instantly. Create creepy, distorted, and hacked text effects for Instagram, Discord, and Gaming profiles. Free & Copy-Paste.">
+  
+  <meta name="keywords" content="glitch text generator, zalgo text maker, distorted text, scary text generator, cursed text, glitch font copy paste, hacker text generator, instagram bio glitch">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Glitch Text Generator - Create Cursed Text">
+  <meta property="og:description" content="Generate creepy Zalgo text for your social media bios.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: MATRIX ERROR & HACKER STYLE --- */
+    :root {
+      --primary: #00ff00; /* Matrix Green */
+      --secondary: #ff003c; /* Error Red */
+      --bg-dark: #050505;
+      --card-bg: rgba(10, 10, 10, 0.9);
+      --glass-border: 1px solid rgba(0, 255, 0, 0.3);
+      --text-main: #e5e5e5;
+      --text-muted: #888;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Glitchy Scanlines Background */
+      background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.03) 25%, rgba(0, 255, 0, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.03) 75%, rgba(0, 255, 0, 0.03) 76%, transparent 77%, transparent), 
+                        linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.03) 25%, rgba(0, 255, 0, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.03) 75%, rgba(0, 255, 0, 0.03) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
+    
+    /* --- GLITCH TITLE EFFECT --- */
+    h1 { 
+      font-size: 2.5rem; 
+      font-weight: 700; 
+      margin-bottom: 10px; 
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-family: 'Courier Prime', monospace;
+    }
+    
+    h1::before, h1::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg-dark);
+    }
+    h1::before {
+      left: 2px;
+      text-shadow: -1px 0 var(--secondary);
+      clip: rect(24px, 550px, 90px, 0);
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+    h1::after {
+      left: -2px;
+      text-shadow: -1px 0 var(--primary);
+      clip: rect(85px, 550px, 140px, 0);
+      animation: glitch-anim 2.5s infinite linear alternate-reverse;
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- GENERATOR BOX --- */
+    .generator-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .input-area, .output-area {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 10px;
+      color: var(--primary);
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1rem;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 20px;
+    }
+    
+    .input-area:focus, .output-area:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    }
+
+    /* Range Slider */
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .range-label { display: flex; justify-content: space-between; font-weight: 600; color: #fff; margin-bottom: 5px; }
+    
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--secondary);
+      cursor: pointer;
+    }
+
+    .btn-row { display: flex; gap: 15px; }
+
+    button.btn-action {
+      flex: 1;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-transform: uppercase;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .btn-copy { background: var(--primary); color: #000; }
+    .btn-copy:hover { box-shadow: 0 0 20px var(--primary); }
+
+    .btn-clear { background: transparent; border: 1px solid var(--secondary); color: var(--secondary); }
+    .btn-clear:hover { background: var(--secondary); color: #fff; }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--secondary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '👾'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #020202; border-top: 1px solid #1a1a1a; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.85rem; }
+
+    /* Glitch Animations */
+    @keyframes glitch-anim {
+      0% { clip: rect(44px, 9999px, 56px, 0); transform: skew(0.53deg); }
+      50% { clip: rect(12px, 9999px, 88px, 0); transform: skew(0.25deg); }
+      100% { clip: rect(33px, 9999px, 12px, 0); transform: skew(0.85deg); }
+    }
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(0.5deg); }
+      50% { clip: rect(32px, 9999px, 5px, 0); transform: skew(0.2deg); }
+      100% { clip: rect(10px, 9999px, 80px, 0); transform: skew(0.9deg); }
+    }
+
+    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <br>
+    <h1 data-text="Glitch Text Generator">Glitch Text Generator</h1>
+    <p class="subtitle">Convert Normal Text into Cursed Zalgo/Hacker Text</p>
+  </header>
+
+  <main>
+    
+    <div class="generator-box">
+      
+      <textarea id="inputText" class="input-area" placeholder="Type something here (e.g. SYSTEM FAILURE)..."></textarea>
+
+      <div class="controls">
+        <div class="range-label">
+          <span>Glitch Intensity (Craziness)</span>
+          <span id="rangeVal" style="color:var(--secondary)">Mid</span>
+        </div>
+        <input type="range" id="glitchRange" min="1" max="10" value="5">
+      </div>
+
+      <textarea id="outputText" class="output-area" placeholder="Result will appear here..." readonly></textarea>
+
+      <div class="btn-row">
+        <button class="btn-action btn-copy" id="btnCopy"><i class="fas fa-copy"></i> Copy Text</button>
+        <button class="btn-action btn-clear" id="btnClear"><i class="fas fa-trash"></i> Clear</button>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>What is Zalgo Text?</h2>
+        <p>
+          **Zalgo text** is digital text that has been modified with combining characters. 
+          These characters stack vertically, creating a "glitchy" or "corrupted" look often associated with horror, memes, and hacker culture.
+        </p>
+        <p>
+          Apne Instagram Bio ya Gaming Name ko "Hacked" look dein. Ye tool text ke upar aur neeche random symbols add karta hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Best For</h3>
+        <ul>
+          <li><strong>Gaming Profiles:</strong> Create cool usernames for PubG, Free Fire, Discord.</li>
+          <li><strong>Social Media:</strong> Stand out in comments and bios.</li>
+          <li><strong>Pranks:</strong> Send "corrupted" messages to friends.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: Will it work on Instagram?</strong><br>
+        A: Yes, most platforms support Zalgo/Unicode text.</p>
+        <p><strong>Q: Is it safe?</strong><br>
+        A: Yes, it's just standard text with extra symbols.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Glitch Text Generator helps you create Zalgo and distorted text styles for unique digital expression.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="invisible-text.html"><i class="fas fa-ghost"></i> Invisible Text</a>
+        <a href="hashtag-generator.html"><i class="fas fa-hashtag"></i> Hashtag Gen</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const inputText = document.getElementById('inputText');
+    const outputText = document.getElementById('outputText');
+    const glitchRange = document.getElementById('glitchRange');
+    const rangeVal = document.getElementById('rangeVal');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnClear = document.getElementById('btnClear');
+
+    // Zalgo Characters
+    const zalgoUp = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343', '\u0344', '\u034a', '\u034b', '\u034c', '\u0303', '\u0302', '\u030c', '\u0350', '\u0300', '\u0301', '\u030b', '\u030f', '\u0312', '\u0313', '\u0314', '\u033d', '\u0309', '\u0363', '\u0364', '\u0365', '\u0366', '\u0367', '\u0368', '\u0369', '\u036a', '\u036b', '\u036c', '\u036d', '\u036e', '\u036f', '\u033e', '\u035b', '\u0346', '\u031a'];
+    const zalgoDown = ['\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f', '\u0320', '\u0324', '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c', '\u032d', '\u032e', '\u032f', '\u0330', '\u0331', '\u0332', '\u0333', '\u0339', '\u033a', '\u033b', '\u033c', '\u0345', '\u0347', '\u0348', '\u0349', '\u034d', '\u034e', '\u0353', '\u0354', '\u0355', '\u0356', '\u0359', '\u035a', '\u0323'];
+    const zalgoMid = ['\u0315', '\u031b', '\u0340', '\u0341', '\u0358', '\u0321', '\u0322', '\u0327', '\u0328', '\u0334', '\u0335', '\u0336', '\u0337', '\u0338', '\u0360', '\u0361', '\u0362'];
+
+    // Generator Function
+    function generateZalgo(text) {
+      let result = '';
+      const intensity = glitchRange.value;
+
+      for (let i = 0; i < text.length; i++) {
+        result += text[i];
+        
+        // Add random marks based on intensity
+        const numUp = Math.floor(Math.random() * intensity);
+        const numMid = Math.floor(Math.random() * (intensity / 2));
+        const numDown = Math.floor(Math.random() * intensity);
+
+        for (let j = 0; j < numUp; j++) result += zalgoUp[Math.floor(Math.random() * zalgoUp.length)];
+        for (let j = 0; j < numMid; j++) result += zalgoMid[Math.floor(Math.random() * zalgoMid.length)];
+        for (let j = 0; j < numDown; j++) result += zalgoDown[Math.floor(Math.random() * zalgoDown.length)];
+      }
+      return result;
+    }
+
+    // Event Listeners
+    inputText.addEventListener('input', () => {
+      outputText.value = generateZalgo(inputText.value);
+    });
+
+    glitchRange.addEventListener('input', () => {
+      const val = glitchRange.value;
+      if(val < 4) rangeVal.innerText = "Low";
+      else if(val < 8) rangeVal.innerText = "Mid";
+      else rangeVal.innerText = "Chaos";
+      
+      if(inputText.value) outputText.value = generateZalgo(inputText.value);
+    });
+
+    btnCopy.addEventListener('click', () => {
+      if(!outputText.value) return;
+      navigator.clipboard.writeText(outputText.value);
+      btnCopy.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => btnCopy.innerHTML = '<i class="fas fa-copy"></i> Copy Text', 2000);
+    });
+
+    btnClear.addEventListener('click', () => {
+      inputText.value = '';
+      outputText.value = '';
+    });
+  </script>
+</body>
+</html>
