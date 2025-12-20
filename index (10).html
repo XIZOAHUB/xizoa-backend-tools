@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XIZOAHUB TOOLS</title>
+<meta name="description" content="Access 50+ Premium Free Tools: AI Writers, PDF Converters, Gaming Tests, Coding Utilities & More. No Login Required.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "XIZOAHUB TOOLS",
+  "url": "https://tools.xizoa.com",
+  "description": "A collection of 50+ premium free online tools for developers, gamers, and content creators including AI writers, PDF tools, and converters.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "AI Paraphraser, PDF Merger, YouTube Thumbnail Downloader, Resume Builder"
+}
+</script>
+
+<style>
+:root {
+  --primary: #2563eb;
+  --bg-body: #ffffff;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+body { background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+a { text-decoration: none; }
+
+/* --- HEADER --- */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav { max-width: 1400px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.6rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+.logo i { color: var(--primary); }
+
+.menu { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+.menu::-webkit-scrollbar { display: none; }
+.menu button {
+    background: transparent; border: 1px solid transparent; font-size: 0.9rem; font-weight: 600; 
+    color: var(--text-muted); cursor: pointer; padding: 8px 18px; 
+    border-radius: 50px; transition: 0.3s; white-space: nowrap;
+}
+.menu button:hover { background: #f1f5f9; color: var(--primary); }
+.menu button.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+
+/* --- HERO --- */
+.hero { text-align: center; padding: 80px 20px 50px; max-width: 900px; margin: auto; }
+.hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--text-main); font-weight: 800; letter-spacing: -1.5px; }
+.hero h1 span { color: var(--primary); background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 35px; }
+
+/* --- SEARCH --- */
+.search-container { max-width: 600px; margin: 0 auto 50px; position: relative; }
+.search-container i { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem; }
+.search-container input {
+    width: 100%; padding: 18px 20px 18px 55px; border-radius: 50px;
+    border: 2px solid var(--border); background: #fff;
+    font-size: 1.1rem; outline: none; transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.search-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1); }
+
+/* --- MAIN GRID --- */
+.container { max-width: 1400px; margin: 0 auto 80px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+
+.card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 20px; padding: 25px; position: relative;
+    display: flex; flex-direction: column; justify-content: center;
+    transition: all 0.3s ease;
+    --accent: #2563eb; 
+}
+.card:hover { transform: translateY(-7px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+
+.icon-box {
+    width: 55px; height: 55px; border-radius: 14px;
+    background: #f8fafc; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; transition: 0.3s;
+}
+.card:hover .icon-box { background: var(--accent); }
+.card i { font-size: 1.6rem; color: var(--accent); transition: 0.3s; }
+.card:hover i { color: #fff; }
+
+.card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 5px; color: var(--text-main); }
+.card p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.badge {
+    position: absolute; top: 15px; right: 15px; 
+    font-size: 0.7rem; font-weight: 700; padding: 4px 10px; 
+    border-radius: 20px; background: #e0f2fe; color: #0284c7;
+}
+.badge.new { background: #dcfce7; color: #16a34a; }
+.badge.hot { background: #fee2e2; color: #dc2626; }
+
+/* --- DOODLE BLUE BOX SECTIONS --- */
+.blue-doodle-section {
+    max-width: 1200px; margin: 0 auto 60px; padding: 60px 40px;
+    background-color: #f0f9ff;
+    background-image: radial-gradient(#bae6fd 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    border-radius: 30px;
+    border: 1px solid #e0f2fe;
+    text-align: center;
+}
+.blue-doodle-section h2 { font-size: 2rem; margin-bottom: 15px; color: #0c4a6e; }
+.blue-doodle-section p { color: #557891; margin-bottom: 40px; font-size: 1.1rem; }
+
+/* Categories Grid */
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; text-align: left; }
+.cat-card {
+    background: #fff; padding: 25px; border-radius: 18px;
+    cursor: pointer; transition: 0.3s; border: 1px solid transparent;
+    box-shadow: 0 4px 10px rgba(186, 230, 253, 0.4);
+}
+.cat-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15); }
+.cat-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 15px; display: block; }
+.cat-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
+.cat-card span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Explore Buttons */
+.explore-btn {
+    display: inline-block; padding: 16px 45px; 
+    background: var(--primary); color: #fff; font-weight: 700; 
+    border-radius: 50px; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+    transition: 0.3s; font-size: 1.1rem;
+}
+.explore-btn:hover { transform: scale(1.05); background: #1d4ed8; }
+
+/* Load More Button */
+.load-btn-box { text-align: center; margin-top: 50px; margin-bottom: 80px; }
+.load-btn {
+    padding: 14px 40px; background: #fff; color: var(--text-main);
+    border: 2px solid var(--border); border-radius: 50px; font-weight: 600; cursor: pointer;
+    transition: 0.3s; font-size: 1rem;
+}
+.load-btn:hover { border-color: var(--text-main); background: var(--text-main); color: #fff; }
+
+/* --- FOOTER --- */
+footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20px 30px; }
+.footer-content { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand h2 { color: var(--text-main); margin-bottom: 15px; }
+.footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 300px; line-height: 1.8; }
+.f-col h4 { margin-bottom: 25px; font-size: 1.1rem; color: var(--text-main); }
+.f-col a { display: block; color: var(--text-muted); margin-bottom: 12px; font-size: 0.95rem; transition: 0.2s; }
+.f-col a:hover { color: var(--primary); padding-left: 5px; }
+.copyright { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: #94a3b8; font-size: 0.9rem; }
+
+/* --- RESPONSIVE MOBILE FIXES --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    
+    /* 3 Columns Categories on Mobile */
+    .blue-doodle-section { padding: 40px 20px; }
+    .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .cat-card { padding: 15px 10px; text-align: center; }
+    .cat-card i { font-size: 1.4rem; margin-bottom: 8px; }
+    .cat-card h3 { font-size: 0.85rem; margin-bottom: 2px; }
+    .cat-card span { display: none; }
+
+    /* Footer Left Aligned on Mobile */
+    .footer-content { grid-template-columns: 1fr; text-align: left; gap: 30px; }
+    .footer-brand p { margin: 0; max-width: 100%; }
+    .f-col { border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
+    .f-col:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo"><i class="fas fa-cube"></i> XIZOA</a>
+    <div class="menu">
+      <button class="active" onclick="filterTools('all', this)">All</button>
+      <button onclick="filterTools('social', this)">Social</button>
+      <button onclick="filterTools('ai', this)">AI</button>
+      <button onclick="filterTools('pdf', this)">PDF</button>
+      <button onclick="filterTools('gaming', this)">Gaming</button>
+      <button onclick="filterTools('dev', this)">Dev</button>
+      <button onclick="filterTools('image', this)">Image</button>
+      <button onclick="filterTools('music', this)">Music</button>
+      <button onclick="filterTools('utility', this)">Utility</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Premium Tools for <br><span>Creators & Devs</span></h1>
+  <p>50+ Free Utilities. No Login. Unlimited Access.</p>
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Search tools (e.g., thumbnail, pdf, speed)...">
+  </div>
+</section>
+
+<section class="container" id="toolsSection">
+  <div class="grid" id="toolGrid">
+    
+    <a href="YouTube-thumbnail-downloader.html" class="card" data-cat="social" style="--accent: #FF0000;">
+       <span class="badge hot">HOT</span><div class="icon-box"><i class="fab fa-youtube"></i></div>
+       <h3>Thumbnail DL</h3><p>Get HQ Thumbnails</p>
+    </a>
+    <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
+       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text</p>
+    </a>
+    <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
+       <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Files</p>
+    </a>
+    <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
+       <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Internet Test</p>
+    </a>
+    <a href="insta-video-saver.html" class="card" data-cat="social" style="--accent: #E1306C;">
+       <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video</p>
+    </a>
+    <a href="CV-Resume-Builder.html" class="card" data-cat="pdf" style="--accent: #6c5ce7;">
+       <div class="icon-box"><i class="fas fa-user-tie"></i></div><h3>Resume Builder</h3><p>Make CV</p>
+    </a>
+    <a href="image-compressor.html" class="card" data-cat="image" style="--accent: #00cec9;">
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size</p>
+    </a>
+    <a href="youtubeshorts.html" class="card" data-cat="social" style="--accent: #FF0000;">
+       <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>YouTube Shorts</p>
+    </a>
+    <a href="tiktok-downloader.html" class="card" data-cat="social" style="--accent: #ff0050;">
+       <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark</p>
+    </a>
+    <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
+       <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Make QR</p>
+    </a>
+    <a href="fps-chekar.html" class="card" data-cat="gaming" style="--accent: #00b894;">
+       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Hz Test</p>
+    </a>
+    <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
+       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>Voice Reader</p>
+    </a>
+
+    <a href="youtube-tag-extractor.html" class="card" data-cat="social" style="--accent: #FF0000;">
+       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>SEO Tags</p>
+    </a>
+    <a href="social-media-caption.html" class="card" data-cat="social" style="--accent: #2c3e50;">
+       <div class="icon-box"><i class="fas fa-quote-right"></i></div><h3>Social Captions</h3><p>Viral Quotes</p>
+    </a>
+    <a href="hashtag-generator.html" class="card" data-cat="social" style="--accent: #8e44ad;">
+       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>Hashtag Gen</h3><p>Reach Boost</p>
+    </a>
+    <a href="glitch-text-generator.html" class="card" data-cat="social" style="--accent: #00cec9;">
+       <div class="icon-box"><i class="fas fa-bug"></i></div><h3>Glitch Text</h3><p>Zalgo Text</p>
+    </a>
+    <a href="invisible-text.html" class="card" data-cat="social" style="--accent: #b2bec3;">
+       <div class="icon-box"><i class="fas fa-ghost"></i></div><h3>Invisible Text</h3><p>Blank Message</p>
+    </a>
+    <a href="ai-text-summarise.html" class="card" data-cat="ai" style="--accent: #f39c12;">
+       <div class="icon-box"><i class="fas fa-file-alt"></i></div><h3>AI Summarizer</h3><p>Shorten Text</p>
+    </a>
+    <a href="ai-grammar-fixer.html" class="card" data-cat="ai" style="--accent: #27ae60;">
+       <div class="icon-box"><i class="fas fa-check-double"></i></div><h3>Grammar Fix</h3><p>Perfect English</p>
+    </a>
+    <a href="hand-sign-predicter.html" class="card" data-cat="ai" style="--accent: #8e44ad;">
+       <div class="icon-box"><i class="fas fa-hands"></i></div><h3>Hand Sign AI</h3><p>ML Prediction</p>
+    </a>
+    <a href="blog-title-generator.html" class="card" data-cat="ai" style="--accent: #2980b9;">
+       <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Blog Title Gen</h3><p>Catchy Headlines</p>
+    </a>
+    <a href="High-quality-PDF-smart-tool.html" class="card" data-cat="pdf" style="--accent: #d63031;">
+       <div class="icon-box"><i class="fas fa-file-pdf"></i></div><h3>HQ PDF Tool</h3><p>Compress & Edit</p>
+    </a>
+    <a href="pdf-to-word.html" class="card" data-cat="pdf" style="--accent: #0984e3;">
+       <div class="icon-box"><i class="fas fa-file-word"></i></div><h3>PDF to Word</h3><p>Docx Converter</p>
+    </a>
+    <a href="pdf-light-mode.html" class="card" data-cat="pdf" style="--accent: #2d3436;">
+       <div class="icon-box"><i class="fas fa-eye"></i></div><h3>PDF Dark Mode</h3><p>Reader Tool</p>
+    </a>
+    <a href="reaction-time-test.html" class="card" data-cat="gaming" style="--accent: #e84393;">
+       <div class="icon-box"><i class="fas fa-stopwatch"></i></div><h3>Reaction Time</h3><p>Reflex Test</p>
+    </a>
+    <a href="mouse-polling-rate.html" class="card" data-cat="gaming" style="--accent: #0984e3;">
+       <div class="icon-box"><i class="fas fa-mouse"></i></div><h3>Polling Rate</h3><p>Mouse Hz</p>
+    </a>
+    <a href="keyboard-tester.html" class="card" data-cat="gaming" style="--accent: #f1c40f;">
+       <div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Keyboard Test</h3><p>Key Check</p>
+    </a>
+    <a href="gaming.html" class="card" data-cat="gaming" style="--accent: #6c5ce7;">
+       <div class="icon-box"><i class="fas fa-gamepad"></i></div><h3>Name Style</h3><p>Fancy Nickname</p>
+    </a>
+    <a href="typing-master.html" class="card" data-cat="gaming" style="--accent: #2d3436;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Test</p>
+    </a>
+    <a href="repo-generator.html" class="card" data-cat="dev" style="--accent: #333;">
+       <div class="icon-box"><i class="fab fa-github"></i></div><h3>Repo Gen</h3><p>GitHub Tool</p>
+    </a>
+    <a href="repo-file-generator.html" class="card" data-cat="dev" style="--accent: #333;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-file-code"></i></div><h3>Repo File Gen</h3><p>Structure Maker</p>
+    </a>
+    <a href="SEO-Meta-Description-Generator.html" class="card" data-cat="dev" style="--accent: #16a085;">
+       <div class="icon-box"><i class="fas fa-search"></i></div><h3>SEO Meta Gen</h3><p>Rank Higher</p>
+    </a>
+    <a href="keywords-finder.html" class="card" data-cat="dev" style="--accent: #f39c12;">
+       <div class="icon-box"><i class="fas fa-key"></i></div><h3>Keyword Finder</h3><p>SEO Tags</p>
+    </a>
+    <a href="diff-checker.html" class="card" data-cat="dev" style="--accent: #c0392b;">
+       <div class="icon-box"><i class="fas fa-exchange-alt"></i></div><h3>Diff Checker</h3><p>Compare Code</p>
+    </a>
+    <a href="about-us-page-generator.html" class="card" data-cat="dev" style="--accent: #2980b9;">
+       <div class="icon-box"><i class="fas fa-info-circle"></i></div><h3>About Us Gen</h3><p>Page Maker</p>
+    </a>
+    <a href="image-resizer.html" class="card" data-cat="image" style="--accent: #0984e3;">
+       <div class="icon-box"><i class="fas fa-expand"></i></div><h3>Img Resizer</h3><p>Change Dim.</p>
+    </a>
+    <a href="color-picker.html" class="card" data-cat="image" style="--accent: #e84393;">
+       <div class="icon-box"><i class="fas fa-eye-dropper"></i></div><h3>Color Picker</h3><p>Hex & RGB</p>
+    </a>
+    <a href="jpg-to-png.html" class="card" data-cat="image" style="--accent: #fd79a8;">
+       <div class="icon-box"><i class="fas fa-image"></i></div><h3>JPG to PNG</h3><p>Converter</p>
+    </a>
+    <a href="guitar-tuner.html" class="card" data-cat="music" style="--accent: #f1c40f;">
+       <div class="icon-box"><i class="fas fa-guitar"></i></div><h3>Guitar Tuner</h3><p>Standard Tune</p>
+    </a>
+    <a href="guitar-composer.html" class="card" data-cat="music" style="--accent: #e67e22;">
+       <div class="icon-box"><i class="fas fa-music"></i></div><h3>Tab Creator</h3><p>Compose</p>
+    </a>
+    <a href="auto-chord-maker.html" class="card" data-cat="music" style="--accent: #8e44ad;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-headphones"></i></div><h3>Chord Maker</h3><p>Auto Chords</p>
+    </a>
+    <a href="focus-noise-generator.html" class="card" data-cat="music" style="--accent: #2ecc71;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-wind"></i></div><h3>Focus Noise</h3><p>White Noise</p>
+    </a>
+    <a href="ai-email-writer.html" class="card" data-cat="Ai" style="--accent: #00f7ff;">
+    <div class="icon-box">
+        <i class="fas fa-envelope-open-text"></i>
+    </div>
+    <h3>AI Email Writer</h3>
+    <p>Professional Emails</p>
+</a>
+    <a href="age-calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
+       <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Exact Age</p>
+    </a>
+    <a href="pomodoro-timer.html" class="card" data-cat="utility" style="--accent: #e74c3c;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-clock"></i></div><h3>Pomodoro</h3><p>Focus Timer</p>
+    </a>
+    <a href="password-generator.html" class="card" data-cat="utility" style="--accent: #27ae60;">
+       <div class="icon-box"><i class="fas fa-key"></i></div><h3>Pass Gen</h3><p>Secure Key</p>
+    </a>
+    <a href="ip-checker.html" class="card" data-cat="utility" style="--accent: #34495e;">
+       <div class="icon-box"><i class="fas fa-globe"></i></div><h3>IP Checker</h3><p>Locate IP</p>
+    </a>
+    <a href="link-scanner.html" class="card" data-cat="utility" style="--accent: #c0392b;">
+       <div class="icon-box"><i class="fas fa-shield-alt"></i></div><h3>Link Scanner</h3><p>Virus Check</p>
+    </a>
+    <a href="exif-remover.html" class="card" data-cat="utility" style="--accent: #f39c12;">
+       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>Exif Remover</h3><p>Metadata Clean</p>
+    </a>
+    <a href="text-to-handwriting.html" class="card" data-cat="utility" style="--accent: #7f8c8d;">
+       <div class="icon-box"><i class="fas fa-pen-fancy"></i></div><h3>Handwriting</h3><p>Human Text</p>
+    </a>
+    <a href="tone-generator.html" class="card" data-cat="utility" style="--accent: #8e44ad;">
+       <div class="icon-box"><i class="fas fa-wave-square"></i></div><h3>Tone Gen</h3><p>Hz Sound</p>
+    </a>
+    <a href="morse-converter.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
+       <div class="icon-box"><i class="fas fa-broadcast-tower"></i></div><h3>Morse Code</h3><p>Translator</p>
+    </a>
+    <a href="dead-pixel-fixer.html" class="card" data-cat="utility" style="--accent: #e74c3c;">
+       <div class="icon-box"><i class="fas fa-tv"></i></div><h3>Dead Pixel</h3><p>Screen Fix</p>
+    </a>
+
+  </div>
+
+  <div class="load-btn-box">
+    <button class="load-btn" onclick="loadMore()">Load More Tools</button>
+  </div>
+</section>
+
+<section class="blue-doodle-section">
+    <h2>Explore Categories</h2>
+    <p>Browse tools by category to find exactly what you need.</p>
+    <div class="cat-grid">
+        <div class="cat-card" onclick="clickCategory('social')">
+            <i class="fas fa-share-alt"></i><h3>Social</h3><span>YouTube, Insta</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('ai')">
+            <i class="fas fa-robot"></i><h3>AI Tools</h3><span>Writers, Fixers</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('pdf')">
+            <i class="fas fa-file-pdf"></i><h3>PDF</h3><span>Merge, Edit</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('gaming')">
+            <i class="fas fa-gamepad"></i><h3>Gaming</h3><span>FPS, Reaction</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('dev')">
+            <i class="fas fa-code"></i><h3>Dev</h3><span>SEO, Github</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('image')">
+            <i class="fas fa-image"></i><h3>Image</h3><span>Resize, Colors</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('utility')">
+            <i class="fas fa-tools"></i><h3>Utility</h3><span>Daily Helpers</span>
+        </div>
+        <div class="cat-card" onclick="clickCategory('music')">
+            <i class="fas fa-music"></i><h3>Music</h3><span>Tuner, Tabs</span>
+        </div>
+        <div class="cat-card" onclick="filterTools('all', document.querySelector('.menu button'))">
+            <i class="fas fa-th-large"></i><h3>All</h3><span>View All</span>
+        </div>
+    </div>
+</section>
+
+<section class="blue-doodle-section" style="background-color: #f0fdf4; border-color: #dcfce7; background-image: radial-gradient(#86efac 1.5px, transparent 1.5px);">
+    <h2 style="color: #14532d;">Need More Power?</h2>
+    <p style="color: #15803d;">Explore our complete directory of developer and creator tools.</p>
+    <a href="tools.html" class="explore-btn" style="background: #16a34a; box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.4);">Explore All Tools <i class="fas fa-arrow-right"></i></a>
+</section>
+
+<section class="blue-doodle-section" style="background-color: #fff7ed; border-color: #ffedd5; background-image: radial-gradient(#fdba74 1.5px, transparent 1.5px);">
+    <h2 style="color: #9a3412;">Knowledge Hub</h2>
+    <p style="color: #c2410c;">Read our latest guides, tips, and tech insights to boost your productivity.</p>
+    <a href="blog.html" class="explore-btn" style="background: #ea580c; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.4);">Read Our Blog <i class="fas fa-book-open"></i></a>
+</section>
+
+<footer>
+  <div class="footer-content">
+      <div class="footer-brand">
+          <h2>XIZOA</h2>
+          <p>The ultimate free utility toolkit for the modern web. Built for speed, privacy, and ease of use.</p>
+      </div>
+      <div class="f-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="f-col">
+          <h4>Discover</h4>
+          <a href="#" onclick="clickCategory('ai')">AI Tools</a>
+          <a href="#" onclick="clickCategory('pdf')">PDF Tools</a>
+          <a href="#" onclick="clickCategory('gaming')">Gaming</a>
+      </div>
+      <div class="f-col">
+          <h4>Support</h4>
+          <a href="disclaimer.html">Disclaimer</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="https://github.com/XIZOAHUB">GitHub</a>
+      </div>
+  </div>
+  <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+</footer>
+
+<script>
+// --- CONFIGURATION ---
+const toolsPerPage = 16;
+let currentCount = 16;
+const cards = document.querySelectorAll('.card');
+const loadBtn = document.querySelector('.load-btn');
+const toolGrid = document.getElementById('toolGrid');
+
+// --- INITIAL LOAD ---
+function init() {
+    let visible = 0;
+    cards.forEach((card, index) => {
+        if (index < currentCount) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+init();
+
+// --- LOAD MORE FUNCTION ---
+function loadMore() {
+    currentCount += 12;
+    let visibleTotal = 0;
+    
+    // Check current filter mode
+    const activeBtn = document.querySelector('.menu button.active');
+    const category = activeBtn.innerText.toLowerCase();
+
+    cards.forEach(card => {
+        // Only count if it matches the current filter
+        if (category === 'all' || card.dataset.cat === category) {
+            if (visibleTotal < currentCount) {
+                card.style.display = 'flex';
+            }
+            visibleTotal++;
+        }
+    });
+
+    // Hide button if end of list reached
+    const totalInCat = Array.from(cards).filter(c => category === 'all' || c.dataset.cat === category).length;
+    if (currentCount >= totalInCat) {
+        loadBtn.style.display = 'none';
+    }
+}
+
+// --- FILTER FUNCTION ---
+function filterTools(category, btn) {
+    // Update Active Button in Menu
+    document.querySelectorAll('.menu button').forEach(b => {
+        b.classList.remove('active');
+        if(b.innerText.toLowerCase() === category) b.classList.add('active');
+    });
+
+    // If btn passed (clicked from menu), highlight it
+    if(btn && btn.tagName === 'BUTTON') {
+        btn.classList.add('active');
+    }
+
+    // Reset Load More Logic
+    currentCount = 16; 
+    loadBtn.style.display = 'block';
+
+    let count = 0;
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.cat === category) {
+            // Apply Pagination Logic even when filtering
+            if(count < currentCount) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+            count++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Hide load button if category has few items
+    if(count <= currentCount) {
+        loadBtn.style.display = 'none';
+    }
+}
+
+// --- CATEGORY CARD CLICK HANDLER ---
+function clickCategory(cat) {
+    // Scroll to tool section
+    document.getElementById('toolsSection').scrollIntoView({behavior: 'smooth'});
+    // Filter
+    filterTools(cat);
+    // Find button in menu and activate
+    const menuBtns = document.querySelectorAll('.menu button');
+    menuBtns.forEach(btn => {
+        if(btn.innerText.toLowerCase() === cat) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// --- SEARCH FUNCTION ---
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const term = e.target.value.toLowerCase();
+    
+    if(term.length > 0) {
+        loadBtn.style.display = 'none'; // Hide load more when searching
+        cards.forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            const desc = card.querySelector('p').innerText.toLowerCase();
+            
+            if(title.includes(term) || desc.includes(term)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    } else {
+        // Reset to default view
+        filterTools('all', document.querySelector('.menu button'));
+    }
+});
+</script>
+
+</body>
+</html>
