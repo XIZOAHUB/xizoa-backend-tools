@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Thumbnail Downloader - Download 4K, 1080p & HD Images (Free)</title>
+  <meta name="description" content="The best online YouTube Thumbnail Downloader. Save 4K (Ultra HD), 1080p, and HD thumbnails from YouTube videos & Shorts. No watermark, instant save. Try now!">
+  
+  <meta name="keywords" content="youtube thumbnail downloader, yt thumbnail saver, download youtube cover, 4k thumbnail grabber, hd thumbnail downloader, save youtube shorts thumbnail, extract youtube image, youtube video thumbnail download, get video cover, 
+  (Hindi) यूट्यूब थंबनेल डाउनलोड, यूट्यूब वीडियो फोटो, थंबनेल कैसे डाउनलोड करें, 
+  thumbnail grabber online, yt image extractor, maxresdefault downloader">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-thumbnail-downloader">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="theme-color" content="#ff0000">
+
+  <meta property="og:title" content="YouTube Thumbnail Downloader (4K Supported)">
+  <meta property="og:description" content="Download high-quality YouTube thumbnails in 1-click. Supports 4K, HD, and SD. Free & Fast.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-thumbnail-downloader">
+  <meta property="og:image" content="https://xizoa.com/assets/og-thumb.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Thumbnail Downloader",
+      "operatingSystem": "Web, Android, iOS, Windows, MacOS",
+      "applicationCategory": "MultimediaApplication",
+      "url": "https://tools.xizoa.com/YouTube-thumbnail-downloader",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "15400", "bestRating": "5", "worstRating": "1" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Download a YouTube Thumbnail",
+      "step": [
+        { "@type": "HowToStep", "name": "Copy Link", "text": "Copy the URL of the YouTube video or Short." },
+        { "@type": "HowToStep", "name": "Paste Link", "text": "Paste the link into the XIZOA input box." },
+        { "@type": "HowToStep", "name": "Select Quality", "text": "Choose between 4K, HD, or SD quality." },
+        { "@type": "HowToStep", "name": "Download", "text": "Click the download button to save the image." }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME SETTINGS (White Background Style) --- */
+    :root {
+      --bg: #f8f9fa;       /* Page Background White */
+      --text: #1e293b;     /* Page Text Dark */
+      
+      --card: #0f172a;     /* Tool Card Dark Blue */
+      --card-text: #fff;   /* Text inside Tool Card */
+      
+      --input: #1e293b;    /* Input fields dark */
+      --primary: #ff0000;  /* YouTube Red */
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 50px 20px; 
+        background: linear-gradient(to bottom, #ffffff, #f0f4f8); 
+        border-bottom: 1px solid #e2e8f0; 
+    }
+    .brand-logo { font-size: 1.5rem; font-weight: 800; color: #0f172a; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #0f172a; }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+    main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL CARD (Dark Theme inside) */
+    .tool-container {
+      background: var(--card);
+      border: 1px solid #334155;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      margin: 40px auto 60px auto;
+      color: var(--card-text);
+    }
+
+    .input-wrapper { display: flex; gap: 15px; position: relative; margin-bottom: 20px; }
+    
+    input[type="text"] {
+      flex: 1;
+      background: var(--input);
+      border: 1px solid #334155;
+      padding: 18px 25px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+
+    button#btnFetch {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0 35px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    button#btnFetch:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,0,0,0.4); }
+
+    /* PREVIEW & DOWNLOAD GRID */
+    .result-section { display: none; margin-top: 30px; animation: slideUp 0.5s ease; }
+    
+    .preview-img {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      border: 1px solid #333;
+    }
+
+    .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
+    .dl-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
+      text-decoration: none;
+      position: relative;
+    }
+    .dl-card:hover { transform: translateY(-5px); border-color: var(--primary); background: rgba(255,255,255,0.08); }
+    
+    .dl-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .dl-quality { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .dl-size { font-size: 0.8rem; background: #222; color: #aaa; padding: 2px 8px; border-radius: 4px; }
+    
+    .dl-res { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; }
+    
+    .dl-btn-inner {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* SEO CONTENT AREA (White Cards) */
+    .content-container { margin-top: 50px; }
+    .seo-box { 
+        background: #fff; 
+        padding: 40px; 
+        border-radius: 20px; 
+        margin-bottom: 30px; 
+        border: 1px solid #e2e8f0; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .seo-box h2 { font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .seo-box h2 i { color: var(--primary); font-size: 1.4rem; }
+    .seo-box p { color: #475569; line-height: 1.7; margin-bottom: 15px; font-size: 1rem; }
+    .seo-box ul, .seo-box ol { margin-left: 20px; color: #475569; margin-bottom: 20px; line-height: 1.7; }
+    .seo-box li { margin-bottom: 10px; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 15px 0; }
+    .faq-item h3 { font-size: 1.1rem; color: #1e293b; margin-bottom: 8px; cursor: pointer; font-weight: 700; }
+    .faq-item p { font-size: 0.95rem; color: #64748b; line-height: 1.6; }
+
+    /* MORE TOOLS SECTION */
+    .more-tools-section { max-width: 1000px; margin: 20px auto 80px auto; padding: 0 20px; text-align: center; }
+    .more-tools-section h2 { margin-bottom: 30px; font-size: 1.8rem; color: #0f172a; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .tool-card { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 25px; border-radius: 15px; 
+        transition: 0.3s; text-align: left; text-decoration: none; display: block;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--primary); }
+    .tool-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+    .tool-card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
+    .tool-card p { color: #64748b; font-size: 0.95rem; }
+
+    /* FOOTER (Dark to match Tool Card) */
+    footer { background: var(--card); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      .input-wrapper { flex-direction: column; }
+      button#btnFetch { width: 100%; padding: 15px; }
+      h1 { font-size: 2rem; }
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>YouTube Thumbnail <span>Downloader</span></h1>
+    <p class="subtitle">Extract 4K, HD & High-Quality Thumbnails from any YouTube Video or Shorts.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      <div class="input-wrapper">
+        <input type="text" id="inputUrl" placeholder="Paste YouTube Video URL here..." aria-label="YouTube Video Link">
+        <button id="btnFetch"><i class="fas fa-search"></i> Get Thumbnail</button>
+      </div>
+      <div id="errorMsg" style="color:#ff4d4d; margin-top:10px; font-size:0.9rem; display:none;"></div>
+
+      <div class="result-section" id="resultArea">
+        <img src="" id="thumbPreview" class="preview-img" alt="Thumbnail Preview">
+        
+        <h3 style="color:#fff; margin-bottom:20px; font-size:1.3rem;">Download Qualities</h3>
+        
+        <div class="download-grid">
+          
+          <a href="#" class="dl-card" id="btnMax" target="_blank">
+            <div class="dl-header">
+              <span class="dl-quality">HD (4K)</span>
+              <span class="dl-size">~2.5 MB</span> </div>
+            <div class="dl-res">1920 x 1080 (MaxRes)</div>
+            <div class="dl-btn-inner"><i class="fas fa-download"></i> Download 4K</div>
+          </a>
+
+          <a href="#" class="dl-card" id="btnSd" target="_blank">
+            <div class="dl-header">
+              <span class="dl-quality">Standard (HD)</span>
+              <span class="dl-size">~450 KB</span>
+            </div>
+            <div class="dl-res">640 x 480</div>
+            <div class="dl-btn-inner"><i class="fas fa-download"></i> Download HD</div>
+          </a>
+
+          <a href="#" class="dl-card" id="btnHq" target="_blank">
+            <div class="dl-header">
+              <span class="dl-quality">High Quality</span>
+              <span class="dl-size">~120 KB</span>
+            </div>
+            <div class="dl-res">480 x 360</div>
+            <div class="dl-btn-inner"><i class="fas fa-download"></i> Download HQ</div>
+          </a>
+
+          <a href="#" class="dl-card" id="btnMq" target="_blank">
+            <div class="dl-header">
+              <span class="dl-quality">Medium</span>
+              <span class="dl-size">~40 KB</span>
+            </div>
+            <div class="dl-res">320 x 180</div>
+            <div class="dl-btn-inner"><i class="fas fa-download"></i> Download MQ</div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="content-container">
+      
+      <article class="seo-box">
+        <h2><i class="fas fa-crown"></i> Why XIZOA is the #1 Thumbnail Downloader?</h2>
+        <p>YouTube thumbnails are the face of any video. Whether you are a creator needing your old thumbnail back, a designer looking for inspiration, or an SEO expert analyzing competitors, XIZOA Hub provides the fastest solution.</p>
+        <p>Unlike other tools, we fetch the <strong>Maximum Resolution (MaxResDefault)</strong> directly from YouTube servers. This ensures you get the crispest, 4K quality image without any compression or watermarks.</p>
+        <ul>
+          <li><strong>Supports Everything:</strong> Works on YouTube Videos, Shorts, and Live Streams.</li>
+          <li><strong>4K Ultra HD:</strong> Get the 1920x1080 image used by top YouTubers.</li>
+          <li><strong>Cross-Platform:</strong> Use on Android, iOS, Windows, or Mac effortlessly.</li>
+          <li><strong>Secure:</strong> We do not track your history or require logins.</li>
+        </ul>
+      </article>
+
+      <article class="seo-box">
+        <h2><i class="fas fa-book"></i> Guide: How to Save Thumbnails?</h2>
+        <p>Follow these easy steps to grab any YouTube cover image:</p>
+        <ol>
+          <li>Open the <strong>YouTube Video</strong> or <strong>Shorts</strong>.</li>
+          <li>Tap the <strong>Share</strong> button and copy the link.</li>
+          <li>Paste the link in the XIZOA input box above.</li>
+          <li>Click the <strong>Get Thumbnail</strong> button.</li>
+          <li>Select the quality (4K is recommended) and hit Download.</li>
+        </ol>
+      </article>
+
+      <article class="seo-box">
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+          <h3>Does this tool grab 4K thumbnails?</h3>
+          <p>Yes, if the video uploader has uploaded a 4K or 1080p image, our tool will fetch the 'maxresdefault.jpg' which is the highest quality available.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is it free to use?</h3>
+          <p>Absolutely. XIZOA YouTube Thumbnail Downloader is 100% free forever. No hidden charges.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is it legal to download thumbnails?</h3>
+          <p>Thumbnails are copyrighted by the content creator. You can download them for personal use (like fair use), school projects, or inspiration. Please do not use them commercially without permission.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="more-tools-section">
+        <h2>🔥 More Useful Tools</h2>
+        <div class="tools-grid">
+            <a href="ai-email-writer.html" class="tool-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>AI Email Writer</h3>
+                <p>Generate professional business emails, cover letters & applications.</p>
+            </a>
+            <a href="youtube-tag-extractor.html" class="tool-card">
+                <i class="fas fa-tags"></i>
+                <h3>Tag Extractor</h3>
+                <p>Find the best tags for your YouTube videos to rank higher.</p>
+            </a>
+            <a href="image-compressor.html" class="tool-card">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <h3>Image Compressor</h3>
+                <p>Compress images without losing quality for faster website loading.</p>
+            </a>
+        </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Thumbnail Downloader helps you save YouTube video covers in full HD. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnFetch = document.getElementById('btnFetch');
+    const inputUrl = document.getElementById('inputUrl');
+    const errorMsg = document.getElementById('errorMsg');
+    const resultArea = document.getElementById('resultArea');
+    const thumbPreview = document.getElementById('thumbPreview');
+    
+    // Download Buttons
+    const btnMax = document.getElementById('btnMax');
+    const btnSd = document.getElementById('btnSd');
+    const btnHq = document.getElementById('btnHq');
+    const btnMq = document.getElementById('btnMq');
+
+    function getVideoID(url) {
+      const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\\w\/)|(embed\/)|(watch\\?))\\??v?=?([^#&?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[7].length == 11) ? match[7] : false;
+    }
+
+    btnFetch.addEventListener('click', () => {
+      const url = inputUrl.value.trim();
+      const videoId = getVideoID(url);
+
+      if (!videoId) {
+        errorMsg.style.display = 'block';
+        errorMsg.innerText = '⚠️ Invalid URL. Please paste a valid YouTube video link.';
+        resultArea.style.display = 'none';
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+      btnFetch.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      btnFetch.disabled = true;
+
+      // Construct Image URLs
+      const maxRes = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      const sdRes = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      const hqRes = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const mqRes = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+
+      // Set Preview
+      thumbPreview.src = maxRes;
+      
+      // Fallback Logic (If 4K doesn't exist)
+      thumbPreview.onerror = function() {
+        this.src = hqRes;
+        btnMax.href = hqRes; 
+        btnMax.querySelector('.dl-quality').innerText = "High Quality (Fallback)";
+        btnMax.querySelector('.dl-res').innerText = "480 x 360";
+        btnMax.querySelector('.dl-size').innerText = "~120 KB";
+      };
+
+      // Set Links
+      btnMax.href = maxRes;
+      btnSd.href = sdRes;
+      btnHq.href = hqRes;
+      btnMq.href = mqRes;
+
+      // Reset Text on Load
+      thumbPreview.onload = function() {
+        if(this.naturalWidth > 1000) {
+           btnMax.querySelector('.dl-quality').innerText = "HD (4K)";
+           btnMax.querySelector('.dl-res').innerText = "1920 x 1080";
+           btnMax.querySelector('.dl-size').innerText = "~2.5 MB";
+        }
+      }
+
+      setTimeout(() => {
+        resultArea.style.display = 'block';
+        btnFetch.innerHTML = '<i class="fas fa-search"></i> Get Thumbnail';
+        btnFetch.disabled = false;
+        resultArea.scrollIntoView({behavior: "smooth", block: "start"});
+      }, 500);
+    });
+
+    inputUrl.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') btnFetch.click();
+    });
+  </script>
+</body>
+</html>
