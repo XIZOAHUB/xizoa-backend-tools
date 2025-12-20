@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Tools Directory - XIZOA</title>
+<meta name="description" content="Browse our complete collection of 50+ free online tools. Organized by category for easy access.">
+<link rel="icon" href="https://tools.xizoa.com/favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+:root{
+  --brand:#00f7ff;
+  --bg-dark:#050a14;
+  --text:#ffffff;
+  --muted:#94a3b8;
+  --card-bg: #0b1121;
+  --border: #1e293b;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:var(--bg-dark);color:var(--text);line-height:1.6;overflow-x:hidden;}
+html{scroll-behavior: smooth;}
+
+/* --- BACKGROUND --- */
+.bg{position:fixed;inset:0;z-index:-1; background: radial-gradient(circle at 15% 50%, #0f172a 0%, transparent 25%), radial-gradient(circle at 85% 30%, #1e1b4b 0%, transparent 25%); background-color: #020408;}
+
+/* --- HEADER --- */
+header{
+  position:sticky;top:0;z-index:1000;
+  background: rgba(5, 10, 20, 0.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+.nav{max-width:1400px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;font-size:1.5rem;font-weight:800;text-decoration:none;color:white;}
+.logo i{color:var(--brand);}
+.back-btn { color: #ccc; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.back-btn:hover { color: var(--brand); }
+
+/* --- LAYOUT GRID --- */
+.main-container {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: 250px 1fr; gap: 40px;
+    padding: 40px 20px;
+}
+
+/* --- SIDEBAR (Sticky) --- */
+.sidebar {
+    position: sticky; top: 100px; height: fit-content;
+    background: #0f172a; border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px;
+}
+.sidebar h3 { font-size: 1.1rem; margin-bottom: 15px; color: var(--brand); text-transform: uppercase; letter-spacing: 1px; }
+.sidebar a {
+    display: block; padding: 10px 15px; color: #94a3b8; text-decoration: none;
+    border-radius: 8px; margin-bottom: 5px; transition: 0.2s; font-size: 0.95rem;
+}
+.sidebar a:hover { background: rgba(0, 247, 255, 0.1); color: #fff; padding-left: 20px; }
+.sidebar a.active { background: var(--brand); color: #000; font-weight: 700; }
+
+/* --- CONTENT AREA --- */
+.content h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.search-bar { width: 100%; padding: 15px 20px; background: #0f172a; border: 1px solid var(--border); color: #fff; border-radius: 12px; font-size: 1rem; outline: none; margin-bottom: 40px; }
+.search-bar:focus { border-color: var(--brand); }
+
+/* --- CATEGORY SECTIONS --- */
+.cat-section { margin-bottom: 60px; scroll-margin-top: 120px; }
+.cat-title { 
+    font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; 
+    border-bottom: 1px solid var(--border); padding-bottom: 10px;
+}
+.cat-title i { color: var(--brand); }
+
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+/* --- TOOL CARD --- */
+.tool-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; text-decoration: none;
+    transition: 0.2s; position: relative; display: flex; flex-direction: column;
+}
+.tool-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.tool-card i { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
+.tool-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+.tool-card p { color: #94a3b8; font-size: 0.85rem; }
+.tool-card .badge { position: absolute; top: 15px; right: 15px; font-size: 0.6rem; background: var(--brand); color: #000; padding: 3px 8px; border-radius: 10px; font-weight: 800; }
+
+/* --- FOOTER --- */
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); margin-top: 50px; color: #666; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .main-container { grid-template-columns: 1fr; }
+    .sidebar { 
+        position: sticky; top: 70px; z-index: 900;
+        display: flex; overflow-x: auto; padding: 10px; gap: 10px;
+        background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+        margin: -20px -20px 20px -20px; border-radius: 0; border-left: none; border-right: none;
+    }
+    .sidebar h3 { display: none; }
+    .sidebar a { white-space: nowrap; margin-bottom: 0; background: #1e293b; }
+    .sidebar::-webkit-scrollbar { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<header>
+    <div class="nav">
+        <a href="/" class="logo"><i class="fas fa-cube"></i> XIZOA</a>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</header>
+
+<div class="main-container">
+    
+    <aside class="sidebar">
+        <h3>Categories</h3>
+        <a href="#social">Social Media</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#pdf">PDF Suite</a>
+        <a href="#gaming">Gaming</a>
+        <a href="#image">Image Tools</a>
+        <a href="#dev">Developer</a>
+        <a href="#security">Security</a>
+        <a href="#music">Music Studio</a>
+        <a href="#utility">Utilities</a>
+    </aside>
+
+    <main class="content">
+        <h1>All Tools Directory</h1>
+        <input type="text" class="search-bar" id="searchInput" placeholder="Search any tool (e.g. Resume, Guitar, Speed)...">
+
+        <div id="social" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-share-alt"></i> Social Media Tools</h2>
+            <div class="tools-grid">
+                <a href="YouTube-thumbnail-downloader.html" class="tool-card" style="--accent:#FF0000"><i class="fab fa-youtube"></i><h3>Thumbnail Downloader</h3><p>Download HD Thumbnails</p></a>
+                <a href="youtubeshorts.html" class="tool-card" style="--accent:#FF0000"><i class="fas fa-mobile-alt"></i><h3>Shorts Saver</h3><p>Download Shorts Cover</p></a>
+                <a href="youtube-tag-extractor.html" class="tool-card" style="--accent:#ff7675"><i class="fas fa-tags"></i><h3>Tag Extractor</h3><p>Get Viral Tags</p></a>
+                <a href="insta-video-saver.html" class="tool-card" style="--accent:#E1306C"><i class="fab fa-instagram"></i><h3>Insta Video Saver</h3><p>Save Reels & Videos</p></a>
+                <a href="tiktok-downloader.html" class="tool-card" style="--accent:#ff0050"><i class="fab fa-tiktok"></i><h3>TikTok Saver</h3><p>Download No Watermark</p></a>
+                <a href="social-media-caption.html" class="tool-card" style="--accent:#55efc4"><i class="fas fa-quote-right"></i><h3>Social Caption</h3><p>Generate Captions</p></a>
+                <a href="hashtag-generator.html" class="tool-card" style="--accent:#fd79a8"><i class="fas fa-hashtag"></i><h3>Hashtag Gen</h3><p>Trending Hashtags</p></a>
+                <a href="invisible-text.html" class="tool-card" style="--accent:#dfe6e9"><i class="fas fa-ghost"></i><h3>Invisible Text</h3><p>Empty Text for Bio</p></a>
+                <a href="glitch-text-generator.html" class="tool-card" style="--accent:#0984e3"><i class="fas fa-bug"></i><h3>Glitch Text</h3><p>Zalgo Text Maker</p></a>
+            </div>
+        </div>
+
+        <div id="ai" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-robot"></i> AI & Writing Tools</h2>
+            <div class="tools-grid">
+                <a href="AI-Paraphraser.html" class="tool-card" style="--accent:#a29bfe"><span class="badge">BEST</span><i class="fas fa-envelope-open-text"></i><h3>AI Email writer</h3><p>Rewrite Content</p></a>
+                <a href="ai-grammar-fixer.html" class="tool-card" style="--accent:#00b894"><i class="fas fa-check-double"></i><h3>Grammar Fixer</h3><p>Correct Errors</p></a>
+                <a href="ai-text-summarise.html" class="tool-card" style="--accent:#fdcb6e"><i class="fas fa-file-alt"></i><h3>AI Summarizer</h3><p>Summarize Text</p></a>
+                <a href="text-to-speech.html" class="tool-card" style="--accent:#e17055"><i class="fas fa-microphone-alt"></i><h3>Text to Speech</h3><p>Read Aloud</p></a>
+                <a href="blog-title-generator.html" class="tool-card" style="--accent:#ff9f43"><i class="fas fa-heading"></i><h3>Blog Title Gen</h3><p>Catchy Headlines</p></a>
+                <a href="hand-sign-predicter.html" class="tool-card" style="--accent:#fab1a0"><i class="fas fa-hands"></i><h3>Hand Sign AI</h3><p>Detect Gestures</p></a>
+            </div>
+        </div>
+
+        <div id="pdf" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-file-pdf"></i> PDF & Docs</h2>
+            <div class="tools-grid">
+                <a href="pdf-merger.html" class="tool-card" style="--accent:#d63031"><i class="fas fa-file-invoice"></i><h3>PDF Merger</h3><p>Combine Files</p></a>
+                <a href="pdf-to-word.html" class="tool-card" style="--accent:#ff4757"><i class="fas fa-file-word"></i><h3>PDF to Word</h3><p>Convert to Doc</p></a>
+                <a href="CV-Resume-Builder.html" class="tool-card" style="--accent:#0984e3"><i class="fas fa-user-tie"></i><h3>Resume Builder</h3><p>Create CV</p></a>
+                <a href="High-quality-PDF-smart-tool.html" class="tool-card" style="--accent:#d63031"><i class="fas fa-print"></i><h3>HQ PDF Tool</h3><p>Enhance Quality</p></a>
+                <a href="pdf-light-mode.html" class="tool-card" style="--accent:#ecf0f1"><i class="fas fa-eye"></i><h3>PDF Dark Mode</h3><p>Read Comfortably</p></a>
+            </div>
+        </div>
+
+        <div id="gaming" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-gamepad"></i> Gaming Tools</h2>
+            <div class="tools-grid">
+                <a href="fps-chekar.html" class="tool-card" style="--accent:#e74c3c"><span class="badge">HOT</span><i class="fas fa-crosshairs"></i><h3>FPS Checker</h3><p>Check Refresh Rate</p></a>
+                <a href="reaction-time-test.html" class="tool-card" style="--accent:#fab1a0"><i class="fas fa-stopwatch"></i><h3>Reaction Time</h3><p>Test Reflexes</p></a>
+                <a href="keyboard-tester.html" class="tool-card" style="--accent:#fdcb6e"><i class="fas fa-keyboard"></i><h3>Keyboard Test</h3><p>Check Keys</p></a>
+                <a href="mouse-polling-rate.html" class="tool-card" style="--accent:#74b9ff"><i class="fas fa-mouse"></i><h3>Polling Rate</h3><p>Check Mouse Hz</p></a>
+                <a href="gaming.html" class="tool-card" style="--accent:#6c5ce7"><i class="fas fa-font"></i><h3>Name Style</h3><p>Fancy Nicknames</p></a>
+            </div>
+        </div>
+
+        <div id="image" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-image"></i> Image Tools</h2>
+            <div class="tools-grid">
+                <a href="image-compressor.html" class="tool-card" style="--accent:#38bdf8"><i class="fas fa-compress-arrows-alt"></i><h3>Image Compressor</h3><p>Reduce Size</p></a>
+                <a href="image-resizer.html" class="tool-card" style="--accent:#00cec9"><i class="fas fa-expand-arrows-alt"></i><h3>Image Resizer</h3><p>Change Dimension</p></a>
+                <a href="jpg-to-png.html" class="tool-card" style="--accent:#81ecec"><i class="fas fa-images"></i><h3>JPG to PNG</h3><p>Convert Format</p></a>
+                <a href="color-picker.html" class="tool-card" style="--accent:#fd79a8"><i class="fas fa-eye-dropper"></i><h3>Color Picker</h3><p>Get Hex Code</p></a>
+            </div>
+        </div>
+
+        <div id="dev" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-code"></i> Developer & SEO</h2>
+            <div class="tools-grid">
+                <a href="repo-generator.html" class="tool-card" style="--accent:#fff"><i class="fab fa-github-alt"></i><h3>Repo Generator</h3><p>Create Structure</p></a>
+                <a href="about-us-page-generator.html" class="tool-card" style="--accent:#6c5ce7"><i class="fas fa-info-circle"></i><h3>About Us Gen</h3><p>Create Pages</p></a>
+                <a href="SEO-Meta-Description-Generator.html" class="tool-card" style="--accent:#00b894"><i class="fas fa-search"></i><h3>SEO Meta Gen</h3><p>Optimize Tags</p></a>
+                <a href="diff-checker.html" class="tool-card" style="--accent:#636e72"><i class="fas fa-exchange-alt"></i><h3>Diff Checker</h3><p>Compare Code</p></a>
+                <a href="keywords-finder.html" class="tool-card" style="--accent:#ffeaa7"><i class="fas fa-search-dollar"></i><h3>Keyword Finder</h3><p>Research SEO</p></a>
+            </div>
+        </div>
+
+        <div id="security" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-shield-alt"></i> Security Tools</h2>
+            <div class="tools-grid">
+                <a href="ip-checker.html" class="tool-card" style="--accent:#74b9ff"><i class="fas fa-globe-asia"></i><h3>IP Checker</h3><p>My IP Details</p></a>
+                <a href="link-scanner.html" class="tool-card" style="--accent:#27ae60"><i class="fas fa-shield-virus"></i><h3>Link Scanner</h3><p>Check Viruses</p></a>
+                <a href="password-generator.html" class="tool-card" style="--accent:#4ade80"><i class="fas fa-lock"></i><h3>Pass Generator</h3><p>Strong Passwords</p></a>
+                <a href="exif-remover.html" class="tool-card" style="--accent:#f39c12"><i class="fas fa-file-shield"></i><h3>Exif Remover</h3><p>Clean Metadata</p></a>
+            </div>
+        </div>
+
+        <div id="music" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-music"></i> Music Studio</h2>
+            <div class="tools-grid">
+                <a href="guitar-tuner.html" class="tool-card" style="--accent:#ffb703"><i class="fas fa-guitar"></i><h3>Guitar Tuner</h3><p>Tune Online</p></a>
+                <a href="guitar-composer.html" class="tool-card" style="--accent:#8c52ff"><i class="fas fa-music"></i><h3>Tab Creator</h3><p>Write Music</p></a>
+            </div>
+        </div>
+
+        <div id="utility" class="cat-section">
+            <h2 class="cat-title"><i class="fas fa-tools"></i> General Utilities</h2>
+            <div class="tools-grid">
+                <a href="speed-test.html" class="tool-card" style="--accent:#00f7ff"><i class="fas fa-tachometer-alt"></i><h3>Speed Test</h3><p>Check Internet</p></a>
+                <a href="age-calculator.html" class="tool-card" style="--accent:#f1c40f"><i class="fas fa-birthday-cake"></i><h3>Age Calculator</h3><p>Calculate Age</p></a>
+                <a href="text-to-handwriting.html" class="tool-card" style="--accent:#636e72"><i class="fas fa-pen-fancy"></i><h3>Handwriting</h3><p>Assignment Maker</p></a>
+                <a href="qr-code-generator.html" class="tool-card" style="--accent:#ffffff"><i class="fas fa-qrcode"></i><h3>QR Generator</h3><p>Create QR Codes</p></a>
+                <a href="tone-generator.html" class="tool-card" style="--accent:#74b9ff"><i class="fas fa-wave-square"></i><h3>Tone Gen</h3><p>Speaker Cleaner</p></a>
+                <a href="dead-pixel-fixer.html" class="tool-card" style="--accent:#e17055"><i class="fas fa-tv"></i><h3>Dead Pixel Fixer</h3><p>Screen Repair</p></a>
+                <a href="morse-converter.html" class="tool-card" style="--accent:#ffeaa7"><i class="fas fa-broadcast-tower"></i><h3>Morse Code</h3><p>Translator</p></a>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<footer>
+    <p>© 2025 XIZOA Hub. All tools are free and secure.</p>
+</footer>
+
+<script>
+    // Search Functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const val = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.tool-card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            const desc = card.querySelector('p').innerText.toLowerCase();
+            if(title.includes(val) || desc.includes(val)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Hide empty sections (Optional Polish)
+        document.querySelectorAll('.cat-section').forEach(sec => {
+            const visibleCards = sec.querySelectorAll('.tool-card[style="display: flex;"]');
+            // Logic to hide section title if no cards visible (Advanced, skipping for speed)
+        });
+    });
+</script>
+
+</body>
+</html>

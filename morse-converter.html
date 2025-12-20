@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Morse Code Translator - Audio & Flashlight (Text to Morse)</title>
+  
+  <meta name="description" content="Translate text to Morse code and Morse to text instantly. Play audio beeps and use screen flashlight for signaling. Free online Morse decoder tool.">
+  
+  <meta name="keywords" content="morse code translator, text to morse, morse audio player, morse code flashlight, sos signal, morse decoder, secret code generator, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Morse Code Translator - Audio & Light">
+  <meta property="og:description" content="Encode and Decode Morse code with Sound and Flashlight features.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: TACTICAL AMBER (Telegraph Style) --- */
+    :root {
+      --primary: #ffb700; /* Amber */
+      --secondary: #ff8800; /* Dark Orange */
+      --bg-dark: #121210;
+      --card-bg: rgba(30, 28, 20, 0.9);
+      --glass-border: 1px solid rgba(255, 183, 0, 0.3);
+      --text-main: #e5e5e5;
+      --text-muted: #8a8570;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Retro Grid */
+      background-image: linear-gradient(rgba(255, 183, 0, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 183, 0, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
+    h1 span {
+        color: var(--primary);
+        text-shadow: 0 0 15px rgba(255, 183, 0, 0.4);
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- TRANSLATOR BOX --- */
+    .translator-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(255, 183, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .io-group { margin-bottom: 25px; }
+    
+    .label-row { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+    
+    textarea {
+      width: 100%;
+      height: 120px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid #444;
+      padding: 15px;
+      border-radius: 8px;
+      color: var(--primary);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      resize: vertical;
+      transition: 0.3s;
+    }
+    textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 183, 0, 0.15); }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-action:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+    
+    .btn-action.active { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+
+    /* Flashlight Overlay */
+    #flashOverlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #fff;
+      z-index: 9999;
+      display: none;
+      pointer-events: none;
+    }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(30, 28, 20, 0.9); border: 1px solid rgba(255, 183, 0, 0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '📟'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #0a0a08; border-top: 1px solid #222; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Morse <span>Translator</span></h1>
+    <p class="subtitle">Encode & Decode Morse Code with Sound & Light</p>
+  </header>
+
+  <main>
+    
+    <div class="translator-box">
+      
+      <div class="io-group">
+        <div class="label-row">
+          <span>TEXT INPUT</span>
+          <span style="cursor:pointer" onclick="clearAll()"><i class="fas fa-trash"></i> Clear</span>
+        </div>
+        <textarea id="TextInput" placeholder="Type text here (e.g. SOS)..."></textarea>
+      </div>
+
+      <div class="controls">
+        <button class="btn-action" onclick="swap()"><i class="fas fa-exchange-alt"></i> Swap</button>
+        <button class="btn-action" id="btnPlay"><i class="fas fa-volume-up"></i> Play Audio</button>
+        <button class="btn-action" id="btnFlash"><i class="fas fa-bolt"></i> Flash Light</button>
+        <button class="btn-action" onclick="copyMorse()"><i class="fas fa-copy"></i> Copy Code</button>
+      </div>
+
+      <div class="io-group">
+        <div class="label-row">
+          <span>MORSE CODE OUTPUT</span>
+        </div>
+        <textarea id="MorseInput" placeholder="... --- ..."></textarea>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>What is Morse Code?</h2>
+        <p>
+          Morse Code is a method of telecommunication used to encode text characters as sequences of two different signal durations, called **dots (.)** and **dashes (-)**.
+          It is widely used in aviation, amateur radio, and emergency signaling (SOS).
+        </p>
+        <p>
+          Ye tool aapke normal text ko Morse Code mein badalta hai. Aap isse "Sound" ya "Flashlight" ke zariye secret message bhej sakte hain.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Features</h3>
+        <ul>
+          <li><strong>Audio Player:</strong> Hear the dots and dashes in real telegraph beeps.</li>
+          <li><strong>Flashlight Mode:</strong> Your screen flashes white to signal the code visually.</li>
+          <li><strong>Two-Way:</strong> Convert Text to Morse AND Morse to Text automatically.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Morse Code Translator is a utility for learning and generating Morse signals using audio and visual aids.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="tone-generator.html"><i class="fas fa-wave-square"></i> Tone Generator</a>
+        <a href="text-to-speech.html"><i class="fas fa-microphone-alt"></i> Text to Speech</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <div id="flashOverlay"></div>
+
+  <script>
+    // Morse Dictionary
+    const MORSE_CODE = { 'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.', 'G':'--.', 'H':'....', 'I':'..', 'J':'.---', 'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---', 'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...', 'T':'-', 'U':'..-', 'V':'...-', 'W':'.--', 'X':'-..-', 'Y':'-.--', 'Z':'--..', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', '0':'-----', '.':'.-.-.-', ',':'--..--', '?':'..--..', '\'':'.----.', '!':'-.-.--', '/':'-..-.', '(':'-.--.', ')':'-.--.-', '&':'.-...', ':':'---...', ';':'-.-.-.', '=':'-...-', '+':'.-.-.', '-':'-....-', '_':'..--.-', '"':'.-..-.', '$':'...-..-', '@':'.--.-.', ' ':'/' };
+    
+    // Reverse Dictionary for Decoding
+    const TEXT_CODE = Object.fromEntries(Object.entries(MORSE_CODE).map(([k, v]) => [v, k]));
+
+    const textInput = document.getElementById('TextInput');
+    const morseInput = document.getElementById('MorseInput');
+    const flashOverlay = document.getElementById('flashOverlay');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnFlash = document.getElementById('btnFlash');
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let shouldStop = false;
+
+    // --- ENCODING & DECODING LOGIC ---
+    textInput.addEventListener('input', () => {
+        const text = textInput.value.toUpperCase();
+        let morse = "";
+        for(let char of text) {
+            morse += MORSE_CODE[char] ? MORSE_CODE[char] + " " : char + " ";
+        }
+        morseInput.value = morse.trim();
+    });
+
+    morseInput.addEventListener('input', () => {
+        const morse = morseInput.value.trim().split(" ");
+        let text = "";
+        for(let code of morse) {
+            text += TEXT_CODE[code] ? TEXT_CODE[code] : "";
+        }
+        textInput.value = text;
+    });
+
+    function swap() {
+        // Just focus functionality, but primary is auto-detect
+        textInput.value = "";
+        morseInput.value = "";
+    }
+
+    function clearAll() {
+        textInput.value = "";
+        morseInput.value = "";
+        stopSequence();
+    }
+
+    function copyMorse() {
+        navigator.clipboard.writeText(morseInput.value);
+        alert("Morse Code Copied!");
+    }
+
+    // --- AUDIO & FLASH LOGIC ---
+    
+    const DOT_TIME = 100; // ms
+    const DASH_TIME = 300;
+    const SYMBOL_BREAK = 100;
+    const LETTER_BREAK = 300;
+    const WORD_BREAK = 700;
+
+    function createOscillator() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.value = 600; // 600Hz Tone
+        return { osc, gain };
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function playSignal(type, useAudio, useFlash) {
+        if(shouldStop) return;
+
+        const duration = type === '.' ? DOT_TIME : DASH_TIME;
+
+        // Start Audio
+        if(useAudio) {
+            const sound = createOscillator();
+            sound.gain.value = 0.5;
+            sound.osc.start();
+            sound.gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            
+            setTimeout(() => {
+                sound.osc.stop();
+            }, duration);
+        }
+
+        // Start Flash
+        if(useFlash) {
+            flashOverlay.style.display = 'block';
+        }
+
+        await sleep(duration);
+
+        // Stop Flash
+        if(useFlash) {
+            flashOverlay.style.display = 'none';
+        }
+    }
+
+    async function runSequence(useAudio, useFlash) {
+        const code = morseInput.value;
+        if(!code) return;
+
+        isPlaying = true;
+        shouldStop = false;
+        
+        // Update Buttons UI
+        if(useAudio) { btnPlay.innerHTML = '<i class="fas fa-stop"></i> Stop'; btnPlay.classList.add('active'); }
+        if(useFlash) { btnFlash.innerHTML = '<i class="fas fa-stop"></i> Stop'; btnFlash.classList.add('active'); }
+
+        for (let char of code) {
+            if(shouldStop) break;
+
+            if (char === '.') {
+                await playSignal('.', useAudio, useFlash);
+                await sleep(SYMBOL_BREAK);
+            } else if (char === '-') {
+                await playSignal('-', useAudio, useFlash);
+                await sleep(SYMBOL_BREAK);
+            } else if (char === ' ') {
+                await sleep(LETTER_BREAK);
+            } else if (char === '/') {
+                await sleep(WORD_BREAK);
+            }
+        }
+
+        stopSequence();
+    }
+
+    function stopSequence() {
+        shouldStop = true;
+        isPlaying = false;
+        flashOverlay.style.display = 'none';
+        
+        btnPlay.innerHTML = '<i class="fas fa-volume-up"></i> Play Audio';
+        btnPlay.classList.remove('active');
+        
+        btnFlash.innerHTML = '<i class="fas fa-bolt"></i> Flash Light';
+        btnFlash.classList.remove('active');
+    }
+
+    btnPlay.addEventListener('click', () => {
+        if(isPlaying) stopSequence();
+        else runSequence(true, false);
+    });
+
+    btnFlash.addEventListener('click', () => {
+        if(isPlaying) stopSequence();
+        else runSequence(false, true); // Audio false, Flash true
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>My IP Address Checker - Check Location & ISP (Free)</title>
+  
+  <meta name="description" content="Check your public IP address, location, ISP, and network details instantly. Free IP lookup tool with live map location.">
+  
+  <meta name="keywords" content="what is my ip, ip address checker, check my ip location, ip tracker, find my isp, my ip info, ip lookup tool, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="My IP Address - Check Location & ISP">
+  <meta property="og:description" content="Find your IP Address, City, Country, and ISP instantly.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* --- THEME: CYBER GREEN FOR NETWORK/IP --- */
+    :root {
+      --primary: #00ff88; /* Green for IP/Status */
+      --secondary: #00b8ff;
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(16, 26, 41, 0.7);
+      --glass-border: 1px solid rgba(0, 255, 136, 0.15);
+      --text-main: #e5e5e5;
+      --text-muted: #a0aec0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Green Matrix-style subtle gradient */
+      background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05), transparent 20%), 
+                        radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.05), transparent 20%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3)); }
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    /* --- MAIN IP DISPLAY --- */
+    .ip-display-card {
+      background: rgba(0, 255, 136, 0.03);
+      border: 1px solid var(--primary);
+      padding: 40px 20px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ip-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; }
+    .ip-address { font-size: 3rem; font-weight: 700; color: #fff; font-family: 'Courier New', monospace; margin-bottom: 10px; }
+    .ip-status { display: inline-block; padding: 5px 15px; background: rgba(0, 255, 136, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--primary); }
+    
+    /* Loading Animation */
+    .loader { display: inline-block; width: 20px; height: 20px; border: 2px solid var(--primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; vertical-align: middle; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* --- DETAILS GRID --- */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .detail-card {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 20px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    .detail-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .detail-icon { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
+    .detail-title { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+    .detail-value { font-size: 1.1rem; color: #fff; font-weight: 600; word-break: break-word; }
+
+    /* --- MAP CONTAINER --- */
+    #map {
+      height: 350px;
+      width: 100%;
+      border-radius: 20px;
+      border: var(--glass-border);
+      margin-bottom: 40px;
+      z-index: 1;
+    }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 40px; }
+    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '✔'; color: var(--primary); position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @media (max-width: 600px) { h1 { font-size: 2rem; } .ip-address { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>My IP Address Checker</h1>
+    <p class="subtitle">See your public IP, location, ISP and network details instantly.</p>
+  </header>
+
+  <main>
+    
+    <div class="ip-display-card">
+      <div class="ip-label">Your IPv4 Address is</div>
+      <div class="ip-address" id="ipDisplay"><span class="loader"></span></div>
+      <div class="ip-status" id="ipStatus">Scanning Network...</div>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fas fa-network-wired"></i></div>
+        <div class="detail-title">Internet Provider (ISP)</div>
+        <div class="detail-value" id="ispDisplay">Loading...</div>
+      </div>
+      
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fas fa-city"></i></div>
+        <div class="detail-title">City & Region</div>
+        <div class="detail-value" id="cityDisplay">Loading...</div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fas fa-globe-americas"></i></div>
+        <div class="detail-title">Country</div>
+        <div class="detail-value" id="countryDisplay">Loading...</div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="detail-title">Coordinates</div>
+        <div class="detail-value" id="coordDisplay">Loading...</div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>What is my IP Address?</h2>
+        <p>
+          An **IP Address (Internet Protocol)** is a unique address that identifies a device on the internet or a local network. 
+          XIZOA Hub's **IP Checker** helps you find your public IP, geographic location, and ISP details instantly.
+        </p>
+        <p>
+          Ye tool aapka exact location, internet provider (Jio, Airtel, etc.) aur IP address batata hai. Hacker style green theme ke saath!
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Why Check Your IP?</h3>
+        <ul>
+          <li><strong>Verify VPN:</strong> Check if your VPN is actually hiding your location.</li>
+          <li><strong>Security:</strong> Know what information websites can see about you.</li>
+          <li><strong>Network Troubleshooting:</strong> Find connection details easily.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: Is this my exact location?</strong><br>
+        A: IP-based location is approximate (usually city-level accuracy).</p>
+        <p><strong>Q: Can I hide my IP?</strong><br>
+        A: Yes, using a VPN will change the IP shown here.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>IP Address Checker provides detailed network information including location, ISP, and coordinates with a live map.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="password-generator.html"><i class="fas fa-key"></i> Password Generator</a>
+        <a href="insta-video-saver.html"><i class="fab fa-instagram"></i> Insta Saver</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    const ipDisplay = document.getElementById('ipDisplay');
+    const ipStatus = document.getElementById('ipStatus');
+    const ispDisplay = document.getElementById('ispDisplay');
+    const cityDisplay = document.getElementById('cityDisplay');
+    const countryDisplay = document.getElementById('countryDisplay');
+    const coordDisplay = document.getElementById('coordDisplay');
+
+    // Initialize Map (Default view)
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap contributors & CartoDB'
+    }).addTo(map);
+
+    // Fetch IP Data
+    async function fetchIP() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+
+        // Update UI
+        ipDisplay.innerText = data.ip;
+        ipStatus.innerHTML = '<i class="fas fa-wifi"></i> Connected & Secured';
+        
+        ispDisplay.innerText = data.org || data.asn;
+        cityDisplay.innerText = `${data.city}, ${data.region}`;
+        countryDisplay.innerText = `${data.country_name} (${data.country_code})`;
+        coordDisplay.innerText = `${data.latitude}, ${data.longitude}`;
+
+        // Update Map
+        if(data.latitude && data.longitude) {
+            map.setView([data.latitude, data.longitude], 13);
+            L.marker([data.latitude, data.longitude])
+             .addTo(map)
+             .bindPopup(`<b>${data.city}</b><br>IP Location Approximate`)
+             .openPopup();
+        }
+
+      } catch (error) {
+        console.error("Error fetching IP:", error);
+        ipDisplay.innerText = "Unavailable";
+        ipStatus.innerText = "Could not fetch IP details";
+        // Fallback for adblockers
+        ispDisplay.innerText = "Please disable AdBlock to see details.";
+      }
+    }
+
+    // Run on load
+    fetchIP();
+  </script>
+</body>
+</html>

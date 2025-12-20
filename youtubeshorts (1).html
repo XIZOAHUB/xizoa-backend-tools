@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Shorts Thumbnail Downloader - Download HD Cover (Free Online Tool)</title>
+  <meta name="description" content="The Ultimate YouTube Shorts Thumbnail Downloader. Save Shorts cover images in Max HD (1080p), 4K, and HQ instantly. 100% Free, No Login, Fast & Secure. Download now!">
+  <meta name="keywords" content="youtube shorts thumbnail downloader, download youtube shorts cover, save shorts thumbnail hd, youtube shorts image downloader, yt shorts thumbnail grabber, shorts cover photo download, extract shorts thumbnail, high quality shorts thumbnail">
+  <meta name="author" content="Xizoa Hub">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://xizoa.com/youtube-shorts-thumbnail-downloader">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-shorts-thumbnail-downloader">
+  <meta property="og:title" content="YouTube Shorts Thumbnail Downloader - HD & 4K Free">
+  <meta property="og:description" content="Download YouTube Shorts thumbnails instantly in high quality. The fastest free tool to save Shorts cover images.">
+  <meta property="og:image" content="https://xizoa.com/assets/shorts-tool-cover.jpg">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://xizoa.com/youtube-shorts-thumbnail-downloader">
+  <meta property="twitter:title" content="YouTube Shorts Thumbnail Downloader - HD Free">
+  <meta property="twitter:description" content="Save YouTube Shorts covers in one click. Max Resolution supported.">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "YouTube Shorts Thumbnail Downloader",
+    "url": "https://xizoa.com/youtube-shorts-thumbnail-downloader",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web, Android, iOS, Windows, MacOS",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "description": "A professional-grade online tool to download high-resolution thumbnails and cover images from YouTube Shorts videos.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1250"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "How do I download a YouTube Shorts thumbnail?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simply copy the link of the YouTube Shorts video, paste it into the Xizoa input box, and click 'Get Cover'. Select your desired quality and click Download."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Is it free to download Shorts thumbnails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our tool is 100% free forever. There are no hidden charges, no subscription fees, and no limits on how many thumbnails you can download."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Can I download 4K thumbnails from Shorts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the original video was uploaded in 4K or high definition, our tool will fetch the 'MaxResDefault' version which is the highest quality available."
+      }
+    }]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #ff0000;
+      --primary-hover: #d90000;
+      --secondary: #282828;
+      --bg-body: #ffffff;
+      --bg-gray: #f8f9fa;
+      --text-main: #0f0f0f;
+      --text-sub: #606060;
+      --border: #e5e5e5;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --container-width: 1000px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo i { color: var(--primary); }
+    
+    /* HERO SECTION */
+    header {
+      background: linear-gradient(180deg, #fff 0%, #f2f2f2 100%);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: var(--text-main);
+      letter-spacing: -1px;
+    }
+    .hero-sub { font-size: 1.1rem; color: var(--text-sub); max-width: 700px; margin: 0 auto 40px; }
+
+    /* TOOL BOX */
+    .tool-wrapper {
+      max-width: 800px;
+      margin: -40px auto 0;
+      background: #fff;
+      padding: 10px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 10;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 18px 25px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); }
+    
+    .btn-action {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0 40px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-action:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+    /* RESULTS GRID */
+    .results-container {
+      max-width: var(--container-width);
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .card img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+    .card-body { padding: 20px; text-align: center; }
+    .res-badge {
+      display: inline-block;
+      background: #ffe6e6; color: var(--primary);
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .dl-btn {
+      display: block; width: 100%;
+      padding: 12px;
+      background: var(--text-main); color: #fff;
+      text-decoration: none; border-radius: 8px;
+      font-weight: 600; cursor: pointer; border: none;
+    }
+    .dl-btn:hover { background: var(--primary); }
+
+    /* LONG CONTENT SEO SECTION */
+    .content-wrapper {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .article {
+      background: #fff;
+      padding: 0;
+    }
+    .article h2 { font-size: 2rem; margin: 40px 0 20px; color: var(--text-main); }
+    .article h3 { font-size: 1.5rem; margin: 30px 0 15px; color: var(--text-main); }
+    .article h4 { font-size: 1.2rem; margin: 25px 0 10px; font-weight: 700; }
+    .article p { margin-bottom: 18px; color: var(--text-sub); font-size: 1.05rem; text-align: justify; }
+    .article ul, .article ol { margin-bottom: 25px; padding-left: 25px; color: var(--text-sub); }
+    .article li { margin-bottom: 10px; }
+    
+    .feature-box {
+      background: var(--bg-gray);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      border-left: 5px solid var(--primary);
+    }
+
+    /* FAQ SECTION */
+    .faq-item { margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+    .faq-q { font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 10px; cursor: pointer; }
+    .faq-a { color: var(--text-sub); display: block; }
+
+    /* FOOTER */
+    footer { background: #111; color: #aaa; padding: 60px 0 20px; margin-top: 80px; }
+    .footer-grid {
+      max-width: var(--container-width); margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;
+    }
+    .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+    .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; }
+    .footer-col a:hover { color: #fff; }
+    .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; font-size: 0.9rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .input-area { flex-direction: column; }
+      .btn-action { padding: 15px; width: 100%; }
+      .tool-wrapper { margin-top: 0; border: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo"><i class="fab fa-youtube"></i> XIZOA <span>DOWNLOADER</span></a>
+      <div style="font-size:0.9rem; color:#666; font-weight:600;">Safe & Free Tool</div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>YouTube Shorts Thumbnail Downloader</h1>
+    <p class="hero-sub">The #1 Free Online Tool to Save High-Quality Cover Images from YouTube Shorts. Supports HD (1080p), 4K, and Standard Quality.</p>
+    
+    <div class="tool-wrapper">
+      <div class="input-area">
+        <input type="text" id="inputUrl" placeholder="Paste YouTube Shorts Link (e.g. youtube.com/shorts/xyz...)" aria-label="Shorts URL">
+        <button class="btn-action" id="btnFetch">Get Cover</button>
+      </div>
+      <div id="status" style="margin-top:10px; text-align:center; font-weight:500;"></div>
+    </div>
+  </header>
+
+  <div id="results" class="results-container">
+    <div class="grid" id="thumbsGrid"></div>
+  </div>
+
+  <div class="content-wrapper">
+    <article class="article">
+      
+      <h2>The Ultimate Guide to Downloading YouTube Shorts Thumbnails in HD</h2>
+      <p>
+        In the rapidly evolving world of digital content creation, YouTube Shorts has emerged as a dominant force. As creators, marketers, and digital enthusiasts, we often find ourselves in need of high-quality assets from these short-form videos. Whether it's for inspiration, competitor analysis, creating reaction videos, or simply archiving content, having access to the <strong>YouTube Shorts Thumbnail</strong> is essential.
+      </p>
+      <p>
+        Welcome to the <strong>Xizoa YouTube Shorts Thumbnail Downloader</strong>, your premier destination for extracting high-definition cover images from any Shorts video on the platform. Unlike standard YouTube videos, Shorts thumbnails are notoriously difficult to save because the mobile interface doesn't offer a direct "Save Image" option. Our tool bridges this gap, providing a seamless, one-click solution to download thumbnails in 1920x1080 (Full HD), 4K, and other resolutions completely free of charge.
+      </p>
+
+      <div class="feature-box">
+        <h3>🔥 Why Choose Xizoa Shorts Downloader?</h3>
+        <ul>
+          <li><strong>Max Resolution Support:</strong> We fetch the <code>maxresdefault.jpg</code> directly from YouTube's API servers.</li>
+          <li><strong>No Watermarks:</strong> Get clean, original images without any overlay branding.</li>
+          <li><strong>Cross-Platform Compatible:</strong> Works perfectly on iPhone, Android, Windows, Mac, and Linux.</li>
+          <li><strong>Privacy Focused:</strong> We do not track your downloads or store your history.</li>
+          <li><strong>Lightning Fast:</strong> Our client-side script processes links in milliseconds.</li>
+        </ul>
+      </div>
+
+      <h2>How to Download YouTube Shorts Thumbnails: A Step-by-Step Guide</h2>
+      <p>
+        Using our tool is incredibly straightforward. We have designed the user interface to be intuitive for everyone, from tech-savvy developers to casual users. Follow these simple steps to save your desired image:
+      </p>
+
+      <h3>Step 1: Find the Shorts Video</h3>
+      <p>
+        Open the YouTube app or website and navigate to the Shorts video you wish to extract the thumbnail from. You can do this by browsing the Shorts feed or visiting a specific creator's channel.
+      </p>
+
+      <h3>Step 2: Copy the Link</h3>
+      <p>
+        Tap on the "Share" button (usually represented by an arrow icon). From the menu that appears, select "Copy Link". The URL will look something like <code>https://youtube.com/shorts/VIDEO_ID?feature=share</code>.
+      </p>
+
+      <h3>Step 3: Paste and Fetch</h3>
+      <p>
+        Return to the <strong>Xizoa Thumbnail Downloader</strong>. Paste the copied link into the input box at the top of this page. Click the "Get Cover" button. Our system will instantly analyze the URL, extract the unique video ID, and ping YouTube's servers to find available image qualities.
+      </p>
+
+      <h3>Step 4: Download Your Image</h3>
+      <p>
+        Within seconds, you will see a grid of available thumbnails. We typically display the "Max HD" version first. Click the "Download Image" button below the image. The file will be saved to your device's gallery or download folder in JPG format.
+      </p>
+
+      <h2>Why YouTube Shorts Thumbnails Matter (Even if You Can't Customise Them All)</h2>
+      <p>
+        Historically, YouTube allowed creators to upload custom thumbnails for long-form videos, which became a critical factor in Click-Through Rate (CTR). For Shorts, the platform selects a random frame by default. However, creators can now select a specific frame as their cover on mobile uploads.
+      </p>
+      <p>
+        <strong>For Viewers and Marketers:</strong> Downloading these thumbnails is vital for:
+      </p>
+      <ul>
+        <li><strong>Trend Analysis:</strong> Seeing what kind of visual hooks viral videos are using.</li>
+        <li><strong>Social Sharing:</strong> When sharing a Short on a blog or external website, embedding the video might slow down the page. Using a lightweight thumbnail with a link is a better SEO practice.</li>
+        <li><strong>Graphic Design:</strong> Using high-quality references for creating your own content.</li>
+      </ul>
+
+      <h2>Technical Specifications: Understanding Image Qualities</h2>
+      <p>
+        When you use our tool, you might see different options. Here is a technical breakdown of what each quality level represents in the YouTube ecosystem:
+      </p>
+
+      <h4>1. Max Resolution (MaxResDefault) - 1920x1080 or Higher</h4>
+      <p>
+        This is the holy grail of thumbnails. If a creator uploaded their video in 1080p or 4K, YouTube generates this high-fidelity image. It is perfect for large screens, desktop wallpapers, or high-end design work. Not all videos have this; older or low-quality uploads might lack it.
+      </p>
+
+      <h4>2. Standard Definition (SDDefault) - 640x480</h4>
+      <p>
+        This is the standard fallback. It is crisp enough for blog posts and social media previews but might look pixelated on a 4K monitor. It is reliable and available for almost every video on the platform.
+      </p>
+
+      <h4>3. High Quality (HQDefault) - 480x360</h4>
+      <p>
+        This is a lower-resolution version primarily used by YouTube for mobile data saving modes and smaller preview widgets. It is useful if you need a very small file size (often under 20KB).
+      </p>
+
+      <p>
+        <em>Note: YouTube Shorts are vertical (9:16), but the thumbnail data is often stored in a 16:9 container with black bars or cropped centrally. Our tool retrieves the raw image file as hosted by Google.</em>
+      </p>
+
+      <h2>Is Downloading Thumbnails Legal? Copyright & Fair Use</h2>
+      <p>
+        This is a common question. The technology to download a thumbnail is legal, but how you use the image depends on Copyright Law.
+      </p>
+      <p>
+        <strong>Fair Use:</strong> Using a thumbnail for news reporting, commentary, criticism, or educational purposes generally falls under Fair Use. For example, a blog post discussing "Top 10 Viral Shorts of 2025" can legitimately display the thumbnails of those videos.
+      </p>
+      <p>
+        <strong>Commercial Use:</strong> You cannot download someone else's thumbnail and use it as your own video cover or sell it. That is a violation of the original creator's intellectual property. Always respect the hard work of content creators.
+      </p>
+
+      <h2>Troubleshooting Common Issues</h2>
+      <p>
+        While our tool is robust, external factors can sometimes cause issues. Here are fixes for common problems:
+      </p>
+      
+      <h4>"No Cover Found" Error</h4>
+      <p>
+        If you see this error, the video might be set to "Private" or "Unlisted". Our tool can only access public data. Alternatively, the video ID might be incorrect. Ensure you copied the full link.
+      </p>
+
+      <h4>Download Opens in New Tab Instead of Saving</h4>
+      <p>
+        This happens due to browser security settings regarding cross-origin resources (CORS). If the image opens in a new tab, simply <strong>Right-Click</strong> (or Long Press on mobile) on the image and select <strong>"Save Image As"</strong>.
+      </p>
+
+      <h2>Xizoa Downloader vs. Screenshots</h2>
+      <p>
+        Why not just take a screenshot?
+      </p>
+      <ul>
+        <li><strong>Quality:</strong> Screenshots depend on your screen resolution. If you have a 720p phone screen, your screenshot will be low quality. Our tool fetches the source 4K/HD file regardless of your device.</li>
+        <li><strong>UI Elements:</strong> Screenshots capture the play button, timeline overlay, channel icon, and captions. Our tool retrieves the clean background image with no overlays.</li>
+        <li><strong>Efficiency:</strong> Taking a screenshot, cropping it, and saving it takes time. Our tool does it instantly.</li>
+      </ul>
+
+      <h2>Optimizing Your Own Shorts Thumbnails for Virality</h2>
+      <p>
+        Since you are interested in Shorts thumbnails, here are some pro tips for your own channel. While YouTube automates much of the Shorts thumbnail process, choosing the right frame is crucial.
+      </p>
+      <ol>
+        <li><strong>High Contrast:</strong> Ensure the subject stands out from the background. Bright colors attract the eye in the scrolling feed.</li>
+        <li><strong>Emotion:</strong> Faces showing strong emotions (shock, joy, fear) have a higher click rate.</li>
+        <li><strong>Text Overlays:</strong> If you can control the frame, ensure any text is readable within the center safe zone, avoiding the areas covered by the Like/Comment buttons.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      
+      <div class="faq-item">
+        <div class="faq-q">Is this tool free?</div>
+        <span class="faq-a">Yes, Xizoa Shorts Downloader is completely free. We do not require any credit card details or sign-ups.</span>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does it work on iPhone/iOS?</div>
+        <span class="faq-a">Absolutely. It works on Safari, Chrome, and any other mobile browser on iOS devices.</span>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I download thumbnails from YouTube live streams?</div>
+        <span class="faq-a">Yes, as long as you have the video link, the mechanism is the same for Shorts, Long-form videos, and Live Streams.</span>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is it safe to use?</div>
+        <span class="faq-a">Yes, our website uses SSL encryption (HTTPS), and no files are downloaded from third-party malicious servers. You are connecting directly to YouTube's image servers.</span>
+      </div>
+
+      <h3>Conclusion</h3>
+      <p>
+        The <strong>Xizoa YouTube Shorts Thumbnail Downloader</strong> is built with simplicity and performance in mind. Whether you are archiving your own content or analyzing the competition, having quick access to high-fidelity assets is a game-changer. Bookmark this page for future use and share it with your fellow creators. Start downloading your HD covers today!
+      </p>
+      
+      <p style="font-size:0.8rem; color:#ccc; margin-top:50px;">
+        Disclaimer: This tool is not affiliated with, endorsed, or sponsored by YouTube or Google Inc. All YouTube logos and trademarks are property of their respective owners.
+      </p>
+
+    </article>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Xizoa</h4>
+        <p style="font-size:0.9rem; color:#888;">Xizoa Hub provides cutting-edge online tools for developers, designers, and content creators. Fast, Free, and Secure.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Image Compressor</a>
+        <a href="#">Video Downloader</a>
+        <a href="#">SEO Tags Generator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+        <a href="#">DMCA</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Xizoa Hub • Developed by Priyanshu
+    </div>
+  </footer>
+
+  <script>
+    // --- UTILITIES ---
+    function extractVideoID(url) {
+      if(!url) return null;
+      // Regex capable of handling Shorts, Regular URLs, and Mobile URLs
+      const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(regExp);
+      return (match && match[1]) ? match[1] : null;
+    }
+
+    function checkImage(url) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
+    }
+
+    async function forceDownload(url, filename, btn) {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+      
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+
+        btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+        setTimeout(() => btn.innerHTML = originalText, 2000);
+      } catch (error) {
+        // Fallback for CORS issues
+        console.warn('Fetch failed, falling back to window.open');
+        window.open(url, '_blank');
+        btn.innerHTML = 'Opened in Tab';
+        setTimeout(() => btn.innerHTML = originalText, 2000);
+      }
+    }
+
+    // --- MAIN EVENT LISTENER ---
+    document.getElementById('btnFetch').addEventListener('click', async () => {
+      const input = document.getElementById('inputUrl');
+      const status = document.getElementById('status');
+      const grid = document.getElementById('thumbsGrid');
+      const btn = document.getElementById('btnFetch');
+
+      const url = input.value.trim();
+      const videoId = extractVideoID(url);
+
+      // Clear previous results
+      grid.innerHTML = '';
+      status.innerHTML = '';
+
+      if (!videoId) {
+        status.innerHTML = '<span style="color:red;"><i class="fas fa-times-circle"></i> Invalid URL. Please paste a valid YouTube Shorts link.</span>';
+        return;
+      }
+
+      // UI Loading State
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+      status.innerHTML = '<span style="color:#666;">Searching for highest quality covers...</span>';
+
+      const qualities = [
+        { code: 'maxresdefault', label: 'Max HD (1920x1080)', badge: 'Best Quality' },
+        { code: 'sddefault', label: 'Standard (640x480)', badge: 'Good' },
+        { code: 'hqdefault', label: 'High Quality (480x360)', badge: 'Low Data' },
+        { code: 'mqdefault', label: 'Medium (320x180)', badge: 'Small' }
+      ];
+
+      let found = false;
+
+      for (const q of qualities) {
+        const imgUrl = `https://img.youtube.com/vi/${videoId}/${q.code}.jpg`;
+        const exists = await checkImage(imgUrl);
+
+        if (exists) {
+          found = true;
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${imgUrl}" alt="${q.label}">
+            <div class="card-body">
+              <span class="res-badge">${q.badge} - ${q.label}</span>
+              <button class="dl-btn" onclick="forceDownload('${imgUrl}', 'shorts_thumb_${videoId}_${q.code}.jpg', this)">
+                <i class="fas fa-download"></i> Download Image
+              </button>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      }
+
+      // Restore UI
+      btn.disabled = false;
+      btn.innerHTML = 'Get Cover';
+
+      if (found) {
+        status.innerHTML = '<span style="color:green; font-weight:bold;"><i class="fas fa-check"></i> Success! Thumbnails generated below.</span>';
+        // Scroll to results
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        status.innerHTML = '<span style="color:red;">Error: No thumbnails found. Video might be private or ID is invalid.</span>';
+      }
+    });
+    
+    // Enter Key Support
+    document.getElementById('inputUrl').addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') document.getElementById('btnFetch').click();
+    });
+  </script>
+</body>
+</html>

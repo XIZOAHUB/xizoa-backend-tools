@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mouse Polling Rate Checker - Test Mouse Hz Online (Free)</title>
+  
+  <meta name="description" content="Test your mouse polling rate (Hz) instantly. Check if your gaming mouse is running at 125Hz, 500Hz, or 1000Hz. Free online mouse performance test.">
+  
+  <meta name="keywords" content="mouse polling rate checker, mouse hz test, check mouse polling rate, gaming mouse test, 1000hz mouse test, mouse lag test, online mouse rate checker, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Mouse Hz Checker - Test Polling Rate">
+  <meta property="og:description" content="Check your gaming mouse performance in real-time.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: GAMER GREEN & DARK MATTER --- */
+    :root {
+      --primary: #39ff14; /* Neon Green */
+      --secondary: #008f11; /* Darker Green */
+      --bg-dark: #050505;
+      --card-bg: rgba(20, 20, 20, 0.9);
+      --glass-border: 1px solid rgba(57, 255, 20, 0.3);
+      --text-main: #e5e5e5;
+      --text-muted: #888;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Hexagon Mesh Background (Gamer Vibe) */
+      background-image: 
+        linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(60deg, #1a1a1a 25%, transparent 25.5%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+        linear-gradient(60deg, #1a1a1a 25%, transparent 25.5%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+      background-size: 40px 70px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span { color: var(--primary); text-shadow: 0 0 20px rgba(57, 255, 20, 0.6); }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- TEST AREA --- */
+    .test-container {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .hz-display {
+      font-size: 5rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 20px var(--primary);
+      margin: 20px 0;
+      line-height: 1;
+    }
+    .hz-unit { font-size: 1.5rem; color: var(--text-muted); vertical-align: super; }
+
+    .instructions {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+    }
+
+    .stat-box {
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .stat-val { font-size: 1.2rem; font-weight: 700; color: #fff; margin-top: 5px; }
+    .stat-val.max { color: var(--primary); }
+
+    /* --- REALTIME CHART (Simple CSS Bar) --- */
+    .chart-container {
+      height: 4px;
+      width: 100%;
+      background: #222;
+      margin-top: 20px;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .chart-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      transition: width 0.1s linear;
+    }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🖱️'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #020202; border-top: 1px solid #1a1a1a; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes pulse { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+    @media (max-width: 600px) { h1 { font-size: 2rem; } .hz-display { font-size: 3.5rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Mouse Polling Rate <span>Checker</span></h1>
+    <p class="subtitle">Test your Gaming Mouse Hz (125, 500, 1000Hz) Instantly</p>
+  </header>
+
+  <main>
+    
+    <div class="test-container" id="testArea">
+      
+      <div class="instructions">
+        <i class="fas fa-mouse-pointer"></i> Move your mouse in circles here to start
+      </div>
+
+      <div class="hz-display">
+        <span id="currentHz">0</span><span class="hz-unit">Hz</span>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-bar" id="chartBar"></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Average Rate</div>
+          <div class="stat-val" id="avgHz">0 Hz</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Max Rate</div>
+          <div class="stat-val max" id="maxHz">0 Hz</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Status</div>
+          <div class="stat-val" id="statusText">Idle</div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>What is Mouse Polling Rate?</h2>
+        <p>
+          Polling Rate (measured in Hz) defines how often your mouse reports its position to the computer. 
+          A higher polling rate (e.g., **1000Hz**) means less lag and smoother movement, which is crucial for competitive gaming (FPS games like CS:GO, Valorant).
+        </p>
+        <p>
+          Ye tool check karta hai ki aapka mouse 1 second mein kitni baar signal bhej raha hai. Gaming ke liye 1000Hz best mana jata hai.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Why Check Polling Rate?</h3>
+        <ul>
+          <li><strong>Gaming Performance:</strong> Ensure you are getting the speed you paid for.</li>
+          <li><strong>Troubleshooting:</strong> Detect if your mouse driver is malfunctioning.</li>
+          <li><strong>Wireless Lag:</strong> Check if your wireless mouse has connection drops.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ Standard Rates</h3>
+        <p><strong>125 Hz:</strong> Standard Office Mouse (8ms delay)</p>
+        <p><strong>500 Hz:</strong> Good Gaming Mouse (2ms delay)</p>
+        <p><strong>1000 Hz:</strong> Pro Gaming Mouse (1ms delay)</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Mouse Hz Checker is a precision tool for gamers to test hardware performance and sensor capability.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="ip-checker.html"><i class="fas fa-globe-asia"></i> IP Checker</a>
+        <a href="image-resizer.html"><i class="fas fa-expand-arrows-alt"></i> Image Tools</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const currentHzEl = document.getElementById('currentHz');
+    const avgHzEl = document.getElementById('avgHz');
+    const maxHzEl = document.getElementById('maxHz');
+    const statusText = document.getElementById('statusText');
+    const chartBar = document.getElementById('chartBar');
+    const testArea = document.body; // Capture movement everywhere
+
+    let timestamps = [];
+    let maxHz = 0;
+    let isMoving = false;
+    let stopTimeout;
+
+    // Listen for mouse movements
+    document.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        
+        // Add timestamp
+        timestamps.push(now);
+        
+        // Remove timestamps older than 1 second (1000ms)
+        while (timestamps.length > 0 && timestamps[0] <= now - 1000) {
+            timestamps.shift();
+        }
+
+        // Calculate Rate (Events per second)
+        const currentRate = timestamps.length;
+        
+        // Update UI
+        currentHzEl.innerText = currentRate;
+        statusText.innerText = "Scanning...";
+        statusText.style.color = "var(--primary)";
+        
+        // Update Chart Bar (0 to 1000Hz scale)
+        const percent = Math.min((currentRate / 1000) * 100, 100);
+        chartBar.style.width = `${percent}%`;
+
+        // Update Max
+        if (currentRate > maxHz) {
+            maxHz = currentRate;
+            maxHzEl.innerText = maxHz + " Hz";
+        }
+
+        // Update Average (Rough calculation for display)
+        if (currentRate > 10) {
+           avgHzEl.innerText = "~" + currentRate + " Hz";
+        }
+
+        // Handle Stopping logic
+        clearTimeout(stopTimeout);
+        stopTimeout = setTimeout(() => {
+            statusText.innerText = "Idle";
+            statusText.style.color = "var(--text-muted)";
+            currentHzEl.innerText = "0";
+            chartBar.style.width = "0%";
+            timestamps = []; // Reset buffer
+        }, 100); // Reset if mouse stops for 100ms
+    });
+
+  </script>
+</body>
+</html>

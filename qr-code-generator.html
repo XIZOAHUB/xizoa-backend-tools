@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Free QR Code Generator - Create Custom QR Codes Online (High Quality)</title>
+  <meta name="description" content="Generate free, custom QR Codes for URLs, Text, Wi-Fi, and VCards instantly. Download high-resolution PNG QR codes. No sign-up required. Fast, Secure & Free.">
+  <meta name="keywords" content="qr code generator, create qr code free, online qr code maker, custom qr code, qr code for link, wifi qr code generator, static qr code, download qr code png">
+  <meta name="author" content="Xizoa Hub">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://xizoa.com/qr-code-generator">
+
+  <meta property="og:title" content="Free QR Code Generator - Xizoa Hub">
+  <meta property="og:description" content="Create instant, high-quality QR Codes for any link or text. Download PNG for free.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Free QR Code Generator",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A free online tool to generate static QR codes for URLs, text, and contact information."
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #007bff; /* Professional Blue */
+      --primary-hover: #0056b3;
+      --bg-body: #ffffff;
+      --bg-gray: #f8f9fa;
+      --text-dark: #212529;
+      --text-gray: #6c757d;
+      --border: #dee2e6;
+      --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+      --container: 1000px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+    body { background-color: var(--bg-body); color: var(--text-dark); line-height: 1.6; }
+
+    /* NAVBAR */
+    nav { border-bottom: 1px solid var(--border); padding: 15px 0; position: sticky; top: 0; background: rgba(255,255,255,0.95); z-index: 100; backdrop-filter: blur(5px); }
+    .nav-box { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.4rem; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo i { color: var(--primary); }
+
+    /* HEADER */
+    header { background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%); padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; color: var(--text-dark); letter-spacing: -1px; }
+    .sub-head { font-size: 1.1rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 30px; }
+
+    /* TOOL BOX */
+    .generator-wrapper {
+      max-width: 800px; margin: -30px auto 0; background: #fff; padding: 30px;
+      border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border);
+      position: relative; z-index: 10;
+    }
+
+    .input-area { display: flex; gap: 10px; margin-bottom: 20px; }
+    input[type="text"] {
+      flex: 1; padding: 15px 20px; border: 2px solid var(--border); border-radius: 8px;
+      font-size: 1rem; outline: none; transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); }
+    
+    .btn-gen {
+      background: var(--primary); color: #fff; border: none; padding: 0 30px;
+      border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s;
+      white-space: nowrap; font-size: 1rem;
+    }
+    .btn-gen:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+    /* RESULT AREA */
+    .qr-output {
+      display: none; /* Hidden by default */
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px dashed var(--border);
+      animation: fadeIn 0.5s ease;
+    }
+    .qr-canvas {
+      background: #fff; padding: 15px; border: 1px solid var(--border);
+      display: inline-block; border-radius: 10px; margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .btn-dl {
+      display: inline-block; background: #28a745; color: #fff; padding: 10px 25px;
+      border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.2s;
+    }
+    .btn-dl:hover { background: #218838; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); }
+
+    /* CONTENT SEO */
+    .content-area { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+    .content-area h2 { font-size: 1.8rem; margin: 40px 0 20px; color: #111; }
+    .content-area h3 { font-size: 1.4rem; margin: 30px 0 15px; color: #333; }
+    .content-area p { margin-bottom: 15px; color: #555; text-align: justify; }
+    .content-area ul { margin-bottom: 20px; padding-left: 20px; color: #555; }
+    .content-area li { margin-bottom: 8px; }
+    
+    .faq-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
+    .faq-q { font-weight: 700; color: #111; margin-bottom: 5px; }
+
+    /* FOOTER */
+    footer { background: #111; color: #bbb; padding: 60px 0 20px; margin-top: 80px; }
+    .footer-container { max-width: var(--container); margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    .footer-col h4 { color: #fff; margin-bottom: 20px; }
+    .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; font-size: 0.95rem; }
+    .footer-col a:hover { color: var(--primary); }
+    .copy { text-align: center; border-top: 1px solid #333; margin-top: 50px; padding-top: 20px; font-size: 0.9rem; }
+
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    @media(max-width:600px) { .input-area { flex-direction:column; } .btn-gen { padding: 15px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-box">
+      <a href="index.html" class="logo"><i class="fas fa-qrcode"></i> XIZOA <span>HUB</span></a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Free QR Code Generator</h1>
+    <p class="sub-head">Create unlimited, high-quality QR codes for your links, text, or business cards in seconds. Free forever.</p>
+  </header>
+
+  <div class="generator-wrapper">
+    <div class="input-area">
+      <input type="text" id="qrText" placeholder="Enter URL, Text, or Contact Info..." aria-label="QR Content">
+      <button class="btn-gen" id="btnGen">Generate QR</button>
+    </div>
+
+    <div class="qr-output" id="qrOutput">
+      <div class="qr-canvas" id="qrcode"></div>
+      <br>
+      <p style="margin-bottom:15px; color:#666; font-size:0.9rem;">Your QR Code is ready!</p>
+      <a href="#" class="btn-dl" id="btnDownload" download="my-qrcode.png">
+        <i class="fas fa-download"></i> Download PNG
+      </a>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <article>
+      <h2>The Ultimate Guide to Free Online QR Code Generation</h2>
+      <p>In the digital age, Quick Response (QR) codes have become the bridge between the physical and digital worlds. Whether you are a business owner looking to share your menu, a marketer driving traffic to a landing page, or an individual sharing Wi-Fi credentials, having a reliable <strong>QR Code Generator</strong> is essential. Xizoa Hub provides a fast, secure, and completely free solution to meet all your QR needs.</p>
+      
+      <h3>Why Use Xizoa QR Generator?</h3>
+      <p>Unlike other tools that require sign-ups, impose scan limits, or add watermarks, our tool is built with a user-first philosophy:</p>
+      <ul>
+        <li><strong>100% Free Forever:</strong> No hidden costs or premium plans. Generate as many codes as you like.</li>
+        <li><strong>High Resolution:</strong> Perfect for printing on flyers, business cards, and product packaging.</li>
+        <li><strong>No Expiration:</strong> Our static QR codes link directly to your content and never expire.</li>
+        <li><strong>Privacy First:</strong> Your data is processed client-side. We do not track or store your links.</li>
+      </ul>
+
+      <h3>How to Create a QR Code?</h3>
+      <p>Creating a custom code takes less than 5 seconds. Follow these simple steps:</p>
+      <ol style="margin-left:20px; color:#555; margin-bottom:20px;">
+        <li><strong>Enter Data:</strong> Paste your website URL, text message, or contact details in the input box above.</li>
+        <li><strong>Generate:</strong> Click the "Generate QR" button. Our algorithm instantly creates a unique matrix barcode.</li>
+        <li><strong>Download:</strong> Click "Download PNG" to save the image to your device. You can now use it anywhere!</li>
+      </ol>
+
+      <h3>Use Cases for QR Codes</h3>
+      <p>QR codes are incredibly versatile. Here are some popular ways to use them:</p>
+      <ul>
+        <li><strong>Website URLs:</strong> Direct customers to your website, portfolio, or social media profiles.</li>
+        <li><strong>Wi-Fi Access:</strong> Share your network credentials without typing out long passwords.</li>
+        <li><strong>vCards (Digital Business Cards):</strong> Share your contact info instantly with a simple scan.</li>
+        <li><strong>Restaurant Menus:</strong> Replace physical menus with a contactless digital version.</li>
+        <li><strong>Product Packaging:</strong> Link to instruction manuals or video tutorials.</li>
+      </ul>
+
+      <h2>Technical Details & Optimization</h2>
+      <p>Our generator creates <strong>Static QR Codes</strong>. This means the information is encoded directly into the pattern of the image. This ensures that the code will work indefinitely, as there is no redirecting server in between. The codes are generated using the standard ISO/IEC 18004 specification, ensuring compatibility with all modern smartphone cameras and scanner apps.</p>
+
+      <h3>FAQ - Frequently Asked Questions</h3>
+      
+      <div class="faq-item">
+        <div class="faq-q">Do these QR codes expire?</div>
+        <p style="font-size:0.95rem; margin-bottom:0;">No. Since these are static codes, they encode the data directly. They will work forever as long as the destination link is active.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is there a scan limit?</div>
+        <p style="font-size:0.95rem; margin-bottom:0;">Absolutely not. Your QR code can be scanned unlimited times by unlimited users.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I use this for commercial printing?</div>
+        <p style="font-size:0.95rem; margin-bottom:0;">Yes, you can use the generated QR codes for commercial purposes, including marketing materials, merchandise, and packaging.</p>
+      </div>
+
+      <p style="margin-top:30px;">Start generating your custom QR codes today with Xizoa Hub – the simplest and most reliable tool on the web.</p>
+    </article>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>About Xizoa Hub</h4>
+        <p>Xizoa Hub offers free, high-quality online tools for creators and developers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Video Downloader</a>
+        <a href="#">Image Tools</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="copy">
+      &copy; 2025 Xizoa Hub • Developed by Priyanshu
+    </div>
+  </footer>
+
+  <script>
+    const btnGen = document.getElementById('btnGen');
+    const qrText = document.getElementById('qrText');
+    const qrOutput = document.getElementById('qrOutput');
+    const qrcodeDiv = document.getElementById('qrcode');
+    const btnDownload = document.getElementById('btnDownload');
+
+    btnGen.addEventListener('click', () => {
+      const text = qrText.value.trim();
+      
+      if(!text) {
+        alert("Please enter a URL or text first!");
+        return;
+      }
+
+      // Clear previous
+      qrcodeDiv.innerHTML = "";
+      
+      // Generate QR
+      new QRCode(qrcodeDiv, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+      // Show section
+      qrOutput.style.display = "block";
+
+      // Setup Download (Wait for canvas/img render)
+      setTimeout(() => {
+        const img = qrcodeDiv.querySelector('img');
+        if(img && img.src) {
+          btnDownload.href = img.src;
+        } else {
+            // Fallback for canvas if img not ready
+            const canvas = qrcodeDiv.querySelector('canvas');
+            if(canvas) {
+                btnDownload.href = canvas.toDataURL("image/png");
+            }
+        }
+      }, 100);
+    });
+
+    // Enter Key
+    qrText.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') btnGen.click();
+    });
+  </script>
+</body>
+</html>

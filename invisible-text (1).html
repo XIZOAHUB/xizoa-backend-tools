@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Invisible Text Generator - Send Empty Messages on WhatsApp (Free)</title>
+  
+  <meta name="description" content="Generate invisible text to send empty messages on WhatsApp, Instagram, and Facebook. Copy blank text instantly. Prank your friends with ghost messages.">
+  
+  <meta name="keywords" content="invisible text, empty message generator, blank text copy, whatsapp empty message, invisible character, send blank message, instagram invisible text, ghost text">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Invisible Text Generator - Send Blank Messages">
+  <meta property="og:description" content="Copy invisible text and prank your friends on WhatsApp/Insta.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: GHOST MODE (Silver & Dark Grey) --- */
+    :root {
+      --primary: #e0e0e0; /* Ghost White */
+      --secondary: #a0a0a0; /* Silver */
+      --accent: #ffffff; /* Pure White Glow */
+      --bg-dark: #121212;
+      --card-bg: rgba(30, 30, 30, 0.8);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      --text-main: #e5e5e5;
+      --text-muted: #888;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Foggy/Ghostly Background */
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 60%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--secondary); text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, #fff, #999);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- GENERATOR BOX --- */
+    .generator-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+    }
+
+    .preview-area {
+      background: #000;
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Shows "Invisible Text Here" when empty/placeholder, but actual text is invisible */
+    .preview-text {
+      font-size: 1.2rem;
+      color: #333; /* Dark text to show it's "invisible" */
+      user-select: all;
+      font-family: monospace;
+      width: 100%;
+      word-break: break-all;
+    }
+    
+    .preview-label {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        background: var(--card-bg);
+        padding: 0 10px;
+        font-size: 0.8rem;
+        color: var(--secondary);
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .btn-main {
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-copy {
+      background: #fff;
+      color: #000;
+    }
+    .btn-copy:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover { box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); transform: translateY(-2px); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(30, 30, 30, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '👻'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #050505; border-top: 1px solid #222; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.85rem; }
+
+    @media (max-width: 600px) { .btn-grid { grid-template-columns: 1fr; } h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Invisible <span>Text</span></h1>
+    <p class="subtitle">Copy & Send Blank Messages on WhatsApp, Insta & Facebook</p>
+  </header>
+
+  <main>
+    
+    <div class="generator-box">
+      
+      <div class="preview-area">
+        <span class="preview-label">Preview Box</span>
+        <div class="preview-text" id="invisibleText">ㅤ</div> </div>
+
+      <div style="margin-bottom:20px; color:var(--text-muted);">
+        <i class="fas fa-magic"></i> Invisible text generated! Click below to use.
+      </div>
+
+      <div class="btn-grid">
+        <button class="btn-main btn-copy" id="btnCopy">
+          <i class="fas fa-copy"></i> Copy Text
+        </button>
+        <button class="btn-main btn-whatsapp" id="btnWhatsapp">
+          <i class="fab fa-whatsapp"></i> Send on WhatsApp
+        </button>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>How to Send a Blank Message?</h2>
+        <p>
+          Normal spaces don't work on apps like WhatsApp or Instagram. They consider it "empty" and disable the send button.
+          Our tool generates a special **Invisible Character** (Hangul Filler) that looks empty but acts like real text.
+        </p>
+        <p>
+          Apne doston ko blank message bhej kar confuse karein! Bas "Copy Text" dabayein aur WhatsApp par paste karein.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Works On</h3>
+        <ul>
+          <li><strong>WhatsApp:</strong> Send empty chats or blank status updates.</li>
+          <li><strong>Instagram:</strong> Post blank comments or empty bio.</li>
+          <li><strong>Facebook:</strong> Make nameless profiles or empty posts.</li>
+          <li><strong>Gaming:</strong> Use invisible names in Free Fire or PUBG (where supported).</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: Is it safe?</strong><br>
+        A: Yes, it's just a standard Unicode character.</p>
+        <p><strong>Q: Will it ban my account?</strong><br>
+        A: No, it is completely legal and safe to use.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Invisible Text Generator allows you to copy blank characters to send empty messages on social media platforms.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="tiktok-downloader.html"><i class="fab fa-tiktok"></i> TikTok Saver</a>
+        <a href="keyboard-tester.html"><i class="fas fa-keyboard"></i> Keyboard Tester</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnCopy = document.getElementById('btnCopy');
+    const btnWhatsapp = document.getElementById('btnWhatsapp');
+    // Using Hangul Filler (U+3164) which is robust for empty messages
+    const invisibleChar = "\u3164"; 
+
+    btnCopy.addEventListener('click', () => {
+      navigator.clipboard.writeText(invisibleChar).then(() => {
+        const original = btnCopy.innerHTML;
+        btnCopy.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => btnCopy.innerHTML = original, 2000);
+      });
+    });
+
+    btnWhatsapp.addEventListener('click', () => {
+      // Encodes the invisible char to URL format
+      const url = `https://wa.me/?text=${encodeURIComponent(invisibleChar)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>

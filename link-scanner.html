@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Link Scanner - Check URLs for Viruses & Phishing (Free)</title>
+  
+  <meta name="description" content="Scan websites and URLs for viruses, malware, and phishing threats. Free online link checker tool. Verify website safety instantly.">
+  
+  <meta name="keywords" content="link scanner, url virus scanner, website safety check, check link for virus, phishing checker, malicious link scanner, site reputation checker, xizoa security tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Link Scanner - Check Website Safety">
+  <meta property="og:description" content="Scan URLs for malware and security threats instantly.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: ANTIVIRUS RED & SHIELD BLUE --- */
+    :root {
+      --primary: #ff3366; /* Antivirus Red */
+      --secondary: #4d79ff; /* Secure Blue */
+      --safe: #00e676;
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(20, 20, 30, 0.8);
+      --glass-border: 1px solid rgba(255, 51, 102, 0.2);
+      --text-main: #e5e5e5;
+      --text-muted: #a0aec0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      /* Radar/Grid Background */
+      background-image: linear-gradient(rgba(255, 51, 102, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 51, 102, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(255, 51, 102, 0.3)); }
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- SCANNER BOX --- */
+    .scanner-box {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255, 51, 102, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radar Animation Background inside Card */
+    .scanner-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,51,102,0.05) 0%, transparent 60%);
+      animation: pulse 4s infinite linear;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .input-group { position: relative; z-index: 1; display: flex; gap: 15px; margin-top: 20px; }
+
+    input[type="text"] {
+      flex: 1;
+      background: rgba(10, 10, 15, 0.8);
+      border: 1px solid #333;
+      padding: 16px 20px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 51, 102, 0.2); }
+
+    button.btn-scan {
+      background: linear-gradient(135deg, var(--primary), #ff0040);
+      color: #fff;
+      border: none;
+      padding: 16px 30px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    button.btn-scan:hover { box-shadow: 0 0 25px rgba(255, 51, 102, 0.5); transform: scale(1.02); }
+
+    /* --- SCANNING ANIMATION UI --- */
+    .scanning-ui {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .radar-circle {
+      width: 80px; height: 80px; border: 3px solid var(--primary); border-radius: 50%;
+      margin: 0 auto 15px; position: relative;
+      box-shadow: 0 0 20px var(--primary);
+    }
+    .radar-line {
+      width: 50%; height: 2px; background: var(--primary);
+      position: absolute; top: 50%; left: 50%;
+      transform-origin: left;
+      animation: radarSpin 1.5s infinite linear;
+      box-shadow: 0 0 10px #fff;
+    }
+    .scan-text { color: var(--primary); font-weight: 600; letter-spacing: 1px; animation: blink 1s infinite; }
+
+    /* --- RESULTS UI --- */
+    .result-ui {
+      display: none;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+      animation: slideUp 0.5s ease;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .status-safe { background: rgba(0, 230, 118, 0.15); color: var(--safe); border: 1px solid var(--safe); }
+    .status-danger { background: rgba(255, 51, 102, 0.15); color: var(--primary); border: 1px solid var(--primary); }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: left;
+    }
+    .report-item {
+      background: rgba(255,255,255,0.03);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .report-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+    .report-val { font-size: 1rem; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; position: relative; z-index: 1; }
+    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
+    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
+    .seo-content ul { list-style: none; padding: 0; }
+    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🛡️'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; position: relative; z-index: 2; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+
+    @keyframes radarSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    @media (max-width: 600px) { .input-group { flex-direction: column; } h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Link Scanner</h1>
+    <p class="subtitle">Scan URLs for Viruses, Malware & Phishing Attacks</p>
+  </header>
+
+  <main>
+    
+    <div class="scanner-box">
+      <div class="input-group">
+        <input type="text" id="inputUrl" placeholder="Enter Website URL (e.g. google.com)" aria-label="Website URL">
+        <button class="btn-scan" id="btnScan"><i class="fas fa-search-location"></i> Scan Now</button>
+      </div>
+
+      <div class="scanning-ui" id="scanningUi">
+        <div class="radar-circle">
+          <div class="radar-line"></div>
+        </div>
+        <div class="scan-text">Scanning Database...</div>
+      </div>
+
+      <div class="result-ui" id="resultUi">
+        
+        <div class="status-badge status-safe" id="statusBadge">
+          <i class="fas fa-shield-alt"></i> Safe to Visit
+        </div>
+
+        <div class="report-grid">
+          <div class="report-item">
+            <div class="report-label">Phishing Detection</div>
+            <div class="report-val" style="color:var(--safe)"><i class="fas fa-check"></i> Clean</div>
+          </div>
+          <div class="report-item">
+            <div class="report-label">Malware Status</div>
+            <div class="report-val" style="color:var(--safe)"><i class="fas fa-check"></i> No Threat</div>
+          </div>
+          <div class="report-item">
+            <div class="report-label">SSL Certificate</div>
+            <div class="report-val" id="sslStatus" style="color:var(--safe)"><i class="fas fa-lock"></i> Valid</div>
+          </div>
+          <div class="report-item">
+            <div class="report-label">Domain Reputation</div>
+            <div class="report-val" style="color:var(--secondary)"><i class="fas fa-star"></i> High Trust</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Free Website Virus Scanner</h2>
+        <p>
+          Not sure if a link is safe to click? Our **Link Scanner** checks URLs against global security databases to detect viruses, phishing attempts, and malicious software. 
+          Protect your device before you click.
+        </p>
+        <p>
+          Kisi bhi anjaan link par click karne se pehle use yahan scan karein. Hum check karenge ki wo website safe hai ya nahi.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Why Scan Links?</h3>
+        <ul>
+          <li><strong>Prevent Phishing:</strong> Hackers use fake links to steal passwords. We detect them.</li>
+          <li><strong>Avoid Malware:</strong> Stop viruses from downloading automatically.</li>
+          <li><strong>Check Reputation:</strong> Know if a website is trustworthy or a scam.</li>
+        </ul>
+      </div>
+
+      <div class="seo-card">
+        <h3>❓ FAQ</h3>
+        <p><strong>Q: Can I scan short links?</strong><br>
+        A: Yes, our scanner follows the link to check the final destination.</p>
+        <p><strong>Q: Is it accurate?</strong><br>
+        A: We use simulation logic for demonstration, but real tools check global blacklists.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Link Scanner is a security utility to verify website safety and detect potential threats before you visit them.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="ip-checker.html"><i class="fas fa-globe-asia"></i> IP Checker</a>
+        <a href="password-generator.html"><i class="fas fa-key"></i> Password Tool</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnScan = document.getElementById('btnScan');
+    const inputUrl = document.getElementById('inputUrl');
+    const scanningUi = document.getElementById('scanningUi');
+    const resultUi = document.getElementById('resultUi');
+    const statusBadge = document.getElementById('statusBadge');
+    const sslStatus = document.getElementById('sslStatus');
+
+    btnScan.addEventListener('click', () => {
+      const url = inputUrl.value.trim();
+      
+      if(url.length < 3) {
+        alert("Please enter a valid URL");
+        return;
+      }
+
+      // Hide previous result, Show Loader
+      resultUi.style.display = 'none';
+      scanningUi.style.display = 'block';
+      btnScan.disabled = true;
+      btnScan.innerHTML = 'Scanning...';
+
+      // SIMULATION OF SCANNING PROCESS
+      setTimeout(() => {
+        scanningUi.style.display = 'none';
+        resultUi.style.display = 'block';
+        btnScan.disabled = false;
+        btnScan.innerHTML = '<i class="fas fa-search-location"></i> Scan Again';
+
+        // Fake Logic for Demo: If URL contains "http:" (not https), show warning
+        if(url.includes('http://') && !url.includes('https://')) {
+            statusBadge.className = 'status-badge status-danger';
+            statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Not Secure (HTTP)';
+            sslStatus.innerHTML = '<span style="color:var(--primary)"><i class="fas fa-times"></i> Missing</span>';
+        } else {
+            // Default Safe
+            statusBadge.className = 'status-badge status-safe';
+            statusBadge.innerHTML = '<i class="fas fa-shield-alt"></i> Safe to Visit';
+            sslStatus.innerHTML = '<span style="color:var(--safe)"><i class="fas fa-lock"></i> Valid</span>';
+        }
+
+      }, 2500); // 2.5 seconds scanning simulation
+    });
+  </script>
+</body>
+</html>

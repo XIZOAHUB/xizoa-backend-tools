@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reaction Time Test - Check Gamer Reflexes (ms)</title>
+  
+  <meta name="description" content="Test your reaction time in milliseconds. Check how fast your brain and fingers work. Essential reflex test for gamers (PubG, Valorant, CS:GO). Free online tool.">
+  
+  <meta name="keywords" content="reaction time test, reflex test, gamer reaction test, click speed test, human benchmark reaction, millisecond test, csgo reaction time, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Gamer Reflex Test - How Fast Are You?">
+  <meta property="og:description" content="Test your reaction time instantly. Can you beat 200ms?">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- THEME: GAMER REFLEX --- */
+    :root {
+      --primary: #00e5ff; /* Idle Blue */
+      --wait: #ff0055;    /* Wait Red */
+      --go: #00ff66;      /* Go Green */
+      --bg-dark: #0b0b0b;
+      --text-main: #e5e5e5;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER --- */
+    header { text-align: center; padding: 30px 20px; position: relative; z-index: 10; pointer-events: none; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; pointer-events: auto; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2rem; font-weight: 700; pointer-events: auto; }
+    .subtitle { color: #888; font-size: 0.9rem; pointer-events: auto; }
+
+    /* --- GAME AREA (Takes Full Screen) --- */
+    main { 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      width: 100%; 
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.1s ease;
+    }
+
+    /* Game States */
+    .game-screen {
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    /* 1. IDLE STATE */
+    .state-idle { background-color: #1a1a2e; }
+    .state-idle i { font-size: 5rem; color: var(--primary); margin-bottom: 20px; animation: pulse 2s infinite; }
+    .state-idle h2 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+    .state-idle p { font-size: 1.2rem; color: #aaa; }
+
+    /* 2. WAITING STATE */
+    .state-wait { background-color: var(--wait); display: none; }
+    .state-wait h2 { font-size: 3rem; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+    .state-wait i { font-size: 4rem; color: #fff; margin-bottom: 20px; }
+
+    /* 3. CLICK STATE */
+    .state-click { background-color: var(--go); display: none; }
+    .state-click h2 { font-size: 4rem; color: #000; font-weight: 900; text-transform: uppercase; }
+    
+    /* 4. RESULT STATE */
+    .state-result { background-color: #1a1a2e; display: none; cursor: default; }
+    .result-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 0 50px rgba(0, 229, 255, 0.1);
+    }
+    
+    .ms-time { font-family: 'Orbitron', sans-serif; font-size: 4rem; color: var(--primary); font-weight: 700; margin: 10px 0; display: block; }
+    .rank-badge { 
+      display: inline-block; padding: 8px 20px; border-radius: 50px; 
+      background: #fff; color: #000; font-weight: 700; margin-bottom: 20px; text-transform: uppercase;
+    }
+    
+    .btn-restart {
+      background: transparent; border: 2px solid var(--primary); color: var(--primary);
+      padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; transition: 0.3s; margin-top: 10px;
+    }
+    .btn-restart:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+
+    /* --- HISTORY --- */
+    .history-list {
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      width: 100%;
+    }
+    .history-item { font-size: 0.9rem; color: #888; margin-bottom: 5px; }
+
+    /* --- FOOTER --- */
+    footer { background: #050505; padding: 20px; text-align: center; border-top: 1px solid #222; position: relative; z-index: 10; pointer-events: none; }
+    .copyright { color: #555; font-size: 0.85rem; pointer-events: auto; }
+
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Reaction Time Test</h1>
+    <p class="subtitle">Test your brain & finger speed in milliseconds</p>
+  </header>
+
+  <main id="gameArea">
+    
+    <div id="screenIdle" class="game-screen state-idle">
+      <i class="fas fa-bolt"></i>
+      <h2>Click to Start</h2>
+      <p>Wait for green, then click fast!</p>
+    </div>
+
+    <div id="screenWait" class="game-screen state-wait">
+      <i class="fas fa-hand-paper"></i>
+      <h2>Wait for Green...</h2>
+    </div>
+
+    <div id="screenClick" class="game-screen state-click">
+      <h2>CLICK NOW!</h2>
+    </div>
+
+    <div id="screenResult" class="game-screen state-result">
+      <div class="result-box">
+        <div style="font-size:1.2rem; color:#aaa;"><i class="fas fa-clock"></i> Your Time</div>
+        <span class="ms-time" id="timeDisplay">0 ms</span>
+        <div id="rankDisplay" class="rank-badge">Calculating...</div>
+        <p id="msgDisplay" style="margin-bottom:20px; color:#fff;">Keep practicing!</p>
+        
+        <button class="btn-restart" id="btnRestart">Try Again</button>
+        
+        <div class="history-list" id="historyList">
+          </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const screenIdle = document.getElementById('screenIdle');
+    const screenWait = document.getElementById('screenWait');
+    const screenClick = document.getElementById('screenClick');
+    const screenResult = document.getElementById('screenResult');
+    
+    const timeDisplay = document.getElementById('timeDisplay');
+    const rankDisplay = document.getElementById('rankDisplay');
+    const msgDisplay = document.getElementById('msgDisplay');
+    const btnRestart = document.getElementById('btnRestart');
+    const historyList = document.getElementById('historyList');
+
+    let startTime;
+    let endTime;
+    let timerTimeout;
+    let gameState = 'idle'; // idle, waiting, ready, result
+    let scores = [];
+
+    // Main Click Handler
+    gameArea.addEventListener('mousedown', handleInput);
+    gameArea.addEventListener('touchstart', handleInput); // Mobile support
+
+    function handleInput(e) {
+      // Prevent double firing on mobile
+      if(e.type === 'touchstart') e.preventDefault(); 
+
+      if (gameState === 'idle') {
+        startGame();
+      } else if (gameState === 'waiting') {
+        tooSoon();
+      } else if (gameState === 'ready') {
+        endGame();
+      }
+    }
+
+    function startGame() {
+      gameState = 'waiting';
+      showScreen(screenWait);
+      
+      // Random delay between 2 to 5 seconds
+      const randomDelay = Math.floor(Math.random() * 3000) + 2000;
+      
+      timerTimeout = setTimeout(() => {
+        gameState = 'ready';
+        showScreen(screenClick);
+        startTime = Date.now();
+      }, randomDelay);
+    }
+
+    function endGame() {
+      endTime = Date.now();
+      const reactionTime = endTime - startTime;
+      gameState = 'result';
+      
+      // Save score
+      scores.push(reactionTime);
+      updateHistory();
+
+      // Determine Rank
+      let rank = "";
+      let color = "";
+      let msg = "";
+
+      if (reactionTime < 150) {
+        rank = "GODLIKE ⚡"; color = "#ff00ff"; msg = "Are you a robot?!";
+      } else if (reactionTime < 200) {
+        rank = "PRO GAMER 🎮"; color = "#00e5ff"; msg = "Esports ready!";
+      } else if (reactionTime < 250) {
+        rank = "ABOVE AVERAGE 🔥"; color = "#00ff66"; msg = "Nice reflexes!";
+      } else if (reactionTime < 300) {
+        rank = "AVERAGE 🙂"; color = "#ff9900"; msg = "Not bad, keep trying.";
+      } else if (reactionTime < 500) {
+        rank = "TURTLE 🐢"; color = "#ff3333"; msg = "Wake up!";
+      } else {
+        rank = "SLEEPING 😴"; color = "#888"; msg = "Did you fall asleep?";
+      }
+
+      // Update UI
+      timeDisplay.innerText = reactionTime + " ms";
+      rankDisplay.innerText = rank;
+      rankDisplay.style.backgroundColor = color;
+      msgDisplay.innerText = msg;
+      
+      showScreen(screenResult);
+    }
+
+    function tooSoon() {
+      clearTimeout(timerTimeout);
+      gameState = 'result'; // Go to result but special fail state
+      
+      timeDisplay.innerText = "FAIL";
+      timeDisplay.style.color = "#ff0055";
+      rankDisplay.innerText = "TOO SOON";
+      rankDisplay.style.backgroundColor = "#ff0055";
+      msgDisplay.innerText = "You clicked before green! Wait for it.";
+      
+      showScreen(screenResult);
+    }
+
+    // Restart Button (Prevents bubbling to gameArea)
+    btnRestart.addEventListener('mousedown', (e) => {
+      e.stopPropagation();
+      resetGame();
+    });
+    btnRestart.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+      resetGame();
+    });
+
+    function resetGame() {
+      gameState = 'idle';
+      showScreen(screenIdle);
+    }
+
+    function showScreen(screen) {
+      // Hide all screens
+      screenIdle.style.display = 'none';
+      screenWait.style.display = 'none';
+      screenClick.style.display = 'none';
+      screenResult.style.display = 'none';
+      
+      // Show target screen
+      screen.style.display = 'flex';
+    }
+
+    function updateHistory() {
+      // Keep last 5 scores
+      if (scores.length > 5) scores.shift();
+      
+      historyList.innerHTML = scores.map((s, i) => 
+        `<div class="history-item">Try ${scores.length - i}: <span style="color:#fff">${s} ms</span></div>`
+      ).reverse().join('');
+    }
+  </script>
+</body>
+</html>

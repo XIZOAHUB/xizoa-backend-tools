@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Repo File Structure Generator - Text to ZIP Converter</title>
+    <meta name="description" content="Generate project folder structures instantly. Convert text-based directory trees into downloadable ZIP files. Best for scaffolding React, Python, and HTML projects. No backend required.">
+    <meta name="keywords" content="repo file structure generator, directory tree to zip, project scaffolder, create folder structure from text, vs code file structure generator, project boilerplate maker, xizoa tools">
+    <meta name="author" content="Priyanshu - XIZOA Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xizoa.com/file-structure-generator">
+    <link rel="icon" href="https://xizoa.com/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+    <style>
+        /* --- PRO THEME VARIABLES --- */
+        :root {
+            --bg-dark: #02060e; 
+            --panel: #0b1221;
+            --neon-blue: #00f3ff; 
+            --neon-purple: #bd00ff;
+            --text-main: #e2e8f0; 
+            --text-muted: #94a3b8;
+            --border: 1px solid rgba(0, 243, 255, 0.15);
+            --code-bg: #1e1e1e; /* VS Code Dark */
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            display: flex; flex-direction: column; 
+            overflow-x: hidden; 
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.05) 0%, transparent 60%); 
+        }
+
+        /* --- HEADER --- */
+        header { 
+            padding: 20px 30px; 
+            border-bottom: var(--border); 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(11, 18, 33, 0.9); backdrop-filter: blur(12px); 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .brand { 
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; 
+            color: #fff; text-decoration: none; text-shadow: 0 0 15px var(--neon-blue); 
+        }
+        .brand span { color: var(--neon-blue); }
+        .header-links a {
+            color: var(--text-muted); margin-left: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;
+        }
+        .header-links a:hover { color: var(--neon-blue); }
+
+        /* --- MAIN LAYOUT --- */
+        .dashboard-container { 
+            max-width: 1200px; margin: 40px auto; width: 100%; padding: 0 20px; 
+            display: grid; 
+            grid-template-columns: 1fr 400px; 
+            gap: 30px; 
+        }
+
+        /* --- EDITOR AREA (LEFT) --- */
+        .editor-card { 
+            background: var(--panel); border: var(--border); border-radius: 16px; 
+            padding: 30px; display: flex; flex-direction: column; height: fit-content;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .editor-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+        }
+        .editor-title {
+            font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; color: #fff; 
+            border-left: 4px solid var(--neon-blue); padding-left: 15px; font-weight: 700;
+        }
+
+        /* The Text Area (VS Code Style) */
+        textarea {
+            width: 100%; min-height: 400px;
+            background: var(--code-bg); color: #d4d4d4;
+            border: 1px solid #333; border-radius: 8px;
+            padding: 20px;
+            font-family: 'Fira Code', monospace; font-size: 14px; line-height: 1.6;
+            resize: vertical; outline: none; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        textarea:focus { border-color: var(--neon-blue); }
+
+        /* --- SIDEBAR (RIGHT) --- */
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        
+        .widget-card { 
+            background: var(--panel); border: var(--border); border-radius: 16px; padding: 30px; 
+        }
+        
+        .widget-title { 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; color: #fff; 
+            margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .rules-list {
+            list-style: none; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;
+        }
+        .rules-list li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .rules-list i { color: var(--neon-blue); }
+        code { background: rgba(255,255,255,0.1); padding: 2px 5px; border-radius: 4px; font-family: monospace; color: #fff; }
+
+        /* BUTTONS */
+        .btn-main { 
+            width: 100%; padding: 15px; border: none; border-radius: 8px; 
+            background: linear-gradient(90deg, var(--neon-blue), #0088cc); 
+            color: #000; font-weight: 800; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; 
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
+        }
+        .btn-main:hover { box-shadow: 0 0 25px var(--neon-blue); transform: translateY(-2px); }
+
+        .btn-copy {
+            background: #334155; color: #fff; font-size: 0.8rem; padding: 5px 10px; border:none; border-radius: 4px; cursor: pointer;
+        }
+        .btn-copy:hover { background: #475569; }
+
+        /* --- SEO CONTENT --- */
+        .wiki-section { grid-column: 1 / -1; margin-top: 50px; }
+        .wiki-card { 
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 16px; padding: 50px; margin-bottom: 40px; 
+        }
+        .wiki-card h2 { 
+            font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 25px; 
+            font-size: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;
+        }
+        .wiki-card h3 { 
+            color: var(--neon-blue); margin-top: 30px; margin-bottom: 10px; 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 700;
+        }
+        .wiki-card p { line-height: 1.8; color: var(--text-muted); margin-bottom: 20px; }
+        .wiki-card ul { margin-left: 25px; color: var(--text-muted); margin-bottom: 25px; line-height: 1.7; }
+        .wiki-card strong { color: #fff; }
+
+        /* FOOTER */
+        footer { background: #000; border-top: var(--border); padding: 70px 20px; margin-top: auto; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .f-col h4 { color: #fff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
+        .f-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+        .f-col a:hover { color: var(--neon-blue); padding-left: 5px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .dashboard-container { grid-template-columns: 1fr; }
+            .editor-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .header-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand"><i class="fas fa-folder-tree"></i> XIZOA <span>REPO</span></a>
+        <div class="header-links">
+            <a href="#tool">Generator</a>
+            <a href="#guide">Documentation</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
+
+    <div class="dashboard-container" id="tool">
+        
+        <div class="editor-card">
+            <div class="editor-header">
+                <div class="editor-title">PROJECT STRUCTURE</div>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-copy" onclick="loadTemplate('react')">React Template</button>
+                    <button class="btn-copy" onclick="loadTemplate('python')">Python Template</button>
+                    <button class="btn-copy" onclick="clearEditor()">Clear</button>
+                </div>
+            </div>
+            
+            <textarea id="structure" placeholder="Enter your file structure here...
+Example:
+src/
+  components/
+    Header.js
+  App.js
+package.json
+README.md">
+src/
+  components/
+    Header.jsx
+    Footer.jsx
+  assets/
+    images/
+  App.jsx
+  main.jsx
+public/
+  vite.svg
+index.html
+package.json
+README.md</textarea>
+        </div>
+
+        <div class="sidebar">
+            
+            <div class="widget-card" style="border-color: var(--neon-blue);">
+                <div class="widget-title">GENERATE ZIP</div>
+                <p style="font-size:0.9rem; color:#888; margin-bottom:20px;">
+                    Convert the text tree into a real downloadable .zip file instantly.
+                </p>
+                <button class="btn-main" onclick="generateZip()" id="genBtn">
+                    <i class="fas fa-file-archive"></i> Download ZIP
+                </button>
+            </div>
+
+            <div class="widget-card">
+                <div class="widget-title">HOW TO USE</div>
+                <ul class="rules-list">
+                    <li><i class="fas fa-check"></i> Add <code>/</code> for Folders.</li>
+                    <li><i class="fas fa-check"></i> Use indentation (spaces) for nesting.</li>
+                    <li><i class="fas fa-check"></i> Files are created empty.</li>
+                    <li><i class="fas fa-check"></i> Ideal for Project Boilerplates.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <section class="wiki-section" id="guide">
+            
+            <div class="wiki-card">
+                <h2>The Ultimate Repo File Structure Generator</h2>
+                <p>Welcome to <strong>Xizoa Hub's Repo Generator</strong>, a powerful tool designed for developers, students, and project managers. Tired of manually creating folders and empty files every time you start a new project? This tool automates the process entirely.</p>
+                <p>By simply typing your desired folder hierarchy in a text format, our engine converts it into a structured <strong>ZIP file</strong>. Download it, extract it, and your project scaffolding is ready in seconds. No command line, no manual right-clicking.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h2>Why Use a File Structure Generator?</h2>
+                
+                <h3>1. Speed Up Project Setup (Boilerplating)</h3>
+                <p>Starting a new React, Angular, or Python project often requires setting up the same directory structure repeatedly. Instead of running multiple <code>mkdir</code> and <code>touch</code> commands, simply paste your standard structure here and download it.</p>
+
+                <h3>2. Standardize Team Projects</h3>
+                <p>If you are a Team Lead, you can share a text snippet of the required file structure with your team. They can use this tool to generate the exact folder structure, ensuring consistency across everyone's local environment.</p>
+
+                <h3>3. No Backend Required</h3>
+                <p>This tool runs 100% in your browser using <strong>JSZip technology</strong>. Your file structure data never leaves your device, making it completely secure and private.</p>
+            </div>
+
+            <div class="wiki-card">
+                <h2>How to Format Your Structure</h2>
+                <p>To ensure your ZIP file is generated correctly, follow these simple syntax rules:</p>
+                
+                <h3>Folders vs Files</h3>
+                <p>Any line ending with a forward slash <code>/</code> is treated as a <strong>Folder</strong>. Any line without it is treated as a <strong>File</strong>.</p>
+                <ul>
+                    <li><code>images/</code> = Creates a folder named "images"</li>
+                    <li><code>style.css</code> = Creates a file named "style.css"</li>
+                </ul>
+
+                <h3>Nesting (Hierarchy)</h3>
+                <p>We use indentation to understand which file belongs inside which folder. You can use spaces or tabs. Just ensure that the child file is indented more than its parent folder.</p>
+                <pre style="background:#111; padding:15px; border-radius:8px; color:#00f3ff; font-family:monospace;">
+project/
+  src/
+    index.js   <-- Inside 'src'
+  package.json <-- Inside 'project'
+                </pre>
+            </div>
+
+            <div class="wiki-card">
+                <h2>Supported Project Types</h2>
+                <p>This tool is agnostic, meaning it works for any programming language or workflow:</p>
+                <ul>
+                    <li><strong>Web Development:</strong> HTML, CSS, JS, React, Vue, Angular structures.</li>
+                    <li><strong>Backend:</strong> Node.js (Express), Python (Django/Flask), Java, Go.</li>
+                    <li><strong>Mobile App:</strong> Flutter, React Native, Android Studio directories.</li>
+                    <li><strong>Data Science:</strong> Dataset organization, Jupyter Notebook folders.</li>
+                </ul>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>Xizoa Utilities</h4>
+                <a href="text-to-handwriting.html">Text to Handwriting</a>
+                <a href="image-compressor.html">Image Compressor</a>
+                <a href="fps-checker.html">FPS Checker</a>
+            </div>
+            <div class="f-col">
+                <h4>Developer Tools</h4>
+                <a href="repo-generator.html">Repo Generator</a>
+                <a href="json-formatter.html">JSON Formatter</a>
+                <a href="md-editor.html">Markdown Editor</a>
+            </div>
+            <div class="f-col">
+                <h4>Support</h4>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:50px; color:#444; font-size:0.9rem;">
+            © 2025 XIZOA Hub • Optimized for Developers
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. GENERATE ZIP LOGIC ---
+        function generateZip() {
+            const btn = document.getElementById('genBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+            const text = document.getElementById('structure').value;
+            const lines = text.split('\n').filter(l => l.trim() !== '');
+            
+            // Validate input
+            if(lines.length === 0) {
+                alert("Please enter a file structure first!");
+                btn.innerHTML = originalText;
+                return;
+            }
+
+            const zip = new JSZip();
+            const stack = [{ indent: -1, folder: zip }];
+
+            try {
+                lines.forEach(line => {
+                    // Calculate indentation (spaces at start)
+                    const indent = line.match(/^\s*/)[0].length;
+                    const name = line.trim();
+
+                    // Navigate up the stack if indentation decreases
+                    while (stack.length > 1 && indent <= stack[stack.length - 1].indent) {
+                        stack.pop();
+                    }
+
+                    const parent = stack[stack.length - 1].folder;
+
+                    if (name.endsWith('/')) {
+                        // Create Folder
+                        const folderName = name.slice(0, -1);
+                        const newFolder = parent.folder(folderName);
+                        stack.push({ indent, folder: newFolder });
+                    } else {
+                        // Create File (Empty)
+                        parent.file(name, '');
+                    }
+                });
+
+                // Generate and Download
+                zip.generateAsync({ type: 'blob' }).then(blob => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = 'xizoa-project-structure.zip';
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+                    
+                    btn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                    setTimeout(() => btn.innerHTML = originalText, 2000);
+                });
+
+            } catch (error) {
+                alert("Error parsing structure. Check your indentation.");
+                btn.innerHTML = originalText;
+            }
+        }
+
+        // --- 2. TEMPLATE LOADERS ---
+        function loadTemplate(type) {
+            const textarea = document.getElementById('structure');
+            if(type === 'react') {
+                textarea.value = `public/
+  index.html
+  favicon.ico
+src/
+  components/
+    Header.jsx
+    Footer.jsx
+  hooks/
+    useFetch.js
+  pages/
+    Home.jsx
+    About.jsx
+  styles/
+    App.css
+  App.jsx
+  main.jsx
+package.json
+README.md
+vite.config.js`;
+            } else if (type === 'python') {
+                textarea.value = `project_root/
+  venv/
+  app/
+    __init__.py
+    main.py
+    routers/
+      users.py
+      items.py
+    models/
+      database.py
+  tests/
+    test_main.py
+  requirements.txt
+  README.md
+  .gitignore`;
+            }
+        }
+
+        function clearEditor() {
+            if(confirm("Clear editor?")) {
+                document.getElementById('structure').value = "";
+            }
+        }
+    </script>
+</body>
+</html>

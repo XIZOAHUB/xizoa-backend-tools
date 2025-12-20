@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Text to Handwriting Converter - Generate Real Handwritten Assignments (Free)</title>
+  
+  <meta name="description" content="Convert typed text into realistic handwriting online. Create handwritten assignments, notes, and letters instantly. Download as image/PDF. Free tool for students.">
+  
+  <meta name="keywords" content="text to handwriting, assignment maker, handwritten notes generator, type to write, handwriting converter, online writing tool, fake handwriting generator, xizoa tools">
+  
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Text to Handwriting - Assignment Maker">
+  <meta property="og:description" content="Convert text to real handwriting instantly. Perfect for assignments.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Indie+Flower&family=Shadows+Into+Light&family=Sacramento&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    /* --- THEME: INK BLUE & PAPER WHITE --- */
+    :root {
+      --primary: #0059ff; /* Ink Blue */
+      --secondary: #ff0055;
+      --bg-dark: #0a0f1a;
+      --card-bg: rgba(20, 25, 35, 0.8);
+      --glass-border: 1px solid rgba(0, 89, 255, 0.2);
+      --text-main: #e5e5e5;
+      --paper-color: #fffdf0; /* Creamy Paper */
+      --line-color: #94a3b8;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(circle at 10% 20%, rgba(0, 89, 255, 0.1), transparent 30%), 
+                        radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05), transparent 30%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header { text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+    .brand-logo span { color: var(--primary); }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    h1 span {
+        background: linear-gradient(to right, var(--primary), #00c3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+
+    /* --- WORKSPACE LAYOUT --- */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    /* Left: Controls & Input */
+    .controls-area {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      padding: 25px;
+      border-radius: 20px;
+      height: fit-content;
+    }
+
+    .control-group { margin-bottom: 20px; }
+    .control-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); }
+    
+    select, input[type="range"] {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #444;
+      padding: 10px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .color-opts { display: flex; gap: 10px; }
+    .color-dot {
+      width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.2s;
+    }
+    .color-dot.selected { border-color: #fff; transform: scale(1.1); }
+    
+    textarea {
+      width: 100%;
+      height: 200px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #444;
+      padding: 15px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    /* Right: Paper Preview */
+    .preview-area {
+      position: relative;
+    }
+
+    .paper-sheet {
+      background-color: var(--paper-color);
+      width: 100%;
+      min-height: 500px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      /* Default Font */
+      font-family: 'Indie Flower', cursive; 
+      font-size: 20px;
+      line-height: 1.6;
+      color: #1a1a2e; /* Dark Blue Ink */
+      transition: 0.3s;
+    }
+
+    /* Paper Lines Effect */
+    .paper-sheet.lined {
+      background-image: linear-gradient(var(--line-color) 1px, transparent 1px);
+      background-size: 100% 32px; /* Matches line-height approx */
+      line-height: 32px; /* Sync text with lines */
+      padding-top: 34px; /* Align first line */
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 800px) { .workspace { grid-template-columns: 1fr; } }
+
+    .btn-download {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), #00c3ff);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .btn-download:hover { box-shadow: 0 0 20px rgba(0, 89, 255, 0.4); transform: translateY(-2px); }
+
+    /* --- SEO CONTENT --- */
+    .seo-content { margin-top: 60px; }
+    .seo-card { background: rgba(20, 25, 35, 0.8); border: 1px solid rgba(0, 89, 255, 0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .seo-content p { color: #a0aec0; line-height: 1.7; margin-bottom: 15px; }
+    .seo-content li { color: #a0aec0; margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '✍️'; position: absolute; left: 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #05080c; border-top: 1px solid #1a202c; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+    .footer-col p { color: #a0aec0; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #a0aec0; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Text to <span>Handwriting</span></h1>
+    <p class="subtitle">Convert Typed Text into Realistic Handwritten Assignments</p>
+  </header>
+
+  <main>
+    
+    <div class="workspace">
+      
+      <div class="controls-area">
+        
+        <div class="control-group">
+          <label class="control-label">Type your text here:</label>
+          <textarea id="textInput" placeholder="Start typing your assignment here..."></textarea>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Handwriting Style</label>
+          <select id="fontSelect">
+            <option value="'Indie Flower', cursive">Casual (Student)</option>
+            <option value="'Dancing Script', cursive">Cursive (Fancy)</option>
+            <option value="'Shadows Into Light', cursive">Neat (Clean)</option>
+            <option value="'Sacramento', cursive">Signature style</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Ink Color</label>
+          <div class="color-opts">
+            <div class="color-dot selected" style="background:#1a1a2e" onclick="changeColor('#1a1a2e', this)"></div> <div class="color-dot" style="background:#0033cc" onclick="changeColor('#0033cc', this)"></div> <div class="color-dot" style="background:#cc0000" onclick="changeColor('#cc0000', this)"></div> <div class="color-dot" style="background:#333333" onclick="changeColor('#000000', this)"></div> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Paper Type</label>
+          <select id="paperSelect">
+            <option value="lined">Notebook Lines</option>
+            <option value="plain">Plain White</option>
+          </select>
+        </div>
+
+        <button class="btn-download" id="btnDownload"><i class="fas fa-download"></i> Download Image</button>
+
+      </div>
+
+      <div class="preview-area">
+        <div id="paperSheet" class="paper-sheet lined">
+          Start typing your assignment here...
+        </div>
+      </div>
+
+    </div>
+
+    <section class="seo-content">
+      <div class="seo-card">
+        <h2>Assignment Maker Online</h2>
+        <p>
+          Hate writing long assignments by hand? Our **Text to Handwriting Converter** saves you hours of work. 
+          Just type your content, choose a handwriting font, and download the page as an image. It looks just like real pen and paper.
+        </p>
+        <p>
+          Students ke liye best tool! Type karo aur wo "Handwritten" page ban jayega. Print nikalo aur assignment submit karo.
+        </p>
+      </div>
+
+      <div class="seo-card">
+        <h3>🚀 Realistic Features</h3>
+        <ul>
+          <li><strong>Multiple Fonts:</strong> Choose from cursive, messy, or neat handwriting styles.</li>
+          <li><strong>Paper Effect:</strong> Includes notebook lines for a realistic look.</li>
+          <li><strong>Ink Colors:</strong> Switch between Blue, Black, and Red pens.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Text to Handwriting is a student-focused utility to generate handwritten-style documents from digital text.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="pdf-to-word.html"><i class="fas fa-file-word"></i> PDF to Word</a>
+        <a href="image-resizer.html"><i class="fas fa-image"></i> Image Tools</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const textInput = document.getElementById('textInput');
+    const paperSheet = document.getElementById('paperSheet');
+    const fontSelect = document.getElementById('fontSelect');
+    const paperSelect = document.getElementById('paperSelect');
+    const btnDownload = document.getElementById('btnDownload');
+
+    // Live Update Text
+    textInput.addEventListener('input', () => {
+      // Convert newlines to breaks
+      paperSheet.innerText = textInput.value;
+    });
+
+    // Change Font
+    fontSelect.addEventListener('change', () => {
+      paperSheet.style.fontFamily = fontSelect.value;
+    });
+
+    // Change Paper Type
+    paperSelect.addEventListener('change', () => {
+      if(paperSelect.value === 'lined') {
+        paperSheet.classList.add('lined');
+      } else {
+        paperSheet.classList.remove('lined');
+      }
+    });
+
+    // Change Ink Color
+    function changeColor(color, element) {
+      paperSheet.style.color = color;
+      
+      // Update active dot UI
+      document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    // Download Function
+    btnDownload.addEventListener('click', () => {
+      btnDownload.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      
+      html2canvas(paperSheet, {
+        scale: 2, // High resolution
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'assignment-xizoa.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        btnDownload.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+        setTimeout(() => btnDownload.innerHTML = '<i class="fas fa-download"></i> Download Image', 2000);
+      });
+    });
+  </script>
+</body>
+</html>
