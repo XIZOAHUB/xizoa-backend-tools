@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Page Generator & Guide | Xizoa Tools</title>
+    <meta name="description" content="Create professional About Us pages instantly. Free tool with Team Grids, Stats, and SEO Schema. Includes detailed guide and templates.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- EDITOR UI (Dark Theme) --- */
+        :root { --bg: #02060e; --panel: #0b1221; --neon: #00f3ff; --text: #e2e8f0; --border: 1px solid rgba(0, 243, 255, 0.15); }
+        * { box-sizing:border-box; margin:0; padding:0; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        header { padding: 15px 5%; border-bottom: var(--border); background: rgba(11, 18, 33, 0.95); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #fff; } .brand span { color: var(--neon); }
+        .btn-copy { background: var(--neon); color: #000; padding: 8px 25px; border-radius: 50px; font-weight: 800; border: none; cursor: pointer; transition:0.3s; }
+        .btn-copy:hover { box-shadow: 0 0 20px var(--neon); transform: scale(1.05); }
+
+        /* TOOL LAYOUT */
+        .main-grid { display: grid; grid-template-columns: 400px 1fr; height: 100vh; border-bottom: var(--border); }
+        .controls { background: var(--panel); border-right: var(--border); padding: 25px; overflow-y: auto; height: calc(100vh - 60px); }
+        
+        .section-head { color: var(--neon); font-size: 0.9rem; text-transform: uppercase; margin: 35px 0 15px; border-bottom: 1px solid #333; padding-bottom: 5px; font-weight: 800; letter-spacing: 1px; }
+        
+        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 5px; margin-top: 15px; font-weight: 600; }
+        input, textarea { width: 100%; background: #1a1f2e; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--neon); outline: none; background: #23293a; }
+        
+        /* Add/Remove Buttons */
+        .item-row { background: #151925; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; position: relative; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+        
+        .btn-remove { position: absolute; top: 10px; right: 10px; color: #ff4444; cursor: pointer; background: rgba(255, 68, 68, 0.1); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(255, 68, 68, 0.3); }
+        .btn-remove:hover { background: #ff4444; color: #fff; }
+
+        .btn-add { width: 100%; background: transparent; border: 1px dashed var(--neon); color: var(--neon); padding: 12px; border-radius: 8px; cursor: pointer; margin-top: 5px; font-weight: 700; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-add:hover { background: rgba(0, 243, 255, 0.1); }
+
+        .preview-area { background: #fff; overflow-y: auto; height: calc(100vh - 60px); position: relative; }
+
+        /* --- SEO CONTENT SECTION (Bottom) --- */
+        .seo-section { max-width: 1000px; margin: 0 auto; padding: 80px 20px; color: #cbd5e1; }
+        .seo-card { background: #0b1221; padding: 40px; border-radius: 16px; border: 1px solid #1e293b; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .seo-section h1 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; line-height: 1.2; font-weight: 800; }
+        .seo-section h2 { font-size: 2rem; color: #fff; margin-bottom: 20px; font-weight: 700; border-left: 4px solid var(--neon); padding-left: 20px; margin-top: 40px; }
+        .seo-section h3 { font-size: 1.4rem; color: var(--neon); margin: 30px 0 15px; font-weight: 600; }
+        .seo-section p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #94a3b8; }
+        .seo-section ul, .seo-section ol { margin-left: 20px; margin-bottom: 20px; color: #94a3b8; }
+        .seo-section li { margin-bottom: 10px; font-size: 1.05rem; }
+        .seo-section strong { color: #fff; }
+        .seo-section blockquote { background: #1a1f2e; padding: 20px; border-left: 4px solid var(--neon); color: #fff; font-style: italic; margin-bottom: 20px; }
+
+        /* Footer */
+        .site-footer { text-align: center; padding: 40px; border-top: var(--border); color: #666; background: #02060e; }
+
+        /* --- PREVIEW GENERATED STYLES --- */
+        .g-container { font-family: 'Google Sans', 'Outfit', sans-serif; color: #374151; line-height: 1.8; background: #fff; }
+        .g-hero { text-align: center; padding: 100px 20px 80px; background: radial-gradient(circle at 50% 0%, #f3f4f6 0%, #fff 70%); border-bottom: 1px solid #e5e7eb; }
+        .g-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 20px; color: #111827; line-height: 1.1; }
+        .g-sub { font-size: 1.25rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        .g-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; text-align: center; padding: 60px 20px; background: #111827; color: #fff; }
+        .g-stat-val { font-size: 3rem; font-weight: 800; color: #3b82f6; display: block; }
+        .g-content-block { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .g-content-block h2 { font-size: 2rem; color: #111827; margin-bottom: 25px; border-left: 5px solid #2563eb; padding-left: 20px; }
+        .g-team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .g-member { background: #fff; padding: 30px; border-radius: 16px; text-align: center; border: 1px solid #e5e7eb; }
+        .g-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .g-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 30px; text-decoration:none; color:inherit; display:block; transition:0.3s; position: relative; }
+        .g-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .g-link-hint { position: absolute; top: 20px; right: 20px; color: #3b82f6; opacity: 0; transition:0.3s; }
+        .g-card:hover .g-link-hint { opacity: 1; }
+        .g-footer { background: #111827; color: #fff; padding: 70px 20px 30px; }
+        .g-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
+        .g-footer a { display: block; color: #9ca3af; text-decoration: none; margin-bottom: 12px; }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; height: auto; }
+            .controls { height: auto; border-right:none; border-bottom: var(--border); }
+            .preview-area { height: auto; min-height: 100vh; }
+            .g-footer-inner { grid-template-columns: 1fr; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">XIZOA <span>BUILDER</span></div>
+        <button class="btn-copy" onclick="copyFinalCode()"><i class="fas fa-code"></i> Copy HTML</button>
+    </header>
+
+    <div class="main-grid">
+        <div class="controls">
+            
+            <div class="section-head"><i class="fas fa-search"></i> SEO Schema (Hidden)</div>
+            <label>Organization Name</label> <input type="text" id="schemaSite" value="Xizoa Hub">
+            <label>Logo URL (Optional)</label> <input type="text" id="schemaLogo" placeholder="https://example.com/logo.png">
+            <label>Description</label> <input type="text" id="schemaDesc" value="Best free online tools platform.">
+
+            <div class="section-head"><i class="fas fa-globe"></i> 1. Page Basics</div>
+            <label>Hero Title</label> <input type="text" id="heroTitle" value="About Us" oninput="render()">
+            <label>Subtitle</label> <textarea id="heroSub" oninput="render()">Building the future of digital tools.</textarea>
+
+            <div class="section-head"><i class="fas fa-paragraph"></i> 2. Your Story (Content)</div>
+            <label>Title</label> <input type="text" id="storyTitle" value="Our Story" oninput="render()">
+            <label>Paragraph 1</label> <textarea id="storyP1" style="height:100px;" oninput="render()">Founded in 2025, Xizoa Hub started with a simple mission: to make premium digital tools accessible to everyone.</textarea>
+            <label>Paragraph 2</label> <textarea id="storyP2" style="height:100px;" oninput="render()">We believe in privacy, speed, and accessibility for all creators.</textarea>
+
+            <div class="section-head"><i class="fas fa-chart-bar"></i> 3. Stats Grid</div>
+            <div id="statsContainer"></div>
+            <button class="btn-add" onclick="addStat()">+ Add Stat</button>
+
+            <div class="section-head"><i class="fas fa-users"></i> 4. Team Grid</div>
+            <div id="teamContainer"></div>
+            <button class="btn-add" onclick="addMember()">+ Add Member</button>
+
+            <div class="section-head"><i class="fas fa-th"></i> 5. Features/Services</div>
+            <div id="featuresContainer"></div>
+            <button class="btn-add" onclick="addFeature()">+ Add Card</button>
+
+            <div class="section-head"><i class="fas fa-link"></i> 6. Footer Links</div>
+            <label>Col 1 Links</label> <textarea id="fCol1Links" style="height:80px;" oninput="render()">Tools | tools.html
+Blog | blog.html</textarea>
+            <label>Col 2 Links</label> <textarea id="fCol2Links" style="height:80px;" oninput="render()">Privacy | privacy.html
+Contact | contact.html</textarea>
+
+        </div>
+
+        <div class="preview-area" id="previewCanvas"></div>
+    </div>
+
+    <div class="seo-section">
+        
+        <div class="seo-card">
+            <h1>Ultimate Free About Us Page Generator for 2025</h1>
+            <p>Welcome to the <strong>#1 Rated Free About Us Page Generator</strong>. Whether you are a startup founder, a blogger, or a developer, creating a trustworthy "About Us" page is the first step to online success. Xizoa Hub provides you with a robust, AI-powered tool to generate professional, mobile-responsive, and SEO-optimized About Us HTML pages in less than 60 seconds.</p>
+            <p>Why struggle with coding HTML, CSS, and Bootstrap grids when our tool can do it for you? Our generator focuses on <strong>User Experience (UX)</strong> and <strong>Search Engine Optimization (SEO)</strong>, ensuring your page not only looks good but also ranks well on Google.</p>
+        </div>
+
+        <div class="seo-card">
+            <h2>Why is the 'About Us' Page the Most Important Page on Your Website?</h2>
+            <p>Many website owners overlook the About Us page, treating it as an afterthought. However, analytics show that it is often the <strong>second most visited page</strong> on a website after the homepage. Here is why:</p>
+            <ul>
+                <li><strong>Trust Factor:</strong> In an era of online scams, users want to know who is behind the website. A transparent About page builds immediate credibility.</li>
+                <li><strong>Brand Storytelling:</strong> People buy from people. Sharing your journey, struggles, and mission creates an emotional connection with your audience.</li>
+                <li><strong>SEO Benefits:</strong> Google's E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness) guidelines specifically look for clear information about who runs the website. A good About page boosts your overall site ranking.</li>
+                <li><strong>Conversion Rate Optimization (CRO):</strong> A user who trusts you is more likely to buy your product or subscribe to your newsletter.</li>
+            </ul>
+        </div>
+
+        <div class="seo-card">
+            <h2>Step-by-Step Guide: How to Use Xizoa About Us Generator</h2>
+            <p>Our tool is designed for non-coders. Follow these simple steps to generate your dream page:</p>
+            <ol>
+                <li><strong>Enter Basic Info:</strong> Start by filling in your website name and the main "Hero Title" (e.g., "About Our Company").</li>
+                <li><strong>Tell Your Story:</strong> Use the "Our Story" and "Mission" text boxes. Don't be shy—write about how you started and what drives you. Google loves unique content here.</li>
+                <li><strong>Add Social Proof (Stats):</strong> Use the <em>"Stats Grid"</em> section to add numbers like "Years Active", "Happy Clients", or "Projects Completed". Numbers catch the eye.</li>
+                <li><strong>Showcase Your Team:</strong> Use the <em>"Team Grid"</em> to add profiles. Even if it's just you, adding a photo and role makes the site feel human.</li>
+                <li><strong>Link Your Services:</strong> Use the <em>"Feature Cards"</em> to link to your best pages (e.g., Contact, Services, Blog). This improves internal linking structure.</li>
+                <li><strong>Generate & Copy:</strong> Watch the live preview update instantly. Once satisfied, click the <strong>"Copy HTML"</strong> button. The code includes all necessary CSS styles.</li>
+            </ol>
+        </div>
+
+        <div class="seo-card">
+            <h2>Free "About Us" Content Templates (Copy These!)</h2>
+            <p>Stuck on what to write? Use these professional templates in the "Story" section of our tool:</p>
+            
+            <h3>Template 1: For E-Commerce Stores</h3>
+            <blockquote>
+                "Founded in [Year], [Brand Name] began with a simple idea: to provide high-quality [Product] at affordable prices. What started as a small garage project has grown into a global brand serving customers in over [Number] countries. We believe that shopping should be easy, secure, and fun."
+            </blockquote>
+
+            <h3>Template 2: For Bloggers & Influencers</h3>
+            <blockquote>
+                "Hi, I'm [Name]! Welcome to my digital garden. I started [Blog Name] to share my passion for [Niche]. My goal is to educate and inspire readers to [Goal]. Here, you will find unbiased reviews, detailed tutorials, and a community of like-minded enthusiasts."
+            </blockquote>
+        </div>
+
+        <div class="seo-card">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            
+            <h3>1. Is this About Us Generator truly free?</h3>
+            <p>Yes, absolutely. Xizoa believes in free access to developer tools. There are no hidden fees, no subscriptions, and no watermarks on the generated code.</p>
+
+            <h3>2. Can I use this code on WordPress?</h3>
+            <p>Yes. To use it on WordPress, simply create a new page, select the "Custom HTML" block, and paste the code generated by our tool. It works with Elementor, Gutenberg, and Classic Editor.</p>
+
+            <h3>3. Will this help my Google Ranking?</h3>
+            <p>Indirectly, yes. A well-structured About page increases "Time on Site" and reduces "Bounce Rate". Plus, our built-in Schema Markup gives search engines structured data about your organization.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>© 2025 Xizoa Hub • Free Tools for Creators</p>
+    </footer>
+
+    <script>
+        // --- DATA STATE ---
+        let statsData = [{ num: '100+', lbl: 'Projects' }, { num: '50+', lbl: 'Clients' }];
+        let teamData = [{ name: 'John Doe', role: 'CEO', icon: 'fas fa-user' }];
+        let featuresData = [{ icon: 'fas fa-rocket', title: 'Fast', desc: 'Optimized.', link: '' }];
+
+        window.onload = function() { renderInputs(); render(); };
+
+        // --- RENDER INPUTS ---
+        function renderInputs() {
+            // Stats
+            document.getElementById('statsContainer').innerHTML = statsData.map((s, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('stats', ${i})">x</div>
+                <label>Number</label><input value="${s.num}" oninput="upd('stats', ${i}, 'num', this.value)">
+                <label>Label</label><input value="${s.lbl}" oninput="upd('stats', ${i}, 'lbl', this.value)"></div>`
+            ).join('');
+            
+            // Team
+            document.getElementById('teamContainer').innerHTML = teamData.map((t, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('team', ${i})">x</div>
+                <label>Name</label><input value="${t.name}" oninput="upd('team', ${i}, 'name', this.value)">
+                <label>Role</label><input value="${t.role}" oninput="upd('team', ${i}, 'role', this.value)">
+                <label>Icon</label><input value="${t.icon}" oninput="upd('team', ${i}, 'icon', this.value)"></div>`
+            ).join('');
+
+            // Features
+            document.getElementById('featuresContainer').innerHTML = featuresData.map((f, i) => `
+                <div class="item-row"><div class="btn-remove" onclick="rem('feat', ${i})">x</div>
+                <label>Icon</label><input value="${f.icon}" oninput="upd('feat', ${i}, 'icon', this.value)">
+                <label>Title</label><input value="${f.title}" oninput="upd('feat', ${i}, 'title', this.value)">
+                <label>Desc</label><textarea oninput="upd('feat', ${i}, 'desc', this.value)">${f.desc}</textarea>
+                <label style="color:#00f3ff">Link URL</label><input value="${f.link}" oninput="upd('feat', ${i}, 'link', this.value)"></div>`
+            ).join('');
+        }
+
+        // --- LOGIC ---
+        function upd(type, i, key, val) {
+            if(type==='stats') statsData[i][key]=val;
+            if(type==='team') teamData[i][key]=val;
+            if(type==='feat') featuresData[i][key]=val;
+            render();
+        }
+        function rem(type, i) {
+            if(type==='stats') statsData.splice(i,1);
+            if(type==='team') teamData.splice(i,1);
+            if(type==='feat') featuresData.splice(i,1);
+            renderInputs(); render();
+        }
+        function addStat() { statsData.push({num:'0', lbl:'New'}); renderInputs(); render(); }
+        function addMember() { teamData.push({name:'Name', role:'Role', icon:'fas fa-user'}); renderInputs(); render(); }
+        function addFeature() { featuresData.push({icon:'fas fa-star', title:'New', desc:'Desc', link:''}); renderInputs(); render(); }
+
+        function parseLinks(text) {
+            return text.split('\n').map(line => {
+                const parts = line.split('|');
+                if (parts.length === 2) return `<a href="${parts[1].trim()}">${parts[0].trim()}</a>`;
+                return '';
+            }).join('');
+        }
+
+        // --- RENDER PREVIEW ---
+        function render() {
+            const title = document.getElementById('heroTitle').value;
+            const sub = document.getElementById('heroSub').value;
+            const sTitle = document.getElementById('storyTitle').value;
+            const sP1 = document.getElementById('storyP1').value;
+            const sP2 = document.getElementById('storyP2').value;
+            const siteName = document.getElementById('schemaSite').value;
+            
+            const f1 = parseLinks(document.getElementById('fCol1Links').value);
+            const f2 = parseLinks(document.getElementById('fCol2Links').value);
+
+            const statsHTML = statsData.map(s => `<div><span class="g-stat-val">${s.num}</span><span>${s.lbl}</span></div>`).join('');
+            const teamHTML = teamData.map(t => `<div class="g-member"><div class="g-avatar"><i class="${t.icon}"></i></div><h3>${t.name}</h3><p>${t.role}</p></div>`).join('');
+            
+            const featHTML = featuresData.map(f => {
+                const tag = f.link ? 'a' : 'div';
+                const href = f.link ? `href="${f.link}"` : '';
+                const linkIcon = f.link ? `<i class="fas fa-external-link-alt g-link-hint"></i>` : '';
+                return `<${tag} ${href} class="g-card">${linkIcon}<div class="g-icon"><i class="${f.icon}"></i></div><h3>${f.title}</h3><p>${f.desc}</p></${tag}>`;
+            }).join('');
+
+            document.getElementById('previewCanvas').innerHTML = `
+                <div class="g-container">
+                    <div class="g-hero"><h1 class="g-title">${title}</h1><p class="g-sub">${sub}</p></div>
+                    <div class="g-stats-grid">${statsHTML}</div>
+                    <div class="g-content-block"><h2>${sTitle}</h2><p>${sP1}</p><p>${sP2}</p></div>
+                    <div class="g-team-grid">${teamHTML}</div>
+                    <div class="g-features">${featHTML}</div>
+                    <footer class="g-footer">
+                        <div class="g-footer-inner">
+                            <div><h2 style="font-size:1.5rem; margin-bottom:15px; font-weight:800;">${siteName}</h2><p class="g-brand-desc">Built with Xizoa.</p></div>
+                            <div><h4>Links</h4>${f1}</div><div><h4>Legal</h4>${f2}</div>
+                        </div>
+                        <div class="g-copy">© 2025 ${siteName}. All Rights Reserved.</div>
+                    </footer>
+                </div>`;
+        }
+
+        function copyFinalCode() {
+            const schema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"${document.getElementById('schemaSite').value}","url":"${window.location.origin}","logo":"${document.getElementById('schemaLogo').value}","description":"${document.getElementById('schemaDesc').value}"}<\/script>`;
+            const styles = `<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>body{margin:0}.g-container{font-family:'Google Sans',sans-serif;color:#374151;line-height:1.8;background:#fff}.g-hero{text-align:center;padding:100px 20px;background:radial-gradient(circle at 50% 0%,#f3f4f6 0%,#fff 70%)}.g-title{font-size:3rem;font-weight:800;margin-bottom:15px;color:#111827}.g-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px;text-align:center;padding:60px 20px;background:#111827;color:#fff}.g-stat-val{font-size:3rem;font-weight:800;color:#3b82f6;display:block}.g-content-block{max-width:800px;margin:0 auto;padding:60px 20px}.g-team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;padding:60px 20px;max-width:1000px;margin:0 auto}.g-member{padding:30px;border:1px solid #e5e7eb;border-radius:16px;text-align:center}.g-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;padding:60px 20px;max-width:1200px;margin:0 auto}.g-card{padding:30px;border:1px solid #e5e7eb;border-radius:16px;display:block;text-decoration:none;color:inherit;transition:0.3s;position:relative}.g-card:hover{border-color:#3b82f6;transform:translateY(-5px)}.g-link-hint{position:absolute;top:20px;right:20px;color:#3b82f6;opacity:0;transition:0.3s}.g-card:hover .g-link-hint{opacity:1}.g-icon{font-size:1.5rem;color:#3b82f6;margin-bottom:15px}.g-footer{background:#111827;color:#fff;padding:60px 20px;text-align:center}</style>`;
+            navigator.clipboard.writeText(schema + styles + document.getElementById('previewCanvas').innerHTML).then(() => alert("Code Copied!"));
+        }
+    </script>
+</body>
+</html>

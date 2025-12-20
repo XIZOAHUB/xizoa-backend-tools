@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Grammar Fixer - XIZOA HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Xizoa Dark/Cyan Theme */
+            --bg-body: #050b14;
+            --bg-card: #0f172a;
+            --bg-input: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-red: #ef4444;    /* Grammar Errors */
+            --accent-yellow: #eab308; /* Style Suggestions */
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 11, 20, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--accent-cyan); }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Editor vs Sidebar */
+            gap: 30px;
+            flex: 1;
+        }
+
+        /* Editor Area */
+        .editor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .tool-btn:hover { background: var(--bg-input); color: var(--accent-cyan); }
+
+        /* The Input Area */
+        .textarea-wrapper {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        textarea, .highlight-layer {
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: transparent;
+            border: none;
+            resize: none;
+            outline: none;
+            color: var(--text-white);
+            font-family: 'Outfit', sans-serif;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Highlight Logic */
+        .highlight-layer {
+            z-index: 1;
+            color: transparent; /* Text is invisible, only underlines show */
+            pointer-events: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        textarea {
+            z-index: 2;
+            background: transparent; /* See highlights through */
+        }
+
+        /* Underlines */
+        .err-grammar { border-bottom: 2px solid var(--accent-red); cursor: pointer; }
+        .err-style { border-bottom: 2px solid var(--accent-yellow); cursor: pointer; }
+
+        /* Sidebar Stats */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-cyan);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .stat-row span:last-child { color: white; font-weight: 600; }
+
+        .fix-btn {
+            width: 100%;
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .fix-btn:hover { background: #22d3ee; }
+
+        .suggestion-box {
+            background: var(--bg-input);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none; /* Hidden until error found */
+        }
+        .suggestion-title { color: var(--accent-red); font-weight: 600; margin-bottom: 5px; }
+        .suggestion-text { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .editor-card { height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-spell-check"></i> XIZOA <span style="color:var(--accent-cyan)">GRAMMAR</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="editor-card">
+            <div class="editor-toolbar">
+                <button class="tool-btn" onclick="copyText()"><i class="fa-regular fa-copy"></i> Copy</button>
+                <button class="tool-btn" onclick="clearText()"><i class="fa-solid fa-trash"></i> Clear</button>
+                <span style="color:var(--text-muted); font-size:0.9rem; margin-top:5px;">English (US)</span>
+            </div>
+
+            <div class="textarea-wrapper">
+                <div id="highlightLayer" class="highlight-layer"></div>
+                <textarea id="textInput" placeholder="Type or paste your text here to check grammar... (e.g., Try typing 'Their is alot of mistakes here')" oninput="handleInput()"></textarea>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="stat-card" style="text-align:center;">
+                <div class="score-circle" id="scoreVal">100</div>
+                <h3>Content Score</h3>
+                <p style="color:var(--text-muted); font-size:0.85rem; margin-top:5px;">AI Readability Analysis</p>
+                
+                <button class="fix-btn" onclick="fixAllErrors()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Fix All Errors
+                </button>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-row">
+                    <span>Words</span>
+                    <span id="wordCount">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Characters</span>
+                    <span id="charCount">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Readability</span>
+                    <span id="readability" style="color:var(--accent-cyan)">Neutral</span>
+                </div>
+            </div>
+
+            <div id="suggestionBox" class="stat-card suggestion-box" style="display:block;">
+                <div class="suggestion-title"><i class="fa-solid fa-circle-info"></i> AI Tip</div>
+                <p class="suggestion-text">Start typing to see grammar, spelling, and style suggestions in real-time.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- 1. THE "LOCAL MODEL" (Rule Engine) ---
+        // A dictionary of common errors and their fixes.
+        // Format: [Regex Pattern, Replacement, Type (grammar/style), Explanation]
+        
+        const grammarRules = [
+            // Common Grammar
+            [/\b(their|there|they're) is\b/gi, "there is", "grammar", "Use 'there' for existence."],
+            [/\b(your|you're) welcome\b/gi, "you're welcome", "grammar", "Use 'you're' (you are)."],
+            [/\b(its|it's) amazing\b/gi, "it's amazing", "grammar", "Use 'it's' (it is)."],
+            [/\bshould of\b/gi, "should have", "grammar", "'Should of' is incorrect."],
+            [/\bcould of\b/gi, "could have", "grammar", "'Could of' is incorrect."],
+            [/\balot\b/gi, "a lot", "grammar", "'Alot' is not a word."],
+            [/\bi (dont|cant|wont)\b/gi, "I $1", "grammar", "Always capitalize 'I'."],
+            [/\bdont\b/gi, "don't", "grammar", "Missing apostrophe."],
+            
+            // Style / Redundancy
+            [/\bvery (good|nice|bad)\b/gi, "excellent/terrible", "style", "Avoid 'very'. Use stronger words."],
+            [/\bcollaborate together\b/gi, "collaborate", "style", "Redundant. Collaborate implies together."],
+            [/\badvance planning\b/gi, "planning", "style", "Planning is always in advance."],
+            [/\babsolutely essential\b/gi, "essential", "style", "Redundant."],
+            [/\b(literally) died\b/gi, "figuratively died", "style", "Misuse of 'literally'."],
+        ];
+
+        let currentText = "";
+
+        function handleInput() {
+            const textarea = document.getElementById('textInput');
+            const highlightLayer = document.getElementById('highlightLayer');
+            currentText = textarea.value;
+
+            // 1. Sync Scroll
+            highlightLayer.scrollTop = textarea.scrollTop;
+            textarea.addEventListener('scroll', () => {
+                highlightLayer.scrollTop = textarea.scrollTop;
+            });
+
+            // 2. Stats Calculation
+            const words = currentText.trim() === "" ? 0 : currentText.trim().split(/\s+/).length;
+            document.getElementById('wordCount').innerText = words;
+            document.getElementById('charCount').innerText = currentText.length;
+
+            // 3. Run Checks
+            runGrammarCheck(currentText);
+        }
+
+        function runGrammarCheck(text) {
+            let html = text;
+            let errorCount = 0;
+            let issuesFound = [];
+
+            // We need to escape HTML tags in user input to prevent XSS in the highlight layer
+            html = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            // --- Apply Rules ---
+            grammarRules.forEach(([regex, fix, type, desc]) => {
+                // Find matches to highlight
+                // Note: This is a simplified highlighter. 
+                // In a robust app, you'd calculate indices. Here we simulate using string replace for demo.
+                
+                if (regex.test(text)) {
+                    errorCount++;
+                    issuesFound.push({ fix, desc, type });
+                    
+                    const className = type === 'grammar' ? 'err-grammar' : 'err-style';
+                    
+                    // Regex replace with span (Case insensitive preservation is tricky in simple replace, 
+                    // so we just highlight the match)
+                    html = html.replace(regex, (match) => {
+                        return `<span class="${className}">${match}</span>`;
+                    });
+                }
+            });
+
+            // Update Highlight Layer
+            // Preserve line breaks
+            document.getElementById('highlightLayer').innerHTML = html.replace(/\n/g, '<br>');
+
+            // Update Score
+            let score = 100 - (errorCount * 5);
+            if (score < 0) score = 0;
+            const scoreEl = document.getElementById('scoreVal');
+            scoreEl.innerText = score;
+
+            // Color code score
+            if(score > 80) scoreEl.style.color = "#22c55e"; // Green
+            else if(score > 50) scoreEl.style.color = "#eab308"; // Yellow
+            else scoreEl.style.color = "#ef4444"; // Red
+            scoreEl.style.borderColor = scoreEl.style.color;
+
+            // Update Suggestion Box
+            const suggBox = document.getElementById('suggestionBox');
+            if (issuesFound.length > 0) {
+                const issue = issuesFound[0]; // Show first issue
+                suggBox.innerHTML = `
+                    <div class="suggestion-title" style="color:${issue.type === 'grammar' ? '#ef4444' : '#eab308'}">
+                        <i class="fa-solid fa-triangle-exclamation"></i> ${issue.type === 'grammar' ? 'Critical Error' : 'Style Suggestion'}
+                    </div>
+                    <p class="suggestion-text">${issue.desc} <br><strong>Suggest: ${issue.fix}</strong></p>
+                `;
+            } else if (text.length > 0) {
+                suggBox.innerHTML = `
+                    <div class="suggestion-title" style="color:#22c55e"><i class="fa-solid fa-check-circle"></i> Looks Good!</div>
+                    <p class="suggestion-text">No major errors found. Your text flows well.</p>
+                `;
+            }
+        }
+
+        function fixAllErrors() {
+            let text = document.getElementById('textInput').value;
+            
+            grammarRules.forEach(([regex, fix, type]) => {
+                // Determine replacement logic
+                // If fix has options like "excellent/terrible", pick first for auto-fix
+                let replacement = fix;
+                if(fix.includes('/')) replacement = fix.split('/')[0];
+                
+                // Avoid fixing specific placeholders ($1) in this simple logic
+                if(!fix.includes('$')) {
+                     text = text.replace(regex, replacement);
+                }
+            });
+
+            document.getElementById('textInput').value = text;
+            handleInput(); // Re-run analysis
+            
+            // Notification animation
+            const btn = document.querySelector('.fix-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Fixed!';
+            setTimeout(() => { btn.innerHTML = originalText; }, 1500);
+        }
+
+        function copyText() {
+            const text = document.getElementById('textInput');
+            text.select();
+            document.execCommand('copy');
+            alert("Text copied!");
+        }
+
+        function clearText() {
+            if(confirm("Clear editor?")) {
+                document.getElementById('textInput').value = "";
+                handleInput();
+            }
+        }
+    </script>
+</body>
+</html>

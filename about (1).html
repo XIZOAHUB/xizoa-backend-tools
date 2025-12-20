@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About Us | XIZOA HUB - Free Online Tools</title>
+  <meta name="description" content="Learn about XIZOA HUB's mission to provide 30+ free, fast, and secure online tools for creators, developers, and gamers, founded by Priyanshu.">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- THEME BASE (Matching Index.html) --- */
+    :root { 
+        --primary: #00f7ff; 
+        --bg-dark: #0a0f1a; 
+        --card-bg: rgba(23, 33, 54, 0.8);
+        --text-main: #e5e5e5; 
+        --text-muted: #a0aec0;
+        --nav-bg: rgba(5, 8, 15, 0.95);
+    }
+    
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; }
+    
+    body { 
+        background: var(--bg-dark); 
+        color: var(--text-main); 
+        padding-top: 80px; 
+        line-height: 1.6;
+        min-height: 100vh;
+    }
+    
+    /* --- Navbar (Copy of Index.html for consistency) --- */
+    .navbar {
+        position: fixed; top: 0; left: 0; width: 100%;
+        background: var(--nav-bg); backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; 
+        z-index: 1000;
+    }
+    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { font-size: 1.8rem; color: #fff; }
+    .logo-text { font-size: 1.8rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1; }
+    .text-white { color: #fff; } .text-cyan { color: var(--primary); }
+    .menu-btn { font-size: 1.6rem; color: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+
+    /* --- Page Content --- */
+    .content-wrapper {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    h1 { 
+        font-size: 2.5rem; 
+        color: var(--primary); 
+        border-bottom: 3px solid rgba(0, 247, 255, 0.3); 
+        padding-bottom: 10px; 
+        margin-bottom: 30px; 
+        text-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
+    }
+    
+    h2 { 
+        color: #fff; 
+        font-size: 1.8rem; 
+        margin-top: 30px; 
+        margin-bottom: 15px;
+    }
+    
+    p { 
+        color: var(--text-muted); 
+        margin-bottom: 15px; 
+        font-size: 1.05rem;
+    }
+
+    .highlight { 
+        color: var(--primary); 
+        font-weight: 600; 
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        color: var(--text-muted);
+        padding-left: 25px;
+        position: relative;
+    }
+
+    ul li::before {
+        content: '✓';
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+
+    /* --- Footer (Simple link back) --- */
+    .footer-link {
+        display: block;
+        margin-top: 40px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--primary);
+        font-size: 1rem;
+        padding: 10px;
+        border: 1px solid var(--primary);
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+    .footer-link:hover {
+        background: var(--primary);
+        color: #000;
+        box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+    }
+
+    @media (max-width: 600px) {
+        .content-wrapper {
+            padding: 20px;
+            margin: 20px;
+        }
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo-container">
+      <i class="fas fa-cube logo-icon"></i>
+      <div class="logo-text"><span class="text-white">XIZOA</span> <span class="text-cyan">HUB</span></div>
+    </a>
+    <a href="index.html" class="menu-btn"><i class="fas fa-arrow-left"></i> Back</a>
+  </nav>
+
+  <div class="content-wrapper">
+    
+    <h1>Our Story & Mission</h1>
+    
+    <p>Welcome to <strong>XIZOA HUB</strong>, the destination for creators, gamers, and everyday users looking for reliable digital tools. Our journey began with a simple idea: why should essential online utilities be hidden behind paywalls, intrusive ads, or complex sign-up processes?</p>
+
+    <h2>The Founder: Priyanshu</h2>
+    <p>XIZOA HUB was founded by <span class="highlight">Priyanshu</span> in 2025. Driven by a passion for technology and a belief in free, open resources, Priyanshu engineered this platform from the ground up. The goal was simple: to create a single, powerful hub where users could find solutions to their common digital problems, from video downloading to checking network health, all in one place.</p>
+
+    <h2>Our Core Philosophy</h2>
+    <p>Our philosophy is built on three pillars:</p>
+    <ul>
+        <li>**Free Access:** Every tool on XIZOA HUB is, and always will be, 100% free to use.</li>
+        <li>**Privacy & Security:** We do not store your data. All core processing happens directly in your browser (Client-side), ensuring maximum privacy.</li>
+        <li>**Performance:** Speed matters. We focus on building lightweight, fast-loading tools that get the job done instantly.</li>
+    </ul>
+
+    <h2>What We Offer (30+ Tools)</h2>
+    <p>XIZOA HUB now hosts over 30 unique tools across vital categories:</p>
+    <ul>
+        <li>**Social Tools:** Downloaders and generators for YouTube, TikTok, and Instagram.</li>
+        <li>**Gaming & Hardware:** Testers for Mouse, Keyboard, and Reaction time.</li>
+        <li>**PDF & Image:** Converters, Editors, and Metadata removal tools.</li>
+        <li>**Security:** IP Checkers, Password Generators, and Link Scanners.</li>
+    </ul>
+    
+    <p>Thank you for choosing XIZOA HUB. We are committed to constantly improving and adding more valuable tools to make your digital life easier.</p>
+    
+    <a href="index.html" class="footer-link"><i class="fas fa-th"></i> Explore All Tools on Home Page</a>
+  </div>
+
+</body>
+</html>

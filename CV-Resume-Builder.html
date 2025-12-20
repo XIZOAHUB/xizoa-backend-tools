@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Free Resume Builder Online 2025 | Create Professional CV in Minutes</title>
+  
+  <meta name="description" content="Build a professional resume for free with Xizoa Resume Maker. Choose templates, auto-fill details, and download as PDF instantly. ATS-friendly CV builder for freshers & experts.">
+  
+  <meta name="keywords" content="resume builder, free cv maker, online resume maker, create cv free, resume pdf download, biodata maker, curriculum vitae creator, xizoa tools, job application resume">
+  
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tools.xizoa.com/resume-builder.html">
+  
+  <meta property="og:title" content="Free Resume Builder - Create CV Instantly">
+  <meta property="og:description" content="Make a job-winning resume in minutes. No sign-up required. Download PDF.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tools.xizoa.com/resume-builder.html">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa Resume Builder",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A free online tool to build professional resumes and CVs with PDF download functionality.",
+    "featureList": "Auto-fill, PDF Export, ATS Friendly Layout, Real-time Preview",
+    "author": { "@type": "Person", "name": "Priyanshu" }
+  }
+  </script>
+
+  <style>
+    /* --- THEME: CLEAN WHITE PROFESSIONAL --- */
+    :root {
+      --bg-body: #ffffff;
+      --bg-panel: #f8fafc;
+      --input-bg: #ffffff;
+      
+      --accent-cyan: #0ea5e9; /* Professional Blue/Cyan */
+      --text-main: #0f172a;   /* Dark Slate */
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      
+      --preview-bg: #e2e8f0;  /* Grey background for preview area to make paper pop */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- NAVIGATION --- */
+    .no-print-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; color: var(--text-main); text-decoration: none; }
+
+    .btn-action {
+      background: var(--accent-cyan);
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+    }
+    .btn-action:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4); }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+
+    /* --- BUILDER LAYOUT --- */
+    .builder-container {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr; /* Editor vs Preview */
+      min-height: 85vh; /* Ensure enough space */
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* LEFT: EDITOR PANEL */
+    .editor-panel {
+      background: var(--bg-panel);
+      padding: 40px;
+      overflow-y: auto;
+      height: 85vh;
+      border-right: 1px solid var(--border);
+    }
+
+    .form-section { 
+        margin-bottom: 35px; 
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        border: 1px solid var(--border);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    
+    .section-title {
+      color: var(--accent-cyan);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .input-group { margin-bottom: 15px; }
+    label { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px; font-weight: 500; }
+    
+    input, textarea {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid #cbd5e1;
+      padding: 12px;
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+    textarea { resize: vertical; min-height: 80px; }
+    
+    .row { display: flex; gap: 15px; }
+    .col { flex: 1; }
+
+    /* RIGHT: PREVIEW PANEL */
+    .preview-panel {
+      background: var(--preview-bg);
+      padding: 40px;
+      overflow-y: auto;
+      height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* --- THE RESUME PAPER (A4) --- */
+    .resume-paper {
+      background: white;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm 20mm;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transform: scale(0.9); /* Slight scale down to fit view */
+      transform-origin: top center;
+    }
+
+    /* Resume Content Styles */
+    .cv-header { border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 25px; }
+    .cv-name { font-size: 2.8rem; font-weight: 800; color: #000; text-transform: uppercase; line-height: 1; letter-spacing: 1px; }
+    .cv-role { font-size: 1.3rem; color: var(--accent-cyan); margin-top: 5px; font-weight: 600; text-transform: uppercase; }
+    
+    .cv-contact { 
+      display: flex; gap: 20px; font-size: 0.95rem; color: #555; margin-top: 15px; 
+      flex-wrap: wrap;
+    }
+    .cv-contact span { display: flex; align-items: center; gap: 6px; }
+    .cv-contact i { color: var(--accent-cyan); }
+
+    .cv-section { margin-bottom: 25px; }
+    .cv-sec-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+      text-transform: uppercase;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .cv-item { margin-bottom: 18px; }
+    .cv-item-head { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.05rem; color: #111; }
+    .cv-item-sub { font-style: italic; color: #666; font-size: 0.95rem; margin-bottom: 5px; }
+    .cv-list { padding-left: 20px; font-size: 0.95rem; line-height: 1.6; color: #444; }
+    .cv-list li { margin-bottom: 5px; }
+
+    /* --- SEO CONTENT SECTION (Below Builder) --- */
+    .seo-content { 
+        max-width: 1000px; margin: 60px auto; padding: 0 20px; 
+    }
+    .seo-card { 
+        background: #fff; border: 1px solid var(--border); padding: 50px; 
+        border-radius: 20px; margin-bottom: 40px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .seo-content h2 { font-size: 2rem; color: #0f172a; margin-bottom: 25px; border-left: 5px solid var(--accent-cyan); padding-left: 20px; }
+    .seo-content h3 { font-size: 1.5rem; color: var(--accent-cyan); margin-top: 35px; margin-bottom: 15px; }
+    .seo-content p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .seo-content ul { margin-left: 20px; margin-bottom: 25px; color: #475569; line-height: 1.8; }
+    .seo-content li { margin-bottom: 12px; }
+
+    /* --- MORE TOOLS SECTION --- */
+    .more-tools-section { max-width: 1000px; margin: 40px auto 80px auto; padding: 0 20px; text-align: center; }
+    .more-tools-section h2 { margin-bottom: 30px; font-size: 1.8rem; color: #0f172a; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .tool-card { 
+        background: #fff; border: 1px solid var(--border); padding: 25px; border-radius: 15px; 
+        transition: 0.3s; text-align: left; text-decoration: none; display: block;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--accent-cyan); }
+    .tool-card i { font-size: 2rem; color: var(--accent-cyan); margin-bottom: 15px; }
+    .tool-card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
+    .tool-card p { color: #64748b; font-size: 0.95rem; }
+
+    /* --- FOOTER --- */
+    footer { 
+        background: #0f172a; 
+        border-top: 1px solid #1e293b; 
+        padding: 60px 20px 20px; 
+        margin-top: auto; 
+        color: #94a3b8; 
+    }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; border-left: 3px solid var(--accent-cyan); padding-left: 10px; }
+    .footer-col p { font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--accent-cyan); padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 0.85rem; }
+
+    /* --- PRINT MEDIA QUERY (Crucial) --- */
+    @media print {
+      body { background: white; }
+      /* HIDE EVERYTHING except the resume paper */
+      .no-print-nav, .editor-panel, .seo-content, .more-tools-section, footer { display: none !important; }
+      
+      .builder-container { display: block; height: auto; overflow: visible; border:none; }
+      .preview-panel { background: white; padding: 0; margin: 0; display: block; height: auto; overflow: visible; }
+      
+      .resume-paper { 
+        box-shadow: none; 
+        width: 100%; 
+        margin: 0; 
+        padding: 0; 
+        transform: scale(1);
+        page-break-after: avoid; 
+      }
+      @page { margin: 1cm; size: A4; }
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .builder-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
+      .editor-panel, .preview-panel { height: auto; width: 100%; }
+      .resume-paper { width: 100%; min-height: auto; transform: scale(1); }
+      .no-print-nav { position: relative; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="no-print-nav">
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-file-signature"></i> XIZOA <span style="color:var(--accent-cyan)">CV</span>
+    </a>
+    <div style="display:flex; gap:10px;">
+      <button class="btn-secondary" onclick="autoFill()">
+        <i class="fa-solid fa-magic-wand-sparkles"></i> Auto Fill
+      </button>
+      <button class="btn-action" onclick="window.print()">
+        <i class="fa-solid fa-download"></i> Download PDF
+      </button>
+    </div>
+  </nav>
+
+  <div class="builder-container">
+    
+    <div class="editor-panel">
+      
+      <div class="form-section">
+        <div class="section-title"><i class="fa-regular fa-user"></i> Personal Details</div>
+        <div class="row">
+          <div class="col">
+            <label>Full Name</label>
+            <input type="text" id="inName" placeholder="e.g. John Doe" oninput="updateCV()">
+          </div>
+          <div class="col">
+            <label>Job Title</label>
+            <input type="text" id="inRole" placeholder="e.g. Graphic Designer" oninput="updateCV()">
+          </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+          <div class="col">
+            <label>Email</label>
+            <input type="text" id="inEmail" placeholder="john@example.com" oninput="updateCV()">
+          </div>
+          <div class="col">
+            <label>Phone</label>
+            <input type="text" id="inPhone" placeholder="+1 234 567 890" oninput="updateCV()">
+          </div>
+        </div>
+        <div style="margin-top:15px;">
+          <label>Location</label>
+          <input type="text" id="inLoc" placeholder="New York, USA" oninput="updateCV()">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-title"><i class="fa-solid fa-align-left"></i> Professional Summary</div>
+        <textarea id="inSummary" placeholder="Briefly describe your career highlights..." oninput="updateCV()"></textarea>
+      </div>
+
+      <div class="form-section">
+        <div class="section-title"><i class="fa-solid fa-bolt"></i> Skills</div>
+        <label>Separate by comma</label>
+        <textarea id="inSkills" placeholder="e.g. Photoshop, Figma, HTML, CSS" oninput="updateCV()"></textarea>
+      </div>
+
+      <div class="form-section">
+        <div class="section-title"><i class="fa-solid fa-briefcase"></i> Experience (Latest)</div>
+        <div class="input-group">
+          <label>Company & Date</label>
+          <input type="text" id="inExp1Head" placeholder="Google | 2020 - Present" oninput="updateCV()">
+        </div>
+        <div class="input-group">
+          <label>Job Title</label>
+          <input type="text" id="inExp1Sub" placeholder="Senior Designer" oninput="updateCV()">
+        </div>
+        <label>Achievements (Use Enter for bullets)</label>
+        <textarea id="inExp1Desc" oninput="updateCV()"></textarea>
+      </div>
+
+      <div class="form-section">
+        <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+        <div class="input-group">
+          <label>University & Date</label>
+          <input type="text" id="inEduHead" placeholder="Harvard University | 2016-2020" oninput="updateCV()">
+        </div>
+        <div class="input-group">
+          <label>Degree</label>
+          <input type="text" id="inEduSub" placeholder="B.Sc. Computer Science" oninput="updateCV()">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="preview-panel">
+      <div class="resume-paper" id="cvContent">
+        
+        <div class="cv-header">
+          <div class="cv-name" id="outName">YOUR NAME</div>
+          <div class="cv-role" id="outRole">Job Title</div>
+          <div class="cv-contact">
+            <span id="cEmail"><i class="fa-solid fa-envelope"></i> <span id="outEmail">email@example.com</span></span>
+            <span id="cPhone"><i class="fa-solid fa-phone"></i> <span id="outPhone">123-456-7890</span></span>
+            <span id="cLoc"><i class="fa-solid fa-location-dot"></i> <span id="outLoc">City, Country</span></span>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="cv-sec-title">Profile</div>
+          <div class="cv-list" style="list-style:none; padding:0;" id="outSummary">
+            Write a short professional summary about yourself here...
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="cv-sec-title">Experience</div>
+          
+          <div class="cv-item">
+            <div class="cv-item-head" id="outExp1Head">Company Name | Date</div>
+            <div class="cv-item-sub" id="outExp1Sub">Job Position</div>
+            <ul class="cv-list" id="outExp1Desc">
+              <li>Describe your responsibilities here...</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="cv-sec-title">Skills</div>
+          <div class="cv-list" style="list-style:none; padding:0;" id="outSkills">
+            Skill 1, Skill 2, Skill 3
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="cv-sec-title">Education</div>
+          <div class="cv-item">
+            <div class="cv-item-head" id="outEduHead">University Name | Date</div>
+            <div class="cv-item-sub" id="outEduSub">Degree Name</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-content">
+    
+    <article class="seo-card">
+      <h2>Build a Professional Resume in Minutes (2025 Guide)</h2>
+      <p>Your resume is the first impression you make on a potential employer. In today's competitive job market, having a clean, well-structured, and ATS-friendly CV is crucial. <strong>Xizoa Hub's Free Resume Builder</strong> simplifies this process. Forget about struggling with Microsoft Word formatting or paying for expensive CV makers. Our tool allows you to fill in your details and generate a perfectly formatted PDF instantly.</p>
+      <p>Whether you are a fresher looking for your first internship or a seasoned professional applying for a managerial role, our minimalist design ensures that recruiters focus on what matters most—your skills and experience.</p>
+    </article>
+
+    <article class="seo-card">
+      <h2>Why Use Xizoa Resume Builder?</h2>
+      
+      <h3>1. ATS-Friendly Layout</h3>
+      <p>Applicant Tracking Systems (ATS) are software used by HR to filter resumes. Our template is designed with standard fonts, clear headings, and bullet points, ensuring that ATS bots can read your resume correctly and pass it to human recruiters.</p>
+
+      <h3>2. Instant PDF Download</h3>
+      <p>No watermarks, no hidden fees, and no sign-up required. Once you are done editing, simply click the "Download PDF" button, and your CV is ready to be emailed or uploaded to job portals like LinkedIn, Indeed, and Glassdoor.</p>
+
+      <h3>3. Real-Time Preview</h3>
+      <p>See changes as you type. Our split-screen interface allows you to edit information on the left and see exactly how it looks on the final A4 paper on the right. This eliminates the guesswork from resume formatting.</p>
+
+      <h3>4. Data Privacy</h3>
+      <p>We do not store your personal data on our servers. The resume generation happens entirely in your browser. Once you close the tab, your data is wiped, ensuring complete privacy.</p>
+    </article>
+
+    <article class="seo-card">
+      <h2>How to Write a Job-Winning Resume?</h2>
+      <p>Follow these expert tips to maximize your chances:</p>
+      <ul>
+          <li><strong>Keep it Concise:</strong> Recruiters spend about 6 seconds scanning a resume. Keep your summary short and impactful.</li>
+          <li><strong>Use Action Verbs:</strong> Start bullet points with words like "Led," "Developed," "Increased," or "Managed."</li>
+          <li><strong>Quantify Achievements:</strong> Instead of saying "Improved sales," say "Increased sales by 20% in Q3."</li>
+          <li><strong>Tailor to the Job:</strong> Use keywords from the job description in your "Skills" section.</li>
+      </ul>
+    </article>
+
+    <article class="seo-card">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      
+      <h3>Is this resume builder really free?</h3>
+      <p>Yes! Xizoa Resume Builder is 100% free. You can create and download as many resumes as you want without paying a single cent.</p>
+
+      <h3>Can I save my resume and edit it later?</h3>
+      <p>Currently, we do not store data for privacy reasons. We recommend downloading your PDF. If you need to make changes, you can use the "Auto Fill" feature to quickly repopulate common data or keep the tab open.</p>
+
+      <h3>What is the best file format for a resume?</h3>
+      <p>PDF is the industry standard. It ensures that your formatting stays exactly the same on any device, whether the recruiter views it on a phone, tablet, or desktop.</p>
+    </article>
+
+  </section>
+
+  <div class="more-tools-section">
+      <h2>🔥 More Useful Tools</h2>
+      <div class="tools-grid">
+          <a href="ai-email-writer.html" class="tool-card">
+              <i class="fas fa-envelope-open-text"></i>
+              <h3>AI Email Writer</h3>
+              <p>Generate professional cover letters and emails to send with your resume.</p>
+          </a>
+          <a href="image-compressor.html" class="tool-card">
+              <i class="fas fa-compress-arrows-alt"></i>
+              <h3>Image Compressor</h3>
+              <p>Compress your profile photo or documents before uploading.</p>
+          </a>
+          <a href="pdf-merger.html" class="tool-card">
+              <i class="fas fa-file-pdf"></i>
+              <h3>PDF Merger</h3>
+              <p>Combine your Resume and Cover Letter into a single PDF file.</p>
+          </a>
+      </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Xizoa Resume Builder is a free utility to create professional, ATS-friendly CVs and Biodata in minutes with instant PDF download.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    function updateCV() {
+      // Text Mappers
+      mapText('inName', 'outName', 'YOUR NAME');
+      mapText('inRole', 'outRole', 'Job Title');
+      mapText('inEmail', 'outEmail', 'email@example.com');
+      mapText('inPhone', 'outPhone', '123-456-7890');
+      mapText('inLoc', 'outLoc', 'City, Country');
+      
+      mapText('inSummary', 'outSummary', 'Summary goes here...');
+      mapText('inSkills', 'outSkills', 'List your skills here...');
+      
+      mapText('inExp1Head', 'outExp1Head', 'Company | Date');
+      mapText('inExp1Sub', 'outExp1Sub', 'Job Title');
+      
+      mapText('inEduHead', 'outEduHead', 'University | Date');
+      mapText('inEduSub', 'outEduSub', 'Degree');
+
+      // Bullet Mapper for Experience
+      const expText = document.getElementById('inExp1Desc').value;
+      const expList = document.getElementById('outExp1Desc');
+      if(expText) {
+        // Split by new line and wrap in <li>
+        const items = expText.split('\n').filter(item => item.trim() !== '');
+        expList.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+      } else {
+        expList.innerHTML = '<li>Describe your responsibilities here...</li>';
+      }
+    }
+
+    function mapText(inputId, outputId, placeholder) {
+      const val = document.getElementById(inputId).value;
+      document.getElementById(outputId).innerText = val ? val : placeholder;
+    }
+
+    function autoFill() {
+      // Populate Input Fields
+      document.getElementById('inName').value = "Priyanshu Developer";
+      document.getElementById('inRole').value = "Senior Frontend Engineer";
+      document.getElementById('inEmail').value = "contact@xizoa.com";
+      document.getElementById('inPhone').value = "+91 98765 43210";
+      document.getElementById('inLoc').value = "Mumbai, India";
+      
+      document.getElementById('inSummary').value = "Passionate developer with 5+ years of experience in building scalable web applications. Expert in UI/UX design and modern JavaScript frameworks.";
+      
+      document.getElementById('inSkills').value = "JavaScript, React, Node.js, CSS3, Python, UI Design, Git";
+      
+      document.getElementById('inExp1Head').value = "Tech Solutions Ltd. | 2021 - Present";
+      document.getElementById('inExp1Sub').value = "Lead Developer";
+      document.getElementById('inExp1Desc').value = "Led a team of 5 developers to build the core product.\nImproved site performance by 40% using lazy loading.\nDesigned the new responsive dashboard UI.";
+      
+      document.getElementById('inEduHead').value = "IIT Bombay | 2017 - 2021";
+      document.getElementById('inEduSub').value = "B.Tech Computer Science";
+
+      // Trigger Update
+      updateCV();
+    }
+  </script>
+</body>
+</html>

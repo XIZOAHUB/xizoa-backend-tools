@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Free AI Email Writer | Professional Email Generator & Letter Creator 2025</title>
+    <meta name="description" content="Use the world's best Free AI Email Writer. Generate professional emails, job applications, cover letters, and cold emails instantly. No login, unlimited access.">
+    <meta name="keywords" content="ai email writer, free email generator, professional email creator, write email with ai, resignation letter maker, sick leave email format, cold email generator, email writing assistant">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xizoa.com/ai-email-writer">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Free AI Email Writer",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A free AI tool to generate professional emails, cover letters, and formal applications instantly.",
+      "featureList": "AI Email Generation, Grammar Correction, Tone Adjustment",
+      "author": {
+        "@type": "Person",
+        "name": "Priyanshu"
+      }
+    }
+    </script>
+
+    <style>
+        /* --- THEME SETTINGS --- */
+        :root { 
+            --bg: #f8f9fa; /* Background White */
+            --text: #1e293b; /* Text Dark */
+            
+            /* Theme Color (Used for Cards & now Footer) */
+            --card: #0f172a; 
+            --card-text: #e2e8f0; 
+            
+            --input: #1e293b; 
+            --primary: #00f7ff; 
+            --primary-glow: rgba(0, 247, 255, 0.25); 
+            --border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; outline: none; }
+        
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* HEADER */
+        header { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: linear-gradient(to bottom, #ffffff, #f0f4f8); 
+            border-bottom: 1px solid #e2e8f0; 
+        }
+        .brand-logo { font-size: 2.2rem; font-weight: 800; color: #0f172a; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .brand-logo span { color: #007bff; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; color: #0f172a; }
+        .subtitle { color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* TOOL CONTAINER */
+        .tool-container {
+            max-width: 1200px; margin: 40px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px;
+        }
+
+        /* CARDS */
+        .card { 
+            background: var(--card); 
+            border: 1px solid #334155; 
+            border-radius: 20px; 
+            padding: 30px; 
+            height: fit-content; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+            display: flex; flex-direction: column; 
+            color: var(--card-text); 
+        }
+        
+        .card-header { 
+            font-size: 1.2rem; margin-bottom: 20px; 
+            color: #fff; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding-bottom: 15px; font-weight: 700; display: flex; align-items: center; gap: 10px; 
+        }
+        .card-header i { color: var(--primary); }
+
+        /* INPUTS */
+        label { display: block; margin-bottom: 8px; color: #94a3b8; font-size: 0.9rem; font-weight: 600; }
+        select, input, textarea { width: 100%; background: var(--input); border: 1px solid #334155; color: #fff; padding: 12px; border-radius: 10px; font-size: 1rem; margin-bottom: 20px; transition: 0.3s; }
+        select:focus, input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
+
+        .btn-generate { width: 100%; background: var(--primary); color: #000; padding: 15px; border: none; border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 0 20px var(--primary-glow); }
+        .btn-generate:hover { transform: translateY(-3px); box-shadow: 0 0 40px var(--primary-glow); }
+        .btn-generate:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        /* OUTPUT */
+        .output-wrapper { position: relative; flex: 1; min-height: 400px; display: flex; flex-direction: column; }
+        .output-area { flex: 1; width: 100%; background: transparent; border: none; resize: none; font-size: 1.05rem; line-height: 1.8; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; white-space: pre-wrap; }
+        .copy-btn { position: absolute; top: -10px; right: 0; background: #334155; color: #fff; border: none; padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .copy-btn:hover { background: var(--primary); color: #000; }
+
+        #loader { display: none; text-align: center; padding-top: 100px; color: var(--primary); }
+
+        /* --- MORE TOOLS SECTION --- */
+        .more-tools-section { max-width: 1200px; margin: 20px auto 80px auto; padding: 0 20px; text-align: center; }
+        .more-tools-section h2 { margin-bottom: 30px; font-size: 1.8rem; color: #0f172a; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .tool-card { 
+            background: #fff; border: 1px solid #e2e8f0; padding: 25px; border-radius: 15px; 
+            transition: 0.3s; text-align: left; text-decoration: none; display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #007bff; }
+        .tool-card i { font-size: 2rem; color: #007bff; margin-bottom: 15px; }
+        .tool-card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
+        .tool-card p { color: #64748b; font-size: 0.95rem; }
+
+        /* SEO CONTENT SECTION */
+        .content-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .content-block { 
+            background: #ffffff; 
+            border: 1px solid #e2e8f0; 
+            padding: 50px; border-radius: 20px; margin-bottom: 40px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .content-block h2 { color: #0f172a; font-size: 2rem; margin-bottom: 25px; border-left: 5px solid #007bff; padding-left: 20px; }
+        .content-block h3 { color: #007bff; font-size: 1.5rem; margin: 30px 0 15px 0; }
+        .content-block p { color: #475569; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
+        .content-block ul, .content-block ol { margin-left: 20px; margin-bottom: 20px; color: #475569; line-height: 1.8; }
+        .content-block li { margin-bottom: 10px; }
+
+        /* DONATION */
+        .donate-box { max-width: 600px; margin: 40px auto; text-align: center; padding: 30px; background: #0f172a; border-radius: 20px; border: 1px solid var(--primary); color: #fff; }
+        .donate-box img { width: 150px; border-radius: 10px; margin-top: 15px; }
+
+        /* FOOTER (Matched with Theme Color) */
+        footer { 
+            background: var(--card); /* Matches the dark blue of the tool cards */
+            border-top: 1px solid #1e293b; 
+            padding: 60px 20px; 
+            margin-top: auto; 
+            color: #94a3b8; 
+        }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 10px; }
+        .footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition:0.3s; }
+        .footer-col a:hover { color: var(--primary); padding-left: 5px; }
+        .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; }
+
+        @media (max-width: 900px) {
+            .tool-container { grid-template-columns: 1fr; }
+            .content-block { padding: 30px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+        <h1>Free AI Email Writer</h1>
+        <p class="subtitle">Generate professional, persuasive, and grammatically correct emails instantly using AI.</p>
+    </header>
+
+    <div class="tool-container">
+        <div class="card">
+            <div class="card-header"><i class="fas fa-pen"></i> Enter Details</div>
+            
+            <label>Type of Email</label>
+            <select id="emailType">
+                <option value="Formal Business">Formal Business Email</option>
+                <option value="Job Application">Job Application / Cover Letter</option>
+                <option value="Sick Leave">Sick Leave Request</option>
+                <option value="Resignation">Resignation Letter</option>
+                <option value="Cold Sales">Cold Sales Email</option>
+                <option value="Follow Up">Follow Up Email</option>
+                <option value="Complaint">Complaint / Issue</option>
+            </select>
+
+            <label>Recipient Name</label>
+            <input type="text" id="recipient" placeholder="e.g. Hiring Manager, Mr. Sharma">
+
+            <label>Key Points (What is this email about?)</label>
+            <textarea id="topic" rows="6" placeholder="e.g. Asking for 3 days leave due to fever. I will complete pending work upon return..."></textarea>
+
+            <button class="btn-generate" id="generateBtn" onclick="generateEmail()">Generate Email <i class="fas fa-bolt"></i></button>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="justify-content:space-between;">
+                <span><i class="fas fa-file-alt"></i> Result</span>
+                <span style="color:var(--primary); font-size:0.9rem;">AI Ready</span>
+            </div>
+            <div class="output-wrapper">
+                <button class="copy-btn" onclick="copyText()">Copy Text</button>
+                
+                <div id="loader">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i><br><br>AI is Writing...
+                </div>
+
+                <textarea id="output" class="output-area" readonly placeholder="Your generated email will appear here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="donate-box">
+        <h3 style="color:#fff;">❤️ Keep This Tool Free</h3>
+        <p style="color:#aaa; font-size:0.9rem;">We don't show annoying ads. Support server costs.</p>
+        <img src="qr.jpg" alt="UPI QR Code">
+        <p style="color:#fff; margin-top:10px; font-weight:bold;">Scan to Donate</p>
+    </div>
+
+    <div class="content-section">
+        
+        <article class="content-block">
+            <h2>The World's Best Free AI Email Generator</h2>
+            <p>Writing the perfect email can be time-consuming and stressful. Whether you are applying for a dream job, requesting leave, or reaching out to a potential client, the tone and structure of your email matter. <strong>Xizoa Hub's AI Email Writer</strong> solves this problem instantly.</p>
+            <p>Our tool uses advanced AI technology to construct grammatically correct, professional, and persuasive emails based on your simple inputs. It's like having a professional copywriter sitting next to you, available 24/7, for free.</p>
+        </article>
+
+        <article class="content-block">
+            <h2>Why Use Our Email Writing Tool?</h2>
+            <p>In the digital age, communication is key. Here is why thousands of users trust Xizoa for their email needs:</p>
+            <ul>
+                <li><strong>Save Time:</strong> Stop staring at a blank screen. Generate a draft in 5 seconds.</li>
+                <li><strong>Professional Tone:</strong> Never worry about sounding rude or too casual. Our AI ensures the perfect formal tone.</li>
+                <li><strong>Grammar Free:</strong> The generated output is free from spelling mistakes and grammatical errors.</li>
+                <li><strong>No Registration:</strong> Unlike other tools (ChatGPT, Jasper), we don't ask for your email or credit card. Just visit and use.</li>
+            </ul>
+        </article>
+
+        <article class="content-block">
+            <h2>How to Write a Professional Email in 3 Steps</h2>
+            <h3>Step 1: Select Email Type</h3>
+            <p>Choose the category that fits your need. We support Job Applications, Sick Leaves, Resignations, Sales Pitches, and more.</p>
+            
+            <h3>Step 2: Enter Key Details</h3>
+            <p>Tell the tool who you are writing to (Recipient Name) and provide brief bullet points about the topic. You don't need to write full sentences—just the main idea.</p>
+            
+            <h3>Step 3: Generate & Send</h3>
+            <p>Click the "Generate Email" button. Our system will instantly create a polished email. Click "Copy", paste it into your Gmail or Outlook, and hit send!</p>
+        </article>
+
+        <article class="content-block">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            
+            <h3>Is this AI Email Writer completely free?</h3>
+            <p>Yes! Xizoa Hub is dedicated to providing free developer and utility tools. There are no hidden charges or limits on usage.</p>
+
+            <h3>Can I use this for Job Applications?</h3>
+            <p>Absolutely. Our "Job Application" template is optimized to highlight your skills and enthusiasm, increasing your chances of getting a reply.</p>
+
+            <h3>Do you store my data?</h3>
+            <p>No. We value your privacy. The email generation happens securely via our Worker and is not stored permanently.</p>
+        </article>
+
+    </div>
+
+    <div class="more-tools-section">
+        <h2>🔥 More Useful Tools</h2>
+        <div class="tools-grid">
+            <a href="ai-paraphraser.html" class="tool-card">
+                <i class="fas fa-sync-alt"></i>
+                <h3>AI Paraphraser</h3>
+                <p>Rewrite any text professionally to avoid plagiarism and improve flow.</p>
+            </a>
+            <a href="resume-builder.html" class="tool-card">
+                <i class="fas fa-file-invoice"></i>
+                <h3>Resume Builder</h3>
+                <p>Create a stunning CV/Resume in minutes with our free templates.</p>
+            </a>
+            <a href="subject-line-generator.html" class="tool-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Subject Line Generator</h3>
+                <p>Get high-converting subject lines for your emails to boost open rates.</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>XIZOA Hub</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Support</a>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <a href="ai-email-writer.html">AI Email Writer</a>
+                <a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a>
+                <a href="image-compressor.html">Image Compressor</a>
+                <a href="ai-paraphraser.html">Article Rewriter</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 XIZOA Hub • Engineered by <strong>Priyanshu</strong>
+        </div>
+    </footer>
+
+    <script>
+        // ⚠️ IMPORTANT: Paste your Worker URL inside the quotes below
+        const WORKER_URL = "https://ai-email-writer.priyanshumaurya758.workers.dev/"; 
+
+        async function generateEmail() {
+            const topic = document.getElementById('topic').value;
+            const type = document.getElementById('emailType').value;
+            const recipient = document.getElementById('recipient').value || "Sir/Madam";
+            
+            const btn = document.getElementById('generateBtn');
+            const output = document.getElementById('output');
+            const loader = document.getElementById('loader');
+
+            if (!topic) return alert("Please enter the topic/key points!");
+
+            // UI State: Loading
+            btn.disabled = true;
+            btn.innerHTML = 'Generating... <i class="fas fa-circle-notch fa-spin"></i>';
+            output.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                // Call the Worker
+                const response = await fetch(WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ topic, type, name: recipient })
+                });
+
+                const data = await response.json();
+
+                if (data.email) {
+                    output.value = data.email;
+                } else {
+                    output.value = "Error: " + (data.error || "Server Error. Please check Worker URL.");
+                }
+            } catch (error) {
+                output.value = "Connection Error. Make sure your Worker URL is correct and allows CORS.";
+            }
+
+            // UI State: Reset
+            loader.style.display = 'none';
+            output.style.display = 'block';
+            btn.disabled = false;
+            btn.innerHTML = 'Generate Email <i class="fas fa-bolt"></i>';
+        }
+
+        function copyText() {
+            const text = document.getElementById('output');
+            text.select();
+            document.execCommand("copy");
+            alert("Email copied to clipboard!");
+        }
+    </script>
+
+</body>
+</html>

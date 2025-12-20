@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Description Gen - XIZOA HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Xizoa Palette */
+            --bg-body: #050b14;
+            --bg-card: #0f172a;
+            --bg-input: #1e293b;
+            --accent-cyan: #06b6d4;
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --google-blue: #8ab4f8;
+            --google-green: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 11, 20, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--accent-cyan); }
+
+        /* Main Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            flex: 1;
+        }
+
+        /* Left: Input Form */
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--accent-cyan); font-size: 0.9rem; }
+        
+        input, textarea {
+            width: 100%;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--accent-cyan); }
+
+        .btn-gen {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-cyan), #0ea5e9);
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-gen:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(6, 182, 212, 0.3); }
+
+        /* Right: Results & Preview */
+        .results-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Google SERP Preview Box */
+        .serp-preview {
+            background: #202124; /* Google Dark Mode Color */
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #3c4043;
+            font-family: Arial, sans-serif; /* Google uses Arial */
+        }
+        
+        .serp-label { font-size: 0.8rem; color: #9aa0a6; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .serp-site {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .serp-icon {
+            width: 26px;
+            height: 26px;
+            background: #303134;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #bdc1c6;
+        }
+        .serp-url {
+            color: #bdc1c6;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .serp-title {
+            color: var(--google-blue);
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 3px;
+            text-decoration: none;
+        }
+        .serp-title:hover { text-decoration: underline; }
+
+        .serp-desc {
+            color: #bdc1c6;
+            font-size: 14px;
+            line-height: 1.58;
+        }
+        
+        .limit-indicator {
+            font-size: 0.8rem;
+            margin-top: 10px;
+            text-align: right;
+            color: var(--text-muted);
+        }
+
+        /* Generated Cards */
+        .generated-list { display: flex; flex-direction: column; gap: 15px; }
+        
+        .meta-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+        .meta-card:hover { border-color: var(--accent-cyan); background: var(--bg-input); }
+        
+        .tag {
+            font-size: 0.7rem;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .copy-btn:hover { color: var(--accent-cyan); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> XIZOA <span style="color:var(--accent-cyan)">META</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-card">
+            <h2 style="margin-bottom:20px;">Generator Details</h2>
+            
+            <div class="input-group">
+                <label>Blog Post Title</label>
+                <input type="text" id="inTitle" placeholder="e.g. 10 Best SEO Tools for 2024" oninput="updatePreview()">
+            </div>
+
+            <div class="input-group">
+                <label>Focus Keyword</label>
+                <input type="text" id="inKeyword" placeholder="e.g. SEO Tools" oninput="updatePreview()">
+            </div>
+
+            <div class="input-group">
+                <label>What is it about? (Optional Context)</label>
+                <textarea id="inContext" rows="3" placeholder="Briefly describe content (e.g. free tools for beginners)..."></textarea>
+            </div>
+
+            <button class="btn-gen" onclick="generateMeta()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Descriptions
+            </button>
+        </div>
+
+        <div class="results-panel">
+            
+            <div>
+                <div class="serp-label"><i class="fa-brands fa-google"></i> Live Google Preview</div>
+                <div class="serp-preview">
+                    <div class="serp-site">
+                        <div class="serp-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="serp-url">
+                            <span>example.com</span>
+                            <span style="font-size:12px; color:#9aa0a6;">https://example.com › blog › post</span>
+                        </div>
+                    </div>
+                    <a href="#" class="serp-title" id="prevTitle">Your Blog Post Title appears here...</a>
+                    <div class="serp-desc" id="prevDesc">
+                        Your meta description will appear here. Keep it under 160 characters to ensure it doesn't get truncated by Google on search result pages...
+                    </div>
+                </div>
+                <div class="limit-indicator">
+                    <span id="charCount">0</span>/160 Characters 
+                    <span id="pixelCount" style="margin-left:10px; font-size:0.75rem;">(~0px width)</span>
+                </div>
+            </div>
+
+            <h3 style="color:var(--text-muted); margin-top:10px;">AI Suggestions</h3>
+            <div class="generated-list" id="outputList">
+                <div style="text-align:center; padding:20px; color:var(--text-muted); border:1px dashed var(--border); border-radius:10px;">
+                    Enter details to generate optimized meta tags.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- LIVE PREVIEW LOGIC ---
+        function updatePreview(customText = null) {
+            const title = document.getElementById('inTitle').value;
+            const keyword = document.getElementById('inKeyword').value;
+            
+            // If customText is passed (from clicking a card), use that. 
+            // Otherwise use placeholder text.
+            const desc = customText || "Your meta description will appear here. Keep it under 160 characters to ensure it doesn't get truncated by Google.";
+
+            // Update UI
+            document.getElementById('prevTitle').innerText = title || "Your Blog Post Title";
+            document.getElementById('prevDesc').innerHTML = highlightKeyword(desc, keyword);
+
+            // Update Counters
+            const plainText = desc.replace(/<[^>]*>?/gm, ''); // remove html tags
+            const len = plainText.length;
+            document.getElementById('charCount').innerText = len;
+            
+            // Simple pixel width estimation (avg char width ~7px)
+            document.getElementById('pixelCount').innerText = `~${len * 7}px`;
+
+            // Color coding length
+            const countEl = document.getElementById('charCount');
+            if (len < 120) countEl.style.color = "#eab308"; // Too short (Yellow)
+            else if (len <= 160) countEl.style.color = "#22c55e"; // Perfect (Green)
+            else countEl.style.color = "#ef4444"; // Too long (Red)
+        }
+
+        function highlightKeyword(text, keyword) {
+            if (!keyword) return text;
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            return text.replace(regex, '<strong>$1</strong>');
+        }
+
+        // --- GENERATION LOGIC (Rule-Based AI) ---
+        function generateMeta() {
+            const title = document.getElementById('inTitle').value;
+            const keyword = document.getElementById('inKeyword').value;
+            const context = document.getElementById('inContext').value || "comprehensive guide";
+            
+            if (!title || !keyword) return alert("Please enter Title and Keyword");
+
+            const currentYear = new Date().getFullYear();
+
+            // TEMPLATES
+            const templates = [
+                {
+                    type: "SEO Standard",
+                    text: `Looking for **${keyword}**? This guide covers everything you need to know about ${title}. Discover expert tips for ${currentYear}. Read now!`
+                },
+                {
+                    type: "Question/Hook",
+                    text: `Want to master **${keyword}**? We break down the best strategies in ${title}. Don't miss out on these ${context} tips. Click to learn more.`
+                },
+                {
+                    type: "Direct/Action",
+                    text: `${title}: The ultimate resource for **${keyword}**. Get actionable insights and proven ${context} methods inside. Start reading today!`
+                },
+                {
+                    type: "Short & Punchy",
+                    text: `Discover the truth about **${keyword}**. ${title} explains it all. Simple, fast, and updated for ${currentYear}. Check it out.`
+                }
+            ];
+
+            const list = document.getElementById('outputList');
+            list.innerHTML = "";
+
+            templates.forEach(t => {
+                // Clean formatting for textarea
+                let cleanText = t.text.replace(/\*\*/g, ''); 
+                
+                const div = document.createElement('div');
+                div.className = 'meta-card';
+                div.onclick = () => { updatePreview(cleanText); }; // Click to preview
+                
+                div.innerHTML = `
+                    <span class="tag">${t.type}</span>
+                    <button class="copy-btn" onclick="copyMeta(this, '${cleanText.replace(/'/g, "\\'")}')">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                    <p style="font-size:0.95rem; line-height:1.5; color:#d1d5db;">${t.text.replace(/\*\*(.*?)\*\*/g, '<b style="color:white">$1</b>')}</p>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function copyMeta(btn, text) {
+            event.stopPropagation(); // Prevent preview update when copying
+            navigator.clipboard.writeText(text);
+            
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check" style="color:#22c55e"></i>';
+            setTimeout(() => { btn.innerHTML = originalIcon; }, 1500);
+        }
+    </script>
+</body>
+</html>
