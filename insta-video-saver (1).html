@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instagram Reels, Photo & Audio Downloader | Free Insta Saver 2025</title>
+  
+  <meta name="description" content="Download Instagram Reels, Photos, and Audio securely. Free online Insta Saver tool by Xizoa. Convert Reels to MP3, Save Photos in HD. No login required.">
+  
+  <meta name="keywords" content="instagram reels downloader, insta photo saver, download instagram audio, instagram mp3 converter, save insta reels, online instagram downloader, xizoa tools, ig audio saver">
+  
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tools.xizoa.com/insta-video-saver.html">
+  
+  <meta property="og:title" content="Instagram Downloader - Reels, Photo & Audio">
+  <meta property="og:description" content="Download Instagram content in 1-click. High Quality MP4, JPG & MP3.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tools.xizoa.com/insta-video-saver.html">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa Instagram Downloader",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A free online tool to download Instagram Reels, Photos, and Extract Audio in HD quality.",
+    "featureList": "Reels Download, Photo Saver, Audio Extraction, No Watermark",
+    "author": { "@type": "Person", "name": "Priyanshu" }
+  }
+  </script>
+
+  <style>
+    /* --- THEME: WHITE INSTAGRAM STYLE --- */
+    :root {
+      --bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      
+      --card-bg: #ffffff;
+      --border: 1px solid #e2e8f0;
+      
+      /* Instagram Brand Colors */
+      --primary: #bc1888;
+      --insta-grad: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      
+      --shadow: 0 10px 40px rgba(0,0,0,0.05);
+      --input-bg: #f8fafc;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      /* Subtle Instagram Gradient Background on White */
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(240, 148, 51, 0.05), transparent 25%), 
+        radial-gradient(circle at 85% 30%, rgba(188, 24, 136, 0.05), transparent 25%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 50px 20px 30px; 
+        background: linear-gradient(to bottom, #ffffff, #fdf2f8); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #0f172a; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+    .brand-logo span { 
+        background: var(--insta-grad); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+    }
+    h1 { 
+        font-size: 2.5rem; 
+        font-weight: 800; 
+        margin-bottom: 10px; 
+        color: #0f172a; 
+        letter-spacing: -1px;
+    }
+    
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
+
+    /* --- MEDIA TABS (Only 3 Items Now) --- */
+    .media-tabs-container {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .media-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .tab-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 25px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .tab-item i { font-size: 1.1rem; }
+
+    .tab-item:hover { background: #fdf2f8; color: #bc1888; }
+
+    .tab-item.active {
+      background: var(--insta-grad);
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(220, 39, 67, 0.3);
+    }
+
+    /* --- INPUT AREA --- */
+    .input-box {
+      background: var(--card-bg);
+      border: var(--border);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+
+    .search-wrapper { display: flex; gap: 12px; }
+
+    .input-field-container {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid #cbd5e1;
+      padding: 18px 90px 18px 20px; /* Space for paste button */
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 1.05rem;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus { 
+        border-color: #bc1888; 
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(188, 24, 136, 0.1); 
+    }
+
+    /* Paste Button */
+    .btn-paste-inside {
+      position: absolute;
+      right: 8px;
+      background: #e2e8f0;
+      color: #475569;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-paste-inside:hover { background: #cbd5e1; color: #0f172a; }
+
+    /* Download Button */
+    button.btn-main {
+      background: var(--insta-grad);
+      color: #fff;
+      border: none;
+      padding: 0 40px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    }
+    button.btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4); }
+
+    @media (max-width: 600px) { 
+      .search-wrapper { flex-direction: column; } 
+      button.btn-main { padding: 18px; width: 100%; }
+      .media-tabs { width: 100%; justify-content: space-between; padding: 5px; }
+      .tab-item { padding: 10px 15px; font-size: 0.8rem; }
+    }
+
+    /* --- RESULT AREA --- */
+    #status { margin-top: 15px; text-align: center; font-size: 0.95rem; min-height: 20px; font-weight: 500; }
+    
+    .result-card {
+      display: none;
+      margin-top: 30px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      animation: slideUp 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    
+    .preview-box {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+        background: #f1f5f9;
+        border-radius: 15px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #cbd5e1;
+    }
+
+    .dl-btn {
+      background: var(--insta-grad); color: #fff; padding: 15px 40px; border-radius: 50px; 
+      text-decoration: none; font-weight: 700; font-size: 1rem; transition: 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 10px rgba(220, 39, 67, 0.2);
+    }
+    .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4); }
+
+    /* --- STEPS --- */
+    .steps-section { margin-top: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; }
+    .step-box { background: #fff; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+    .step-num { width: 45px; height: 45px; background: #fff0f5; color: #bc1888; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 800; font-size: 1.3rem; }
+    .step-box h4 { margin-bottom: 10px; color: #0f172a; font-size: 1.1rem; }
+    .step-box p { font-size: 0.9rem; color: #64748b; }
+
+    /* --- SEO CONTENT SECTION --- */
+    .seo-content { margin-top: 80px; }
+    
+    .seo-card { 
+        background: #fff; 
+        border: 1px solid #e2e8f0; 
+        padding: 50px; 
+        border-radius: 20px; 
+        margin-bottom: 40px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    
+    .seo-content h2 { font-size: 2rem; color: #0f172a; margin-bottom: 25px; border-left: 5px solid #bc1888; padding-left: 20px; }
+    .seo-content h3 { font-size: 1.5rem; color: #bc1888; margin-top: 35px; margin-bottom: 15px; }
+    .seo-content p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .seo-content ul, .seo-content ol { margin-left: 20px; margin-bottom: 25px; color: #475569; line-height: 1.8; }
+    .seo-content li { margin-bottom: 12px; }
+
+    /* --- MORE TOOLS SECTION --- */
+    .more-tools-section { max-width: 1000px; margin: 40px auto 80px auto; padding: 0 20px; text-align: center; }
+    .more-tools-section h2 { margin-bottom: 30px; font-size: 1.8rem; color: #0f172a; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .tool-card { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 25px; border-radius: 15px; 
+        transition: 0.3s; text-align: left; text-decoration: none; display: block;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #bc1888; }
+    .tool-card i { font-size: 2rem; color: #bc1888; margin-bottom: 15px; }
+    .tool-card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
+    .tool-card p { color: #64748b; font-size: 0.95rem; }
+
+    /* --- FOOTER --- */
+    footer { 
+        background: #0f172a; 
+        border-top: 1px solid #1e293b; 
+        padding: 60px 20px 20px; 
+        margin-top: auto; 
+        color: #94a3b8; 
+    }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; border-left: 3px solid #bc1888; padding-left: 10px; }
+    .footer-col p { font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: #bc1888; padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 0.85rem; }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Instagram <span>Downloader</span></h1>
+    <p style="color:#64748b;">Save Reels, Photo & Audio in HD</p>
+  </header>
+
+  <main>
+    
+    <div class="media-tabs-container">
+      <div class="media-tabs">
+        <div class="tab-item active" onclick="selectTab(this, 'Reels')">
+          <i class="fas fa-clapperboard"></i>
+          <span>Reels</span>
+        </div>
+        <div class="tab-item" onclick="selectTab(this, 'Photo')">
+          <i class="fas fa-image"></i>
+          <span>Photo</span>
+        </div>
+        <div class="tab-item" onclick="selectTab(this, 'Audio')">
+          <i class="fas fa-music"></i>
+          <span>Audio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-box">
+      <div class="search-wrapper">
+        <div class="input-field-container">
+          <input type="text" id="inputUrl" placeholder="Paste Instagram Reel link..." aria-label="Url Input">
+          <button class="btn-paste-inside" id="btnPaste">
+            <i class="fas fa-paste"></i> Paste
+          </button>
+        </div>
+        <button class="btn-main" id="btnFetch">Download</button>
+      </div>
+      <div id="status"></div>
+
+      <div class="result-card" id="resultCard">
+        <div class="preview-box">
+           <i id="resultIcon" class="fas fa-play-circle" style="font-size:3rem; color: #bc1888;"></i>
+        </div>
+        <h3 style="color:#0f172a;" id="resultTitle">Reel Ready</h3>
+        <p style="color:#64748b; font-size:0.9rem;" id="fileName">xizoa_reel.mp4</p>
+        
+        <div style="margin-top: 20px;">
+          <a href="#" class="dl-btn" id="dlBtn"><i class="fas fa-download"></i> Download MP4</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-section">
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <h4>Copy Link</h4>
+        <p>Open Instagram and copy link of Reel, Photo or Audio.</p>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <h4>Paste Here</h4>
+        <p>Click the "Paste" button above to insert the link instantly.</p>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <h4>Download</h4>
+        <p>Click Download and save the file to your device.</p>
+      </div>
+    </div>
+
+    <section class="seo-content">
+      
+      <article class="seo-card">
+        <h2>The Best Free Instagram Downloader (Reels, Photo, Audio)</h2>
+        <p>Instagram is amazing for visual content, but saving that content is hard. <strong>Xizoa Hub's Instagram Downloader</strong> makes it effortless. We have simplified the tool to focus on the 3 most important things: <strong>Reels, Photos, and Audio.</strong></p>
+        <p>Our tool runs completely in the browser. You don't need to login to Instagram, ensuring your account remains 100% safe. Just paste the link and get your file in seconds.</p>
+      </article>
+
+      <article class="seo-card">
+        <h2>Features of Xizoa Insta Saver</h2>
+        
+        <h3>1. Reels Downloader (MP4)</h3>
+        <p>Save trending Reels in HD quality with sound. Perfect for reposting or offline viewing. We support downloading reels from public accounts instantly.</p>
+
+        <h3>2. Photo Downloader (JPG)</h3>
+        <p>Want to save a high-quality photo from a post? Switch to the "Photo" tab, paste the link, and get the original resolution image directly.</p>
+
+        <h3>3. Audio Extractor (MP3)</h3>
+        <p>Love a song or dialogue in a Reel? You don't need to download the whole video. Use our "Audio" tab to extract just the MP3 music file from any Instagram video.</p>
+      </article>
+
+      <article class="seo-card">
+        <h2>Frequently Asked Questions</h2>
+        <h3>Is it free?</h3>
+        <p>Yes, Xizoa Downloader is completely free and unlimited.</p>
+        <h3>Can I download from Private Accounts?</h3>
+        <p>No, out of respect for privacy, our tool only works with Public Instagram posts.</p>
+        <h3>Where are files saved?</h3>
+        <p>Files are saved to your device's default "Downloads" folder or Gallery.</p>
+      </article>
+
+    </section>
+
+    <div class="more-tools-section">
+        <h2>🔥 More Useful Tools</h2>
+        <div class="tools-grid">
+            <a href="YouTube-thumbnail-downloader.html" class="tool-card">
+                <i class="fab fa-youtube"></i>
+                <h3>YouTube Thumbnail DL</h3>
+                <p>Download 4K thumbnails from YouTube videos.</p>
+            </a>
+            <a href="tiktok-downloader.html" class="tool-card">
+                <i class="fab fa-tiktok"></i>
+                <h3>TikTok Downloader</h3>
+                <p>Save TikTok videos without the watermark.</p>
+            </a>
+            <a href="image-compressor.html" class="tool-card">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <h3>Image Compressor</h3>
+                <p>Reduce image file size without losing quality.</p>
+            </a>
+        </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>Xizoa Instagram Downloader is a secure online tool to save Reels, Photos, and Audio from Instagram in HD quality.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA Hub</h3>
+        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="youtubeshorts.html">Shorts Downloader</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    let activeTab = 'Reels'; // Default
+
+    // --- Logic for Tabs Selection ---
+    function selectTab(element, type) {
+      // Update UI
+      document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+      element.classList.add('active');
+      
+      // Update State & Placeholder
+      activeTab = type;
+      const input = document.getElementById('inputUrl');
+      
+      if(type === 'Reels') input.placeholder = "Paste Instagram Reel link...";
+      else if(type === 'Photo') input.placeholder = "Paste Instagram Photo link...";
+      else if(type === 'Audio') input.placeholder = "Paste Reel link to extract Audio...";
+      
+      // Hide result if tab changed
+      document.getElementById('resultCard').style.display = 'none';
+    }
+
+    // --- Paste Button Logic ---
+    const pasteBtn = document.getElementById('btnPaste');
+    const inputField = document.getElementById('inputUrl');
+
+    pasteBtn.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        inputField.value = text;
+        pasteBtn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => pasteBtn.innerHTML = '<i class="fas fa-paste"></i> Paste', 1500);
+      } catch (err) {
+        alert('Please paste manually.');
+      }
+    });
+
+    // --- Dynamic Download Logic (GPT Challenge Solved) ---
+    const btnFetch = document.getElementById('btnFetch');
+    const resultCard = document.getElementById('resultCard');
+    const status = document.getElementById('status');
+    
+    // Result Elements
+    const resultIcon = document.getElementById('resultIcon');
+    const resultTitle = document.getElementById('resultTitle');
+    const fileName = document.getElementById('fileName');
+    const dlBtn = document.getElementById('dlBtn');
+
+    btnFetch.addEventListener('click', () => {
+      const url = inputField.value.trim();
+      
+      if(url === "") {
+        status.innerHTML = '<span style="color:#bc1888">Please paste a link first!</span>';
+        return;
+      }
+
+      // 1. Show Loading
+      btnFetch.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      status.innerHTML = '';
+      resultCard.style.display = 'none';
+
+      // 2. Simulate Backend Processing (1.5 seconds)
+      setTimeout(() => {
+        btnFetch.innerHTML = 'Download';
+        resultCard.style.display = 'block';
+        
+        // 3. Dynamic Result based on Active Tab
+        if(activeTab === 'Reels') {
+            resultIcon.className = 'fas fa-video';
+            resultIcon.style.color = '#bc1888';
+            resultTitle.innerText = 'Reel Video Ready';
+            fileName.innerText = 'xizoa_reel_' + Date.now() + '.mp4';
+            dlBtn.innerHTML = '<i class="fas fa-download"></i> Download MP4';
+            dlBtn.href = url; // In real app, this would be the backend MP4 link
+        } 
+        else if (activeTab === 'Photo') {
+            resultIcon.className = 'fas fa-image';
+            resultIcon.style.color = '#f09433'; // Orange for photo
+            resultTitle.innerText = 'HD Photo Ready';
+            fileName.innerText = 'xizoa_img_' + Date.now() + '.jpg';
+            dlBtn.innerHTML = '<i class="fas fa-image"></i> Download JPG';
+            dlBtn.href = url;
+        }
+        else if (activeTab === 'Audio') {
+            resultIcon.className = 'fas fa-music';
+            resultIcon.style.color = '#10b981'; // Green for audio
+            resultTitle.innerText = 'Audio Extracted';
+            fileName.innerText = 'xizoa_audio_' + Date.now() + '.mp3';
+            dlBtn.innerHTML = '<i class="fas fa-music"></i> Download MP3';
+            dlBtn.href = url;
+        }
+
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
