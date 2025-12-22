@@ -6,7 +6,7 @@
     <title>Compress PDF Under 200KB - Free Online Tool (Best for Students)</title>
     
     <meta name="description" content="Compress PDF file size to below 200KB for free. The Best Tool for Government Job Applications (Sarkari Naukri), UPSC, SSC, IBPS, NEET, JEE and College Admission Forms. Resize PDF online securely without uploading.">
-    <meta name="keywords" content="Compress PDF 200kb, Resize PDF for online form, PDF reducer tool, Xizoa PDF Tool, Sarkari Result PDF resize, Compress PDF offline, Reduce PDF size for UPSC upload, SSC photo resizer">
+    <meta name="keywords" content="Compress PDF 200kb, Resize PDF for online form, PDF reducer tool, Xizoa PDF Tool, Sarkari Result PDF resize, Compress PDF offline, Reduce PDF size for UPSC upload, SSC photo resizer, PDF compressor high quality">
     <meta name="author" content="Xizoa">
     <meta name="robots" content="index, follow">
     
@@ -43,9 +43,9 @@
 
     <style>
         :root {
-            --primary: #2563eb;       
+            --primary: #2563eb;       /* Modern Blue */
             --primary-dark: #1e40af;
-            --secondary: #0f172a;     
+            --secondary: #0f172a;     /* Slate Black */
             --bg: #f8fafc;
             --surface: #ffffff;
             --text-main: #334155;
@@ -70,6 +70,7 @@
             min-height: 100vh;
         }
 
+        /* --- Header --- */
         header {
             width: 100%;
             background: var(--surface);
@@ -90,6 +91,7 @@
             letter-spacing: -0.5px;
         }
 
+        /* --- Main Layout --- */
         main {
             width: 100%;
             max-width: 900px;
@@ -97,6 +99,7 @@
             margin-top: 10px;
         }
 
+        /* --- Tool Card --- */
         .tool-card {
             background: var(--surface);
             padding: 2.5rem;
@@ -121,6 +124,7 @@
             font-size: 1rem;
         }
 
+        /* --- Upload Area --- */
         .drop-zone {
             border: 2px dashed var(--primary);
             background: #eff6ff;
@@ -143,6 +147,7 @@
         .drop-zone span { font-size: 0.9rem; color: var(--text-light); display: block; margin-top: 8px; }
         input[type="file"] { display: none; }
 
+        /* --- Controls --- */
         .controls {
             display: none;
             margin-top: 2rem;
@@ -167,6 +172,7 @@
             font-weight: 600;
         }
 
+        /* Sliders */
         .range-container { margin-bottom: 1.5rem; }
         .range-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; font-size: 0.9rem; }
         input[type="range"] {
@@ -176,6 +182,7 @@
             -webkit-appearance: none; width: 22px; height: 22px; background: var(--primary); border-radius: 50%; cursor: pointer; transition: 0.2s;
         }
 
+        /* Buttons */
         .btn {
             width: 100%; padding: 16px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
@@ -194,6 +201,7 @@
         }
         .btn-success:hover { box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4); transform: translateY(-1px); }
 
+        /* Filename Input */
         .filename-wrapper {
             margin-top: 20px;
             margin-bottom: 10px;
@@ -225,6 +233,7 @@
             color: var(--text-light);
         }
 
+        /* Messages */
         .status-msg { margin-top: 15px; text-align: center; font-size: 0.95rem; font-weight: 500; min-height: 24px; }
         .text-success { color: var(--success); }
         .text-error { color: var(--error); }
@@ -233,6 +242,7 @@
             margin-top: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-light); background: #f1f5f9; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
         }
 
+        /* --- SEO Content Section --- */
         .content-section {
             background: var(--surface);
             padding: 3rem;
@@ -257,10 +267,12 @@
         }
         .faq-box h3 { margin-top: 0; font-size: 1.1rem; color: var(--primary); }
 
+        /* --- Footer --- */
         footer {
             margin-top: 40px; padding: 30px; text-align: center; color: var(--text-light); font-size: 0.9rem; border-top: 1px solid var(--border); width: 100%; background: var(--surface);
         }
 
+        /* Mobile */
         @media (max-width: 600px) {
             .tool-card, .content-section { padding: 1.5rem; }
             h1 { font-size: 1.4rem; }
@@ -270,6 +282,7 @@
             .filename-input-group span { display: none; }
         }
 
+        /* Spinner */
         .spinner {
             width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; display: none;
         }
