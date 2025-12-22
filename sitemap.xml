@@ -1,302 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-  <loc>https://tools.xizoa.com/</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>1.00</priority>
-</url>
+  <url>
+    <loc>https://tools.xizoa.com/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>1.00</priority>
+  </url>
 
-<url>
-  <loc>https://tools.xizoa.com/tools.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.90</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/blog.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.90</priority>
-</url>
+  <url>
+    <loc>https://tools.xizoa.com/YouTube-thumbnail-downloader.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/AI-Paraphraser.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/pdf-merger.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/speed-test.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/insta-video-saver.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/CV-Resume-Builder.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/image-compressor.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/youtubeshorts.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/tiktok-downloader%20(1).html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/qr-code-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/fps-chekar.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/text-to-speech.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/youtube-tag-extractor.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/social-media-caption%20(1).html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/hashtag-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/glitch-text-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/invisible-text.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/ai-text-summerise.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/ai-grammar-fixer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/hand-sign-predicter.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/blog-title-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/High-quality-PDF-smart-tool.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/pdf-to-word.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/pdf-light-mode.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/reaction-time-test.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/mouse-polling-rate.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/keyboard-tester.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/compress-pdf-under-200kb</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/gaming.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/pdf-to-jpg.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/typing-master.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/repo-file-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/SEO-Meta-Description-Generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/diff-checker.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/about-us-page-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/color-picker.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/jpg-to-png.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/guitar-tuner.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/guitar-composer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/auto-chord-maker.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/focus-noise-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/ai-email-writer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/age-calculator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/pomodoro-timer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/password-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/ip-checker.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/link-scanner.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/exif-remover.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/text-to-handwriting.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/tone-generator.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/morse-converter.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/dead-pixel-fixer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.80</priority>
+  </url>
 
-<url>
-  <loc>https://tools.xizoa.com/YouTube-thumbnail-downloader.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/AI-Paraphraser.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/pdf-merger.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/speed-test.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/insta-video-saver.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/CV-Resume-Builder.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/image-compressor.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/youtubeshorts.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/tiktok-downloader%20(1).html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/qr-code-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/fps-chekar.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/text-to-speech.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/youtube-tag-extractor.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/social-media-caption%20(1).html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/hashtag-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/glitch-text-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/invisible-text.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/ai-text-summerise.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/ai-grammar-fixer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/hand-sign-predicter.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/blog-title-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/High-quality-PDF-smart-tool.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/pdf-to-word.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/pdf-light-mode.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/reaction-time-test.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/mouse-polling-rate.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/keyboard-tester.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/gaming.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/typing-master.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/repo-file-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/SEO-Meta-Description-Generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/diff-checker.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/about-us-page-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/color-picker.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/jpg-to-png.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/guitar-tuner.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/guitar-composer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/auto-chord-maker.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/focus-noise-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/ai-email-writer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/age-calculator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/pomodoro-timer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/password-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/ip-checker.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/link-scanner.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/exif-remover.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/text-to-handwriting.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/tone-generator.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/morse-converter.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/dead-pixel-fixer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://tools.xizoa.com/about.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/contact.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/privacy.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/disclaimer.html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://tools.xizoa.com/terms%20(1).html</loc>
-  <lastmod>2025-12-21</lastmod>
-  <priority>0.50</priority>
-</url>
+  <url>
+    <loc>https://tools.xizoa.com/tools.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/blog.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/about.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/contact.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/privacy.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/disclaimer.html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://tools.xizoa.com/terms%20(1).html</loc>
+    <lastmod>2025-12-22</lastmod>
+    <priority>0.50</priority>
+  </url>
 
 </urlset>
