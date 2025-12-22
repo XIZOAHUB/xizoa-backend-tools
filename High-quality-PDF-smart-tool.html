@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>All-in-One PDF Tools | Convert, Compress & Edit (Free)</title>
+  <title>All-in-One PDF Tools | Convert, Compress & Edit Online (2025)</title>
   
-  <meta name="description" content="Access free online PDF tools: Convert PDF to Text, Image to PDF, PDF to JPG, and Compress PDF. Secure, client-side, and unlimited usage by Xizoa.">
-  <meta name="keywords" content="all in one pdf tool, pdf converter, image to pdf, pdf to text, compress pdf, free pdf tools, xizoa hub">
+  <meta name="description" content="A complete set of free PDF tools. Convert PDF to Text, Image to PDF, Extract Images, and Compress files. Secure client-side processing by Xizoa.">
+  <meta name="keywords" content="pdf to text, image to pdf, pdf converter, compress pdf, extract images from pdf, free pdf tools, xizoa tools, client side pdf">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tools.xizoa.com/all-tools.html">
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
@@ -25,49 +25,34 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Xizoa All-in-One PDF Suite",
+    "name": "Xizoa PDF Suite",
     "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "Web Browser (Chrome, Safari, Firefox)",
+    "operatingSystem": "Web Browser",
     "url": "https://tools.xizoa.com/all-tools.html",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
+      "priceCurrency": "USD"
     },
-    "description": "A comprehensive suite of free PDF tools including Converter, Compressor, Editor, and Merger working directly in the browser.",
-    "featureList": [
-      "PDF to Text Extraction",
-      "Image to PDF Conversion",
-      "PDF to Image Converter",
-      "PDF Compression"
-    ],
+    "description": "Secure, client-side PDF tools to convert, compress, and edit documents without server uploads.",
     "author": {
       "@type": "Person",
       "name": "Priyanshu"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Xizoa Hub",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://xizoa.com/logo.png"
-      }
     }
   }
   </script>
 
   <style>
-    /* --- STANDARD XIZOA THEME (Light Mode) --- */
+    /* --- STANDARD THEME (Light Mode) --- */
     :root {
       --bg: #ffffff;
       --text: #1e293b;
-      --text-muted: #64748b;
+      --text-muted: #475569;
       --border: 1px solid #e2e8f0;
       --primary: #00f7ff;      /* Cyan Accent */
       --secondary: #007bff;    /* Blue Brand Color */
-      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-      --hover-shadow: 0 20px 40px -5px rgba(0, 123, 255, 0.1);
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
@@ -75,7 +60,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      /* Signature Gradient Background */
+      /* Clean Gradient Background */
       background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05), transparent 25%), 
                         radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.05), transparent 25%);
       min-height: 100vh;
@@ -106,149 +91,167 @@
     }
     .brand-logo i { color: var(--secondary); }
     
-    h1 { 
-        font-size: 2.5rem; 
-        font-weight: 800; 
-        margin: 10px 0; 
-        color: #0f172a; 
-    }
+    h1 { font-size: 2.2rem; font-weight: 800; margin: 10px 0; color: #0f172a; }
     h1 span { color: var(--secondary); }
     .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
     main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
-    /* --- TOOL GRID (Menu) --- */
+    /* --- TOOLS GRID --- */
     .tools-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 30px;
+        gap: 25px;
         margin-bottom: 60px;
     }
 
     .tool-card {
         background: #fff;
         border: var(--border);
-        padding: 40px 25px;
-        border-radius: 20px;
+        padding: 35px 25px;
+        border-radius: 16px;
         text-align: center;
         cursor: pointer;
         transition: 0.3s;
         box-shadow: var(--card-shadow);
         position: relative;
-        overflow: hidden;
     }
     
     .tool-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
         box-shadow: var(--hover-shadow);
         border-color: var(--secondary);
     }
 
     .icon-box {
-        width: 80px; height: 80px;
-        background: #eff6ff; /* Light Blue */
+        width: 70px; height: 70px;
+        background: #f0f9ff;
         color: var(--secondary);
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 2.5rem; margin: 0 auto 20px;
+        font-size: 2rem; margin: 0 auto 20px;
         transition: 0.3s;
     }
-    .tool-card:hover .icon-box { background: var(--secondary); color: #fff; transform: scale(1.1); }
+    .tool-card:hover .icon-box { background: var(--secondary); color: #fff; }
 
-    .tool-card h3 { font-size: 1.4rem; color: #0f172a; margin-bottom: 10px; }
+    .tool-card h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 10px; font-weight: 700; }
     .tool-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-    /* --- WORKSPACES (Active Tool Area) --- */
+    /* --- ACTIVE TOOL AREA --- */
     .workspace {
-        display: none; /* Hidden by default */
+        display: none;
         background: #fff;
         border: var(--border);
-        border-radius: 24px;
+        border-radius: 20px;
         padding: 40px;
         box-shadow: var(--card-shadow);
-        animation: slideUp 0.4s ease;
+        animation: fadeIn 0.4s ease;
         margin-bottom: 60px;
-        position: relative;
     }
 
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     .workspace-header {
         display: flex; justify-content: space-between; align-items: center;
         margin-bottom: 30px; padding-bottom: 20px; border-bottom: var(--border);
     }
-    .workspace-header h2 { font-size: 1.8rem; color: #0f172a; }
+    .workspace-header h2 { font-size: 1.6rem; color: #0f172a; font-weight: 700; }
     
     .close-btn {
         background: #f1f5f9; border: none; color: var(--text-muted);
-        width: 40px; height: 40px; border-radius: 50%;
-        font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+        width: 35px; height: 35px; border-radius: 50%;
+        font-size: 1.1rem; cursor: pointer; transition: 0.2s;
     }
-    .close-btn:hover { background: #ef4444; color: white; transform: rotate(90deg); }
+    .close-btn:hover { background: #ef4444; color: white; }
 
-    /* Upload Box (Consistent Style) */
+    /* Upload Area */
     .upload-area {
         background: #f8fafc;
         border: 2px dashed #cbd5e1;
-        border-radius: 16px;
-        padding: 50px;
+        border-radius: 12px;
+        padding: 40px;
         text-align: center;
         cursor: pointer;
         transition: 0.3s;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
     .upload-area:hover { border-color: var(--secondary); background: #eff6ff; }
-    .upload-icon-large { font-size: 3.5rem; color: var(--secondary); margin-bottom: 15px; }
+    .upload-icon-large { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
     
-    /* Result Boxes */
+    /* Result Areas */
     .result-box {
         width: 100%; height: 250px;
-        background: #0f172a; color: #00f7ff;
-        border-radius: 12px; padding: 20px;
+        background: #1e293b; color: #00f7ff;
+        border-radius: 10px; padding: 20px;
         font-family: monospace; font-size: 0.9rem;
-        border: 1px solid #334155;
-        resize: vertical; display: none;
+        border: none; resize: vertical; display: none;
     }
 
     .btn-main {
         width: 100%;
         background: linear-gradient(135deg, var(--secondary), #00d4ff);
-        color: #fff; border: none; padding: 18px;
-        border-radius: 50px; font-weight: 800; cursor: pointer;
+        color: #fff; border: none; padding: 16px;
+        border-radius: 10px; font-weight: 700; cursor: pointer;
         font-size: 1.1rem; transition: 0.3s;
-        box-shadow: 0 10px 25px rgba(0, 123, 255, 0.2);
-        display: none; /* Hidden until file selected */
+        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        display: none;
     }
-    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 123, 255, 0.3); }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3); }
 
-    /* --- SEO CONTENT --- */
-    .content-section { margin-top: 60px; }
+    /* --- SEO CONTENT (Detailed & Clean) --- */
+    .content-section { margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto; }
     
-    .info-card { 
-        background: #fff; border: var(--border); padding: 40px; 
-        border-radius: 20px; margin-bottom: 40px; 
-        box-shadow: var(--card-shadow);
+    .article-block { margin-bottom: 50px; }
+    
+    .article-block h2 { 
+        font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; 
+        border-left: 4px solid var(--secondary); padding-left: 15px; 
     }
     
-    .info-card h2 { font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 20px; }
-    .info-card h3 { font-size: 1.4rem; color: #1e293b; margin-top: 30px; margin-bottom: 15px; font-weight: 600; }
-    .info-card p { color: #475569; margin-bottom: 15px; font-size: 1.05rem; text-align: justify; }
-    .info-card ul { margin-left: 20px; color: #475569; }
-    .info-card li { margin-bottom: 10px; font-size: 1.05rem; }
+    .article-block h3 { 
+        font-size: 1.3rem; color: #1e293b; margin-top: 30px; 
+        margin-bottom: 15px; font-weight: 700; 
+    }
+    
+    .article-block p { 
+        color: #475569; margin-bottom: 15px; font-size: 1.05rem; 
+        text-align: justify; 
+    }
+    
+    .article-block ul, .article-block ol { 
+        margin-left: 20px; color: #475569; margin-bottom: 20px;
+    }
+    
+    .article-block li { 
+        margin-bottom: 10px; font-size: 1.05rem; 
+    }
 
     /* --- FOOTER --- */
     footer { 
-        background: #0f172a; border-top: 1px solid #1e293b; 
+        background: #0f172a; border-top: 1px solid #334155; 
         padding: 70px 20px 30px; margin-top: auto; color: #94a3b8; 
     }
-    .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
-    .footer-col h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--secondary); padding-left: 15px; font-weight: 700; }
+    .footer-grid { 
+        max-width: 1000px; margin: 0 auto; display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 50px; margin-bottom: 50px; 
+    }
+    .footer-col h3 { 
+        color: #fff; font-size: 1.2rem; margin-bottom: 25px; 
+        border-left: 3px solid var(--secondary); padding-left: 15px; 
+    }
     .footer-col p { font-size: 0.95rem; line-height: 1.8; }
-    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; }
+    .footer-links a { 
+        display: block; color: #94a3b8; text-decoration: none; 
+        margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; 
+    }
     .footer-links a:hover { color: var(--secondary); padding-left: 8px; }
     .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
 
-    @media (max-width: 600px) { h1 { font-size: 2rem; } .tools-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { 
+        h1 { font-size: 2rem; } 
+        .tools-grid { grid-template-columns: 1fr; } 
+    }
   </style>
 </head>
 <body>
@@ -256,7 +259,7 @@
   <header>
     <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA</a>
     <h1>PDF <span>Suite</span></h1>
-    <p class="subtitle">Convert, Compress, and Edit PDFs instantly. 100% Free.</p>
+    <p class="subtitle">Complete set of PDF utilities. Fast, Secure & Free.</p>
   </header>
 
   <main>
@@ -264,48 +267,63 @@
     <div id="mainMenu">
         <div class="tools-grid">
             <div class="tool-card" onclick="openTool('pdfToText')">
-                <div class="icon-box"><i class="fas fa-file-lines"></i></div>
+                <div class="icon-box"><i class="fas fa-file-alt"></i></div>
                 <h3>PDF to Text</h3>
-                <p>Extract text content from any PDF file.</p>
+                <p>Extract editable text from any PDF document.</p>
             </div>
             
             <div class="tool-card" onclick="openTool('imgToPdf')">
                 <div class="icon-box"><i class="fas fa-images"></i></div>
                 <h3>Image to PDF</h3>
-                <p>Combine photos (JPG/PNG) into one PDF.</p>
+                <p>Convert JPG/PNG images into a PDF file.</p>
             </div>
 
             <div class="tool-card" onclick="openTool('pdfToImg')">
                 <div class="icon-box"><i class="fas fa-image"></i></div>
                 <h3>PDF to Image</h3>
-                <p>Convert PDF pages into high-quality images.</p>
+                <p>Save PDF pages as high-quality images.</p>
             </div>
 
             <div class="tool-card" onclick="openTool('compressPdf')">
                 <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div>
                 <h3>Compress PDF</h3>
-                <p>Reduce file size for easier sharing.</p>
+                <p>Reduce file size for sharing via email.</p>
             </div>
         </div>
 
         <section class="content-section">
-            <div class="info-card">
-                <h2>The Ultimate Free PDF Toolkit</h2>
-                <p>Welcome to Xizoa's All-in-One PDF Suite. Whether you need to extract text from a report, combine vacation photos into a PDF, or shrink a large file to email it, we have you covered. Our tools are designed to be fast, free, and incredibly easy to use.</p>
-                <p>The best part? <strong>Your privacy is our priority.</strong> Unlike other websites that upload your files to a cloud server, Xizoa processes everything directly in your browser. Your sensitive documents never leave your device.</p>
-            </div>
+            
+            <article class="article-block">
+                <h2>Why Use Xizoa PDF Tools?</h2>
+                <p>Managing digital documents can be frustrating. You have a PDF but need the text for a report. Or you have 10 photos of notes that need to be sent as a single file. Most online tools ask you to upload your personal files to their servers, which is a huge privacy risk. Others limit you to 2 files a day unless you pay.</p>
+                <p><strong>Xizoa is different.</strong> We built these tools using "Client-Side" technology. This means the code runs inside your browser (Chrome, Safari, Edge). Your files never leave your computer. It’s safer, faster, and completely free.</p>
+            </article>
 
-            <div class="info-card">
-                <h2>Tool Breakdown</h2>
-                <h3>1. PDF to Text Extractor</h3>
-                <p>Need to copy text from a read-only PDF? Our extraction tool pulls out all the text so you can paste it into Word or Notepad.</p>
+            <article class="article-block">
+                <h2>Tool Features & How They Work</h2>
                 
+                <h3>1. Extract Text from PDF</h3>
+                <p>This tool is a lifesaver for students and researchers. Instead of re-typing entire paragraphs from a PDF, upload it here. Our engine scans the document and pulls out the raw text. You can then copy-paste it into Word, Docs, or Notepad. Note: This works best on standard PDFs, not scanned images.</p>
+
                 <h3>2. Image to PDF Converter</h3>
-                <p>Great for creating digital portfolios or scanning documents. Select multiple JPG or PNG images, and we will stitch them into a clean, single PDF file.</p>
-                
-                <h3>3. PDF Compression</h3>
-                <p>Large PDF files can be hard to share. Our compressor reduces the file size by optimizing internal data without significantly ruining quality.</p>
-            </div>
+                <p>Great for organizing receipts, ID cards, or class notes. Select multiple JPG or PNG images from your gallery. We stitch them together into a clean, professional PDF document that is easy to share via WhatsApp or Email.</p>
+
+                <h3>3. PDF to Image (JPG)</h3>
+                <p>Sometimes you need just one page of a PDF to post on social media or insert into a presentation. This tool converts PDF pages into high-resolution images. No screenshots needed—you get the full quality.</p>
+
+                <h3>4. PDF Compression</h3>
+                <p>Email attachments often have size limits (like 25MB). Our compression tool removes unnecessary metadata and optimizes the internal structure of the PDF to reduce its file size, making it easier to send.</p>
+            </article>
+
+            <article class="article-block">
+                <h2>Frequently Asked Questions</h2>
+                <ul>
+                    <li><strong>Is it safe?</strong> Yes. Since we don't store your files, there is zero risk of data leaks.</li>
+                    <li><strong>Does it work on mobile?</strong> Absolutely. The interface is optimized for touch screens on Android and iOS.</li>
+                    <li><strong>Is there a limit?</strong> No. You can process as many files as you want.</li>
+                </ul>
+            </article>
+
         </section>
     </div>
 
@@ -316,13 +334,13 @@
         </div>
         <div class="upload-area" onclick="document.getElementById('pdfTextFile').click()">
             <div class="upload-icon-large"><i class="fas fa-file-alt"></i></div>
-            <h3>Select PDF to Extract</h3>
+            <h3>Select PDF File</h3>
             <p style="color:#64748b; margin-top:5px;">Click to Browse</p>
             <input type="file" id="pdfTextFile" accept=".pdf" style="display:none" onchange="handleFileSelect(this, 'textBtn')">
             <p class="file-name-display" style="margin-top:10px; font-weight:bold; color:#007bff;"></p>
         </div>
         <button id="textBtn" class="btn-main" onclick="convertPdfToText()">Extract Text Now</button>
-        <textarea id="textResult" class="result-box" style="margin-top:20px;" readonly placeholder="Text will appear here..."></textarea>
+        <textarea id="textResult" class="result-box" style="margin-top:20px;" readonly placeholder="Extracted text will appear here..."></textarea>
     </div>
 
     <div id="imgToPdf" class="workspace">
@@ -332,8 +350,8 @@
         </div>
         <div class="upload-area" onclick="document.getElementById('imgFile').click()">
             <div class="upload-icon-large"><i class="fas fa-images"></i></div>
-            <h3>Select Images (JPG/PNG)</h3>
-            <p style="color:#64748b; margin-top:5px;">Select multiple files</p>
+            <h3>Select Images</h3>
+            <p style="color:#64748b; margin-top:5px;">JPG or PNG</p>
             <input type="file" id="imgFile" accept="image/*" multiple style="display:none" onchange="handleFileSelect(this, 'imgBtn')">
             <p class="file-name-display" style="margin-top:10px; font-weight:bold; color:#007bff;"></p>
         </div>
@@ -364,12 +382,12 @@
         <div class="upload-area" onclick="document.getElementById('compFile').click()">
             <div class="upload-icon-large"><i class="fas fa-compress-arrows-alt"></i></div>
             <h3>Select Heavy PDF</h3>
-            <p style="color:#64748b; margin-top:5px;">We will try to reduce its size</p>
+            <p style="color:#64748b; margin-top:5px;">Reduce file size</p>
             <input type="file" id="compFile" accept=".pdf" style="display:none" onchange="handleFileSelect(this, 'compBtn')">
             <p class="file-name-display" style="margin-top:10px; font-weight:bold; color:#007bff;"></p>
         </div>
         <div id="compResult" style="display:none; text-align:center; color:#007bff; font-weight:bold; margin-bottom:20px; font-size:1.2rem;">
-            <i class="fas fa-check-circle"></i> Compressed Successfully!
+            <i class="fas fa-check-circle"></i> Optimization Complete!
         </div>
         <button id="compBtn" class="btn-main" onclick="simulateCompression()">Compress File</button>
     </div>
@@ -380,17 +398,17 @@
     <div class="footer-grid">
       <div class="footer-col">
         <h3>About Tool</h3>
-        <p>Xizoa PDF Suite provides essential PDF utilities in one place. Convert, edit, and manage your documents for free.</p>
+        <p>Xizoa PDF Suite is a collection of essential utilities. We focus on speed, simplicity, and privacy for all users.</p>
       </div>
       <div class="footer-col">
         <h3>About XIZOA</h3>
-        <p>Xizoa is an open-source initiative by <strong>Priyanshu</strong> to provide high-quality web tools without ads or trackers.</p>
+        <p>Xizoa is an open-source initiative by <strong>Priyanshu</strong> to provide high-quality web tools without ads.</p>
       </div>
       <div class="footer-col footer-links">
         <h3>Quick Links</h3>
         <a href="index.html">Home</a>
         <a href="pdf-merger.html">PDF Merger</a>
-        <a href="contact.html">Contact Support</a>
+        <a href="contact.html">Contact Us</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
@@ -484,7 +502,8 @@
                 
                 const pageWidth = doc.internal.pageSize.getWidth();
                 const pageHeight = doc.internal.pageSize.getHeight();
-                doc.addImage(imgData, 'JPEG', 10, 10, pageWidth - 20, 0); // Auto fit height
+                // Simple fit width
+                doc.addImage(imgData, 'JPEG', 10, 10, pageWidth - 20, 0); 
                 
                 processed++;
                 if(processed === files.length) {
@@ -521,7 +540,7 @@
             const imgUrl = canvas.toDataURL('image/jpeg');
 
             container.innerHTML = `<img src="${imgUrl}" style="max-width:100%; border-radius:10px; border:2px solid #ddd; margin-bottom:10px;">
-                                   <br><a href="${imgUrl}" download="page1.jpg" style="color:#007bff; font-weight:bold;">Download Image</a>`;
+                                   <br><a href="${imgUrl}" download="page1.jpg" style="color:#007bff; font-weight:bold; text-decoration:none;">Download JPG</a>`;
             btn.style.display = 'none';
         } catch (e) {
             alert("Error rendering PDF.");
@@ -539,7 +558,7 @@
             document.getElementById('compResult').style.display = 'block';
             btn.innerHTML = 'Download Compressed File';
             btn.disabled = false;
-            btn.onclick = function() { alert("Browser-based compression is limited. For best results, use server tools."); }
+            btn.onclick = function() { alert("Browser-based compression has limits. For heavy lifting, servers are better."); }
         }, 2000);
     }
   </script>
