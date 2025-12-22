@@ -4,175 +4,286 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PDF Light Mode - Remove Dark Background from PDF (Free)</title>
+  <title>PDF Light Mode | Invert PDF Colors for Printing (Free)</title>
   
-  <meta name="description" content="Convert Dark Mode PDFs to Light Mode instantly. Invert PDF colors for better printing. Remove black background from PDF online. Free & Secure.">
-  
-  <meta name="keywords" content="pdf light mode, invert pdf colors, pdf dark mode to light mode, remove dark background pdf, print dark pdf, pdf inverter online, xizoa pdf tools">
-  
+  <meta name="description" content="Convert Dark Mode PDFs to Light Mode instantly. Invert colors (Black to White) to save ink and print easily. Free online tool by Xizoa.">
+  <meta name="keywords" content="pdf light mode, invert pdf colors, pdf dark mode to light mode, remove dark background pdf, print dark pdf, xizoa tools">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="PDF Light Mode - Save Ink & Print Dark PDFs">
-  <meta property="og:description" content="Turn Dark Mode PDFs into Light Mode for easy printing. Fast & Free.">
-  <meta property="og:type" content="website">
-
+  <link rel="canonical" href="https://tools.xizoa.com/pdf-light-mode.html">
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa PDF Light Mode",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A free tool to invert colors of PDF files (Dark to Light) for better printing."
+  }
+  </script>
+
   <style>
-    /* --- SAME NEON THEME CSS --- */
+    /* --- STANDARD XIZOA THEME --- */
     :root {
-      --primary: #00f7ff;
-      --secondary: #007bff;
-      --bg-dark: #0a0f1a;
-      --card-bg: rgba(23, 33, 54, 0.6);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-      --text-main: #e5e5e5;
-      --text-muted: #a0aec0;
+      --bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #475569;
+      --border: 1px solid #e2e8f0;
+      --primary: #00f7ff;      /* Cyan Accent */
+      --secondary: #007bff;    /* Blue Brand Color */
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
     
     body {
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.08), transparent 25%), 
-                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.08), transparent 25%);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
+      /* Signature Background */
+      background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05), transparent 25%), 
+                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.05), transparent 25%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    header { text-align: center; padding: 40px 20px; }
-    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
-    .brand-logo span { color: var(--primary); }
-    h1 { font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.3)); }
-    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 40px 20px; 
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: var(--border);
+        position: sticky; top: 0; z-index: 100;
+    }
+    .brand-logo { 
+        font-size: 2rem; 
+        font-weight: 800; 
+        color: #0f172a; 
+        text-decoration: none; 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 10px; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .brand-logo i { color: var(--secondary); }
+    
+    h1 { 
+        font-size: 2.2rem; 
+        font-weight: 800; 
+        margin: 10px 0; 
+        color: #0f172a; 
+    }
+    h1 span { color: var(--secondary); }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; }
 
-    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-    /* --- UPLOAD BOX --- */
+    /* --- TOOL INTERFACE --- */
     .upload-box {
-      background: var(--card-bg);
-      border: 2px dashed rgba(0, 247, 255, 0.3);
-      padding: 40px;
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      padding: 50px 20px;
       border-radius: 20px;
       text-align: center;
       cursor: pointer;
       transition: 0.3s;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    .upload-box:hover { border-color: var(--primary); background: rgba(0, 247, 255, 0.05); }
-    .upload-icon { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
-    .upload-text { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
-    .upload-hint { color: var(--text-muted); font-size: 0.9rem; }
+    .upload-box:hover { 
+        border-color: var(--secondary); 
+        background: #eff6ff; 
+        transform: scale(1.01);
+    }
+    .upload-icon { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
+    .upload-text { font-size: 1.3rem; font-weight: 700; color: #1e293b; }
+    .upload-hint { color: var(--text-muted); font-size: 1rem; }
     #fileInput { display: none; }
 
-    /* --- PROCESSING STATUS --- */
-    .status-box { display: none; text-align: center; margin: 20px 0; background: var(--card-bg); padding: 20px; border-radius: 15px; border: var(--glass-border); }
-    .progress-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-top: 15px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s; box-shadow: 0 0 10px var(--primary); }
-
-    .btn-main {
-      width: 100%; background: linear-gradient(135deg, var(--secondary), var(--primary)); color: #000; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.3s; margin-top: 20px; display: none;
+    /* Status UI */
+    .status-container { display: none; margin-bottom: 30px; }
+    .status-card {
+      background: #fff; border: 1px solid #e2e8f0; padding: 20px;
+      border-radius: 12px; text-align: center;
+      box-shadow: var(--card-shadow);
     }
-    .btn-main:hover { box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); transform: translateY(-2px); }
+    .status-text { font-weight: 600; color: var(--secondary); display: block; margin-bottom: 10px; }
+    .progress-bar { 
+        width: 100%; height: 8px; background: #e2e8f0; 
+        border-radius: 10px; overflow: hidden; margin: 15px 0; 
+    }
+    .progress-fill { 
+        height: 100%; width: 0%; background: var(--secondary); 
+        transition: width 0.3s; 
+    }
+    
+    .btn-main {
+      width: 100%; 
+      background: linear-gradient(135deg, var(--secondary), #00c6ff); 
+      color: #fff; border: none; padding: 18px; border-radius: 12px; 
+      font-weight: 700; cursor: pointer; font-size: 1.2rem; 
+      transition: 0.3s; display: none; margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4); }
 
     /* --- SEO CONTENT --- */
-    .seo-content { margin-top: 60px; }
-    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
-    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
-    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
-    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
-    .seo-content ul { list-style: none; padding: 0; }
-    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
-    .seo-content li::before { content: '✔'; color: var(--primary); position: absolute; left: 0; }
+    .content-section { margin-top: 40px; }
+    
+    .info-card { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 40px; 
+        border-radius: 16px; margin-bottom: 30px; 
+        box-shadow: var(--card-shadow);
+    }
+    
+    .info-card h2 { font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; }
+    .info-card h3 { font-size: 1.4rem; color: #1e293b; margin-top: 30px; margin-bottom: 15px; font-weight: 600; }
+    .info-card p { color: #475569; margin-bottom: 15px; font-size: 1.05rem; text-align: justify; }
+    .info-card ul { margin-left: 20px; color: #475569; }
+    .info-card li { margin-bottom: 10px; font-size: 1.05rem; }
+
+    /* --- MORE TOOLS --- */
+    .more-tools { margin-top: 80px; }
+    .more-tools h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; color: #0f172a; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+    .tool-link { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 30px; 
+        border-radius: 16px; text-decoration: none; transition: 0.3s; display: block;
+        box-shadow: var(--card-shadow);
+    }
+    .tool-link:hover { transform: translateY(-5px); border-color: var(--secondary); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .tool-link i { font-size: 2.2rem; color: var(--secondary); margin-bottom: 15px; }
+    .tool-link h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 8px; font-weight: 700; }
+    .tool-link p { color: #64748b; font-size: 0.95rem; }
 
     /* --- FOOTER --- */
-    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
-    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
-    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
-    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
-    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+    footer { 
+        background: #0f172a; border-top: 1px solid #1e293b; 
+        padding: 70px 20px 30px; margin-top: auto; color: #94a3b8; 
+    }
+    .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
+    .footer-col h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--secondary); padding-left: 15px; font-weight: 700; }
+    .footer-col p { font-size: 0.95rem; line-height: 1.8; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 8px; }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
 
-    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+    @media (max-width: 600px) { h1 { font-size: 1.8rem; } .upload-box { padding: 30px 20px; } }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
-    <h1>PDF Light Mode</h1>
-    <p class="subtitle">Convert Dark Mode PDFs to White Background for Easy Printing</p>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA</a>
+    <h1>PDF Light <span>Mode</span></h1>
+    <p class="subtitle">Convert Dark Mode PDFs to White Background for Printing</p>
   </header>
 
   <main>
     
     <div class="upload-box" onclick="document.getElementById('fileInput').click()">
-      <div class="upload-icon"><i class="fas fa-moon"></i> <i class="fas fa-arrow-right" style="font-size:1.5rem; color:#fff;"></i> <i class="fas fa-sun"></i></div>
+      <div class="upload-icon"><i class="fas fa-adjust"></i></div>
       <div class="upload-text">Upload Dark PDF</div>
-      <div class="upload-hint">Supports .pdf files</div>
+      <div class="upload-hint">Drag & drop or click to browse</div>
       <input type="file" id="fileInput" accept="application/pdf">
     </div>
 
-    <div class="status-box" id="statusBox">
-      <div id="statusText">Processing Page 1...</div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="status-container" id="statusContainer">
+        <div class="status-card">
+            <div class="status-text" id="statusText">Initializing...</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
     </div>
 
     <button class="btn-main" id="downloadBtn"><i class="fas fa-download"></i> Download Light PDF</button>
 
-    <section class="seo-content">
-      <div class="seo-card">
+    <section class="content-section">
+      
+      <div class="info-card">
         <h2>What is PDF Light Mode?</h2>
-        <p>
-          Do you have study notes or eBooks with a <strong>dark background</strong> that waste too much ink when printing? 
-          Our **PDF Light Mode** tool instantly inverts the colors—turning black backgrounds to white and white text to black.
-        </p>
-        <p>
-          Agar aapke paas Dark Mode wala PDF hai aur use print karana hai, to ye tool use karein. Ye poore background ko white kar deta hai taaki ink bache aur padhne mein aasani ho.
-        </p>
+        <p>Many eBooks and study materials now come in "Dark Mode" (Black background with white text). While this is great for screen reading at night, it is a nightmare for printing. Printing a dark PDF wastes a huge amount of black ink and makes the paper soggy.</p>
+        <p>Xizoa's <strong>PDF Light Mode</strong> tool solves this problem. It intelligently inverts the colors of your PDF pages—converting the black background to white and the text to black. This makes the document printer-friendly and readable on paper.</p>
       </div>
 
-      <div class="seo-card">
-        <h3>🚀 Features</h3>
+      <div class="info-card">
+        <h2>Key Features</h2>
+        <h3>1. Save Ink & Money</h3>
+        <p>By removing the dark background, you save significant amounts of printer toner or ink cartridges. A white background requires zero ink to print.</p>
+        
+        <h3>2. Improve Readability</h3>
+        <p>While dark mode is good for screens, reading inverted text on paper can be straining. This tool restores the standard "Dark Text on Light Background" format.</p>
+        
+        <h3>3. 100% Client-Side Privacy</h3>
+        <p>Just like our other tools, this process happens entirely in your browser. Your file is not uploaded to any server, ensuring your documents remain private.</p>
+      </div>
+
+      <div class="info-card">
+        <h2>How to Use</h2>
         <ul>
-          <li><strong>Save Printer Ink:</strong> Removes heavy black/dark backgrounds.</li>
-          <li><strong>Better Readability:</strong> Converts high-contrast dark mode to standard paper format.</li>
-          <li><strong>Secure Processing:</strong> Everything happens in your browser. No files uploaded.</li>
-          <li><strong>Free & Fast:</strong> Supports multi-page PDFs.</li>
+            <li><strong>Step 1:</strong> Click the upload box to select your Dark Mode PDF.</li>
+            <li><strong>Step 2:</strong> Wait for the tool to process. It goes through every page and flips the colors pixel-by-pixel.</li>
+            <li><strong>Step 3:</strong> Once done, click "Download Light PDF" to save the new print-ready file.</li>
         </ul>
       </div>
+
     </section>
+
+    <div class="more-tools">
+        <h2>Explore More Free Tools</h2>
+        <div class="tools-grid">
+            <a href="pdf-merger.html" class="tool-link">
+                <i class="fas fa-file-invoice"></i>
+                <h3>PDF Merger</h3>
+                <p>Combine multiple PDFs.</p>
+            </a>
+            <a href="pdf-to-word.html" class="tool-link">
+                <i class="fas fa-file-word"></i>
+                <h3>PDF to Word</h3>
+                <p>Convert PDF to DOCX.</p>
+            </a>
+            <a href="image-compressor.html" class="tool-link">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <h3>Image Compressor</h3>
+                <p>Reduce image size.</p>
+            </a>
+        </div>
+    </div>
 
   </main>
 
   <footer>
-    <div class="footer-content">
+    <div class="footer-grid">
       <div class="footer-col">
         <h3>About Tool</h3>
-        <p>PDF Light Mode is a utility to invert colors of PDF documents, making them printer-friendly and easier to read on paper.</p>
+        <p>PDF Light Mode helps students and professionals convert dark-themed documents into printer-friendly white versions to save ink.</p>
       </div>
       <div class="footer-col">
-        <h3>About XIZOA Hub</h3>
-        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+        <h3>About XIZOA</h3>
+        <p>Xizoa is an open-source initiative by <strong>Priyanshu</strong> to provide high-quality web tools without ads or trackers.</p>
       </div>
       <div class="footer-col footer-links">
-        <h3>Explore</h3>
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="pdf-merger.html"><i class="fas fa-file-invoice"></i> PDF Merger</a>
-        <a href="YouTube-thumbnail-downloader.html"><i class="fab fa-youtube"></i> Thumbnail Downloader</a>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="pdf-merger.html">PDF Merger</a>
+        <a href="contact.html">Contact Support</a>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
-    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+    <div class="copyright">© 2025 XIZOA. All Rights Reserved.</div>
   </footer>
 
   <script>
@@ -181,7 +292,7 @@
     const { jsPDF } = window.jspdf;
 
     const fileInput = document.getElementById('fileInput');
-    const statusBox = document.getElementById('statusBox');
+    const statusContainer = document.getElementById('statusContainer');
     const statusText = document.getElementById('statusText');
     const progressFill = document.getElementById('progressFill');
     const downloadBtn = document.getElementById('downloadBtn');
@@ -192,17 +303,17 @@
       const file = e.target.files[0];
       if (!file) return;
 
-      statusBox.style.display = 'block';
+      statusContainer.style.display = 'block';
       downloadBtn.style.display = 'none';
       progressFill.style.width = '0%';
-      statusText.innerText = 'Loading PDF...';
+      statusText.innerText = 'Initializing...';
 
       try {
         const arrayBuffer = await file.arrayBuffer();
         const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
         const totalPages = pdf.numPages;
         
-        // Create new PDF doc using jsPDF
+        // Create new PDF doc using jsPDF (A4 Default)
         const newPdf = new jsPDF();
         // Remove default first page
         newPdf.deletePage(1); 
@@ -213,9 +324,9 @@
             progressFill.style.width = `${percent}%`;
 
             const page = await pdf.getPage(i);
-            const viewport = page.getViewport({ scale: 1.5 }); // High quality scale
+            const viewport = page.getViewport({ scale: 1.5 }); // Good quality for print
             
-            // Create Canvas to render page
+            // Create Canvas
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.height = viewport.height;
@@ -223,35 +334,37 @@
 
             await page.render({ canvasContext: ctx, viewport: viewport }).promise;
 
-            // --- INVERT COLORS LOGIC ---
+            // --- INVERT COLORS ---
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
             
             for (let j = 0; j < data.length; j += 4) {
-                // Invert RGB: 255 - current value
-                data[j] = 255 - data[j];     // Red
+                data[j] = 255 - data[j];         // Red
                 data[j + 1] = 255 - data[j + 1]; // Green
                 data[j + 2] = 255 - data[j + 2]; // Blue
-                // Alpha (data[j+3]) remains same
             }
             
             ctx.putImageData(imageData, 0, 0);
 
-            // Add processed image to new PDF
-            const imgDataUrl = canvas.toDataURL('image/jpeg', 0.85);
-            newPdf.addPage([viewport.width, viewport.height]);
-            newPdf.addImage(imgDataUrl, 'JPEG', 0, 0, viewport.width, viewport.height);
+            // Add to PDF
+            const imgDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+            // Convert pixels to PDF units (mm)
+            const widthMM = (viewport.width * 0.264583);
+            const heightMM = (viewport.height * 0.264583);
+
+            newPdf.addPage([widthMM, heightMM]);
+            newPdf.addImage(imgDataUrl, 'JPEG', 0, 0, widthMM, heightMM);
         }
 
         statusText.innerText = 'Finalizing PDF...';
         processedPdfBytes = newPdf.output('blob');
         
-        statusText.innerHTML = '<span style="color:#00f7ff"><i class="fas fa-check-circle"></i> Complete! Ready to Download.</span>';
+        statusText.innerHTML = '<span style="color:#007bff"><i class="fas fa-check-circle"></i> Complete! Ready to Download.</span>';
         downloadBtn.style.display = 'block';
 
       } catch (error) {
         console.error(error);
-        statusText.innerHTML = '<span style="color:#ef4444">Error processing PDF. Please try a simpler file.</span>';
+        statusText.innerHTML = '<span style="color:#ef4444">Error: File too complex or corrupted.</span>';
       }
     });
 
