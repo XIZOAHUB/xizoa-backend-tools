@@ -4,116 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PDF to Word Converter - Convert PDF to Editable Doc (Free)</title>
+  <title>PDF to Word Converter Free | Editable DOCX Tool (2026)</title>
   
-  <meta name="description" content="Convert PDF files to editable Word documents (DOC) instantly. Extract text from PDF to Word online. Free, fast, and secure. No login required.">
-  
-  <meta name="keywords" content="pdf to word, convert pdf to doc, pdf to word converter online, pdf text extractor, editable pdf, free pdf to word, xizoa pdf tools">
-  
+  <meta name="description" content="Convert PDF to Word online for free. Extract text from PDF files and save as editable Word documents (.doc). 100% Secure, Client-side processing.">
+  <meta name="keywords" content="pdf to word, convert pdf to doc, pdf to word converter online, pdf text extractor, editable pdf, free pdf to word, xizoa tools">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="PDF to Word - Editable Document Converter">
-  <meta property="og:description" content="Convert PDF to Word Doc instantly. Fast & Secure.">
-  <meta property="og:type" content="website">
-
+  <link rel="canonical" href="https://tools.xizoa.com/pdf-to-word.html">
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa PDF to Word",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert PDF files to editable Word documents instantly in the browser.",
+    "featureList": "Text Extraction, Unlimited Conversion, No Server Upload"
+  }
+  </script>
+
   <style>
-    /* --- THEME: WORD BLUE --- */
+    /* --- STANDARD XIZOA THEME --- */
     :root {
-      --primary: #2b579a; /* MS Word Blue */
-      --secondary: #00a1f1;
-      --bg-dark: #0a0f1a;
-      --card-bg: rgba(20, 30, 50, 0.7);
-      --glass-border: 1px solid rgba(43, 87, 154, 0.3);
-      --text-main: #e5e5e5;
-      --text-muted: #a0aec0;
+      --bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #475569;
+      --border: 1px solid #e2e8f0;
+      --primary: #00f7ff;      /* Cyan Accent */
+      --secondary: #007bff;    /* Blue Brand Color */
+      --word-blue: #2b579a;    /* Word Specific Color */
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
     
     body {
-      background-color: var(--bg-dark);
-      /* Blue Gradient for Word Theme */
-      background-image: radial-gradient(circle at 15% 50%, rgba(43, 87, 154, 0.15), transparent 25%), 
-                        radial-gradient(circle at 85% 30%, rgba(0, 161, 241, 0.1), transparent 25%);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
+      /* Signature Background */
+      background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05), transparent 25%), 
+                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.05), transparent 25%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    header { text-align: center; padding: 40px 20px; }
-    .brand-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; }
-    .brand-logo span { color: var(--primary); }
-    h1 { font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(43, 87, 154, 0.3)); }
-    .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 40px 20px; 
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: var(--border);
+        position: sticky; top: 0; z-index: 100;
+    }
+    .brand-logo { 
+        font-size: 2rem; 
+        font-weight: 800; 
+        color: #0f172a; 
+        text-decoration: none; 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 10px; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .brand-logo i { color: var(--secondary); }
+    
+    h1 { 
+        font-size: 2.2rem; 
+        font-weight: 800; 
+        margin: 10px 0; 
+        color: #0f172a; 
+    }
+    h1 span { color: var(--word-blue); }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; }
 
-    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 20px; }
+    main { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-    /* --- UPLOAD BOX --- */
+    /* --- TOOL INTERFACE --- */
     .upload-box {
-      background: var(--card-bg);
-      border: 2px dashed rgba(43, 87, 154, 0.5);
-      padding: 40px;
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      padding: 50px 20px;
       border-radius: 20px;
       text-align: center;
       cursor: pointer;
       transition: 0.3s;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    .upload-box:hover { border-color: var(--secondary); background: rgba(43, 87, 154, 0.1); }
-    .upload-icon { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
-    .upload-text { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
-    .upload-hint { color: var(--text-muted); font-size: 0.9rem; }
+    .upload-box:hover { 
+        border-color: var(--word-blue); 
+        background: #f0f7ff; 
+        transform: scale(1.01);
+    }
+    .upload-icon { font-size: 3rem; color: var(--word-blue); margin-bottom: 15px; }
+    .upload-text { font-size: 1.3rem; font-weight: 700; color: #1e293b; }
+    .upload-hint { color: var(--text-muted); font-size: 1rem; }
     #fileInput { display: none; }
 
-    /* --- STATUS & PROGRESS --- */
-    .status-box { display: none; text-align: center; margin: 20px 0; background: var(--card-bg); padding: 20px; border-radius: 15px; border: var(--glass-border); }
-    .progress-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-top: 15px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 0%; background: var(--secondary); transition: width 0.3s; box-shadow: 0 0 10px var(--secondary); }
-    
-    .file-name { font-weight: 600; color: #fff; margin-bottom: 10px; display: block; }
+    /* Status UI */
+    .status-container { display: none; margin-bottom: 30px; }
+    .status-card {
+      background: #fff; border: 1px solid #e2e8f0; padding: 20px;
+      border-radius: 12px; text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .file-name { font-weight: 700; color: var(--word-blue); display: block; margin-bottom: 10px; font-size: 1.1rem; }
+    .progress-bar { 
+        width: 100%; height: 8px; background: #e2e8f0; 
+        border-radius: 10px; overflow: hidden; margin: 15px 0; 
+    }
+    .progress-fill { 
+        height: 100%; width: 0%; background: var(--word-blue); 
+        transition: width 0.3s; 
+    }
+    .status-text { color: var(--text-muted); font-size: 0.9rem; }
 
     .btn-main {
-      width: 100%; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border: none; padding: 16px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1.1rem; transition: 0.3s; margin-top: 20px; display: none;
+      width: 100%; 
+      background: var(--word-blue); 
+      color: #fff; border: none; padding: 18px; border-radius: 12px; 
+      font-weight: 700; cursor: pointer; font-size: 1.2rem; 
+      transition: 0.3s; display: none; margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(43, 87, 154, 0.3);
     }
-    .btn-main:hover { box-shadow: 0 0 25px rgba(43, 87, 154, 0.4); transform: translateY(-2px); }
+    .btn-main:hover { background: #1d4075; transform: translateY(-2px); }
 
     /* --- SEO CONTENT --- */
-    .seo-content { margin-top: 60px; }
-    .seo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; margin-bottom: 30px; }
-    .seo-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 15px; }
-    .seo-content h3 { font-size: 1.3rem; color: var(--text-main); margin-top: 25px; margin-bottom: 10px; }
-    .seo-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 15px; }
-    .seo-content ul { list-style: none; padding: 0; }
-    .seo-content li { color: var(--text-muted); margin-bottom: 10px; padding-left: 20px; position: relative; }
-    .seo-content li::before { content: '✔'; color: var(--secondary); position: absolute; left: 0; }
+    .content-section { margin-top: 40px; }
+    
+    .info-card { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 40px; 
+        border-radius: 16px; margin-bottom: 30px; 
+        box-shadow: var(--card-shadow);
+    }
+    
+    .info-card h2 { font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; border-left: 5px solid var(--word-blue); padding-left: 15px; }
+    .info-card h3 { font-size: 1.4rem; color: #1e293b; margin-top: 30px; margin-bottom: 15px; font-weight: 600; }
+    .info-card p { color: #475569; margin-bottom: 15px; font-size: 1.05rem; text-align: justify; }
+    .info-card li { margin-bottom: 10px; font-size: 1.05rem; color: #475569; }
+
+    /* --- MORE TOOLS --- */
+    .more-tools { margin-top: 80px; }
+    .more-tools h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; color: #0f172a; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+    .tool-link { 
+        background: #fff; border: 1px solid #e2e8f0; padding: 30px; 
+        border-radius: 16px; text-decoration: none; transition: 0.3s; display: block;
+        box-shadow: var(--card-shadow);
+    }
+    .tool-link:hover { transform: translateY(-5px); border-color: var(--secondary); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .tool-link i { font-size: 2.2rem; color: var(--secondary); margin-bottom: 15px; }
+    .tool-link h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 8px; font-weight: 700; }
+    .tool-link p { color: #64748b; font-size: 0.95rem; }
 
     /* --- FOOTER --- */
-    footer { background: #05080f; border-top: 1px solid #1d2f49; padding: 50px 20px 20px; margin-top: auto; text-align: left; }
-    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; position: relative; display: inline-block; }
-    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
-    .footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-    .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
-    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+    footer { 
+        background: #0f172a; border-top: 1px solid #1e293b; 
+        padding: 70px 20px 30px; margin-top: auto; color: #94a3b8; 
+    }
+    .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
+    .footer-col h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--secondary); padding-left: 15px; font-weight: 700; }
+    .footer-col p { font-size: 0.95rem; line-height: 1.8; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 8px; }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
 
-    @media (max-width: 600px) { h1 { font-size: 2rem; } }
+    @media (max-width: 600px) { h1 { font-size: 1.8rem; } .upload-box { padding: 30px 20px; } }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
-    <h1>PDF to Word Converter</h1>
-    <p class="subtitle">Extract Text from PDF & Save as Editable Word Doc</p>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA</a>
+    <h1>PDF to Word <span>Converter</span></h1>
+    <p class="subtitle">Extract Text from PDF & Save as DOCX. 100% Free.</p>
   </header>
 
   <main>
@@ -121,60 +199,99 @@
     <div class="upload-box" onclick="document.getElementById('fileInput').click()">
       <div class="upload-icon"><i class="fas fa-file-word"></i></div>
       <div class="upload-text">Select PDF File</div>
-      <div class="upload-hint">We convert text-based PDFs to Word</div>
-      <input type="file" id="fileInput" accept="application/pdf">
+      <div class="upload-hint">Drag & drop or click to browse</div>
+      <input type="file" id="fileInput" accept=".pdf">
     </div>
 
-    <div class="status-box" id="statusBox">
-      <span class="file-name" id="fileName">File.pdf</span>
-      <div id="statusText">Ready to convert...</div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="status-container" id="statusContainer">
+        <div class="status-card">
+            <span class="file-name" id="fileName">File.pdf</span>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="status-text" id="statusText">Ready to convert...</div>
+        </div>
     </div>
 
-    <button class="btn-main" id="convertBtn"><i class="fas fa-sync-alt"></i> Convert to Word</button>
+    <button class="btn-main" id="convertBtn">Convert to Word Now</button>
 
-    <section class="seo-content">
-      <div class="seo-card">
-        <h2>Free PDF to Word Converter</h2>
-        <p>
-          Need to edit a PDF document? Our **PDF to Word Tool** extracts text from your PDF files and converts them into editable Microsoft Word (.doc) documents instantly.
-        </p>
-        <p>
-          Ye tool aapke PDF se text nikaal kar use ek Word file mein save kar deta hai jise aap MS Word ya Google Docs mein edit kar sakte hain.
-        </p>
+    <section class="content-section">
+      
+      <div class="info-card">
+        <h2>Convert PDF to Word Online for Free</h2>
+        <p>Editing a PDF file can be a nightmare. PDFs were designed to be "read-only," which makes extracting text from them difficult. Xizoa's <strong>PDF to Word Converter</strong> solves this problem by extracting all the text from your document and saving it as an editable Microsoft Word (.doc) file.</p>
+        <p>Whether you need to edit a resume, copy text from a research paper, or modify a legal contract, our tool handles the heavy lifting instantly. Best of all, it works entirely in your browser, ensuring your private data stays private.</p>
       </div>
 
-      <div class="seo-card">
-        <h3>🚀 Features</h3>
-        <ul>
-          <li><strong>Editable Output:</strong> Converts PDF content to editable text.</li>
-          <li><strong>Secure Processing:</strong> Files are processed locally in your browser.</li>
-          <li><strong>Free & Unlimited:</strong> Convert as many files as you want.</li>
-          <li><strong>Note:</strong> Best for text-heavy PDFs (Scanned images might not work without OCR).</li>
-        </ul>
+      <div class="info-card">
+        <h2>How It Works</h2>
+        <ol style="margin-left: 20px; line-height: 2;">
+            <li><strong>Upload:</strong> Select your PDF file from your computer or mobile.</li>
+            <li><strong>Extraction:</strong> Our smart engine reads the PDF page by page and extracts all text content.</li>
+            <li><strong>Download:</strong> The extracted text is automatically formatted into a Word document which you can download and edit immediately.</li>
+        </ol>
       </div>
+
+      <div class="info-card">
+        <h2>Key Features</h2>
+        <h3>1. 100% Secure (Client-Side)</h3>
+        <p>Unlike other tools that upload your sensitive documents to a cloud server, Xizoa processes everything locally on your device. Your file never leaves your computer, making it the safest way to convert documents.</p>
+        
+        <h3>2. Unlimited Conversions</h3>
+        <p>We don't believe in limits. Convert as many files as you need, whenever you need. No hidden fees or subscriptions.</p>
+        
+        <h3>3. Works Everywhere</h3>
+        <p>Our tool is compatible with Windows, Mac, Linux, Android, and iOS. You can convert files on the go using your smartphone.</p>
+      </div>
+
+      <div class="info-card">
+        <h2>Important Note About Images & Formatting</h2>
+        <p>Please note that this tool is designed for <strong>Text Extraction</strong>. If your PDF contains scanned images of text (where you cannot select the text with your mouse), this tool may not be able to read it without OCR (Optical Character Recognition).</p>
+        <p>Also, complex layouts like multi-column magazines might be converted into a single stream of text. This tool is best suited for documents like essays, contracts, letters, and reports where text is the priority.</p>
+      </div>
+
     </section>
+
+    <div class="more-tools">
+        <h2>Explore More Free Tools</h2>
+        <div class="tools-grid">
+            <a href="pdf-merger.html" class="tool-link">
+                <i class="fas fa-file-invoice"></i>
+                <h3>PDF Merger</h3>
+                <p>Combine multiple PDFs into one.</p>
+            </a>
+            <a href="image-compressor.html" class="tool-link">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <h3>Image Compressor</h3>
+                <p>Reduce image size instantly.</p>
+            </a>
+            <a href="jpg-to-png.html" class="tool-link">
+                <i class="fas fa-image"></i>
+                <h3>JPG to PNG</h3>
+                <p>Convert image formats easily.</p>
+            </a>
+        </div>
+    </div>
 
   </main>
 
   <footer>
-    <div class="footer-content">
+    <div class="footer-grid">
       <div class="footer-col">
-        <h3>About Tool</h3>
-        <p>PDF to Word Converter is a utility for students and professionals to make PDF documents editable again. Fast, free, and client-side secure.</p>
+        <h3>About This Tool</h3>
+        <p>This PDF to Word tool allows you to convert read-only PDF documents into editable Word files instantly and securely.</p>
       </div>
       <div class="footer-col">
-        <h3>About XIZOA Hub</h3>
-        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+        <h3>About XIZOA</h3>
+        <p>Xizoa is an open-source initiative by <strong>Priyanshu</strong> to provide high-quality web tools without ads or trackers.</p>
       </div>
       <div class="footer-col footer-links">
-        <h3>Explore</h3>
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="pdf-merger.html"><i class="fas fa-file-invoice"></i> PDF Merger</a>
-        <a href="ip-checker.html"><i class="fas fa-globe-asia"></i> IP Checker</a>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="pdf-merger.html">PDF Merger</a>
+        <a href="contact.html">Contact Support</a>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
-    <div class="copyright">© 2025 XIZOA Hub • Developed by Priyanshu</div>
+    <div class="copyright">© 2025 XIZOA. All Rights Reserved.</div>
   </footer>
 
   <script>
@@ -182,13 +299,12 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
     const fileInput = document.getElementById('fileInput');
-    const statusBox = document.getElementById('statusBox');
+    const statusContainer = document.getElementById('statusContainer');
     const statusText = document.getElementById('statusText');
     const fileName = document.getElementById('fileName');
     const progressFill = document.getElementById('progressFill');
     const convertBtn = document.getElementById('convertBtn');
 
-    let extractedText = "";
     let currentFile = null;
 
     fileInput.addEventListener('change', (e) => {
@@ -197,7 +313,7 @@
       
       currentFile = file;
       fileName.innerText = file.name;
-      statusBox.style.display = 'block';
+      statusContainer.style.display = 'block';
       convertBtn.style.display = 'block';
       statusText.innerText = 'Ready to Convert. Click button below.';
       progressFill.style.width = '0%';
@@ -206,6 +322,7 @@
     convertBtn.addEventListener('click', async () => {
       if(!currentFile) return;
 
+      const originalText = convertBtn.innerHTML;
       convertBtn.disabled = true;
       convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
       
@@ -213,60 +330,69 @@
         const arrayBuffer = await currentFile.arrayBuffer();
         const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
         const totalPages = pdf.numPages;
-        extractedText = "";
+        let extractedText = "";
 
         for (let i = 1; i <= totalPages; i++) {
-            statusText.innerText = `Reading Page ${i} of ${totalPages}...`;
+            statusText.innerText = `Processing Page ${i} of ${totalPages}...`;
             const percent = Math.round((i / totalPages) * 100);
             progressFill.style.width = `${percent}%`;
 
             const page = await pdf.getPage(i);
             const textContent = await page.getTextContent();
             
-            // Extract text items
             let pageText = "";
             textContent.items.forEach(item => {
                 pageText += item.str + " ";
             });
             
+            // Add double newline for paragraphs
             extractedText += pageText + "\n\n";
         }
 
         downloadWordDoc(extractedText, currentFile.name.replace('.pdf', ''));
         
-        statusText.innerHTML = '<span style="color:#00ff88"><i class="fas fa-check-circle"></i> Success! Downloading...</span>';
-        convertBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Convert Another';
-        convertBtn.disabled = false;
+        statusText.innerHTML = '<span style="color:#2b579a; font-weight:bold;">Success! Download started.</span>';
+        progressFill.style.width = '100%';
+        convertBtn.innerHTML = '<i class="fas fa-check"></i> Done!';
+        
+        setTimeout(() => {
+            convertBtn.innerHTML = originalText;
+            convertBtn.disabled = false;
+        }, 3000);
 
       } catch (error) {
         console.error(error);
-        statusText.innerText = 'Error converting file. It might be password protected or scanned.';
+        statusText.innerText = 'Error: File might be encrypted or scanned image.';
+        convertBtn.innerHTML = 'Try Again';
         convertBtn.disabled = false;
-        convertBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Retry';
       }
     });
 
     function downloadWordDoc(text, filename) {
-        // Create a basic HTML structure that Word interprets as a document
-        const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
-            "xmlns:w='urn:schemas-microsoft-com:office:word' " +
-            "xmlns='http://www.w3.org/TR/REC-html40'>" +
-            "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+        // Standard HTML structure for Word
+        const header = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                  xmlns:w='urn:schemas-microsoft-com:office:word' 
+                  xmlns='http://www.w3.org/TR/REC-html40'>
+            <head><meta charset='utf-8'><title>Document</title></head><body>`;
         
         const footer = "</body></html>";
         
-        // Convert newlines to breaks for HTML
+        // Convert newlines to breaks
         const htmlContent = text.replace(/\n/g, "<br>");
         const sourceHTML = header + htmlContent + footer;
         
-        const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        const blob = new Blob(['\ufeff', sourceHTML], {
+            type: 'application/msword'
+        });
         
-        const fileDownload = document.createElement("a");
-        document.body.appendChild(fileDownload);
-        fileDownload.href = source;
-        fileDownload.download = filename + '_xizoa.doc';
-        fileDownload.click();
-        document.body.removeChild(fileDownload);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename + '_xizoa.doc';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
   </script>
 </body>
