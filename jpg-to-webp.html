@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JPG to WebP Converter | Optimize Images for Website (Free)</title>
+  
+  <meta name="description" content="Convert JPG and PNG images to WebP format instantly. Reduce file size by up to 80% for faster websites. Free, secure, and client-side tool by Xizoa.">
+  <meta name="keywords" content="jpg to webp, png to webp, image converter, webp converter online, compress image for web, make website faster, xizoa tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tools.xizoa.com/jpg-to-webp.html">
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Xizoa JPG to WebP",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Convert images to high-performance WebP format directly in the browser."
+  }
+  </script>
+
+  <style>
+    /* --- STANDARD XIZOA THEME --- */
+    :root {
+      --bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: 1px solid #e2e8f0;
+      --primary: #00f7ff;      /* Cyan */
+      --secondary: #007bff;    /* Blue */
+      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      background-image: radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05), transparent 25%), 
+                        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.05), transparent 25%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; padding: 40px 20px; 
+        background: rgba(255,255,255,0.95); border-bottom: var(--border);
+        position: sticky; top: 0; z-index: 100;
+    }
+    .brand-logo { 
+        font-size: 2rem; font-weight: 800; color: #0f172a; 
+        text-decoration: none; display: inline-flex; align-items: center; gap: 10px; 
+    }
+    .brand-logo i { color: var(--secondary); }
+    
+    h1 { font-size: 2.2rem; font-weight: 800; margin: 10px 0; color: #0f172a; }
+    h1 span { color: var(--secondary); }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+    /* TOOL INTERFACE */
+    .upload-box {
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      padding: 50px 20px;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 25px;
+    }
+    .upload-box:hover { border-color: var(--secondary); background: #eff6ff; transform: scale(1.01); }
+    .upload-icon { font-size: 3.5rem; color: var(--secondary); margin-bottom: 15px; }
+    .upload-text { font-size: 1.3rem; font-weight: 700; color: #1e293b; }
+    .upload-hint { color: var(--text-muted); font-size: 1rem; margin-top: 5px; }
+    #fileInput { display: none; }
+
+    /* Settings */
+    .settings-panel {
+        background: #fff; padding: 20px; border: var(--border); 
+        border-radius: 12px; margin-bottom: 20px; text-align: center;
+        box-shadow: var(--card-shadow);
+    }
+    .quality-slider { width: 100%; max-width: 300px; margin: 10px 0; accent-color: var(--secondary); }
+
+    /* Results */
+    #resultsArea { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    
+    .result-card {
+        background: #fff; border: var(--border); padding: 15px;
+        border-radius: 12px; display: flex; flex-direction: column; align-items: center;
+        box-shadow: var(--card-shadow); transition: 0.3s;
+    }
+    .result-card img { max-width: 100%; height: 150px; object-fit: contain; margin-bottom: 10px; }
+    .size-badge { 
+        font-size: 0.85rem; background: #e0f2fe; color: #0369a1; 
+        padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; font-weight: 600;
+    }
+    
+    .btn-download {
+        background: linear-gradient(135deg, var(--secondary), #00d4ff);
+        color: #fff; text-decoration: none; padding: 10px 20px;
+        border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+        display: inline-flex; align-items: center; gap: 5px;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); }
+
+    /* SEO CONTENT */
+    .content-section { margin-top: 80px; }
+    .info-card { 
+        background: #fff; border: var(--border); padding: 40px; 
+        border-radius: 20px; margin-bottom: 40px; 
+        box-shadow: var(--card-shadow);
+    }
+    .info-card h2 { font-size: 1.8rem; color: #0f172a; margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; }
+    .info-card p { color: #475569; margin-bottom: 15px; font-size: 1.05rem; text-align: justify; }
+    .info-card h3 { font-size: 1.4rem; color: #1e293b; margin-top: 30px; margin-bottom: 10px; font-weight: 600; }
+
+    /* FOOTER */
+    footer { 
+        background: #0f172a; border-top: 1px solid #1e293b; 
+        padding: 70px 20px 30px; margin-top: auto; color: #94a3b8; 
+    }
+    .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
+    .footer-col h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--secondary); padding-left: 15px; font-weight: 700; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--secondary); padding-left: 8px; }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+
+    @media (max-width: 600px) { h1 { font-size: 1.8rem; } .upload-box { padding: 30px 20px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA</a>
+    <h1>JPG to <span>WebP</span></h1>
+    <p class="subtitle">Convert Images to Web Format & Speed Up Your Site</p>
+  </header>
+
+  <main>
+    
+    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon"><i class="fas fa-magic"></i></div>
+      <div class="upload-text">Select Images</div>
+      <div class="upload-hint">Supports JPG, PNG, JPEG</div>
+      <input type="file" id="fileInput" accept="image/*" multiple>
+    </div>
+
+    <div class="settings-panel" id="settingsPanel" style="display:none;">
+        <label style="font-weight:600; color:#334155;">Image Quality: <span id="qualityVal">80%</span></label>
+        <br>
+        <input type="range" id="qualityRange" min="0.1" max="1" step="0.1" value="0.8" class="quality-slider">
+        <p style="font-size:0.9rem; color:#64748b;">Lower quality = Smaller file size.</p>
+        <button id="processBtn" class="btn-download" style="margin-top:15px; border:none; cursor:pointer;">Convert All Now</button>
+    </div>
+
+    <div id="resultsArea"></div>
+
+    <section class="content-section">
+      
+      <div class="info-card">
+        <h2>Why Convert to WebP?</h2>
+        <p>WebP is a modern image format developed by Google. It provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and developers can create smaller, richer images that make the web faster.</p>
+        <p>A WebP image is typically <strong>25-35% smaller</strong> than a comparable JPEG file. This means your website loads faster, which is excellent for SEO and User Experience.</p>
+      </div>
+
+      <div class="info-card">
+        <h2>Features of Xizoa Converter</h2>
+        <h3>1. Client-Side Security</h3>
+        <p>Your photos are processed within your browser using JavaScript. They are never uploaded to a remote server, ensuring 100% privacy.</p>
+        
+        <h3>2. Bulk Conversion</h3>
+        <p>You can select 10, 20, or 50 images at once. Our tool will process them one by one and give you download links instantly.</p>
+
+        <h3>3. Quality Control</h3>
+        <p>Use the slider to adjust the compression level. You can choose between high quality (larger size) or high compression (smallest size).</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>JPG to WebP Converter helps developers and designers optimize images for the web, reducing load times and saving bandwidth.</p>
+      </div>
+      <div class="footer-col">
+        <h3>About XIZOA</h3>
+        <p>Xizoa is an open-source initiative by <strong>Priyanshu</strong> to provide high-quality web tools without ads or trackers.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="image-compressor.html">Image Compressor</a>
+        <a href="contact.html">Contact Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const settingsPanel = document.getElementById('settingsPanel');
+    const resultsArea = document.getElementById('resultsArea');
+    const qualityRange = document.getElementById('qualityRange');
+    const qualityVal = document.getElementById('qualityVal');
+    const processBtn = document.getElementById('processBtn');
+
+    let currentFiles = [];
+
+    // Show settings on file select
+    fileInput.addEventListener('change', (e) => {
+        if(e.target.files.length > 0) {
+            currentFiles = Array.from(e.target.files);
+            settingsPanel.style.display = 'block';
+            resultsArea.innerHTML = '';
+            processBtn.innerHTML = 'Convert All Now';
+        }
+    });
+
+    // Update slider text
+    qualityRange.addEventListener('input', (e) => {
+        qualityVal.innerText = Math.round(e.target.value * 100) + "%";
+    });
+
+    // Process logic
+    processBtn.addEventListener('click', () => {
+        if(currentFiles.length === 0) return;
+        
+        processBtn.disabled = true;
+        processBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        resultsArea.innerHTML = '';
+
+        const quality = parseFloat(qualityRange.value);
+
+        currentFiles.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.src = event.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    // Convert to WebP
+                    canvas.toBlob((blob) => {
+                        if(blob) {
+                            const url = URL.createObjectURL(blob);
+                            const oldSize = (file.size / 1024).toFixed(1);
+                            const newSize = (blob.size / 1024).toFixed(1);
+                            const saving = Math.round(((file.size - blob.size) / file.size) * 100);
+
+                            const card = document.createElement('div');
+                            card.className = 'result-card';
+                            card.innerHTML = `
+                                <img src="${url}" alt="Converted">
+                                <div class="size-badge">${oldSize}KB <i class="fas fa-arrow-right"></i> ${newSize}KB (Saved ${saving}%)</div>
+                                <a href="${url}" download="${file.name.split('.')[0]}.webp" class="btn-download">
+                                    <i class="fas fa-download"></i> Download WebP
+                                </a>
+                            `;
+                            resultsArea.appendChild(card);
+                        }
+                    }, 'image/webp', quality);
+                }
+            }
+            reader.readAsDataURL(file);
+        });
+
+        processBtn.innerHTML = 'Converted Successfully!';
+        setTimeout(() => { processBtn.disabled = false; processBtn.innerHTML = 'Convert Again'; }, 2000);
+    });
+  </script>
+</body>
+</html>
