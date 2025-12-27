@@ -1,4 +1,36 @@
 User-agent: *
 Allow: /
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /junk/
+Disallow: /.git/
+Disallow: /.env
 
+# Block aggressive SEO bots to save server bandwidth (Optional but Recommended)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Dotbot
+Disallow: /
+
+# Prioritize Google for Ranking
+User-agent: Googlebot
+Allow: /
+
+# Prioritize Google Image Search
+User-agent: Googlebot-Image
+Allow: /
+
+# Crucial for AdSense Approval
+User-agent: Mediapartners-Google
+Allow: /
+
+# Sitemap Location
 Sitemap: https://tools.xizoa.com/sitemap.xml
