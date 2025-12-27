@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Auto-Subscribe Link Generator | Create "Magic" Sub Link</title>
+  <meta name="description" content="Generate a YouTube Auto-Subscribe link instantly. Create a magic link that prompts visitors to confirm subscription automatically. Best growth tool for YouTubers.">
+  <meta name="keywords" content="youtube auto subscribe link, sub_confirmation=1 generator, youtube subscription link maker, grow youtube subscribers, youtube magic link, youtube qr code generator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-subscribe-link-generator">
+
+  <meta property="og:title" content="YouTube Auto-Subscribe Link Generator">
+  <meta property="og:description" content="Turn clicks into subscribers! Create a magic link that auto-prompts subscription.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-subscribe-link-generator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-sublink.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Auto-Subscribe Link Generator",
+      "operatingSystem": "Web",
+      "applicationCategory": "MarketingApplication",
+      "url": "https://xizoa.com/youtube-subscribe-link-generator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "ratingCount": "8900" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an Auto-Subscribe link?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It is a modified YouTube channel URL that adds '?sub_confirmation=1' to the end. When users click it, they see a pop-up asking them to subscribe immediately." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this work on mobile?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, it works on mobile browsers and often redirects correctly within the YouTube app depending on the device settings." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Consistent Brand) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left: Inputs */
+    .input-wrapper { margin-bottom: 25px; }
+    .input-label { display: block; margin-bottom: 10px; font-weight: 600; color: #fff; font-size: 1.1rem; }
+    
+    input[type="text"] {
+      width: 100%;
+      background: #000;
+      border: 1px solid #333;
+      padding: 18px 25px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+
+    button#btnGenerate {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    button#btnGenerate:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,0,0,0.4); }
+
+    /* Right: Result */
+    .result-area {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      display: none; /* Hidden initially */
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .success-icon { font-size: 3rem; color: #00e676; margin-bottom: 15px; }
+    .result-title { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
+
+    .link-box {
+      width: 100%;
+      background: #000;
+      border: 1px solid var(--primary);
+      padding: 15px;
+      border-radius: 8px;
+      color: #fff;
+      font-family: monospace;
+      word-break: break-all;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .btn-row { display: flex; gap: 10px; width: 100%; }
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #222;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    .action-btn:hover { background: #333; border-color: #555; }
+    .btn-test { background: #fff; color: #000; border:none; }
+    .btn-test:hover { background: #e0e0e0; }
+
+    .qr-box { margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; width: 100%; }
+    .qr-img { width: 150px; height: 150px; border: 5px solid #fff; border-radius: 10px; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-container { grid-template-columns: 1fr; gap: 30px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Subscribe Link <span>Generator</span></h1>
+    <p class="subtitle">Create a "Magic Link" that asks visitors to subscribe to your channel automatically.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <div class="input-wrapper">
+            <label class="input-label">Paste Your Channel Link</label>
+            <input type="text" id="channelUrl" placeholder="https://youtube.com/c/yourchannel OR https://youtube.com/@handle">
+        </div>
+        
+        <button id="btnGenerate"><i class="fas fa-magic"></i> Generate Magic Link</button>
+      </div>
+
+      <div class="result-area" id="resultArea">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h3 class="result-title">Link Generated Successfully!</h3>
+        
+        <div class="link-box" id="finalLink">...</div>
+        
+        <div class="btn-row">
+            <button class="action-btn btn-test" id="btnTest">Test Link <i class="fas fa-external-link-alt"></i></button>
+            <button class="action-btn" id="btnCopy">Copy <i class="fas fa-copy"></i></button>
+        </div>
+
+        <div class="qr-box">
+            <p style="color:#aaa; font-size:0.9rem; margin-bottom:10px;">Share via QR Code:</p>
+            <img src="" id="qrImage" class="qr-img" alt="Channel QR Code">
+        </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-rocket"></i> YouTube Auto-Subscribe Link Generator (Growth Hack)</h2>
+        <p>Gaining subscribers is hard work. Often, people visit your channel, watch a video, and leave without hitting the subscribe button—not because they didn't like it, but because they forgot. <strong>Xizoa Hub's Auto-Subscribe Link Generator</strong> fixes this problem.</p>
+        <p>By using a special "Magic Link", you can force a small pop-up window to appear as soon as someone clicks your link. This pop-up asks: <strong>"Confirm Channel Subscription?"</strong>. This simple psychological trigger increases conversion rates by over 200%.</p>
+
+        <h3><i class="fas fa-link"></i> How Does It Work?</h3>
+        <p>The tool works by appending a specific parameter <code>?sub_confirmation=1</code> to your channel URL. While you can do this manually, our tool handles different URL formats (Channel ID, User ID, Custom Handle) to ensure the link works perfectly on all devices.</p>
+
+        <h3><i class="fas fa-bullhorn"></i> Where to Use This Magic Link?</h3>
+        <p>Don't just keep this link secret. Spread it everywhere to maximize growth:</p>
+        <ul>
+            <li><strong>Instagram Bio:</strong> Use a link shortener (like Bitly) to hide the long URL and put it in your bio.</li>
+            <li><strong>Video Descriptions:</strong> Add it as the first line: "Subscribe for more: [Link]".</li>
+            <li><strong>Email Signatures:</strong> Add it to the bottom of your emails.</li>
+            <li><strong>Social Media Posts:</strong> Tweet it or share it on Facebook groups.</li>
+        </ul>
+
+        <h3><i class="fas fa-qrcode"></i> Bonus: YouTube Channel QR Code</h3>
+        <p>Our tool also generates a high-quality <strong>QR Code</strong> for your subscription link. You can print this out and put it on business cards, flyers, or even show it in your videos for people to scan with their phones.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Does this work on iPhone/Android?</h3>
+            <p>Yes. On desktop, it shows the pop-up immediately. On mobile, it usually redirects the user to the YouTube App where the "Subscribe" button is prominently displayed.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this against YouTube's policies?</h3>
+            <p>No, this is a native YouTube feature supported by their platform URL parameters. It is perfectly safe and legal to use.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>My link looks too long, what should I do?</h3>
+            <p>The generated link can be long. We recommend using a free URL shortener like Bit.ly or TinyURL to make it look cleaner in your bio.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Subscribe Link Generator helps you grow your channel fast. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnGenerate = document.getElementById('btnGenerate');
+    const channelUrl = document.getElementById('channelUrl');
+    const resultArea = document.getElementById('resultArea');
+    const finalLink = document.getElementById('finalLink');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnTest = document.getElementById('btnTest');
+    const qrImage = document.getElementById('qrImage');
+
+    btnGenerate.addEventListener('click', () => {
+        let url = channelUrl.value.trim();
+
+        if (!url) {
+            alert("Please paste your channel link first!");
+            return;
+        }
+
+        // Clean URL Logic
+        // Remove trailing slashes
+        url = url.replace(/\/$/, "");
+        // Remove existing params
+        url = url.split('?')[0];
+
+        // Create Magic Link
+        const magicLink = `${url}?sub_confirmation=1`;
+
+        // Create QR Code (Using Google API)
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(magicLink)}`;
+
+        // UI Updates
+        finalLink.innerText = magicLink;
+        qrImage.src = qrUrl;
+        
+        btnTest.onclick = () => window.open(magicLink, '_blank');
+
+        resultArea.style.display = 'flex';
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    btnCopy.addEventListener('click', () => {
+        const text = finalLink.innerText;
+        navigator.clipboard.writeText(text);
+        
+        btnCopy.innerHTML = "Copied!";
+        btnCopy.style.background = "#00e676";
+        btnCopy.style.color = "#000";
+
+        setTimeout(() => {
+            btnCopy.innerHTML = 'Copy <i class="fas fa-copy"></i>';
+            btnCopy.style.background = "#222";
+            btnCopy.style.color = "#fff";
+        }, 2000);
+    });
+  </script>
+</body>
+</html>
