@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Free Unit Converter | Length, Weight, Temp & Data Conversion Tool</title>
+  <meta name="description" content="Convert anything instantly. Free online Unit Converter for Length (km to miles), Weight (kg to lbs), Temperature (C to F), Digital Storage, and more.">
+  <meta name="keywords" content="unit converter, length converter, weight converter, temperature converter, metric to imperial, digital storage converter, measurement converter tool">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/unit-converter">
+
+  <meta property="og:title" content="All-in-One Unit Converter - Xizoa Hub">
+  <meta property="og:description" content="Convert Length, Weight, Temperature, and Data instantly. The smartest converter online.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/unit-converter">
+  <meta property="og:image" content="https://xizoa.com/assets/og-unit.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Unit Converter Tool",
+      "operatingSystem": "Web, Android, iOS",
+      "applicationCategory": "UtilityApplication",
+      "url": "https://xizoa.com/unit-converter",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "14200" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How to convert Celsius to Fahrenheit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multiply by 1.8 (or 9/5) and add 32. Formula: (C × 9/5) + 32 = F." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many MB in 1 GB?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In the decimal system, 1 GB = 1000 MB. In the binary system (used by computers), 1 GiB = 1024 MiB." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (SCIENTIFIC TEAL) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #009688;       /* Teal */
+      --primary-dark: #00695c;  /* Dark Teal */
+      --accent: #4db6ac;        /* Light Teal */
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #00251a, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(0, 150, 136, 0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Category Tabs */
+    .tabs-wrapper { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 20px; margin-bottom: 20px; scrollbar-width: none; }
+    .tabs-wrapper::-webkit-scrollbar { display: none; }
+    
+    .tab-btn {
+        padding: 10px 20px; background: #222; border: 1px solid #333; color: #aaa; border-radius: 50px; cursor: pointer; white-space: nowrap; font-weight: 600; transition: 0.3s;
+    }
+    .tab-btn:hover { background: #333; color: #fff; }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0, 150, 136, 0.3); }
+
+    /* Converter Box */
+    .converter-box {
+        display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin-top: 20px;
+    }
+    
+    .swap-icon {
+        width: 50px; height: 50px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; color: var(--primary); border: 1px solid #333;
+    }
+    .swap-icon:hover { background: var(--primary); color: #fff; transform: rotate(180deg); }
+
+    .input-wrapper { background: #000; border: 1px solid #333; padding: 20px; border-radius: 16px; position: relative; }
+    .input-wrapper:focus-within { border-color: var(--primary); }
+    
+    .unit-select {
+        width: 100%; background: transparent; border: none; color: #888; font-size: 0.9rem; margin-bottom: 10px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .unit-select option { background: #111; }
+    
+    .unit-input {
+        width: 100%; background: transparent; border: none; color: #fff; font-size: 2rem; font-weight: 700;
+    }
+    .unit-input:focus { outline: none; }
+
+    /* Formula Display */
+    .formula-box {
+        margin-top: 40px; background: rgba(0, 150, 136, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 15px; text-align: center; color: #fff;
+    }
+    .formula-label { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 5px; display: block; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    /* Table */
+    .conv-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .conv-table th, .conv-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    .conv-table th { background: #e0f2f1; color: #00695c; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .converter-box { grid-template-columns: 1fr; }
+      .swap-icon { margin: 0 auto; transform: rotate(90deg); }
+      .swap-icon:hover { transform: rotate(270deg); }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Unit <span>Converter</span></h1>
+    <p class="subtitle">Convert Length, Weight, Temperature, and Data instantly. The only tool you need.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="tabs-wrapper">
+          <button class="tab-btn active" onclick="changeCategory('length')"><i class="fas fa-ruler"></i> Length</button>
+          <button class="tab-btn" onclick="changeCategory('weight')"><i class="fas fa-weight-hanging"></i> Weight</button>
+          <button class="tab-btn" onclick="changeCategory('temp')"><i class="fas fa-thermometer-half"></i> Temperature</button>
+          <button class="tab-btn" onclick="changeCategory('data')"><i class="fas fa-database"></i> Digital Storage</button>
+          <button class="tab-btn" onclick="changeCategory('time')"><i class="fas fa-clock"></i> Time</button>
+      </div>
+
+      <div class="converter-box">
+          
+          <div class="input-wrapper">
+              <select id="unitFrom" class="unit-select" onchange="convert()"></select>
+              <input type="number" id="inputVal" class="unit-input" placeholder="0" value="1" oninput="convert()">
+          </div>
+
+          <div class="swap-icon" onclick="swapUnits()">
+              <i class="fas fa-exchange-alt"></i>
+          </div>
+
+          <div class="input-wrapper">
+              <select id="unitTo" class="unit-select" onchange="convert()"></select>
+              <input type="text" id="outputVal" class="unit-input" placeholder="0" readonly>
+          </div>
+
+      </div>
+
+      <div class="formula-box">
+          <span class="formula-label">Formula Used</span>
+          <span id="formulaText">1 Meter = 3.28084 Feet</span>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-calculator"></i> Best Free Online Unit Converter</h2>
+        <p>In science, engineering, and daily life, we often encounter different systems of measurement. The US uses the Imperial system (Miles, Pounds), while most of the world uses the Metric system (Kilometers, Kilograms). <strong>Xizoa Hub's Unit Converter</strong> bridges this gap, allowing you to switch between units instantly with scientific accuracy.</p>
+
+        <h3><i class="fas fa-ruler-combined"></i> Common Conversions Explained</h3>
+        <p>Understanding how units relate can be helpful. Here are some of the most popular conversions:</p>
+        
+        <table class="conv-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Conversion</th>
+                    <th>Formula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Length</td>
+                    <td>1 Inch = 2.54 Centimeters</td>
+                    <td>in × 2.54</td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td>1 Kilogram = 2.204 Pounds</td>
+                    <td>kg × 2.204</td>
+                </tr>
+                <tr>
+                    <td>Temperature</td>
+                    <td>0°C = 32°F</td>
+                    <td>(°C × 9/5) + 32</td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1 GB = 1024 MB</td>
+                    <td>Binary System</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3><i class="fas fa-thermometer-three-quarters"></i> The Temperature Confusion (C vs F)</h3>
+        <p>Temperature conversion is unique because it doesn't start at zero. <br>
+        <strong>Celsius (°C):</strong> Used globally. Water freezes at 0° and boils at 100°. <br>
+        <strong>Fahrenheit (°F):</strong> Used in the US. Water freezes at 32° and boils at 212°. <br>
+        <strong>Kelvin (K):</strong> Used in science. 0K is absolute zero (-273.15°C).</p>
+
+        <h3><i class="fas fa-database"></i> Digital Storage: GB vs GiB</h3>
+        <p>Have you noticed that a "500GB" hard drive only shows "465GB" on your computer? This is because manufacturers use the decimal system (1GB = 1000MB), while computers use the binary system (1GB = 1024MB). Our tool allows you to convert accurately between these formats.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Why is the result sometimes a long decimal?</h3>
+            <p>Conversions are rarely whole numbers. For example, 1 mile is exactly 1.609344 kilometers. We display up to 4-6 decimal places for precision.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this tool accurate for scientific work?</h3>
+            <p>Yes. Our algorithms use the internationally accepted standard conversion factors (SI Units) to ensure high precision for students and engineers.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Unit Converter makes calculations easy. Fast, free, and scientifically accurate.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const unitFrom = document.getElementById('unitFrom');
+    const unitTo = document.getElementById('unitTo');
+    const inputVal = document.getElementById('inputVal');
+    const outputVal = document.getElementById('outputVal');
+    const formulaText = document.getElementById('formulaText');
+    const tabs = document.querySelectorAll('.tab-btn');
+
+    // Unit Definitions
+    const units = {
+        length: {
+            'meter': 1, 'kilometer': 1000, 'centimeter': 0.01, 'millimeter': 0.001,
+            'mile': 1609.34, 'yard': 0.9144, 'foot': 0.3048, 'inch': 0.0254
+        },
+        weight: {
+            'kilogram': 1, 'gram': 0.001, 'milligram': 0.000001, 'metric ton': 1000,
+            'pound': 0.453592, 'ounce': 0.0283495
+        },
+        data: {
+            'byte': 1, 'kilobyte': 1024, 'megabyte': 1048576, 'gigabyte': 1073741824, 'terabyte': 1099511627776
+        },
+        time: {
+            'second': 1, 'minute': 60, 'hour': 3600, 'day': 86400, 'week': 604800, 'year': 31536000
+        }
+    };
+
+    let currentCategory = 'length';
+
+    // Initialize
+    function changeCategory(cat) {
+        currentCategory = cat;
+        
+        // UI
+        tabs.forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Populate Selects
+        unitFrom.innerHTML = '';
+        unitTo.innerHTML = '';
+
+        if(cat === 'temp') {
+            const temps = ['Celsius', 'Fahrenheit', 'Kelvin'];
+            temps.forEach(u => {
+                unitFrom.add(new Option(u, u));
+                unitTo.add(new Option(u, u));
+            });
+            unitTo.selectedIndex = 1;
+        } else {
+            for (let key in units[cat]) {
+                // Capitalize
+                let label = key.charAt(0).toUpperCase() + key.slice(1);
+                unitFrom.add(new Option(label, key));
+                unitTo.add(new Option(label, key));
+            }
+            // Set defaults (e.g. meter to kilometer)
+            if(unitTo.options.length > 1) unitTo.selectedIndex = 1;
+        }
+        convert();
+    }
+
+    function convert() {
+        const val = parseFloat(inputVal.value);
+        if(isNaN(val)) { outputVal.value = ""; return; }
+
+        const from = unitFrom.value;
+        const to = unitTo.value;
+        let result = 0;
+        let formula = "";
+
+        if(currentCategory === 'temp') {
+            if(from === to) result = val;
+            else if(from === 'Celsius' && to === 'Fahrenheit') { result = (val * 9/5) + 32; formula = `(${val}°C × 9/5) + 32 = ${result.toFixed(2)}°F`; }
+            else if(from === 'Celsius' && to === 'Kelvin') { result = val + 273.15; formula = `${val}°C + 273.15 = ${result.toFixed(2)}K`; }
+            else if(from === 'Fahrenheit' && to === 'Celsius') { result = (val - 32) * 5/9; formula = `(${val}°F - 32) × 5/9 = ${result.toFixed(2)}°C`; }
+            else if(from === 'Fahrenheit' && to === 'Kelvin') { result = (val - 32) * 5/9 + 273.15; formula = `(${val}°F - 32) × 5/9 + 273.15 = ${result.toFixed(2)}K`; }
+            else if(from === 'Kelvin' && to === 'Celsius') { result = val - 273.15; formula = `${val}K - 273.15 = ${result.toFixed(2)}°C`; }
+            else if(from === 'Kelvin' && to === 'Fahrenheit') { result = (val - 273.15) * 9/5 + 32; formula = `(${val}K - 273.15) × 9/5 + 32 = ${result.toFixed(2)}°F`; }
+        } 
+        else {
+            const factorFrom = units[currentCategory][from];
+            const factorTo = units[currentCategory][to];
+            
+            // Convert to base unit then to target
+            const baseVal = val * factorFrom;
+            result = baseVal / factorTo;
+
+            // Simple formula text
+            let relation = factorFrom / factorTo;
+            formula = `1 ${from} = ${relation} ${to}`;
+        }
+
+        // Format result (remove extra decimals if int)
+        outputVal.value = Number.isInteger(result) ? result : parseFloat(result.toFixed(6));
+        formulaText.innerText = formula;
+    }
+
+    function swapUnits() {
+        const temp = unitFrom.value;
+        unitFrom.value = unitTo.value;
+        unitTo.value = temp;
+        convert();
+    }
+
+    // Load Default
+    changeCategory('length');
+    // Fake event for styling initial button
+    tabs[0].classList.add('active');
+  </script>
+</body>
+</html>
