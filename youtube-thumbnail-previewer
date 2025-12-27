@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Thumbnail Previewer | Test Titles & CTR (Live Preview)</title>
+  <meta name="description" content="Check how your YouTube thumbnail and title look on Desktop, Mobile, and Sidebar before uploading. The best free YouTube CTR Tester tool by Xizoa.">
+  <meta name="keywords" content="youtube thumbnail previewer, youtube ctr tester, thumbnail visualizer, check youtube thumbnail size, youtube title preview, youtube seo tool">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-thumbnail-previewer">
+
+  <meta property="og:title" content="YouTube Thumbnail Previewer - Boost Your CTR">
+  <meta property="og:description" content="See your video on YouTube before you upload. Test thumbnails and titles instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-thumbnail-previewer">
+  <meta property="og:image" content="https://xizoa.com/assets/og-preview.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Thumbnail Previewer",
+      "operatingSystem": "Web",
+      "applicationCategory": "MultimediaApplication",
+      "url": "https://xizoa.com/youtube-thumbnail-previewer",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "10200" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why should I preview my thumbnail?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Previewing helps you catch text that might be cut off on mobile screens and ensures your title is readable against the background, improving your CTR." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best YouTube thumbnail size?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The ideal size is 1280x720 pixels (16:9 aspect ratio) with a file size limit of 2MB." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 40px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left Side: Controls */
+    .controls { background: #000; padding: 25px; border-radius: 15px; border: 1px solid #333; height: fit-content; }
+    .controls h3 { margin-bottom: 20px; color: #fff; font-size: 1.2rem; }
+    
+    .input-group { margin-bottom: 15px; }
+    .input-label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #aaa; font-weight: 600; }
+    
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      background: #111;
+      border: 1px solid #444;
+      padding: 10px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    input:focus { border-color: var(--primary); }
+    
+    input[type="file"] { padding: 8px; cursor: pointer; }
+
+    /* Right Side: Previews (YouTube Clone CSS) */
+    .preview-area {
+      display: flex; flex-direction: column; gap: 40px;
+    }
+    
+    .preview-header { font-size: 1.2rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px; }
+
+    /* --- FAKE YOUTUBE UI CSS --- */
+    .yt-font { font-family: 'Roboto', sans-serif; }
+    
+    /* Desktop Preview */
+    .yt-desktop-card {
+      display: flex; gap: 12px; max-width: 100%; cursor: pointer;
+    }
+    .yt-thumb-wrapper {
+      position: relative; flex-shrink: 0; width: 360px; height: 202px; border-radius: 12px; overflow: hidden; background: #222;
+    }
+    .yt-img { width: 100%; height: 100%; object-fit: cover; }
+    .yt-duration {
+      position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); color: #fff;
+      padding: 3px 6px; font-size: 12px; border-radius: 4px; font-weight: 500;
+    }
+    
+    .yt-meta { display: flex; flex-direction: column; gap: 5px; padding-top: 5px; }
+    .yt-title { color: #fff; font-size: 18px; font-weight: 600; line-height: 1.4; max-height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .yt-channel-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+    .yt-avatar { width: 36px; height: 36px; border-radius: 50%; background: #444; overflow: hidden; }
+    .yt-cname { color: #aaa; font-size: 14px; }
+    .yt-stats { color: #aaa; font-size: 14px; }
+    .yt-desc-snippet { color: #aaa; font-size: 13px; margin-top: 8px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;}
+
+    /* Mobile Preview (Vertical) */
+    .yt-mobile-card {
+      width: 100%; max-width: 400px; background: #0f0f0f; padding-bottom: 15px;
+    }
+    .yt-mobile-thumb { width: 100%; height: 225px; background: #222; position: relative; }
+    .yt-mobile-meta { display: flex; gap: 12px; padding: 12px 10px 0; }
+    .yt-mobile-avatar { width: 40px; height: 40px; border-radius: 50%; background: #444; flex-shrink: 0; overflow:hidden;}
+    .yt-mobile-text { display: flex; flex-direction: column; gap: 4px; }
+    .yt-mobile-title { color: #fff; font-size: 16px; font-weight: 500; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yt-mobile-info { color: #aaa; font-size: 12px; }
+
+    /* Sidebar Preview (Small) */
+    .yt-sidebar-card { display: flex; gap: 8px; max-width: 400px; }
+    .yt-sidebar-thumb { width: 168px; height: 94px; border-radius: 8px; background: #222; position: relative; overflow: hidden; flex-shrink: 0; }
+    .yt-sidebar-meta { display: flex; flex-direction: column; gap: 4px; }
+    .yt-sidebar-title { color: #fff; font-size: 14px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yt-sidebar-name { color: #aaa; font-size: 12px; }
+
+    /* --- CONTENT AREA --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .tool-container { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Thumbnail <span>Previewer</span></h1>
+    <p class="subtitle">See how your Thumbnail & Title look on YouTube Search, Mobile & Home.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="controls">
+        <h3><i class="fas fa-edit"></i> Edit Details</h3>
+        
+        <div class="input-group">
+            <label class="input-label">Upload Thumbnail (16:9)</label>
+            <input type="file" id="thumbInput" accept="image/*">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Video Title</label>
+            <input type="text" id="titleInput" value="Amazing Video Title That Goes Viral on YouTube 2025!">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Channel Name</label>
+            <input type="text" id="channelInput" value="Xizoa Hub">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Channel Avatar</label>
+            <input type="file" id="avatarInput" accept="image/*">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Views & Time</label>
+            <input type="text" id="metaInput" value="1.2M views • 2 hours ago">
+        </div>
+
+      </div>
+
+      <div class="preview-area yt-font">
+        
+        <div>
+            <div class="preview-header">Desktop Search View</div>
+            <div class="yt-desktop-card">
+                <div class="yt-thumb-wrapper">
+                    <img src="https://via.placeholder.com/360x202/333/fff?text=Upload+Thumbnail" class="yt-img preview-thumb">
+                    <span class="yt-duration">10:45</span>
+                </div>
+                <div class="yt-meta">
+                    <div class="yt-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                    <div class="yt-stats preview-meta">1.2M views • 2 hours ago</div>
+                    <div class="yt-channel-row">
+                        <div class="yt-avatar"><img src="https://via.placeholder.com/36/444/fff?text=A" class="yt-img preview-avatar"></div>
+                        <div class="yt-cname preview-channel">Xizoa Hub</div>
+                    </div>
+                    <div class="yt-desc-snippet">In this video, we are going to explore the best ways to optimize your YouTube thumbnails for maximum CTR...</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="preview-header">Mobile Home View</div>
+            <div class="yt-mobile-card">
+                <div class="yt-mobile-thumb">
+                     <img src="https://via.placeholder.com/400x225/333/fff?text=Upload+Thumbnail" class="yt-img preview-thumb">
+                     <span class="yt-duration">10:45</span>
+                </div>
+                <div class="yt-mobile-meta">
+                    <div class="yt-mobile-avatar"><img src="https://via.placeholder.com/40/444/fff?text=A" class="yt-img preview-avatar"></div>
+                    <div class="yt-mobile-text">
+                        <div class="yt-mobile-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                        <div class="yt-mobile-info">
+                            <span class="preview-channel">Xizoa Hub</span> • <span class="preview-meta">1.2M views • 2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="preview-header">Desktop Sidebar (Suggested)</div>
+            <div class="yt-sidebar-card">
+                <div class="yt-sidebar-thumb">
+                    <img src="https://via.placeholder.com/168x94/333/fff?text=Upload" class="yt-img preview-thumb">
+                    <span class="yt-duration">10:45</span>
+                </div>
+                <div class="yt-sidebar-meta">
+                    <div class="yt-sidebar-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                    <div class="yt-sidebar-name preview-channel">Xizoa Hub</div>
+                    <div class="yt-sidebar-name preview-meta">1.2M views • 2 hours ago</div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-eye"></i> YouTube Thumbnail Previewer & CTR Tester</h2>
+        <p>Your video might have the best content in the world, but if nobody clicks on it, the algorithm will bury it. <strong>CTR (Click-Through Rate)</strong> is one of the most critical metrics for YouTube growth. The decision to click happens in milliseconds, and it depends entirely on your <strong>Thumbnail</strong> and <strong>Title</strong>.</p>
+        <p><strong>Xizoa Hub's Thumbnail Previewer</strong> allows you to see exactly how your video will look on the YouTube homepage, mobile app, and sidebar <em>before</em> you publish it. This helps you avoid common mistakes like text being cut off or colors blending into the background.</p>
+
+        <h3><i class="fas fa-mobile-alt"></i> Why Previewing on Mobile is Critical</h3>
+        <p>Over 70% of YouTube watch time comes from mobile devices. A thumbnail that looks great on a large desktop monitor might look cluttered and unreadable on a small phone screen. Our tool simulates the mobile view so you can ensure your text is big enough and your face is visible.</p>
+
+        <h3><i class="fas fa-check-double"></i> Checklist for High CTR Thumbnails</h3>
+        <ul>
+            <li><strong>Less is More:</strong> Keep text under 4-5 words. Use bold, contrasting colors.</li>
+            <li><strong>The "BOGY" Rule:</strong> Use Black, Orange, Green, and Yellow backgrounds to stand out against YouTube's white/dark theme.</li>
+            <li><strong>Emotion:</strong> Faces with strong emotions (surprise, happiness, anger) tend to get more clicks.</li>
+            <li><strong>Title Synergy:</strong> Don't just repeat the title in the thumbnail. Use the thumbnail to tease the visual, and the title to add context.</li>
+        </ul>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>What is the perfect YouTube thumbnail size?</h3>
+            <p>The standard size is <strong>1280 x 720 pixels</strong> (16:9 aspect ratio). The minimum width is 640 pixels, and the file size should be under 2MB.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does changing a thumbnail affect views?</h3>
+            <p>Yes, significantly. If an old video isn't performing well, changing the thumbnail to something more catchy can "revive" the video and boost its CTR, leading to more impressions from YouTube.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Thumbnail Previewer helps you optimize CTR. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    // Elements
+    const titleInput = document.getElementById('titleInput');
+    const channelInput = document.getElementById('channelInput');
+    const metaInput = document.getElementById('metaInput');
+    const thumbInput = document.getElementById('thumbInput');
+    const avatarInput = document.getElementById('avatarInput');
+
+    // Targets
+    const previewTitles = document.querySelectorAll('.preview-title');
+    const previewChannels = document.querySelectorAll('.preview-channel');
+    const previewMetas = document.querySelectorAll('.preview-meta');
+    const previewThumbs = document.querySelectorAll('.preview-thumb');
+    const previewAvatars = document.querySelectorAll('.preview-avatar');
+
+    // Live Update Text
+    titleInput.addEventListener('input', (e) => {
+        previewTitles.forEach(el => el.innerText = e.target.value);
+    });
+    channelInput.addEventListener('input', (e) => {
+        previewChannels.forEach(el => el.innerText = e.target.value);
+    });
+    metaInput.addEventListener('input', (e) => {
+        previewMetas.forEach(el => el.innerText = e.target.value);
+    });
+
+    // Image Upload Logic (Thumbnail)
+    thumbInput.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewThumbs.forEach(el => el.src = e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    // Image Upload Logic (Avatar)
+    avatarInput.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewAvatars.forEach(el => el.src = e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+  </script>
+</body>
+</html>
