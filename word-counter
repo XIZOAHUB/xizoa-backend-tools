@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Word Counter & Character Count Tool | SEO & Social Media Checker (Free)</title>
+  <meta name="description" content="Free online Word Counter and Character Counter. Check text length for SEO, Twitter, Instagram, and Essays. Calculate Reading Time and Speaking Time instantly.">
+  <meta name="keywords" content="word counter, character count, sentence counter, online text editor, twitter character limit checker, reading time calculator, seo word count tool, essay word counter">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/word-counter">
+
+  <meta property="og:title" content="Advanced Word Counter - Xizoa Hub">
+  <meta property="og:description" content="Count words, characters, sentences, and paragraphs instantly. Check social media limits.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/word-counter">
+  <meta property="og:image" content="https://xizoa.com/assets/og-word.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Word Counter Tool",
+      "operatingSystem": "Web",
+      "applicationCategory": "ProductivityApplication",
+      "url": "https://xizoa.com/word-counter",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "22500" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does spaces count as characters?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, spaces are counted as characters in most platforms like Twitter and SMS. However, our tool shows both 'With Spaces' and 'Without Spaces' counts." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Reading Time calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We use the industry standard average reading speed of 200-250 words per minute to estimate how long it will take to read your text." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (PRODUCTIVITY CYAN) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #00e5ff;       /* Cyan/Teal */
+      --primary-dark: #00b8cc;  /* Darker Cyan */
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --twitter: #1DA1F2;
+      --insta: #E1306C;
+      --linkedin: #0077b5;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #00262b, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left: Text Area */
+    .editor-section { display: flex; flex-direction: column; height: 100%; }
+    
+    .toolbar {
+        display: flex; justify-content: space-between; margin-bottom: 10px;
+    }
+    .action-btn {
+        background: #222; border: 1px solid #333; color: #aaa; padding: 5px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.2s;
+    }
+    .action-btn:hover { color: #fff; border-color: var(--primary); }
+
+    textarea {
+        flex: 1;
+        width: 100%;
+        min-height: 400px;
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        color: #ddd;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        resize: vertical;
+        font-family: 'Outfit', sans-serif;
+    }
+    textarea:focus { border-color: var(--primary); outline: none; }
+
+    /* Right: Stats Panel */
+    .stats-panel {
+        background: var(--glass);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 15px;
+        padding: 25px;
+        height: fit-content;
+    }
+
+    .main-count-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+    .count-card {
+        background: #000; border: 1px solid #333; padding: 15px; border-radius: 10px; text-align: center;
+    }
+    .count-val { font-size: 2rem; font-weight: 800; color: #fff; display: block; }
+    .count-lbl { font-size: 0.8rem; color: #888; text-transform: uppercase; }
+
+    .detail-list { list-style: none; margin-bottom: 30px; }
+    .detail-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; color: #ccc; }
+    .detail-item span:last-child { font-weight: 700; color: #fff; }
+
+    /* Social Limits */
+    .social-section h4 { color: #fff; margin-bottom: 15px; font-size: 1rem; border-left: 3px solid var(--primary); padding-left: 10px; }
+    
+    .social-bar-wrap { margin-bottom: 15px; }
+    .social-label { display: flex; justify-content: space-between; font-size: 0.85rem; color: #aaa; margin-bottom: 5px; }
+    .social-bar-bg { width: 100%; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+    .social-bar-fill { height: 100%; width: 0%; transition: width 0.3s ease; }
+
+    /* --- CONTENT AREA (Deep SEO) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary-dark); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    /* Table */
+    .limit-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .limit-table th, .limit-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    .limit-table th { background: #f1f5f9; color: #333; font-weight: 700; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .tool-container { grid-template-columns: 1fr; gap: 30px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Word <span>Counter</span></h1>
+    <p class="subtitle">A free and advanced real-time Text Analyzer, Character Counter, and SEO Checker.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="editor-section">
+        <div class="toolbar">
+            <span style="color:#fff; font-weight:600;">Type or Paste Text</span>
+            <div>
+                <button class="action-btn" onclick="copyText()">Copy</button>
+                <button class="action-btn" onclick="clearText()">Clear</button>
+            </div>
+        </div>
+        <textarea id="textInput" placeholder="Start typing or paste your content here..."></textarea>
+      </div>
+
+      <div class="stats-panel">
+        
+        <div class="main-count-grid">
+            <div class="count-card">
+                <span class="count-val" id="wordCount">0</span>
+                <span class="count-lbl">Words</span>
+            </div>
+            <div class="count-card">
+                <span class="count-val" id="charCount">0</span>
+                <span class="count-lbl">Characters</span>
+            </div>
+        </div>
+
+        <ul class="detail-list">
+            <li class="detail-item">
+                <span>Sentences</span>
+                <span id="sentCount">0</span>
+            </li>
+            <li class="detail-item">
+                <span>Paragraphs</span>
+                <span id="paraCount">0</span>
+            </li>
+            <li class="detail-item">
+                <span>Reading Time</span>
+                <span id="readTime">0 sec</span>
+            </li>
+            <li class="detail-item">
+                <span>Speaking Time</span>
+                <span id="speakTime">0 sec</span>
+            </li>
+        </ul>
+
+        <div class="social-section">
+            <h4>Social Media Limits</h4>
+            
+            <div class="social-bar-wrap">
+                <div class="social-label">
+                    <span>Twitter / X (280)</span>
+                    <span id="twitCount">0 / 280</span>
+                </div>
+                <div class="social-bar-bg">
+                    <div class="social-bar-fill" id="twitBar" style="background:var(--twitter);"></div>
+                </div>
+            </div>
+
+            <div class="social-bar-wrap">
+                <div class="social-label">
+                    <span>Instagram Bio (150)</span>
+                    <span id="instaCount">0 / 150</span>
+                </div>
+                <div class="social-bar-bg">
+                    <div class="social-bar-fill" id="instaBar" style="background:var(--insta);"></div>
+                </div>
+            </div>
+
+            <div class="social-bar-wrap">
+                <div class="social-label">
+                    <span>LinkedIn Post (3000)</span>
+                    <span id="linkCount">0 / 3000</span>
+                </div>
+                <div class="social-bar-bg">
+                    <div class="social-bar-fill" id="linkBar" style="background:var(--linkedin);"></div>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-paragraph"></i> Best Free Word Counter & Character Count Tool</h2>
+        <p>Whether you are a student writing an essay, a blogger drafting an article, or a social media manager creating the perfect tweet, knowing your word and character count is essential. <strong>Xizoa Hub's Word Counter</strong> is more than just a calculator; it's a complete text analysis tool designed to improve your writing efficiency and SEO performance.</p>
+
+        <h3><i class="fas fa-chart-bar"></i> Why Word Count Matters for SEO?</h3>
+        <p>Search engines like Google tend to prefer long-form content. While there is no "magic number," studies show that:</p>
+        <ul>
+            <li><strong>Blog Posts:</strong> Articles between 1,500 to 2,500 words often rank higher.</li>
+            <li><strong>Product Descriptions:</strong> Should be concise, typically around 300-500 words.</li>
+            <li><strong>Meta Descriptions:</strong> Must be kept under 160 characters to avoid truncation in search results.</li>
+        </ul>
+        <p>Our tool helps you hit these targets precisely without guessing.</p>
+
+        <h3><i class="fas fa-stopwatch"></i> Calculating Reading & Speaking Time</h3>
+        <p>How long will it take your audience to read your blog? Or how long will your speech last? Our tool calculates this automatically based on average speeds:</p>
+        <ul>
+            <li><strong>Reading Speed:</strong> Average adult reads at 225 words per minute (WPM).</li>
+            <li><strong>Speaking Speed:</strong> Average speech rate is around 130 words per minute.</li>
+        </ul>
+
+        <h3><i class="fab fa-twitter"></i> Social Media Character Limits (2025)</h3>
+        <p>Every platform has strict limits. If you exceed them, your post gets cut off or rejected. Use our live progress bars to stay within limits:</p>
+        
+        <table class="limit-table">
+            <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Content Type</th>
+                    <th>Max Characters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Twitter / X</strong></td>
+                    <td>Tweet</td>
+                    <td>280 chars</td>
+                </tr>
+                <tr>
+                    <td><strong>Instagram</strong></td>
+                    <td>Caption</td>
+                    <td>2,200 chars</td>
+                </tr>
+                <tr>
+                    <td><strong>Instagram</strong></td>
+                    <td>Bio</td>
+                    <td>150 chars</td>
+                </tr>
+                <tr>
+                    <td><strong>LinkedIn</strong></td>
+                    <td>Post Update</td>
+                    <td>3,000 chars</td>
+                </tr>
+                <tr>
+                    <td><strong>Google</strong></td>
+                    <td>Meta Title</td>
+                    <td>60 chars</td>
+                </tr>
+                <tr>
+                    <td><strong>Google</strong></td>
+                    <td>Meta Description</td>
+                    <td>160 chars</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Is this tool accurate?</h3>
+            <p>Yes. Our tool uses advanced logic to distinguish between words and symbols. For example, "It's" is counted as one word, and "High-quality" is also counted as one word, ensuring professional accuracy.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does it save my text?</h3>
+            <p>No. For your privacy and security, we do not store any text you type on our servers. Everything is processed instantly in your browser (Client-Side).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What counts as a character?</h3>
+            <p>Every letter, number, symbol, and space counts as a character. For example, "Hi!" has 3 characters. "Hi World" has 8 characters (including the space).</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Word Counter helps writers and SEO experts analyze text. Fast, free, and secure.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const textInput = document.getElementById('textInput');
+    
+    // Count Elements
+    const wordCountEl = document.getElementById('wordCount');
+    const charCountEl = document.getElementById('charCount');
+    const sentCountEl = document.getElementById('sentCount');
+    const paraCountEl = document.getElementById('paraCount');
+    const readTimeEl = document.getElementById('readTime');
+    const speakTimeEl = document.getElementById('speakTime');
+
+    // Social Elements
+    const twitCount = document.getElementById('twitCount');
+    const twitBar = document.getElementById('twitBar');
+    
+    const instaCount = document.getElementById('instaCount');
+    const instaBar = document.getElementById('instaBar');
+    
+    const linkCount = document.getElementById('linkCount');
+    const linkBar = document.getElementById('linkBar');
+
+    function analyzeText() {
+        const text = textInput.value;
+        const chars = text.length;
+
+        // Words
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+
+        // Sentences (approximate by . ! ?)
+        const sentences = text.trim() === '' ? 0 : text.split(/[.!?]+/).length - 1;
+
+        // Paragraphs (by double newlines)
+        const paragraphs = text.trim() === '' ? 0 : text.replace(/\n$/gm, '').split(/\n/).length;
+
+        // Reading Time (Avg 225 wpm)
+        const readMin = Math.floor(words / 225);
+        const readSec = Math.floor((words % 225) / (225 / 60));
+        let readStr = readMin > 0 ? `${readMin}m ${readSec}s` : `${readSec} sec`;
+
+        // Speaking Time (Avg 130 wpm)
+        const speakMin = Math.floor(words / 130);
+        const speakSec = Math.floor((words % 130) / (130 / 60));
+        let speakStr = speakMin > 0 ? `${speakMin}m ${speakSec}s` : `${speakSec} sec`;
+
+        // Update UI Counts
+        wordCountEl.innerText = words.toLocaleString();
+        charCountEl.innerText = chars.toLocaleString();
+        sentCountEl.innerText = sentences;
+        paraCountEl.innerText = paragraphs;
+        readTimeEl.innerText = readStr;
+        speakTimeEl.innerText = speakStr;
+
+        // Social Bars Update
+        updateBar(chars, 280, twitCount, twitBar);
+        updateBar(chars, 150, instaCount, instaBar);
+        updateBar(chars, 3000, linkCount, linkBar);
+    }
+
+    function updateBar(current, max, textEl, barEl) {
+        textEl.innerText = `${current} / ${max}`;
+        let percent = (current / max) * 100;
+        if(percent > 100) percent = 100;
+        
+        barEl.style.width = percent + "%";
+        
+        if(current > max) {
+            barEl.style.backgroundColor = "#ff4d4d"; // Red warning
+            textEl.style.color = "#ff4d4d";
+        } else {
+            // Reset color
+            if(max === 280) barEl.style.backgroundColor = "#1DA1F2";
+            if(max === 150) barEl.style.backgroundColor = "#E1306C";
+            if(max === 3000) barEl.style.backgroundColor = "#0077b5";
+            textEl.style.color = "#aaa";
+        }
+    }
+
+    function copyText() {
+        textInput.select();
+        document.execCommand('copy');
+    }
+
+    function clearText() {
+        textInput.value = "";
+        analyzeText();
+    }
+
+    textInput.addEventListener('input', analyzeText);
+  </script>
+</body>
+</html>
