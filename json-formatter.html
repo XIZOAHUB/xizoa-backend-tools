@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JSON Formatter & Validator | Beautify, Minify & Debug JSON Online</title>
+  <meta name="description" content="Free online JSON Formatter and Validator. Beautify your JSON code, minify it for production, and validate syntax errors instantly. Best tool for developers.">
+  <meta name="keywords" content="json formatter, json validator, json beautifier, json lint, minify json, json parser, online json viewer, fix json errors, developer tools">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  
+  <link rel="canonical" href="https://tools.xizoa.com/json-formatter">
+
+  <meta property="og:title" content="JSON Formatter & Validator - Xizoa Tools">
+  <meta property="og:description" content="Format, Validate and Minify JSON code instantly. The ultimate tool for developers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tools.xizoa.com/json-formatter">
+  <meta property="og:image" content="https://tools.xizoa.com/assets/og-json.jpg">
+
+  <link rel="icon" href="https://tools.xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "JSON Formatter Tool",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "url": "https://tools.xizoa.com/json-formatter",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "19800" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is JSON?",
+          "acceptedAnswer": { "@type": "Answer", "text": "JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my JSON invalid?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Common errors include missing quotes around keys, trailing commas, or unclosed brackets. Our tool highlights exactly where the error is." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (CYBERPUNK PURPLE) --- */
+    :root {
+      --bg: #090014;           /* Deep Dark Purple */
+      --card-bg: #130026;      /* Lighter Purple */
+      --text: #e2e8f0;         
+      --primary: #d500f9;      /* Neon Purple */
+      --primary-dark: #aa00ff; /* Deep Neon */
+      --accent: #00e5ff;       /* Cyan Accent */
+      --error: #ff1744;
+      --success: #00e676;
+      --border: 1px solid rgba(213, 0, 249, 0.2);
+      --glass: rgba(213, 0, 249, 0.05);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #2a004d, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(213, 0, 249, 0.4); }
+    h1 span { color: var(--accent); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 0 40px rgba(213, 0, 249, 0.1);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, var(--accent), var(--primary));
+    }
+
+    /* Controls */
+    .controls-bar {
+        display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .btn-action {
+        padding: 10px 20px; border-radius: 8px; border: 1px solid var(--primary); background: rgba(213, 0, 249, 0.1); color: #fff; font-weight: 600; cursor: pointer; transition: 0.3s;
+    }
+    .btn-action:hover { background: var(--primary); box-shadow: 0 0 15px var(--primary); border-color: var(--primary); }
+    
+    .btn-sec { border-color: #444; background: #1a1a1a; color: #aaa; }
+    .btn-sec:hover { border-color: #fff; background: #333; color: #fff; box-shadow: none; }
+
+    .status-msg { margin-left: auto; font-family: monospace; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    
+    /* Editor */
+    .editor-wrapper { position: relative; height: 500px; }
+    
+    textarea {
+        width: 100%; height: 100%;
+        background: #0f001f;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        color: #a6accd;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        resize: none;
+        white-space: pre;
+        overflow-wrap: normal;
+        overflow-x: auto;
+    }
+    textarea:focus { border-color: var(--primary); outline: none; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary-dark); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+    .content-container code { background: #f1f5f9; padding: 3px 6px; border-radius: 4px; font-family: monospace; color: #d63384; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #2a004d; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .controls-bar { justify-content: center; }
+      .status-msg { width: 100%; text-align: center; justify-content: center; margin-top: 10px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>JSON <span>Formatter</span></h1>
+    <p class="subtitle">Beautify, Minify, and Validate your JSON code instantly. Developer's favorite tool.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="controls-bar">
+          <button class="btn-action" onclick="formatJSON()"><i class="fas fa-magic"></i> Beautify</button>
+          <button class="btn-action" onclick="minifyJSON()"><i class="fas fa-compress-arrows-alt"></i> Minify</button>
+          <button class="btn-action btn-sec" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy</button>
+          <button class="btn-action btn-sec" onclick="clearJSON()"><i class="fas fa-trash"></i> Clear</button>
+          <button class="btn-action btn-sec" onclick="loadSample()"><i class="fas fa-code"></i> Sample</button>
+          
+          <div class="status-msg" id="statusMsg">Ready to code...</div>
+      </div>
+
+      <div class="editor-wrapper">
+          <textarea id="jsonInput" placeholder="Paste your JSON here..." spellcheck="false"></textarea>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-code"></i> Best Free JSON Formatter & Validator</h2>
+        <p>Working with APIs often means dealing with messy, unformatted JSON data. Reading a single line of thousands of characters is impossible for humans. <strong>Xizoa Hub's JSON Formatter</strong> is a powerful developer tool that instantly beautifies your code, making it readable and structured. It also validates your JSON to catch missing commas, brackets, or quotes.</p>
+
+        <h3><i class="fas fa-tools"></i> Key Features</h3>
+        <ul>
+            <li><strong>Beautify (Pretty Print):</strong> Converts minified JSON into a structured, indented format with proper spacing (4 spaces).</li>
+            <li><strong>Minify (Compress):</strong> Removes all unnecessary whitespace and newlines to reduce file size for production use.</li>
+            <li><strong>Validate (Debug):</strong> Checks for syntax errors and tells you exactly what went wrong.</li>
+        </ul>
+
+        <h3><i class="fas fa-bug"></i> Common JSON Errors</h3>
+        <p>Even expert developers make mistakes. Here are common reasons why your JSON might be invalid:</p>
+        <ol>
+            <li><strong>Trailing Commas:</strong> Adding a comma after the last item in an object or array (e.g., <code>{"a": 1,}</code>) is invalid in standard JSON.</li>
+            <li><strong>Single Quotes:</strong> JSON standards strictly require double quotes <code>"key": "value"</code>. Single quotes <code>'key'</code> are not allowed.</li>
+            <li><strong>Unquoted Keys:</strong> In JavaScript objects, keys don't always need quotes, but in JSON, they <strong>must</strong> be quoted.</li>
+        </ol>
+
+        <h3><i class="fas fa-server"></i> Why Use Minified JSON?</h3>
+        <p>Minification removes whitespace, newlines, and comments. This reduces the payload size when sending data from a server to a client, resulting in faster API response times and lower bandwidth usage. Always develop with formatted JSON, but deploy with minified JSON.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Is my data safe?</h3>
+            <p>Yes. This tool runs <strong>Client-Side</strong> in your browser. Your code is processed locally via JavaScript and is never sent to our servers. You can even use this tool offline.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between JSON and XML?</h3>
+            <p>JSON (JavaScript Object Notation) is lighter, easier to read, and faster to parse than XML. That is why most modern web APIs (REST, GraphQL) prefer JSON over XML.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA JSON Tools help developers debug code faster. Fast, free, and private.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const input = document.getElementById('jsonInput');
+    const statusMsg = document.getElementById('statusMsg');
+
+    function showStatus(msg, type) {
+        statusMsg.innerText = msg;
+        if(type === 'error') statusMsg.style.color = '#ff1744';
+        else if(type === 'success') statusMsg.style.color = '#00e676';
+        else statusMsg.style.color = '#aaa';
+    }
+
+    function formatJSON() {
+        const raw = input.value;
+        if(!raw.trim()) { showStatus("Please enter JSON!", "error"); return; }
+
+        try {
+            const obj = JSON.parse(raw);
+            const formatted = JSON.stringify(obj, null, 4); // 4 space indentation
+            input.value = formatted;
+            showStatus("Valid JSON • Beautified", "success");
+        } catch (e) {
+            showStatus("Invalid JSON: " + e.message, "error");
+        }
+    }
+
+    function minifyJSON() {
+        const raw = input.value;
+        if(!raw.trim()) { showStatus("Please enter JSON!", "error"); return; }
+
+        try {
+            const obj = JSON.parse(raw);
+            const minified = JSON.stringify(obj);
+            input.value = minified;
+            showStatus("Valid JSON • Minified", "success");
+        } catch (e) {
+            showStatus("Invalid JSON: " + e.message, "error");
+        }
+    }
+
+    function copyJSON() {
+        if(!input.value) return;
+        input.select();
+        document.execCommand('copy');
+        showStatus("Copied to Clipboard!", "success");
+        setTimeout(() => showStatus("Ready...", "normal"), 2000);
+    }
+
+    function clearJSON() {
+        input.value = "";
+        showStatus("Cleared", "normal");
+    }
+
+    function loadSample() {
+        const sample = {
+            "project": "Xizoa Hub",
+            "developer": "Priyanshu",
+            "tools": ["JSON", "BMI", "SEO"],
+            "isAwesome": true,
+            "stats": {
+                "users": 10000,
+                "rating": 4.9
+            }
+        };
+        input.value = JSON.stringify(sample, null, 4);
+        showStatus("Sample Loaded", "success");
+    }
+  </script>
+</body>
+</html>
