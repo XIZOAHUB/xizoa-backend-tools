@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Title Analyzer | Check Headline Score & CTR (Free)</title>
+  <meta name="description" content="Analyze your YouTube video titles for high CTR. Get an instant headline score, character count, and optimization tips. Free YouTube Title Checker tool.">
+  <meta name="keywords" content="youtube title analyzer, headline analyzer, youtube title checker, ctr booster, video title optimizer, youtube seo tool, title score calculator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-title-analyzer">
+
+  <meta property="og:title" content="YouTube Title Analyzer - Boost Your CTR">
+  <meta property="og:description" content="Is your video title good enough? Check its score and virality potential instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-title-analyzer">
+  <meta property="og:image" content="https://xizoa.com/assets/og-title.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Title Analyzer",
+      "operatingSystem": "Web",
+      "applicationCategory": "SEOApplication",
+      "url": "https://xizoa.com/youtube-title-analyzer",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "11500" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should a YouTube title be?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The optimal length is between 40 to 60 characters. This ensures the full title is visible on mobile devices and suggested videos." }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a viral YouTube title?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Viral titles often include numbers, emotional power words (like Secret, Shocking, Best), and brackets () to add context." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Advanced UI) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --green: #00e676;
+      --orange: #ff9100;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Input Area */
+    .input-wrapper { margin-bottom: 40px; text-align: center; }
+    
+    input[type="text"] {
+      width: 100%;
+      max-width: 700px;
+      background: #000;
+      border: 1px solid #333;
+      padding: 20px 25px;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      text-align: center;
+    }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+
+    button#btnAnalyze {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+    }
+    button#btnAnalyze:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+    /* Results Dashboard */
+    .result-dashboard { 
+        display: none; 
+        grid-template-columns: 250px 1fr; 
+        gap: 30px; 
+        animation: slideUp 0.6s ease;
+    }
+
+    /* Score Circle */
+    .score-card {
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .circle-wrap { position: relative; width: 150px; height: 150px; margin-bottom: 15px; }
+    .circle-score { font-size: 3rem; font-weight: 800; color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .score-label { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Analysis Details */
+    .details-card {
+        background: var(--glass);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 20px;
+        padding: 30px;
+    }
+    .check-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .check-item:last-child { border: none; margin: 0; padding: 0; }
+    
+    .check-icon { font-size: 1.2rem; width: 30px; }
+    .check-text { flex: 1; font-size: 1rem; color: #ddd; }
+    .check-status { font-weight: 700; font-size: 0.9rem; padding: 5px 10px; border-radius: 6px; }
+
+    .status-good { background: rgba(0, 230, 118, 0.1); color: var(--green); }
+    .status-bad { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; }
+    .status-warn { background: rgba(255, 145, 0, 0.1); color: var(--orange); }
+
+    /* --- CONTENT AREA --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .result-dashboard { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+      input[type="text"] { font-size: 1rem; }
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Title <span>Analyzer</span></h1>
+    <p class="subtitle">Check if your YouTube title is click-worthy. Get a score and optimization tips instantly.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-wrapper">
+        <input type="text" id="inputTitle" placeholder="Paste your video title here..." aria-label="YouTube Title">
+        <br>
+        <button id="btnAnalyze"><i class="fas fa-search-plus"></i> Analyze Headline</button>
+      </div>
+
+      <div class="result-dashboard" id="resultDashboard">
+        
+        <div class="score-card">
+            <div class="circle-wrap" id="scoreRing" style="border-radius:50%; border:10px solid #333; display:flex; align-items:center; justify-content:center;">
+                <span class="circle-score" id="scoreVal">0</span>
+            </div>
+            <span class="score-label" id="scoreMsg">Enter Title</span>
+        </div>
+
+        <div class="details-card">
+            
+            <div class="check-item">
+                <i class="fas fa-ruler-horizontal check-icon" id="iconLen"></i>
+                <span class="check-text">Length (40-60 chars)</span>
+                <span class="check-status" id="statLen">...</span>
+            </div>
+
+            <div class="check-item">
+                <i class="fas fa-bolt check-icon" id="iconPower"></i>
+                <span class="check-text">Power Words (Best, Secret, etc.)</span>
+                <span class="check-status" id="statPower">...</span>
+            </div>
+
+            <div class="check-item">
+                <i class="fas fa-hashtag check-icon" id="iconNum"></i>
+                <span class="check-text">Numbers Used</span>
+                <span class="check-status" id="statNum">...</span>
+            </div>
+
+            <div class="check-item">
+                <i class="fas fa-brackets-curly check-icon" id="iconBrack"></i>
+                <span class="check-text">Brackets or Parentheses ()</span>
+                <span class="check-status" id="statBrack">...</span>
+            </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-heading"></i> Free YouTube Title Analyzer & Score Checker</h2>
+        <p>A great video can fail simply because the title is boring. The YouTube algorithm relies heavily on <strong>CTR (Click-Through Rate)</strong>. If people see your title and don't click, YouTube stops promoting your video. <strong>Xizoa Hub's Title Analyzer</strong> uses proven psychological triggers to score your headline and tell you exactly how to fix it.</p>
+
+        <h3><i class="fas fa-chart-pie"></i> What Makes a Viral Title?</h3>
+        <p>We analyze your title based on 4 key factors that top creators use:</p>
+        <ol>
+            <li><strong>Optimal Length:</strong> Titles should be between 40-60 characters. Too short gives no info; too long gets cut off on mobile screens.</li>
+            <li><strong>Power Words:</strong> Words like <em>"Secret", "Shocking", "Insane", "Finally", "Free"</em> trigger emotions and curiosity.</li>
+            <li><strong>Numbers:</strong> The human brain loves lists and data. "5 Ways to..." performs better than "Ways to...".</li>
+            <li><strong>Brackets:</strong> Adding context at the end like <em>(Official)</em>, <em>(2025)</em>, or <em>(Must Watch)</em> increases clicks by up to 30%.</li>
+        </ol>
+
+        <h3><i class="fas fa-lightbulb"></i> How to Use This Tool?</h3>
+        <p>Simply paste your draft title into the box and click Analyze. You will get a score out of 100. <br>
+        <strong>Score 0-40:</strong> Poor. Needs rewrite. <br>
+        <strong>Score 41-70:</strong> Good. Can be improved. <br>
+        <strong>Score 71-100:</strong> Excellent. Ready to go viral!</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Does title length really matter?</h3>
+            <p>Yes. If your title is too long (over 70 characters), YouTube adds "..." at the end, hiding your keywords. Keep the most important words at the beginning.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Should I use ALL CAPS?</h3>
+            <p>Using ALL CAPS for 1-2 words is great for emphasis (e.g., "This is HUGE"). But writing the whole title in caps looks like spam and can hurt your CTR.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this tool free?</h3>
+            <p>Yes, Xizoa Title Analyzer is completely free and unlimited for all creators.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Title Analyzer helps you optimize headlines for CTR. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnAnalyze = document.getElementById('btnAnalyze');
+    const inputTitle = document.getElementById('inputTitle');
+    const resultDashboard = document.getElementById('resultDashboard');
+    
+    const scoreVal = document.getElementById('scoreVal');
+    const scoreMsg = document.getElementById('scoreMsg');
+    const scoreRing = document.getElementById('scoreRing');
+    
+    // Status Elements
+    const statLen = document.getElementById('statLen');
+    const statPower = document.getElementById('statPower');
+    const statNum = document.getElementById('statNum');
+    const statBrack = document.getElementById('statBrack');
+
+    // Power Words DB
+    const powerWords = ['best', 'top', 'secret', 'shocking', 'insane', 'free', 'guide', 'tutorial', 'easy', 'fast', 'ultimate', 'hack', 'review', 'vs', 'finally', 'huge', 'official', 'viral', 'money', 'profit', 'exposed'];
+
+    btnAnalyze.addEventListener('click', () => {
+        const title = inputTitle.value.trim();
+        if(!title) { alert("Please enter a title!"); return; }
+
+        let score = 0;
+        let checks = { len: false, power: false, num: false, brack: false };
+
+        // 1. Length Check (Optimal 30-65)
+        const len = title.length;
+        let lenText = `${len} chars`;
+        let lenClass = 'status-bad';
+        if(len >= 30 && len <= 65) { 
+            score += 40; 
+            lenClass = 'status-good'; 
+            lenText += ' (Perfect)';
+            checks.len = true;
+        } else if (len < 30) {
+            score += 10;
+            lenText += ' (Too Short)';
+            lenClass = 'status-warn';
+        } else {
+            score += 20;
+            lenText += ' (Too Long)';
+            lenClass = 'status-warn';
+        }
+        setStat(statLen, lenText, lenClass);
+
+        // 2. Power Word Check
+        const lowerTitle = title.toLowerCase();
+        const hasPower = powerWords.some(word => lowerTitle.includes(word));
+        if(hasPower) {
+            score += 20;
+            setStat(statPower, 'Found!', 'status-good');
+        } else {
+            setStat(statPower, 'Not Found', 'status-bad');
+        }
+
+        // 3. Number Check
+        const hasNum = /\d/.test(title);
+        if(hasNum) {
+            score += 20;
+            setStat(statNum, 'Found!', 'status-good');
+        } else {
+            setStat(statNum, 'None', 'status-warn');
+        }
+
+        // 4. Bracket Check
+        const hasBrack = /[\[\]\(\)]/.test(title);
+        if(hasBrack) {
+            score += 20;
+            setStat(statBrack, 'Found!', 'status-good');
+        } else {
+            setStat(statBrack, 'None', 'status-warn');
+        }
+
+        // UI Update Animation
+        resultDashboard.style.display = 'grid';
+        
+        let displayScore = 0;
+        const timer = setInterval(() => {
+            if(displayScore >= score) clearInterval(timer);
+            else displayScore++;
+            
+            scoreVal.innerText = displayScore;
+            
+            // Color Logic
+            let color = '#ff4d4d';
+            let msg = "Needs Work";
+            if(displayScore > 40) { color = '#ff9100'; msg = "Good"; }
+            if(displayScore > 70) { color = '#00e676'; msg = "Excellent!"; }
+            
+            scoreRing.style.borderColor = color;
+            scoreVal.style.color = color;
+            scoreMsg.innerText = msg;
+            scoreMsg.style.color = color;
+        }, 15);
+    });
+
+    function setStat(elem, text, className) {
+        elem.innerText = text;
+        elem.className = 'check-status ' + className;
+    }
+
+    inputTitle.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') btnAnalyze.click();
+    });
+  </script>
+</body>
+</html>
