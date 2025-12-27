@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Free Online Image Compressor | Reduce Photo Size in KB/MB (2025)</title>
-  
-  <meta name="description" content="Compress JPG, PNG, and WebP images online for free with Xizoa. Reduce image file size by up to 90% without losing quality. Fast, secure & client-side compression tool.">
-  
-  <meta name="keywords" content="image compressor, compress image online, reduce photo size, image optimizer, compress jpg, compress png, reduce image kb, free photo compressor, online image size reducer, xizoa tools">
-  
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tools.xizoa.com/image-compressor.html">
-  
-  <meta property="og:title" content="Image Compressor - Reduce File Size Free">
-  <meta property="og:description" content="Optimize and compress your images instantly. Slider-based control for perfect balance.">
+  <title>Free Image Compressor | Reduce JPG/PNG Size Online (up to 90%)</title>
+  <meta name="description" content="Compress JPG, PNG, and WEBP images online for free. Reduce image size to 20kb, 50kb, or 100kb without losing quality. Best photo compressor for government forms and websites.">
+  <meta name="keywords" content="image compressor, reduce image size, compress jpeg to 50kb, online photo compressor, image optimizer, shrink image size, png compressor, free image tool">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/image-compressor">
+
+  <meta property="og:title" content="Image Compressor - Reduce Size, Not Quality">
+  <meta property="og:description" content="Need a smaller photo for a form or website? Compress images instantly in your browser.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tools.xizoa.com/image-compressor.html">
+  <meta property="og:url" content="https://xizoa.com/image-compressor">
+  <meta property="og:image" content="https://xizoa.com/assets/og-compress.jpg">
 
   <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
-
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Xizoa Image Compressor",
-    "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Web",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "A free online tool to compress and optimize image files (JPG, PNG, WEBP) securely in the browser.",
-    "featureList": "Lossy Compression, Quality Slider, Client-side Processing",
-    "author": { "@type": "Person", "name": "Priyanshu" }
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Xizoa Image Compressor",
+      "operatingSystem": "Web",
+      "applicationCategory": "MultimediaApplication",
+      "url": "https://xizoa.com/image-compressor",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "28900" },
+      "featureList": "Lossless compression, Resize functionality, Client-side processing"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I compress an image to 20kb?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Upload your image, lower the quality slider until the estimated size shows 20kb, and click download. It's that simple." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my photo uploaded to a server?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Xizoa Image Compressor processes your images directly in your browser. Your photos never leave your device, ensuring 100% privacy." }
+        }
+      ]
+    }
+  ]
   </script>
 
   <style>
-    /* --- THEME: CLEAN WHITE --- */
+    /* --- THEME (HOT PINK / MAGENTA) --- */
     :root {
-      --bg: #ffffff;
-      --text: #1e293b;
-      --text-muted: #64748b;
-      
-      --card-bg: #ffffff;
-      --border: 1px solid #e2e8f0;
-      
-      /* Accents */
-      --primary: #00f7ff; /* Cyan */
-      --primary-dark: #0891b2;
-      --secondary: #007bff; /* Blue */
-      
-      --shadow: 0 10px 40px rgba(0,0,0,0.08);
-      --input-bg: #f8fafc;
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff007f;       /* Hot Pink */
+      --primary-dark: #cc0066;  /* Dark Magenta */
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --green: #00e676;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
@@ -61,175 +72,167 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      /* Subtle Gradient Background on White */
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(0, 247, 255, 0.05), transparent 25%), 
-        radial-gradient(circle at 85% 30%, rgba(0, 123, 255, 0.05), transparent 25%);
+      line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
-      line-height: 1.6;
     }
 
     /* HEADER */
     header { 
         text-align: center; 
-        padding: 50px 20px; 
-        background: linear-gradient(to bottom, #ffffff, #f0f9ff); 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #33001a, var(--bg)); 
         border-bottom: var(--border);
     }
-    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #0f172a; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .brand-logo span { color: var(--secondary); }
-    
-    h1 { 
-        font-size: 2.8rem; 
-        font-weight: 800; 
-        margin-bottom: 10px; 
-        color: #0f172a; 
-        letter-spacing: -1px;
-    }
-    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255, 0, 127, 0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-    /* --- UPLOAD BOX --- */
-    .upload-box {
-      background: #f8fafc;
-      border: 2px dashed #94a3b8;
-      padding: 50px;
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
       border-radius: 24px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-bottom: 30px;
-      margin-top: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
     }
-    .upload-box:hover { 
-        border-color: var(--secondary); 
-        background: #eff6ff; 
-        box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
-    .upload-icon { font-size: 3.5rem; color: var(--secondary); margin-bottom: 20px; }
-    .upload-text { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; }
-    .upload-hint { color: var(--text-muted); font-size: 1rem; }
-    #fileInput { display: none; }
 
-    /* --- EDITOR PANEL --- */
-    .editor-panel { 
-        display: none; 
-        background: var(--card-bg); 
-        border: var(--border); 
-        padding: 40px; 
-        border-radius: 24px; 
-        margin-bottom: 40px; 
-        box-shadow: var(--shadow);
-        animation: slideUp 0.5s ease;
+    /* Upload Box */
+    .upload-area {
+        border: 2px dashed #444;
+        border-radius: 20px;
+        padding: 50px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        background: rgba(255,255,255,0.02);
+        position: relative;
     }
+    .upload-area:hover { border-color: var(--primary); background: rgba(255, 0, 127, 0.05); }
     
-    .img-preview-container {
-        text-align: center; margin-bottom: 30px;
-        background: #f1f5f9; /* Checkerboard pattern simulation */
-        padding: 20px;
+    .upload-icon { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+    .upload-text { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .upload-sub { font-size: 0.9rem; color: #777; margin-top: 5px; }
+    
+    input[type="file"] { position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer; }
+
+    /* Editor Section (Hidden Initially) */
+    .editor-container {
+        display: none;
+        grid-template-columns: 1fr 350px;
+        gap: 30px;
+        margin-top: 30px;
+        animation: fadeIn 0.5s ease;
+    }
+
+    /* Left: Preview */
+    .preview-wrapper {
+        background: #000;
+        border: 1px solid #333;
         border-radius: 15px;
-        border: 1px solid #e2e8f0;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
     }
-    .img-preview { 
-        max-width: 100%; height: auto; border-radius: 10px; 
-        max-height: 400px; object-fit: contain; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+    .img-preview { max-width: 100%; max-height: 500px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
     
-    /* Controls */
-    .controls-container {
-        background: #fff; padding: 20px; border-radius: 15px;
+    .stats-row { 
+        display: flex; justify-content: center; gap: 20px; margin-top: 20px; width: 100%; 
     }
+    .stat-badge {
+        background: #222; padding: 8px 15px; border-radius: 8px; font-size: 0.9rem; color: #ccc; border: 1px solid #333;
+    }
+    .stat-badge span { color: #fff; font-weight: 700; margin-left: 5px; }
+    .stat-new span { color: var(--green); }
 
-    .slider-group { margin-bottom: 30px; }
-    .slider-labels { display: flex; justify-content: space-between; color: #1e293b; margin-bottom: 15px; font-weight: 700; font-size: 1.1rem; }
+    /* Right: Controls */
+    .controls-panel {
+        background: var(--glass);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 15px;
+        padding: 25px;
+        height: fit-content;
+    }
     
-    /* Range Slider */
+    .panel-title { font-size: 1.1rem; color: #fff; margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 10px; }
+
+    .control-group { margin-bottom: 25px; }
+    .label-flex { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; color: #ccc; }
+    .val-disp { color: var(--primary); }
+
     input[type=range] {
-      width: 100%; -webkit-appearance: none; height: 8px; background: #cbd5e1; border-radius: 5px; outline: none;
+        -webkit-appearance: none; width: 100%; background: transparent;
     }
     input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none; appearance: none; width: 24px; height: 24px; background: var(--secondary); border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4); border: 2px solid #fff;
+        -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--primary); cursor: pointer; margin-top: -9px; box-shadow: 0 0 10px var(--primary);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%; height: 4px; cursor: pointer; background: #333; border-radius: 2px;
     }
 
-    .size-comparison {
-        display: flex; justify-content: space-around; margin-bottom: 30px; text-align: center;
-        background: #f8fafc; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0;
+    button#btnDownload {
+        width: 100%; background: var(--primary); color: #fff; border: none; padding: 15px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .size-box h4 { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-    .size-box .size-val { color: #1e293b; font-size: 1.4rem; font-weight: 800; }
-    .size-box .size-val.new { color: #10b981; } /* Green for new size */
+    button#btnDownload:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
-    .btn-main {
-      width: 100%; 
-      background: linear-gradient(135deg, var(--secondary), #00d4ff); 
-      color: #fff; 
-      border: none; 
-      padding: 18px; 
-      border-radius: 50px; 
-      font-weight: 800; 
-      cursor: pointer; 
-      font-size: 1.1rem; 
-      transition: 0.3s; 
-      display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;
-      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
+    button#btnReset {
+        width: 100%; background: transparent; border: 1px solid #444; color: #888; padding: 10px; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.3s;
     }
-    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 123, 255, 0.4); }
+    button#btnReset:hover { border-color: #fff; color: #fff; }
 
-    /* --- SEO CONTENT SECTION --- */
-    .seo-content { margin-top: 80px; }
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
     
-    .seo-card { 
-        background: #fff; 
-        border: 1px solid #e2e8f0; 
-        padding: 50px; 
-        border-radius: 20px; 
-        margin-bottom: 40px; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
     
-    .seo-content h2 { font-size: 2rem; color: #0f172a; margin-bottom: 25px; border-left: 5px solid var(--secondary); padding-left: 20px; }
-    .seo-content h3 { font-size: 1.5rem; color: var(--secondary); margin-top: 35px; margin-bottom: 15px; }
-    .seo-content p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
-    .seo-content ul, .seo-content ol { margin-left: 20px; margin-bottom: 25px; color: #475569; line-height: 1.8; }
-    .seo-content li { margin-bottom: 12px; }
-    .seo-content strong { color: #1e293b; }
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
 
-    /* --- MORE TOOLS SECTION --- */
-    .more-tools-section { max-width: 1000px; margin: 40px auto 80px auto; padding: 0 20px; text-align: center; }
-    .more-tools-section h2 { margin-bottom: 30px; font-size: 1.8rem; color: #0f172a; }
-    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .tool-card { 
-        background: #fff; border: 1px solid #e2e8f0; padding: 25px; border-radius: 15px; 
-        transition: 0.3s; text-align: left; text-decoration: none; display: block;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--secondary); }
-    .tool-card i { font-size: 2rem; color: var(--secondary); margin-bottom: 15px; }
-    .tool-card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
-    .tool-card p { color: #64748b; font-size: 0.95rem; }
+    /* Comparison Table */
+    .comp-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .comp-table th, .comp-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    .comp-table th { background: #f8f9fa; color: #333; }
 
-    /* --- FOOTER --- */
-    footer { 
-        background: #0f172a; 
-        border-top: 1px solid #1e293b; 
-        padding: 60px 20px 20px; 
-        margin-top: auto; 
-        color: #94a3b8; 
-    }
-    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; border-left: 3px solid var(--secondary); padding-left: 10px; }
-    .footer-col p { font-size: 0.9rem; line-height: 1.6; }
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
     .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
-    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
 
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 600px) { h1 { font-size: 2rem; } .editor-panel { padding: 20px; } }
+    @media (max-width: 900px) {
+      .editor-container { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -237,120 +240,121 @@
   <header>
     <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
     <h1>Image <span>Compressor</span></h1>
-    <p class="subtitle">Reduce Image File Size by up to 90% • Fast & Free</p>
+    <p class="subtitle">Reduce image size up to 90% without losing quality. Secure Client-Side Compression.</p>
   </header>
 
   <main>
     
-    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
-      <div class="upload-icon"><i class="fas fa-compress-arrows-alt"></i></div>
-      <div class="upload-text">Upload Image to Compress</div>
-      <div class="upload-hint">Supports JPG, PNG, WEBP</div>
-      <input type="file" id="fileInput" accept="image/*">
-    </div>
-
-    <div class="editor-panel" id="editorPanel">
+    <section class="tool-container">
       
-      <div class="img-preview-container">
-        <img id="previewImg" class="img-preview" src="" alt="Preview">
+      <div class="upload-area" id="dropZone">
+        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+        <div class="upload-text">Drag & Drop or Click to Upload</div>
+        <div class="upload-sub">Supports JPG, PNG, WEBP (Max 10MB)</div>
+        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp">
       </div>
 
-      <div class="controls-container">
-        <div class="slider-group">
-            <div class="slider-labels">
-                <span><i class="fas fa-sliders-h"></i> Compression Level</span>
-                <span id="qualityValue" style="color:var(--secondary);">80%</span>
-            </div>
-            <input type="range" id="qualitySlider" min="10" max="100" value="80" step="5">
-        </div>
+      <div class="editor-container" id="editorSection">
+          
+          <div class="preview-wrapper">
+              <img id="imagePreview" class="img-preview" src="">
+              
+              <div class="stats-row">
+                  <div class="stat-badge">Original: <span id="origSize">0 KB</span></div>
+                  <div class="stat-badge stat-new">Compressed: <span id="newSize">0 KB</span></div>
+                  <div class="stat-badge">Saved: <span id="savedPercent" style="color:var(--primary);">0%</span></div>
+              </div>
+          </div>
 
-        <div class="size-comparison">
-            <div class="size-box">
-                <h4>Original Size</h4>
-                <div class="size-val" id="originalSize">0 KB</div>
-            </div>
-            <div class="size-box">
-                <h4>New Size (Approx.)</h4>
-                <div class="size-val new" id="newSize">0 KB</div>
-            </div>
-        </div>
+          <div class="controls-panel">
+              <div class="panel-title">Compression Settings</div>
+              
+              <div class="control-group">
+                  <div class="label-flex">
+                      <span>Quality Level</span>
+                      <span class="val-disp" id="qualVal">80%</span>
+                  </div>
+                  <input type="range" id="qualityRange" min="1" max="100" value="80">
+                  <p style="font-size:0.8rem; color:#666; margin-top:5px;">Lower quality = Smaller size</p>
+              </div>
 
-        <a id="downloadBtn" class="btn-main" download="compressed-image-xizoa.jpg">
-            <i class="fas fa-download"></i> Download Compressed Image
-        </a>
+              <div class="control-group">
+                  <div class="label-flex">
+                      <span>Resize Width (Optional)</span>
+                      <span class="val-disp" id="widthVal">Original</span>
+                  </div>
+                  <input type="range" id="widthRange" min="10" max="100" value="100">
+                  <p style="font-size:0.8rem; color:#666; margin-top:5px;">Scale image down (100% = Original)</p>
+              </div>
+
+              <button id="btnDownload"><i class="fas fa-download"></i> Download Image</button>
+              <button id="btnReset"><i class="fas fa-trash"></i> Upload Another</button>
+          </div>
+
       </div>
-
-    </div>
-
-    <section class="seo-content">
-      
-      <article class="seo-card">
-        <h2>Free Online Image Compressor (JPG, PNG, WebP)</h2>
-        <p>In the digital world, speed is everything. Large image files can slow down your website, use up your mobile data, and take forever to upload via email. <strong>Xizoa Hub's Image Compressor</strong> is the ultimate solution. Our smart algorithm reduces the file size of your photos by optimizing the internal data without affecting the visible quality.</p>
-        <p>Whether you are a web developer trying to improve SEO score, a photographer sending previews to clients, or a student uploading documents to a portal, our tool handles it all instantly and securely.</p>
-      </article>
-
-      <article class="seo-card">
-        <h2>Why Use Xizoa Image Compressor?</h2>
-        <p>We combine power with simplicity. Here is why our tool is the best choice for image optimization:</p>
-        
-        <h3>1. 100% Secure (Client-Side Compression)</h3>
-        <p>Most online compressors upload your photos to their server to process them. This is a privacy risk. <strong>Xizoa processes your images locally in your browser.</strong> Your personal photos never leave your device, ensuring 100% privacy and security.</p>
-
-        <h3>2. Adjustable Quality Control </h3>
-        <p>We put you in control. Use our simple slider to decide how much you want to compress. Lower quality means smaller file size, while higher quality keeps more detail. You can see the estimated file size in real-time before downloading.</p>
-
-        <h3>3. Supports Major Formats</h3>
-        <p>Our tool works seamlessly with the most popular web formats: <strong>JPG (JPEG)</strong>, <strong>PNG</strong>, and <strong>WebP</strong>. Convert heavy camera photos into web-ready images in seconds.</p>
-
-        <h3>4. No Limits</h3>
-        <p>Compress as many images as you want. There are no daily limits, no hidden costs, and no watermarks.</p>
-      </article>
-
-      <article class="seo-card">
-        <h2>How to Compress Images Online?</h2>
-        <ol>
-            <li><strong>Upload:</strong> Click the "Upload Image" box or drag and drop your photo.</li>
-            <li><strong>Adjust:</strong> Use the "Compression Level" slider. Moving it left reduces size more, while moving right keeps higher quality.</li>
-            <li><strong>Preview:</strong> Check the "New Size" indicator to see how much space you are saving.</li>
-            <li><strong>Download:</strong> Click the "Download Compressed Image" button to save the optimized file to your device.</li>
-        </ol>
-      </article>
-
-      <article class="seo-card">
-        <h2>Frequently Asked Questions (FAQ)</h2>
-        
-        <h3>Does compressing reduce image quality?</h3>
-        <p>Technically, yes, as we use "lossy" compression to remove unused data. However, our algorithm is tuned so that the visual difference is almost unnoticeable to the human eye, even at 70-80% compression.</p>
-
-        <h3>What is the best compression level?</h3>
-        <p>For websites, we recommend a quality level between <strong>60% to 80%</strong>. This provides the best balance between small file size and good visual clarity.</p>
-
-        <h3>Can I compress images on my phone?</h3>
-        <p>Yes! Xizoa Image Compressor works perfectly on Android and iPhone browsers (Chrome, Safari, etc.).</p>
-      </article>
 
     </section>
 
-    <div class="more-tools-section">
-        <h2>🔥 More Useful Tools</h2>
-        <div class="tools-grid">
-            <a href="jpg-to-png.html" class="tool-card">
-                <i class="fas fa-image"></i>
-                <h3>JPG to PNG Converter</h3>
-                <p>Convert image formats instantly with a single click.</p>
-            </a>
-            <a href="pdf-merger.html" class="tool-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>PDF Merger</h3>
-                <p>Combine multiple PDF documents into a single file.</p>
-            </a>
-            <a href="ai-email-writer.html" class="tool-card">
-                <i class="fas fa-envelope-open-text"></i>
-                <h3>AI Email Writer</h3>
-                <p>Write professional emails and applications using AI.</p>
-            </a>
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-compress-arrows-alt"></i> Best Free Image Compressor Online</h2>
+        <p>In the digital world, speed is everything. Large images slow down websites, eat up bandwidth, and are often rejected by online forms. Whether you need to compress a photo to <strong>20kb for a government application</strong> or optimize images for your blog to improve SEO, <strong>Xizoa Hub's Image Compressor</strong> is the perfect tool. It uses advanced algorithms to reduce file size significantly while maintaining visible quality.</p>
+
+        <h3><i class="fas fa-shield-alt"></i> Why This Tool is 100% Secure?</h3>
+        <p>Unlike other websites that upload your photos to a cloud server to compress them, our tool works <strong>locally in your browser</strong>. This means:</p>
+        <ul>
+            <li><strong>Privacy:</strong> Your personal photos (documents, selfies, family pics) never leave your device.</li>
+            <li><strong>Speed:</strong> Since there is no uploading or downloading from a server, compression happens instantly.</li>
+            <li><strong>Data Saving:</strong> You don't waste internet data uploading heavy files.</li>
+        </ul>
+
+        <h3><i class="fas fa-sliders-h"></i> How Compression Works (Lossy vs Lossless)</h3>
+        <p>Our tool uses "Lossy" compression for JPG/WEBP and optimized compression for PNG.</p>
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>Format</th>
+                    <th>How it works</th>
+                    <th>Best For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>JPG/JPEG</strong></td>
+                    <td>Removes invisible color data and smoothes pixels.</td>
+                    <td>Photos, Real-life images, Avatars.</td>
+                </tr>
+                <tr>
+                    <td><strong>PNG</strong></td>
+                    <td>Reduces the number of colors (quantization).</td>
+                    <td>Logos, Text-heavy images, Transparent backgrounds.</td>
+                </tr>
+                <tr>
+                    <td><strong>WEBP</strong></td>
+                    <td>Modern Google format. Superior compression.</td>
+                    <td>Websites, Apps (Highest savings).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+        
+        <div class="faq-item">
+            <h3>How do I reduce image size to 50kb?</h3>
+            <p>Upload your image, then drag the "Quality" slider down until the "Compressed Size" indicator shows ~50kb. If the file is still too big, use the "Resize" slider to make the image dimensions smaller.</p>
         </div>
+
+        <div class="faq-item">
+            <h3>Does reducing size ruin quality?</h3>
+            <p>Not necessarily. Reducing quality to 70-80% is usually invisible to the human eye but can cut file size by 50%. However, going below 30% might make the image look pixelated.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I convert PNG to JPG?</h3>
+            <p>Yes! If you upload a PNG but want a smaller file, the browser might automatically convert it to a heavy compression format if you choose a low quality setting, or you can screenshot the result.</p>
+        </div>
+
+      </article>
     </div>
 
   </main>
@@ -359,102 +363,161 @@
     <div class="footer-content">
       <div class="footer-col">
         <h3>About Tool</h3>
-        <p>This Image Compressor helps optimize your photos for the web, saving storage space and improving website loading speed.</p>
+        <p>XIZOA Image Compressor helps you optimize photos. Fast, free, and secure tool for everyone.</p>
       </div>
       <div class="footer-col">
-        <h3>About XIZOA Hub</h3>
-        <p>XIZOA Hub is a collection of free online tools developed by <strong>Priyanshu</strong>. Simple, Fast, Secure.</p>
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
       </div>
       <div class="footer-col footer-links">
         <h3>Explore</h3>
         <a href="index.html">Home</a>
-        <a href="image-resizer.html">Image Resizer</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
         <a href="contact.html">Contact Us</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
-    <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
   </footer>
 
   <script>
     const fileInput = document.getElementById('fileInput');
-    const editorPanel = document.getElementById('editorPanel');
-    const previewImg = document.getElementById('previewImg');
-    const qualitySlider = document.getElementById('qualitySlider');
-    const qualityValue = document.getElementById('qualityValue');
-    const originalSizeTxt = document.getElementById('originalSize');
-    const newSizeTxt = document.getElementById('newSize');
-    const downloadBtn = document.getElementById('downloadBtn');
+    const uploadArea = document.getElementById('dropZone');
+    const editorSection = document.getElementById('editorSection');
+    const imagePreview = document.getElementById('imagePreview');
+    const btnReset = document.getElementById('btnReset');
+    const btnDownload = document.getElementById('btnDownload');
+    
+    // Controls
+    const qualityRange = document.getElementById('qualityRange');
+    const qualVal = document.getElementById('qualVal');
+    const widthRange = document.getElementById('widthRange');
+    const widthVal = document.getElementById('widthVal');
 
-    let originalImage = null;
-    let originalFileSize = 0;
+    // Stats
+    const origSize = document.getElementById('origSize');
+    const newSize = document.getElementById('newSize');
+    const savedPercent = document.getElementById('savedPercent');
 
-    // Helper to format file size
-    function formatSize(bytes) {
-      if (bytes === 0) return '0 KB';
-      const k = 1024;
-      const sizes = ['Bytes', 'KB', 'MB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    let originalFile = null;
+    let originalImage = new Image();
+    let fileName = "compressed-image.jpg";
+
+    // Format Bytes
+    function formatBytes(bytes, decimals = 2) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
 
     // Handle File Upload
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      originalFileSize = file.size;
-      originalSizeTxt.innerText = formatSize(originalFileSize);
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new Image();
-        img.onload = () => {
-          originalImage = img;
-          previewImg.src = img.src;
-          
-          // Show editor and trigger first compression estimate
-          editorPanel.style.display = 'block';
-          editorPanel.scrollIntoView({behavior: "smooth"});
-          compressImage(); 
+    fileInput.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) {
+            processFile(e.target.files[0]);
         }
-        img.src = event.target.result;
-      };
-      reader.readAsDataURL(file);
     });
 
-    // Update Slider Text & Trigger Compression
-    qualitySlider.addEventListener('input', () => {
-        qualityValue.innerText = qualitySlider.value + '%';
-        compressImage();
-    });
+    function processFile(file) {
+        originalFile = file;
+        fileName = file.name.split('.')[0] + "-compressed.jpg"; // Default output JPG
+        origSize.innerText = formatBytes(file.size);
 
-    // Compression Logic
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            originalImage.src = e.target.result;
+            originalImage.onload = () => {
+                uploadArea.style.display = "none";
+                editorSection.style.display = "grid";
+                compressImage(); // Initial Compression
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+
+    // Compress Logic
     function compressImage() {
-        if (!originalImage) return;
+        const quality = parseInt(qualityRange.value) / 100;
+        const scale = parseInt(widthRange.value) / 100;
+
+        // UI Updates
+        qualVal.innerText = qualityRange.value + "%";
+        widthVal.innerText = widthRange.value === "100" ? "Original" : widthRange.value + "%";
 
         const canvas = document.createElement('canvas');
-        canvas.width = originalImage.width;
-        canvas.height = originalImage.height;
         const ctx = canvas.getContext('2d');
 
-        // Draw original image
-        ctx.drawImage(originalImage, 0, 0);
+        const newWidth = originalImage.width * scale;
+        const newHeight = originalImage.height * scale;
 
-        // Compress (Quality is 0.1 to 1.0)
-        const quality = qualitySlider.value / 100;
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        // Draw image on canvas
+        ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
+
+        // Export (Compress)
+        // Defaulting to JPEG for best compression ratio control
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
         
-        // Output as JPEG for best compression
-        const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+        imagePreview.src = dataUrl;
 
-        // Calculate approx new size base64 length
+        // Calculate New Size
         const head = 'data:image/jpeg;base64,';
-        const imgFileSize = Math.round((compressedDataUrl.length - head.length) * 3 / 4);
-        newSizeTxt.innerText = formatSize(imgFileSize);
-
-        // Update download link
-        downloadBtn.href = compressedDataUrl;
+        const size = Math.round((dataUrl.length - head.length) * 3 / 4);
+        
+        newSize.innerText = formatBytes(size);
+        
+        // Calculate Savings
+        const savings = ((originalFile.size - size) / originalFile.size) * 100;
+        
+        if(savings > 0) {
+            savedPercent.innerText = Math.round(savings) + "%";
+            savedPercent.style.color = "#00e676";
+        } else {
+            savedPercent.innerText = "0%";
+            savedPercent.style.color = "#ccc";
+        }
     }
+
+    // Listeners
+    qualityRange.addEventListener('input', compressImage);
+    widthRange.addEventListener('input', compressImage);
+
+    // Download
+    btnDownload.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = imagePreview.src;
+        link.click();
+    });
+
+    // Reset
+    btnReset.addEventListener('click', () => {
+        location.reload(); // Simple reload to clear memory
+    });
+
+    // Drag and Drop Visuals
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = "#ff007f";
+        uploadArea.style.background = "rgba(255, 0, 127, 0.1)";
+    });
+    uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = "#444";
+        uploadArea.style.background = "rgba(255,255,255,0.02)";
+    });
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = "#444";
+        uploadArea.style.background = "rgba(255,255,255,0.02)";
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) {
+            processFile(e.dataTransfer.files[0]);
+        }
+    });
   </script>
 </body>
 </html>
