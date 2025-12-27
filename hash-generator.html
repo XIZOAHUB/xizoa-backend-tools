@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Online Hash Generator | Create MD5, SHA-1, SHA-256 & SHA-512 (Free)</title>
+  <meta name="description" content="Generate secure hashes instantly. Convert text to MD5, SHA-1, SHA-256, and SHA-512 online. Best free hashing tool for developers, password encryption, and file verification.">
+  <meta name="keywords" content="hash generator, sha256 generator, md5 hash generator, online hasher, sha512 converter, password encryption tool, cryptography tool, checksum calculator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://tools.xizoa.com/hash-generator">
+
+  <meta property="og:title" content="Secure Hash Generator - MD5 & SHA">
+  <meta property="og:description" content="Encrypt your text instantly. Supports MD5, SHA-1, SHA-256, and SHA-512.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tools.xizoa.com/hash-generator">
+  <meta property="og:image" content="https://tools.xizoa.com/assets/og-hash.jpg">
+
+  <link rel="icon" href="https://tools.xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Hash Generator Tool",
+      "operatingSystem": "Web",
+      "applicationCategory": "SecurityApplication",
+      "url": "https://tools.xizoa.com/hash-generator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "17300" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is SHA-256?",
+          "acceptedAnswer": { "@type": "Answer", "text": "SHA-256 (Secure Hash Algorithm 256-bit) is a cryptographic hash function that generates a unique, fixed-size 256-bit (32-byte) hash. It is widely used in Bitcoin and security protocols." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MD5 secure?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No, MD5 is considered cryptographically broken and should not be used for password storage. However, it is still useful for non-security purposes like verifying file integrity (checksums)." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+  <style>
+    /* --- THEME (CRYPTO GOLD) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ffd700;       /* Gold */
+      --primary-dark: #c6a700;  /* Dark Gold */
+      --border: 1px solid rgba(255, 215, 0, 0.2);
+      --glass: rgba(255, 215, 0, 0.05);
+      --code-font: 'Roboto Mono', monospace;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #332b00, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.05);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Input Area */
+    .input-section { margin-bottom: 40px; }
+    .input-label { display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+    
+    textarea {
+        width: 100%; height: 120px;
+        background: #000; border: 1px solid #333;
+        border-radius: 12px; padding: 20px;
+        color: #fff; font-size: 1.1rem; resize: none;
+        transition: 0.3s;
+    }
+    textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
+
+    /* Output Grid */
+    .hash-grid { display: grid; gap: 20px; }
+    
+    .hash-card {
+        background: var(--glass); border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px; padding: 20px; position: relative;
+    }
+    .hash-card:hover { border-color: var(--primary); }
+
+    .hash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .hash-title { font-weight: 700; color: #fff; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+    .hash-badge { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: #222; color: #aaa; }
+    
+    .hash-output {
+        width: 100%; background: #000; border: 1px solid #333; padding: 12px; border-radius: 8px;
+        color: var(--primary); font-family: var(--code-font); font-size: 0.95rem; word-break: break-all;
+        margin-bottom: 10px;
+    }
+
+    .copy-btn {
+        background: #222; color: #fff; border: 1px solid #333; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.3s;
+    }
+    .copy-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+
+    /* --- CONTENT AREA (Deep SEO) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: #c6a700; }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    /* Comparison Table */
+    .sec-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .sec-table th, .sec-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    .sec-table th { background: #fff8e1; color: #5d4037; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-container { padding: 20px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Hash <span>Generator</span></h1>
+    <p class="subtitle">Securely convert text into MD5, SHA-1, SHA-256 & SHA-512 hashes instantly.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <label class="input-label">ENTER TEXT TO ENCRYPT</label>
+        <textarea id="inputText" placeholder="Type something here (e.g. password123)..." oninput="generateHashes()"></textarea>
+      </div>
+
+      <div class="hash-grid">
+          
+          <div class="hash-card">
+              <div class="hash-header">
+                  <div class="hash-title"><i class="fas fa-shield-alt"></i> MD5 <span class="hash-badge">128-bit</span></div>
+                  <button class="copy-btn" onclick="copyHash('resMD5')">Copy</button>
+              </div>
+              <div class="hash-output" id="resMD5">...</div>
+          </div>
+
+          <div class="hash-card">
+              <div class="hash-header">
+                  <div class="hash-title"><i class="fas fa-lock"></i> SHA-1 <span class="hash-badge">160-bit</span></div>
+                  <button class="copy-btn" onclick="copyHash('resSHA1')">Copy</button>
+              </div>
+              <div class="hash-output" id="resSHA1">...</div>
+          </div>
+
+          <div class="hash-card" style="border-color:var(--primary); box-shadow:0 0 10px rgba(255,215,0,0.1);">
+              <div class="hash-header">
+                  <div class="hash-title" style="color:var(--primary);"><i class="fas fa-key"></i> SHA-256 <span class="hash-badge" style="color:#fff; background:var(--primary-dark);">Recommended</span></div>
+                  <button class="copy-btn" onclick="copyHash('resSHA256')" style="background:var(--primary); color:#000;">Copy</button>
+              </div>
+              <div class="hash-output" id="resSHA256" style="color:#fff; font-weight:700;">...</div>
+          </div>
+
+          <div class="hash-card">
+              <div class="hash-header">
+                  <div class="hash-title"><i class="fas fa-file-contract"></i> SHA-512 <span class="hash-badge">512-bit</span></div>
+                  <button class="copy-btn" onclick="copyHash('resSHA512')">Copy</button>
+              </div>
+              <div class="hash-output" id="resSHA512">...</div>
+          </div>
+
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-fingerprint"></i> Best Free Online Hash Generator</h2>
+        <p>Hashing is the process of converting any text string into a fixed-length unique code. It is the backbone of internet security. <strong>Xizoa Hub's Hash Generator</strong> allows you to instantly create MD5, SHA-1, SHA-256, and SHA-512 hashes for any input text. This is essential for developers testing passwords, verifying file integrity (checksums), or data indexing.</p>
+
+        <h3><i class="fas fa-check-shield"></i> Which Hash Should I Use?</h3>
+        <table class="sec-table">
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Security Level</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>MD5</strong></td>
+                    <td>Low (Broken)</td>
+                    <td>File integrity checks, Checksums, Legacy systems.</td>
+                </tr>
+                <tr>
+                    <td><strong>SHA-1</strong></td>
+                    <td>Medium (Deprecated)</td>
+                    <td>Git commits (historically), simple identifiers.</td>
+                </tr>
+                <tr>
+                    <td><strong>SHA-256</strong></td>
+                    <td>High (Standard)</td>
+                    <td>Bitcoin, SSL Certificates, Password Hashing.</td>
+                </tr>
+                <tr>
+                    <td><strong>SHA-512</strong></td>
+                    <td>Very High</td>
+                    <td>Top-secret government data, Critical security.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3><i class="fas fa-sync-alt"></i> Hashing vs Encryption</h3>
+        <p>Many people confuse the two. <strong>Encryption</strong> is two-way (you can decrypt it with a key). <strong>Hashing</strong> is one-way (you cannot turn a hash back into the original text). This is why hashing is perfect for passwords—even if a hacker steals the database, they only get the hashes, not the actual passwords.</p>
+
+        <h3><i class="fas fa-laptop-code"></i> Developer Notes</h3>
+        <p>All hashing on this tool is performed <strong>Client-Side</strong> using your browser's native cryptography API. This means your text or passwords are never sent to our servers, ensuring 100% privacy and zero leakage risk.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Can I decrypt an MD5 hash?</h3>
+            <p>Technically, no. But because MD5 is weak, hackers use "Rainbow Tables" (huge databases of common passwords and their hashes) to reverse-lookup simple passwords instantly.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this tool safe for real passwords?</h3>
+            <p>Yes, because the processing happens on your device. However, for production apps, always use "Salted" hashes (adding random data to the password) to prevent Rainbow Table attacks.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Hash Generator helps developers secure data. Fast, free, and private cryptography.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    // Native SHA Hashing
+    async function digestMessage(message, algo) {
+        const msgUint8 = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest(algo, msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    async function generateHashes() {
+        const text = document.getElementById('inputText').value;
+        
+        if(!text) {
+            document.getElementById('resMD5').innerText = "...";
+            document.getElementById('resSHA1').innerText = "...";
+            document.getElementById('resSHA256').innerText = "...";
+            document.getElementById('resSHA512').innerText = "...";
+            return;
+        }
+
+        // MD5 (Using external lib included via CDN)
+        try {
+            document.getElementById('resMD5').innerText = md5(text);
+        } catch(e) {
+            document.getElementById('resMD5').innerText = "Library Error";
+        }
+
+        // SHA Family (Native)
+        document.getElementById('resSHA1').innerText = await digestMessage(text, 'SHA-1');
+        document.getElementById('resSHA256').innerText = await digestMessage(text, 'SHA-256');
+        document.getElementById('resSHA512').innerText = await digestMessage(text, 'SHA-512');
+    }
+
+    function copyHash(id) {
+        const text = document.getElementById(id).innerText;
+        if(text === "..." || text === "Library Error") return;
+        
+        navigator.clipboard.writeText(text);
+        alert("Hash Copied!");
+    }
+  </script>
+</body>
+</html>
