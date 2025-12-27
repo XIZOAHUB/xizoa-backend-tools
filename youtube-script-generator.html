@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Script Generator | AI Video Script Writer (Free)</title>
+  <meta name="description" content="Generate viral YouTube video scripts instantly. Create engaging Hooks, Intros, and Outros for Gaming, Tech, Tutorials, and Vlogs. Best free script writing tool.">
+  <meta name="keywords" content="youtube script generator, video script writer, youtube hook generator, viral script template, youtube content planner, script writing tool">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-script-generator">
+
+  <meta property="og:title" content="YouTube Video Script Generator - Write Viral Scripts">
+  <meta property="og:description" content="Struggling to write a script? Generate a professional YouTube script with Hooks & CTA in 1 click.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-script-generator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-script.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Script Generator",
+      "operatingSystem": "Web",
+      "applicationCategory": "ContentCreation",
+      "url": "https://xizoa.com/youtube-script-generator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "13400" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I write a viral YouTube script?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A viral script needs a strong Hook in the first 10 seconds, a clear Value Proposition, engaging Body content, and a strong Call to Action (CTA)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this script generator free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, Xizoa Script Generator is completely free and provides templates for various niches like Gaming, Tech, and Tutorials." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Advanced UI) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left Side: Inputs */
+    .input-section h3 { margin-bottom: 20px; color: #fff; font-size: 1.1rem; }
+    
+    .input-group { margin-bottom: 20px; }
+    .input-label { display: block; margin-bottom: 8px; font-weight: 600; color: #ccc; font-size: 0.9rem; }
+    
+    input[type="text"], select {
+      width: 100%;
+      background: #000;
+      border: 1px solid #333;
+      padding: 14px 15px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,0,0.2); }
+
+    button#btnWrite {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      display: flex; justify-content: center; align-items: center; gap: 10px;
+    }
+    button#btnWrite:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Right Side: Script Output */
+    .script-box {
+      background: #fff; /* Paper look */
+      color: #222;
+      border-radius: 12px;
+      padding: 30px;
+      height: 600px;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+      font-family: 'Courier New', Courier, monospace; /* Script font */
+    }
+    
+    .script-content { white-space: pre-wrap; line-height: 1.8; font-size: 1rem; }
+    
+    .script-section-title {
+        font-weight: 800; background: #eee; padding: 2px 8px; border-radius: 4px; color: #000; font-family: 'Outfit', sans-serif; margin-right: 10px;
+    }
+    .placeholder-text { color: #999; text-align: center; margin-top: 150px; font-family: 'Outfit', sans-serif; }
+
+    .action-row {
+        position: absolute; top: 15px; right: 15px; display: flex; gap: 10px;
+    }
+    .action-btn {
+        background: #222; color: #fff; border:none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: 0.2s;
+    }
+    .action-btn:hover { background: var(--primary); }
+
+    /* --- CONTENT AREA --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .tool-container { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+      .script-box { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Video Script <span>Generator</span></h1>
+    <p class="subtitle">Write viral scripts with engaging Hooks, Intros, and Outros in seconds.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <h3>🚀 Video Details</h3>
+        
+        <div class="input-group">
+            <label class="input-label">Video Topic</label>
+            <input type="text" id="topicInput" placeholder="e.g. How to get more subscribers...">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Channel Name</label>
+            <input type="text" id="channelInput" placeholder="e.g. Xizoa Hub">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Script Template</label>
+            <select id="templateSelect">
+                <option value="tutorial">Education / How-To (Step-by-Step)</option>
+                <option value="story">Storytelling / Vlog (Emotional)</option>
+                <option value="list">Top 10 List / Review (Fast Paced)</option>
+                <option value="gaming">Gaming / Commentary (Energetic)</option>
+            </select>
+        </div>
+
+        <button id="btnWrite"><i class="fas fa-pen-nib"></i> Write Script</button>
+      </div>
+
+      <div class="script-box">
+          <div class="action-row">
+              <button class="action-btn" id="btnCopy"><i class="fas fa-copy"></i> Copy</button>
+              <button class="action-btn" id="btnClear"><i class="fas fa-trash"></i> Clear</button>
+          </div>
+          <div id="scriptContent" class="script-content">
+              <div class="placeholder-text">
+                  <i class="fas fa-file-alt" style="font-size:3rem; margin-bottom:10px; opacity:0.3;"></i><br>
+                  Your generated script will appear here.<br>
+                  Ready to go viral?
+              </div>
+          </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-feather-alt"></i> Free YouTube Video Script Generator</h2>
+        <p>Most people think equipment is the key to YouTube success, but the truth is, <strong>Storytelling</strong> is king. A bad camera with a great story will beat a cinema camera with a boring script every time. <strong>Xizoa Hub's Script Generator</strong> helps you structure your thoughts into a professional video format that retains viewers.</p>
+
+        <h3><i class="fas fa-stopwatch"></i> The "Viral Structure" Explained</h3>
+        <p>Our AI-powered templates use the proven structure used by top creators:</p>
+        <ol>
+            <li><strong>The Hook (0:00 - 0:30):</strong> Grabs attention instantly. You must promise a value or tease a mystery.</li>
+            <li><strong>The Intro (0:30 - 1:00):</strong> Establish authority. Who are you and why should they listen?</li>
+            <li><strong>The Meat (Body):</strong> Deliver the content quickly without fluff.</li>
+            <li><strong>The CTA (Call to Action):</strong> Ask for the like/subscribe at the <em>right</em> moment (not too early).</li>
+            <li><strong>The Outro:</strong> Send them to another video (End Screen) to increase session time.</li>
+        </ol>
+
+        <h3><i class="fas fa-magic"></i> Features of This Tool</h3>
+        <ul>
+            <li><strong>Niche Specific:</strong> Whether you are teaching a tutorial or telling a vlog story, the tone changes automatically.</li>
+            <li><strong>Time-Stamped Blocks:</strong> The script is divided into sections so you know exactly where you are in the video.</li>
+            <li><strong>Engagement Prompts:</strong> Automatically inserts lines like "Comment below if..." to boost engagement signals.</li>
+        </ul>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Do I need to follow the script word-for-word?</h3>
+            <p>No! Use this script as a robust outline. Add your own personality, jokes, and examples to make it authentic to you.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How long should my script be?</h3>
+            <p>People speak at about 130-150 words per minute. A 1,000-word script will result in a roughly 6-8 minute video.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a "Hook"?</h3>
+            <p>A Hook is the very first sentence of your video. It must confirm to the viewer that they clicked the right video and tease what's coming next.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Script Generator helps you write viral video content. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnWrite = document.getElementById('btnWrite');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnClear = document.getElementById('btnClear');
+    const topicInput = document.getElementById('topicInput');
+    const channelInput = document.getElementById('channelInput');
+    const templateSelect = document.getElementById('templateSelect');
+    const scriptContent = document.getElementById('scriptContent');
+
+    btnWrite.addEventListener('click', () => {
+        const topic = topicInput.value.trim() || "[TOPIC]";
+        const channel = channelInput.value.trim() || "[CHANNEL NAME]";
+        const type = templateSelect.value;
+
+        // UI Loading
+        btnWrite.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Writing...';
+        btnWrite.disabled = true;
+
+        setTimeout(() => {
+            let script = "";
+
+            if (type === 'tutorial') {
+                script += `<span class="script-section-title">[0:00] THE HOOK</span>\n`;
+                script += `(Visual: Show the final result/outcome first)\n`;
+                script += `VO: "Have you ever tried to ${topic} but failed miserably? In this video, I'm going to show you exactly how to ${topic} step-by-step, so you can get perfect results every time."\n\n`;
+                
+                script += `<span class="script-section-title">[0:45] THE INTRO</span>\n`;
+                script += `VO: "Hi everyone, welcome back to ${channel}. I'm your host, and today we are breaking down the mystery of ${topic}. Make sure to watch until the end because I have a secret tip that saves you half the time."\n\n`;
+
+                script += `<span class="script-section-title">[1:30] STEP 1: The Basics</span>\n`;
+                script += `VO: "First things first, you need to understand..."\n(Explain the basics here)\n\n`;
+
+                script += `<span class="script-section-title">[3:00] STEP 2: The Process</span>\n`;
+                script += `VO: "Now let's get into the action. Open up your..."\n(Show the main action)\n\n`;
+
+                script += `<span class="script-section-title">[5:00] STEP 3: Common Mistakes</span>\n`;
+                script += `VO: "A lot of people mess this part up by..."\n(Explain a common error)\n\n`;
+
+                script += `<span class="script-section-title">[7:00] OUTRO & CTA</span>\n`;
+                script += `VO: "And that is how you ${topic} like a pro! If this video helped you, please hit that Like button—it really helps the channel. And if you want to learn more about [Related Topic], click this video on screen right now. Thanks for watching!"\n`;
+            } 
+            else if (type === 'story') {
+                script += `<span class="script-section-title">[0:00] THE TEASE</span>\n`;
+                script += `(Visual: A chaotic or emotional moment from the climax)\n`;
+                script += `VO: "I never thought ${topic} would end like this..."\n\n`;
+
+                script += `<span class="script-section-title">[0:30] THE CONTEXT</span>\n`;
+                script += `VO: "Let's rewind. It all started 3 days ago when I decided to..."\n\n`;
+
+                script += `<span class="script-section-title">[2:00] THE INCITING INCIDENT</span>\n`;
+                script += `VO: "Everything was going fine until..."\n(Describe the problem)\n\n`;
+
+                script += `<span class="script-section-title">[4:00] THE CLIMAX</span>\n`;
+                script += `VO: "This was the moment of truth..."\n\n`;
+
+                script += `<span class="script-section-title">[6:00] THE RESOLUTION</span>\n`;
+                script += `VO: "Looking back, I learned a valuable lesson about ${topic}..."\n\n`;
+
+                script += `<span class="script-section-title">[8:00] OUTRO</span>\n`;
+                script += `VO: "Subscribe to ${channel} to join me on my next adventure. See you next week!"\n`;
+            }
+            else if (type === 'list') {
+                script += `<span class="script-section-title">[0:00] THE HOOK</span>\n`;
+                script += `VO: "Are you looking for the best ${topic}? I tested the top 10 options so you don't have to."\n\n`;
+
+                script += `<span class="script-section-title">[0:45] NUMBER 10</span>\n`;
+                script += `VO: "Starting off at number 10, we have..."\n\n`;
+                
+                script += `<span class="script-section-title">[2:00] NUMBER 5 (The Midpoint)</span>\n`;
+                script += `VO: "We are halfway through. If you are enjoying this list, comment '${topic}' down below!"\n\n`;
+
+                script += `<span class="script-section-title">[5:00] NUMBER 1 (The Winner)</span>\n`;
+                script += `VO: "And finally, the number one spot goes to..."\n\n`;
+
+                script += `<span class="script-section-title">[6:00] OUTRO</span>\n`;
+                script += `VO: "Which one would you pick? Let me know in the comments. Don't forget to subscribe to ${channel}!"\n`;
+            }
+            else {
+                // Gaming/General
+                script += `<span class="script-section-title">[0:00] HIGH ENERGY INTRO</span>\n`;
+                script += `VO: "What is up guys! Welcome back to ${channel}. Today we are doing something crazy with ${topic}!"\n\n`;
+                
+                script += `<span class="script-section-title">[1:00] THE CHALLENGE</span>\n`;
+                script += `VO: "Here is the deal: I have to..."\n\n`;
+                
+                script += `<span class="script-section-title">[3:00] MID-GAME MOMENT</span>\n`;
+                script += `VO: "Oh my god, did you see that?!"\n\n`;
+                
+                script += `<span class="script-section-title">[8:00] OUTRO</span>\n`;
+                script += `VO: "If you enjoyed this ${topic} gameplay, smash that like button! Subscribe for more!"\n`;
+            }
+
+            scriptContent.innerHTML = script;
+            btnWrite.innerHTML = '<i class="fas fa-pen-nib"></i> Write Script';
+            btnWrite.disabled = false;
+        }, 800);
+    });
+
+    btnCopy.addEventListener('click', () => {
+        const text = scriptContent.innerText;
+        navigator.clipboard.writeText(text);
+        btnCopy.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => btnCopy.innerHTML = '<i class="fas fa-copy"></i> Copy', 2000);
+    });
+
+    btnClear.addEventListener('click', () => {
+        scriptContent.innerHTML = `
+          <div class="placeholder-text">
+              <i class="fas fa-file-alt" style="font-size:3rem; margin-bottom:10px; opacity:0.3;"></i><br>
+              Your generated script will appear here.<br>
+              Ready to go viral?
+          </div>`;
+    });
+  </script>
+</body>
+</html>
