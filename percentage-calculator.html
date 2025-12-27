@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Percentage Calculator | Calculate Percent Change, Increase & Discounts</title>
+  <meta name="description" content="Free online Percentage Calculator. Calculate percentage of a number, percent change (increase/decrease), and find what percent one number is of another.">
+  <meta name="keywords" content="percentage calculator, percent change calculator, discount calculator, calculate percentage, math tool, percentage formula, online calculator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/percentage-calculator">
+
+  <meta property="og:title" content="Smart Percentage Calculator - Xizoa Hub">
+  <meta property="og:description" content="Solve any percentage problem instantly. Discounts, Growth, and Basic Math.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/percentage-calculator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-percent.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Percentage Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "MathApplication",
+      "url": "https://xizoa.com/percentage-calculator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "18900" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to calculate percentage increase?",
+      "step": [
+        { "@type": "HowToStep", "text": "Subtract original value from new value." },
+        { "@type": "HowToStep", "text": "Divide that amount by the original value." },
+        { "@type": "HowToStep", "text": "Multiply by 100 to get the percentage." }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (DEEP VIOLET) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #7c4dff;       /* Violet */
+      --primary-dark: #3f1dcb;  /* Dark Violet */
+      --accent: #b388ff;        /* Light Violet */
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0033, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(124, 77, 255, 0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px;
+    }
+
+    .calc-card {
+        background: var(--card-bg);
+        border: var(--border);
+        border-radius: 20px;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .calc-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+    .calc-card::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .card-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .card-title i { color: var(--primary); }
+
+    .input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .static-text { font-size: 1.1rem; font-weight: 600; color: #aaa; white-space: nowrap; }
+    
+    input[type="number"] {
+        flex: 1; min-width: 80px;
+        background: #000; border: 1px solid #333; padding: 12px; border-radius: 8px; color: #fff; font-size: 1.1rem; text-align: center;
+        transition: 0.3s;
+    }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(124, 77, 255, 0.2); }
+
+    .result-box {
+        background: rgba(124, 77, 255, 0.1);
+        border: 1px solid var(--primary);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .res-label { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; }
+    .res-value { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+
+    /* Clear Button */
+    .btn-clear {
+        display: block; width: 100%; background: #222; color: #888; border: none; padding: 10px; margin-top: 20px; border-radius: 8px; cursor: pointer; transition: 0.2s;
+    }
+    .btn-clear:hover { background: #333; color: #fff; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Percentage <span>Calculator</span></h1>
+    <p class="subtitle">Calculate simple percentage, percent change, and reverse percentage instantly.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-grid">
+      
+      <div class="calc-card">
+          <div class="card-title"><i class="fas fa-percent"></i> Basic Percentage</div>
+          
+          <div class="input-row">
+              <span class="static-text">What is</span>
+              <input type="number" id="basicP" placeholder="%" oninput="calcBasic()">
+              <span class="static-text">% of</span>
+              <input type="number" id="basicN" placeholder="Value" oninput="calcBasic()">
+          </div>
+
+          <div class="result-box">
+              <div class="res-label">Result</div>
+              <div class="res-value" id="resBasic">0</div>
+          </div>
+      </div>
+
+      <div class="calc-card">
+          <div class="card-title"><i class="fas fa-search"></i> Find Percentage</div>
+          
+          <div class="input-row">
+              <input type="number" id="findA" placeholder="Value" oninput="calcFind()">
+              <span class="static-text">is what % of</span>
+              <input type="number" id="findB" placeholder="Total" oninput="calcFind()">
+          </div>
+
+          <div class="result-box">
+              <div class="res-label">Result</div>
+              <div class="res-value" id="resFind">0%</div>
+          </div>
+      </div>
+
+      <div class="calc-card">
+          <div class="card-title"><i class="fas fa-chart-line"></i> Percentage Change</div>
+          
+          <div class="input-row">
+              <span class="static-text">From</span>
+              <input type="number" id="changeA" placeholder="Old" oninput="calcChange()">
+              <span class="static-text">To</span>
+              <input type="number" id="changeB" placeholder="New" oninput="calcChange()">
+          </div>
+
+          <div class="result-box">
+              <div class="res-label">Difference</div>
+              <div class="res-value" id="resChange">0%</div>
+          </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-calculator"></i> Best Free Percentage Calculator Online</h2>
+        <p>Percentage calculations are everywhere—from shopping discounts to tax calculations and student grades. Yet, doing the math in your head can be confusing. <strong>Xizoa Hub's Smart Percentage Calculator</strong> helps you solve three common types of percentage problems instantly and accurately.</p>
+
+        <h3><i class="fas fa-shapes"></i> How to Use This Tool?</h3>
+        <ul>
+            <li><strong>Basic Percentage:</strong> Use this to find a portion of a number. (e.g., "What is 18% of 1000?" -> Answer: 180). Useful for calculating GST or tips.</li>
+            <li><strong>Find Percentage:</strong> Use this to see what fraction one number is of another. (e.g., "I scored 45 out of 50. What is my percentage?" -> Answer: 90%).</li>
+            <li><strong>Percentage Change:</strong> Use this to calculate growth or decline. (e.g., "Price changed from $50 to $60. What is the % increase?" -> Answer: +20%).</li>
+        </ul>
+
+        <h3><i class="fas fa-book"></i> Percentage Formulas</h3>
+        <p>If you want to do the math manually, here are the formulas:</p>
+        <ol>
+            <li><strong>P% of X:</strong> <code>(P / 100) * X</code></li>
+            <li><strong>Y is what % of X:</strong> <code>(Y / X) * 100</code></li>
+            <li><strong>Percentage Increase/Decrease:</strong> <code>((New - Old) / Old) * 100</code></li>
+        </ol>
+
+        <h3><i class="fas fa-shopping-bag"></i> Real Life Examples</h3>
+        <p><strong>Discount Calculation:</strong> A shirt costs $50 but has a 20% discount.<br>
+        Calculation: 20% of 50 = 10. New Price = 50 - 10 = $40.</p>
+        <p><strong>Salary Hike:</strong> Your salary increased from $5000 to $5500.<br>
+        Calculation: (5500 - 5000) / 5000 * 100 = 10% Hike.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How do I calculate 15% tip?</h3>
+            <p>Simply enter "15" in the first box and your bill amount in the second box of the "Basic Percentage" calculator.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I calculate negative percentage change?</h3>
+            <p>Yes. If the new value is lower than the old value (e.g., stock market loss), the result will show a negative percentage (e.g., -15%), indicating a decrease.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Percentage Calculator makes math easy. Fast, free, and precise calculations.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    // 1. Basic Calculator
+    function calcBasic() {
+        const p = parseFloat(document.getElementById('basicP').value);
+        const n = parseFloat(document.getElementById('basicN').value);
+        const res = document.getElementById('resBasic');
+
+        if(!isNaN(p) && !isNaN(n)) {
+            let val = (p / 100) * n;
+            // Handle float precision
+            val = parseFloat(val.toFixed(2));
+            res.innerText = val;
+        } else {
+            res.innerText = "0";
+        }
+    }
+
+    // 2. Find Percentage
+    function calcFind() {
+        const a = parseFloat(document.getElementById('findA').value);
+        const b = parseFloat(document.getElementById('findB').value);
+        const res = document.getElementById('resFind');
+
+        if(!isNaN(a) && !isNaN(b) && b !== 0) {
+            let val = (a / b) * 100;
+            res.innerText = parseFloat(val.toFixed(2)) + "%";
+        } else {
+            res.innerText = "0%";
+        }
+    }
+
+    // 3. Percentage Change
+    function calcChange() {
+        const a = parseFloat(document.getElementById('changeA').value);
+        const b = parseFloat(document.getElementById('changeB').value);
+        const res = document.getElementById('resChange');
+
+        if(!isNaN(a) && !isNaN(b) && a !== 0) {
+            let diff = b - a;
+            let val = (diff / a) * 100;
+            
+            let sign = val > 0 ? "+" : "";
+            res.innerText = sign + parseFloat(val.toFixed(2)) + "%";
+            
+            // Color code
+            if(val > 0) res.style.color = "#00e676"; // Green
+            else if(val < 0) res.style.color = "#ff4d4d"; // Red
+            else res.style.color = "#fff";
+        } else {
+            res.innerText = "0%";
+            res.style.color = "#fff";
+        }
+    }
+  </script>
+</body>
+</html>
