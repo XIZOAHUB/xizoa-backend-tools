@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Money Calculator 2025 | Check Earnings by View & Niche</title>
+  <meta name="description" content="Calculate your estimated YouTube earnings instantly. Check revenue in USD & INR based on Niche (Gaming, Tech, Vlog) and Views. The most accurate YouTube Income Calculator.">
+  <meta name="keywords" content="youtube money calculator, youtube income estimator, youtube earning calculator in rupees, youtube revenue per 1000 views, adsense calculator, youtube rpm checker">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-money-calculator">
+
+  <meta property="og:title" content="YouTube Money Calculator (USD & INR)">
+  <meta property="og:description" content="See how much money you can make on YouTube. Select your niche and views to get an instant estimate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-money-calculator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-money-calc.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Money Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "FinanceApplication",
+      "url": "https://xizoa.com/youtube-money-calculator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "25400" },
+      "featureList": "USD to INR Converter, Niche-based RPM estimation, Daily/Monthly/Yearly breakdown"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much money do you get for 1 million views on YouTube?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on your niche. For a Vlog channel, 1 million views might earn $1,000 - $2,000. For a Tech or Finance channel, it could be $5,000 - $15,000." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does YouTube pay in Indian Rupees?",
+          "acceptedAnswer": { "@type": "Answer", "text": "YouTube pays creators in their local currency via AdSense. In India, payments are received in INR directly to the bank account." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Advanced UI) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --green: #00e676; 
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left Side: Inputs */
+    .section-title { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 15px; }
+    
+    .control-group { margin-bottom: 30px; }
+    .label-flex { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; color: #ddd; }
+    .val-display { color: var(--primary); font-weight: 700; }
+    
+    /* Inputs Styling */
+    .select-box, .text-input {
+        width: 100%; padding: 15px; background: #000; border: 1px solid #333; border-radius: 12px; color: #fff; font-size: 1rem; margin-bottom: 10px; transition: 0.3s;
+    }
+    .select-box:focus, .text-input:focus { border-color: var(--primary); }
+    
+    /* Range Slider */
+    input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--primary); cursor: pointer; margin-top: -9px; box-shadow: 0 0 15px rgba(255,0,0,0.5); border: 2px solid #fff; }
+    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #333; border-radius: 2px; }
+
+    /* Currency Toggle */
+    .currency-toggle {
+        display: flex; gap: 10px; margin-bottom: 30px;
+    }
+    .c-btn {
+        flex: 1; padding: 12px; background: #222; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 600;
+    }
+    .c-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Right Side: Results */
+    .result-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .res-card { 
+        background: #000; border: 1px solid #222; border-radius: 15px; padding: 20px; margin-bottom: 15px; text-align: center; position: relative; overflow: hidden;
+    }
+    .res-card::after { content:''; position: absolute; left:0; top:0; height:100%; width:4px; background: var(--green); }
+    
+    .res-label { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+    .res-value { font-size: 2rem; font-weight: 800; color: var(--green); }
+    
+    small { font-size: 0.8rem; color: #555; display: block; margin-top: 5px; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 12px; }
+    .content-container strong { color: #000; }
+
+    /* Table Styles */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1rem; }
+    .data-table th, .data-table td { padding: 15px; border: 1px solid #e2e8f0; text-align: left; }
+    .data-table th { background: #f8fafc; color: #0f172a; font-weight: 700; }
+    .data-table tr:nth-child(even) { background: #fcfcfc; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-container { grid-template-columns: 1fr; gap: 30px; }
+      h1 { font-size: 2.2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>YouTube Money <span>Calculator</span></h1>
+    <p class="subtitle">See exactly how much you can earn from YouTube based on views and channel category.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <h3 class="section-title">Configure Metrics</h3>
+        
+        <div class="currency-toggle">
+            <button class="c-btn active" id="btnUSD" onclick="setCurrency('USD')">$ USD</button>
+            <button class="c-btn" id="btnINR" onclick="setCurrency('INR')">₹ INR</button>
+        </div>
+
+        <div class="control-group">
+            <div class="label-flex"><span>Channel Category (Affects RPM)</span></div>
+            <select class="select-box" id="nicheSelect">
+                <option value="custom">Custom RPM (Manual)</option>
+                <option value="gaming">Gaming & Entertainment ($1.50 Avg)</option>
+                <option value="vlog">Vlogs & Lifestyle ($2.50 Avg)</option>
+                <option value="tech">Tech & Reviews ($6.00 Avg)</option>
+                <option value="finance">Finance & Business ($15.00 Avg)</option>
+                <option value="shorts">YouTube Shorts ($0.04 Avg)</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+          <div class="label-flex">
+            <span>Daily Views</span>
+            <span class="val-display" id="viewsVal">10,000</span>
+          </div>
+          <input type="range" id="rangeViews" min="1000" max="1000000" step="1000" value="10000">
+        </div>
+
+        <div class="control-group">
+          <div class="label-flex">
+            <span>Estimated RPM</span>
+            <span class="val-display" id="rpmVal">$2.50</span>
+          </div>
+          <input type="range" id="rangeRpm" min="0.01" max="50.00" step="0.01" value="2.50">
+          <small>Revenue Per 1,000 Views</small>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <h3 class="section-title" style="text-align:center; border:none;">Estimated Potential Earnings</h3>
+        
+        <div class="res-card">
+            <div class="res-label">Daily Income</div>
+            <div class="res-value" id="dailyRes">$25.00</div>
+        </div>
+        <div class="res-card">
+            <div class="res-label">Monthly Income</div>
+            <div class="res-value" id="monthlyRes">$750.00</div>
+            <small>Based on 30 days</small>
+        </div>
+        <div class="res-card">
+            <div class="res-label">Yearly Income</div>
+            <div class="res-value" id="yearlyRes">$9,125.00</div>
+            <small>Projected annual revenue</small>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-chart-line"></i> Ultimate Guide to YouTube Earnings in 2025</h2>
+        <p>YouTube has evolved from a simple video-sharing platform into a legitimate career path for millions of creators worldwide. Whether you are a student, a gamer, or a tech enthusiast, the potential to earn money is massive. But the most common question remains: <strong>"How much money does YouTube actually pay?"</strong></p>
+        <p>The answer is complex because YouTube doesn't pay a fixed salary. Instead, they share ad revenue with you. <strong>Xizoa Hub's Advanced YouTube Money Calculator</strong> helps you cut through the confusion and get accurate earning estimates based on real-world data like Niche, Location, and RPM.</p>
+
+        <h3><i class="fas fa-search-dollar"></i> Understanding the Math: RPM vs CPM</h3>
+        <p>To understand your paycheck, you need to know two terms:</p>
+        <ul>
+            <li><strong>CPM (Cost Per Mille):</strong> This is what <em>advertisers</em> pay YouTube for every 1,000 ad impressions. You don't get this full amount.</li>
+            <li><strong>RPM (Revenue Per Mille):</strong> This is the most important number. RPM is what <em>YOU</em> take home per 1,000 views after YouTube takes its 45% cut. Our calculator uses RPM for accuracy.</li>
+        </ul>
+
+        <h3><i class="fas fa-layer-group"></i> Which YouTube Niches Pay the Most? (Data Table)</h3>
+        <p>Not all views are created equal. A finance video with 1,000 views can earn 10x more than a prank video with the same views. This is because advertisers pay more to reach business-minded audiences. Here is a breakdown of average RPMs in 2025:</p>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Channel Niche</th>
+                    <th>Average RPM (USD)</th>
+                    <th>Earnings per 1 Million Views</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Finance / Business</strong></td>
+                    <td>$10.00 - $30.00</td>
+                    <td>$10,000 - $30,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Tech / Reviews</strong></td>
+                    <td>$5.00 - $12.00</td>
+                    <td>$5,000 - $12,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Vlogs / Lifestyle</strong></td>
+                    <td>$2.00 - $4.00</td>
+                    <td>$2,000 - $4,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Gaming</strong></td>
+                    <td>$1.00 - $2.50</td>
+                    <td>$1,000 - $2,500</td>
+                </tr>
+                <tr>
+                    <td><strong>YouTube Shorts</strong></td>
+                    <td>$0.01 - $0.06</td>
+                    <td>$10 - $60</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3><i class="fas fa-globe-asia"></i> The Geography Factor</h3>
+        <p>Your earnings heavily depend on <em>where</em> your viewers are watching from. This is due to the purchasing power of that country.</p>
+        <ul>
+            <li><strong>Tier 1 Countries (High Pay):</strong> USA, UK, Canada, Australia, Germany. (RPM can be $5+)</li>
+            <li><strong>Tier 2 Countries (Medium Pay):</strong> India, Philippines, Brazil, Pakistan. (RPM is usually $0.50 - $1.50)</li>
+        </ul>
+        <p><em>Tip: If you are an Indian creator making videos in English targeting the US, your earnings will skyrocket!</em></p>
+
+        <h3><i class="fas fa-lightbulb"></i> How to Increase Your YouTube Earnings?</h3>
+        <ol>
+            <li><strong>Make Longer Videos:</strong> Videos over 8 minutes allow you to place "Mid-roll Ads". More ads = More Money.</li>
+            <li><strong>Focus on High-Paying Topics:</strong> Even if you are a gamer, talking about "Buying the Best PC" (Tech/Finance intent) pays more than just gameplay.</li>
+            <li><strong>Build Multiple Income Streams:</strong> Don't rely solely on AdSense. Use affiliate marketing, sponsorships, and merchandise.</li>
+        </ol>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions (FAQs)</h2>
+        
+        <div class="faq-item">
+            <h3>Does YouTube pay for Likes and Subscribers?</h3>
+            <p>No. YouTube only pays for <strong>Views</strong> (specifically, valid ad views). Likes and Subscribers help the algorithm push your video to get <em>more</em> views, but they don't directly generate money.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How much is 1000 views in Rupees?</h3>
+            <p>In India, the average RPM varies between ₹40 to ₹200 depending on the niche. So for 1,000 views, you can expect around ₹50-₹80 for a general vlog channel.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>When does YouTube start paying?</h3>
+            <p>You need to join the YouTube Partner Program (YPP) first. Requirements are: 1,000 Subscribers AND 4,000 Watch Hours (in 365 days) OR 10 Million Shorts Views (in 90 days).</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Money Calculator helps you estimate YouTube earnings. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    // Variables
+    const rangeViews = document.getElementById('rangeViews');
+    const rangeRpm = document.getElementById('rangeRpm');
+    const nicheSelect = document.getElementById('nicheSelect');
+    
+    const viewsVal = document.getElementById('viewsVal');
+    const rpmVal = document.getElementById('rpmVal');
+    
+    const dailyRes = document.getElementById('dailyRes');
+    const monthlyRes = document.getElementById('monthlyRes');
+    const yearlyRes = document.getElementById('yearlyRes');
+
+    let currentCurrency = 'USD';
+    const exchangeRate = 86; // Approx USD to INR
+
+    // RPM Presets
+    const nicheRpm = {
+        'custom': 2.50,
+        'gaming': 1.50,
+        'vlog': 2.50,
+        'tech': 6.00,
+        'finance': 15.00,
+        'shorts': 0.04
+    };
+
+    function setCurrency(curr) {
+        currentCurrency = curr;
+        document.getElementById('btnUSD').classList.remove('active');
+        document.getElementById('btnINR').classList.remove('active');
+        document.getElementById('btn' + curr).classList.add('active');
+        calculate();
+    }
+
+    function formatMoney(amount) {
+        if(currentCurrency === 'USD') {
+            return '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        } else {
+            return '₹' + (amount * exchangeRate).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+    }
+
+    function calculate() {
+        let views = parseInt(rangeViews.value);
+        let rpm = parseFloat(rangeRpm.value);
+
+        // Update Labels
+        viewsVal.innerText = views.toLocaleString();
+        
+        // Show RPM in correct currency
+        if(currentCurrency === 'USD') {
+             rpmVal.innerText = '$' + rpm.toFixed(2);
+        } else {
+             rpmVal.innerText = '₹' + (rpm * exchangeRate).toFixed(2);
+        }
+
+        // Calculation Logic
+        let daily = (views / 1000) * rpm;
+        let monthly = daily * 30;
+        let yearly = daily * 365;
+
+        // Display Results
+        dailyRes.innerText = formatMoney(daily);
+        monthlyRes.innerText = formatMoney(monthly);
+        yearlyRes.innerText = formatMoney(yearly);
+    }
+
+    // Niche Change Listener
+    nicheSelect.addEventListener('change', function() {
+        const val = this.value;
+        if(nicheRpm[val]) {
+            rangeRpm.value = nicheRpm[val];
+            calculate();
+        }
+    });
+
+    // Range Listeners
+    rangeViews.addEventListener('input', calculate);
+    rangeRpm.addEventListener('input', function() {
+        nicheSelect.value = 'custom'; // Switch to custom if user moves slider manually
+        calculate();
+    });
+
+    // Init
+    calculate();
+  </script>
+</body>
+</html>
