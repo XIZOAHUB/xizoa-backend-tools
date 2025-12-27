@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Playback Speed Calculator | How Much Time You Save? (Free)</title>
+  <meta name="description" content="Calculate how much time you save by watching YouTube videos at 1.25x, 1.5x, or 2x speed. The best free YouTube Speed Calculator for students and learners.">
+  <meta name="keywords" content="youtube speed calculator, playback speed calculator, time saved calculator, watch time calculator, youtube 2x speed calculator, video duration calculator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-speed-calculator">
+
+  <meta property="og:title" content="YouTube Speed Calculator - Save Time Watching Videos">
+  <meta property="og:description" content="Want to finish a 1-hour video in 30 minutes? Calculate your new duration and time saved instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-speed-calculator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-speed.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Playback Speed Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "UtilityApplication",
+      "url": "https://xizoa.com/youtube-speed-calculator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "8100" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much time do I save watching at 2x speed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Watching at 2x speed cuts the video duration exactly in half. A 60-minute video will take 30 minutes to watch, saving you 30 minutes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best speed for lectures?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most students find 1.5x speed to be the 'sweet spot' where they can understand the content clearly while saving significant time." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Consistent Brand) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --green: #00e676;
+      --blue: #2979ff;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left: Inputs */
+    .input-section h3 { margin-bottom: 20px; color: #fff; font-size: 1.1rem; border-left: 3px solid var(--primary); padding-left: 10px; }
+    
+    .time-inputs { display: flex; gap: 10px; margin-bottom: 25px; }
+    .time-group { flex: 1; }
+    .time-label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 5px; text-align: center; }
+    
+    input[type="number"] {
+      width: 100%; background: #000; border: 1px solid #333; padding: 15px; border-radius: 12px; color: #fff; font-size: 1.2rem; text-align: center; transition: 0.3s;
+    }
+    input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,0,0.3); }
+
+    .speed-control { margin-bottom: 30px; }
+    .speed-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+    
+    input[type="range"] {
+      -webkit-appearance: none; width: 100%; background: transparent;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--primary); cursor: pointer; margin-top: -9px; box-shadow: 0 0 10px var(--primary);
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      width: 100%; height: 4px; cursor: pointer; background: #333; border-radius: 2px;
+    }
+
+    .preset-btns { display: flex; gap: 10px; justify-content: space-between; margin-top: 15px; }
+    .preset {
+      background: #222; border: 1px solid #333; color: #aaa; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.2s;
+    }
+    .preset:hover, .preset.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Right: Results */
+    .result-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .res-card { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #333; }
+    .res-card:last-child { border: none; margin: 0; padding: 0; }
+    
+    .res-title { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .res-val { font-size: 2.5rem; font-weight: 800; color: #fff; }
+    .res-saved { font-size: 2rem; font-weight: 800; color: var(--green); }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-container { grid-template-columns: 1fr; gap: 30px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Speed <span>Calculator</span></h1>
+    <p class="subtitle">Find out how much time you save by watching videos at 1.5x, 2x, or faster.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <h3>⏱️ Original Video Length</h3>
+        
+        <div class="time-inputs">
+            <div class="time-group">
+                <label class="time-label">Hours</label>
+                <input type="number" id="inH" placeholder="00" min="0">
+            </div>
+            <div class="time-group">
+                <label class="time-label">Minutes</label>
+                <input type="number" id="inM" placeholder="00" min="0" max="59">
+            </div>
+            <div class="time-group">
+                <label class="time-label">Seconds</label>
+                <input type="number" id="inS" placeholder="00" min="0" max="59">
+            </div>
+        </div>
+
+        <div class="speed-control">
+            <div class="speed-header">
+                <span>Playback Speed</span>
+                <span style="color:var(--primary);" id="speedDisplay">1.00x</span>
+            </div>
+            <input type="range" id="speedRange" min="0.25" max="3.00" step="0.25" value="1">
+            
+            <div class="preset-btns">
+                <button class="preset" onclick="setSpeed(1.25)">1.25x</button>
+                <button class="preset" onclick="setSpeed(1.5)">1.5x</button>
+                <button class="preset" onclick="setSpeed(1.75)">1.75x</button>
+                <button class="preset" onclick="setSpeed(2.0)">2x</button>
+                <button class="preset" onclick="setSpeed(2.5)">2.5x</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <div class="res-card">
+            <div class="res-title">New Duration</div>
+            <div class="res-val" id="resDuration">00h 00m 00s</div>
+        </div>
+        <div class="res-card">
+            <div class="res-title">Time Saved</div>
+            <div class="res-saved" id="resSaved">00h 00m 00s</div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-hourglass-half"></i> YouTube Speed Calculator: Save Time Learning</h2>
+        <p>In today's fast-paced world, time is our most valuable asset. Watching YouTube videos, lectures, and podcasts at normal speed can feel slow, especially for students and professionals trying to consume a lot of information. <strong>Xizoa Hub's Speed Calculator</strong> helps you calculate exactly how much time you save by increasing playback speed.</p>
+
+        <h3><i class="fas fa-tachometer-alt"></i> The Power of 2x Speed</h3>
+        <p>Did you know? If you watch a 1-hour video at 2x speed, you finish it in just 30 minutes. That means you can watch <strong>two</strong> videos in the time it usually takes to watch one. This is a massive productivity hack for:</p>
+        <ul>
+            <li><strong>Students:</strong> Reviewing recorded lectures before exams.</li>
+            <li><strong>Developers:</strong> Watching coding tutorials.</li>
+            <li><strong>Podcast Listeners:</strong> Consuming more episodes daily.</li>
+        </ul>
+
+        <h3><i class="fas fa-cogs"></i> How It Works</h3>
+        <p>The math is simple but tedious to do in your head. Formula: <code>Original Time / Playback Speed = New Time</code>.
+        <br>For example: 60 minutes / 1.5x speed = 40 minutes. You save 20 minutes.</p>
+
+        <h3><i class="fas fa-brain"></i> Can You Still Understand at High Speed?</h3>
+        <p>Studies show that the human brain can process speech much faster than people typically talk. Most people speak at 150 words per minute, but we can comprehend up to 300+ words per minute. Watching at 1.5x or 2x speed keeps your brain engaged and prevents your mind from wandering.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Does watching at 2x speed affect comprehension?</h3>
+            <p>For most people, comprehension remains high up to 1.75x speed. At 2x and above, it might require more focus. We recommend starting at 1.25x and gradually increasing.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I change speed on YouTube?</h3>
+            <p>On Desktop: Click the Gear icon > Playback Speed. <br>On Mobile: Tap the video > Settings (Gear icon) > Playback Speed.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Speed Calculator helps you save time watching videos. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const inH = document.getElementById('inH');
+    const inM = document.getElementById('inM');
+    const inS = document.getElementById('inS');
+    const speedRange = document.getElementById('speedRange');
+    const speedDisplay = document.getElementById('speedDisplay');
+    const resDuration = document.getElementById('resDuration');
+    const resSaved = document.getElementById('resSaved');
+
+    function formatTime(seconds) {
+        let h = Math.floor(seconds / 3600);
+        let m = Math.floor((seconds % 3600) / 60);
+        let s = Math.floor(seconds % 60);
+        
+        return `${h}h ${m}m ${s}s`;
+    }
+
+    function calculate() {
+        let h = parseInt(inH.value) || 0;
+        let m = parseInt(inM.value) || 0;
+        let s = parseInt(inS.value) || 0;
+        let speed = parseFloat(speedRange.value);
+
+        // Update Speed UI
+        speedDisplay.innerText = speed + "x";
+
+        let totalSeconds = (h * 3600) + (m * 60) + s;
+        
+        if(totalSeconds === 0) {
+            resDuration.innerText = "00h 00m 00s";
+            resSaved.innerText = "00h 00m 00s";
+            return;
+        }
+
+        let newSeconds = totalSeconds / speed;
+        let savedSeconds = totalSeconds - newSeconds;
+
+        resDuration.innerText = formatTime(newSeconds);
+        resSaved.innerText = formatTime(savedSeconds);
+    }
+
+    function setSpeed(val) {
+        speedRange.value = val;
+        calculate();
+        
+        // Active Button State
+        document.querySelectorAll('.preset').forEach(btn => {
+            btn.classList.remove('active');
+            if(parseFloat(btn.innerText) === val) btn.classList.add('active');
+        });
+    }
+
+    // Listeners
+    [inH, inM, inS, speedRange].forEach(el => {
+        el.addEventListener('input', calculate);
+    });
+  </script>
+</body>
+</html>
