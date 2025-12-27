@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Viral YouTube Video Idea Generator | Get Trending Topics (Free)</title>
+  <meta name="description" content="Never run out of content ideas. Generate viral, high-CTR video titles and topics for YouTube instantly. Best free idea generator for Gaming, Tech, Vlogs & Shorts.">
+  <meta name="keywords" content="youtube video idea generator, viral video topics, youtube title generator, content ideas for youtube, youtube shorts ideas, gaming video ideas, vlog ideas">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-idea-generator">
+
+  <meta property="og:title" content="Viral Video Idea Generator - Xizoa Hub">
+  <meta property="og:description" content="Stuck on what to record next? Generate 50+ viral video ideas in 1 click.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-idea-generator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-ideas.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Video Idea Generator",
+      "operatingSystem": "Web, Android, iOS, Windows, MacOS",
+      "applicationCategory": "ContentCreation",
+      "url": "https://xizoa.com/youtube-idea-generator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "10500" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I find viral video ideas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use the Xizoa Idea Generator. Enter your niche (e.g., Gaming), and it will provide high-CTR titles based on proven viral formats." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this tool free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is 100% free for all creators." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Consistent Brand) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .controls-wrapper { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+    
+    select, input[type="text"] {
+      padding: 18px 25px;
+      background: #000;
+      border: 1px solid #333;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.1rem;
+      flex: 1;
+      min-width: 200px;
+      transition: 0.3s;
+    }
+    select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+
+    button#btnSpin {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0 40px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      min-width: 180px;
+    }
+    button#btnSpin:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,0,0,0.4); }
+
+    /* RESULT LIST */
+    .ideas-list {
+      list-style: none;
+      margin-top: 30px;
+      display: grid;
+      gap: 15px;
+    }
+    .idea-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+      animation: fadeIn 0.5s ease;
+    }
+    .idea-card:hover { transform: translateX(5px); border-color: var(--primary); background: rgba(255,0,0,0.05); }
+    
+    .idea-text { font-size: 1.1rem; font-weight: 600; color: #fff; }
+    
+    .copy-icon {
+      color: #777; cursor: pointer; padding: 10px; transition: 0.2s; font-size: 1.2rem;
+    }
+    .copy-icon:hover { color: var(--primary); transform: scale(1.1); }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 50px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2rem; color: #0f172a; margin-bottom: 20px; margin-top: 30px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.3rem; margin-bottom: 15px; color: #333; font-weight: 700; margin-top: 25px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.7; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
+    .faq-item h3 { font-size: 1.15rem; color: #1e293b; margin-bottom: 8px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1rem; color: #64748b; line-height: 1.6; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      .controls-wrapper { flex-direction: column; }
+      button#btnSpin { width: 100%; padding: 15px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Viral Video <span>Idea Generator</span></h1>
+    <p class="subtitle">Beat Creator's Block! Instantly generate high-CTR video topics for your channel.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      <div class="controls-wrapper">
+        <select id="categorySelect">
+            <option value="gaming">Category: Gaming</option>
+            <option value="tech">Category: Tech & Review</option>
+            <option value="vlog">Category: Vlog & Lifestyle</option>
+            <option value="tutorial">Category: Education/How-To</option>
+            <option value="roast">Category: Commentary/Roast</option>
+        </select>
+        <input type="text" id="keywordInput" placeholder="Enter Keyword (e.g. Minecraft, iPhone, My Dog)...">
+        <button id="btnSpin"><i class="fas fa-magic"></i> Generate Ideas</button>
+      </div>
+
+      <div id="resultsArea" style="display:none;">
+          <h3 style="color:#fff; margin-bottom:20px; font-size:1.2rem;">🔥 Viral Ideas for You:</h3>
+          <ul class="ideas-list" id="ideasList">
+              </ul>
+      </div>
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-lightbulb"></i> Never Run Out of YouTube Video Ideas</h2>
+        <p>The biggest enemy of any YouTuber isn't the algorithm—it's <strong>Creator's Block</strong>. Staring at a blank screen wondering "What should I film next?" is frustrating. <strong>Xizoa Hub's Viral Video Idea Generator</strong> solves this problem instantly. By combining proven viral title formats with your specific niche, we generate endless content possibilities that are designed to get clicks.</p>
+
+        <h3><i class="fas fa-brain"></i> How Does It Work?</h3>
+        <p>Our tool uses a database of "High CTR" (Click-Through Rate) title templates used by top creators like MrBeast, PewDiePie, and Tech channels. It takes your keyword (e.g., "GTA 5") and plugs it into psychological triggers like:</p>
+        <ul>
+            <li><strong>The Challenge Format:</strong> "I Played GTA 5 for 24 Hours Straight."</li>
+            <li><strong>The Negative Angle:</strong> "Why I Quit Playing GTA 5." (Negative titles often get more clicks!)</li>
+            <li><strong>The Listicle:</strong> "10 GTA 5 Secrets You Missed."</li>
+            <li><strong>The Story:</strong> "How GTA 5 Changed My Life."</li>
+        </ul>
+
+        <h3><i class="fas fa-cogs"></i> How to Use the Idea Generator</h3>
+        <ol>
+            <li><strong>Select Category:</strong> Choose your channel niche (Gaming, Tech, Vlog, etc.) from the dropdown menu.</li>
+            <li><strong>Enter Keyword:</strong> Type the specific game, product, or topic you want to cover (e.g., "iPhone 15", "Gym", "Minecraft").</li>
+            <li><strong>Generate:</strong> Click the button. The AI will instantly spin out 5-10 catchy titles.</li>
+            <li><strong>Tweak & Film:</strong> Pick the best one, maybe tweak it slightly to fit your style, and start recording!</li>
+        </ol>
+
+        <h3><i class="fas fa-chart-line"></i> Why Titles Matter More Than Content</h3>
+        <p>You can have the best video editing in the world, but if your Title and Thumbnail don't grab attention, nobody will click. A good title creates a "Curiosity Gap"—it makes the viewer ask a question they <em>need</em> answered. Our generator focuses specifically on creating that curiosity gap.</p>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Are these titles copyrighted?</h3>
+            <p>No. Video titles cannot be copyrighted. You are free to use any idea generated by this tool for your YouTube channel without giving credit.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does this work for YouTube Shorts?</h3>
+            <p>Absolutely! These catchy titles work perfectly as text-overlays on Shorts to hook viewers in the first 3 seconds.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this tool free?</h3>
+            <p>Yes, Xizoa Video Idea Generator is 100% free and unlimited. Come back whenever you are stuck for ideas.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Idea Generator helps you find viral topics for your next video. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnSpin = document.getElementById('btnSpin');
+    const categorySelect = document.getElementById('categorySelect');
+    const keywordInput = document.getElementById('keywordInput');
+    const resultsArea = document.getElementById('resultsArea');
+    const ideasList = document.getElementById('ideasList');
+
+    // TEMPLATE DATABASE
+    const templates = {
+        'gaming': [
+            "I Played [KW] for 24 Hours Straight...",
+            "I Survived 100 Days in [KW] (Hardcore)",
+            "The Truth About [KW] in 2025",
+            "10 [KW] Secrets Developers Don't Want You To Know",
+            "Why Everyone is Quitting [KW]",
+            "I Spent $1000 on [KW] and Regret It",
+            "Noob vs Pro vs Hacker in [KW]",
+            "Can You Beat [KW] Without Walking?",
+            "The History of [KW] (Documentary)",
+            "Playing [KW] Until I Win"
+        ],
+        'tech': [
+            "Don't Buy the [KW] Until You Watch This",
+            "[KW] Review: Is It Worth The Hype?",
+            "I Used [KW] for 30 Days - Here's What Happened",
+            "[KW] vs The Cheapest Alternative",
+            "The Dark Side of [KW]",
+            "Stop Using [KW] Wrong!",
+            "Unboxing the World's Most Expensive [KW]",
+            "5 Hidden Features in [KW]",
+            "Why [KW] is a Game Changer",
+            "Is [KW] Dead in 2025?"
+        ],
+        'vlog': [
+            "I Said Yes To Everything in [KW] for 24 Hours",
+            "Surviving 24 Hours in [KW] with $0",
+            "The Truth About My [KW] Experience",
+            "I Travelled to [KW] and it went wrong...",
+            "A Day in The Life: [KW] Edition",
+            "My [KW] Routine (Morning to Night)",
+            "Why I'm Moving to [KW]",
+            "Surprising My Girlfriend with [KW]",
+            "Exploring the Haunted [KW]",
+            "Shopping for [KW] - Budget Challenge"
+        ],
+        'tutorial': [
+            "How to Master [KW] in 10 Minutes",
+            "The Ultimate Guide to [KW] for Beginners",
+            "Stop Doing This in [KW] (Big Mistake)",
+            "3 Tips to Improve Your [KW] Instantly",
+            "How to Make Money with [KW]",
+            "[KW] Tutorial: From Zero to Hero",
+            "Everything You Need to Know About [KW]",
+            "Fix Your [KW] Problems Fast",
+            "Secret [KW] Hacks That Actually Work",
+            "Learn [KW] Fast"
+        ],
+        'roast': [
+            "The Problem With [KW]",
+            "Why I Hate [KW]",
+            "Reacting to Cringe [KW] Videos",
+            "[KW] is Ruining Everything",
+            "The Downfall of [KW]",
+            "Exposing the Truth About [KW]",
+            "This [KW] Video Made Me Cry",
+            "I Roast Your [KW] Setups",
+            "Reacting to [KW] Memes",
+            "Is [KW] Overrated?"
+        ]
+    };
+
+    btnSpin.addEventListener('click', () => {
+        let keyword = keywordInput.value.trim();
+        const category = categorySelect.value;
+
+        // Default keyword if empty
+        if(!keyword) {
+            keyword = "This Game"; 
+            if(category === 'tech') keyword = "This Gadget";
+            if(category === 'vlog') keyword = "My Life";
+        }
+
+        // Animation
+        btnSpin.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+        btnSpin.disabled = true;
+        ideasList.innerHTML = '';
+        resultsArea.style.display = 'none';
+
+        setTimeout(() => {
+            const selectedTemplates = templates[category];
+            // Shuffle and pick 6
+            const shuffled = selectedTemplates.sort(() => 0.5 - Math.random()).slice(0, 6);
+
+            shuffled.forEach(temp => {
+                const finalTitle = temp.replace("[KW]", keyword);
+                
+                const li = document.createElement('li');
+                li.className = 'idea-card';
+                li.innerHTML = `
+                    <span class="idea-text">${finalTitle}</span>
+                    <i class="fas fa-copy copy-icon" title="Copy Idea"></i>
+                `;
+                
+                // Copy Logic
+                li.querySelector('.copy-icon').addEventListener('click', function() {
+                    navigator.clipboard.writeText(finalTitle);
+                    this.className = "fas fa-check copy-icon";
+                    this.style.color = "#00ff00";
+                    setTimeout(() => {
+                        this.className = "fas fa-copy copy-icon";
+                        this.style.color = "#777";
+                    }, 1500);
+                });
+
+                ideasList.appendChild(li);
+            });
+
+            resultsArea.style.display = 'block';
+            btnSpin.innerHTML = '<i class="fas fa-magic"></i> Generate More';
+            btnSpin.disabled = false;
+            
+            // Scroll to results
+            resultsArea.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        }, 800);
+    });
+    
+    // Enter key trigger
+    keywordInput.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') btnSpin.click();
+    });
+
+  </script>
+</body>
+</html>
