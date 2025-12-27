@@ -1,187 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XIZOAHUB TOOLS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>XIZOAHUB TOOLS - Ultimate Collection</title>
 <meta name="description" content="Premium Free Tools: AI Writers, PDF Converters, Gaming Tests, Coding Utilities & More. No Login Required.">
 <link rel="icon" href="favicon.ico">
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "XIZOAHUB TOOLS",
-  "url": "https://tools.xizoa.com",
-  "description": "A collection premium free online tools for developers, gamers, and content creators including AI writers, PDF tools, and converters.",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": "AI Paraphraser, PDF Merger, YouTube Thumbnail Downloader, Resume Builder"
-}
-</script>
-
 <style>
+/* --- 1. CORE VARIABLES & THEME CONFIG --- */
 :root {
-  --primary: #2563eb;
-  --bg-body: #ffffff;
-  --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    
+    /* Light Theme Colors */
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    --primary: #2563eb;
+    
+    /* Animation Speeds */
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
-body { background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
-a { text-decoration: none; }
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+    --primary: #3b82f6;
+}
 
-/* --- HEADER --- */
+/* --- 2. GLOBAL RESET & UTILITIES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Advanced Background Grid Pattern */
+body::before {
+    content: "";
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    z-index: -1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-body); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* --- 3. HEADER & NAVIGATION --- */
 header {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
 }
-.nav { max-width: 1400px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.6rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
-.logo i { color: var(--primary); }
 
-.menu { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+.nav {
+    max-width: 1400px; margin: auto; padding: 15px 25px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--text-main);
+    display: flex; align-items: center; gap: 12px;
+    letter-spacing: -0.5px;
+}
+.logo i { 
+    color: #fff; background: var(--primary);
+    padding: 8px; border-radius: 8px; font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.controls { display: flex; align-items: center; gap: 15px; }
+
+/* Scrollable Category Menu */
+.menu-container {
+    flex: 1; margin: 0 30px; overflow: hidden; position: relative;
+}
+.menu-container::after {
+    content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 40px;
+    background: linear-gradient(to right, transparent, var(--glass));
+    pointer-events: none;
+}
+.menu {
+    display: flex; gap: 10px; overflow-x: auto;
+    padding-bottom: 4px; scrollbar-width: none;
+}
 .menu::-webkit-scrollbar { display: none; }
+
 .menu button {
-    background: transparent; border: 1px solid transparent; font-size: 0.9rem; font-weight: 600; 
-    color: var(--text-muted); cursor: pointer; padding: 8px 18px; 
-    border-radius: 50px; transition: 0.3s; white-space: nowrap;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-muted); padding: 8px 18px;
+    border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; white-space: nowrap; transition: 0.3s var(--ease);
 }
-.menu button:hover { background: #f1f5f9; color: var(--primary); }
-.menu button.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+.menu button:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+.menu button.active {
+    background: var(--primary); border-color: var(--primary);
+    color: #fff; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
 
-/* --- HERO --- */
-.hero { text-align: center; padding: 80px 20px 50px; max-width: 900px; margin: auto; }
-.hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--text-main); font-weight: 800; letter-spacing: -1.5px; }
-.hero h1 span { color: var(--primary); background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 35px; }
+/* Theme Toggle */
+.theme-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg-card);
+    color: var(--text-main); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+.theme-btn:hover { background: var(--border); transform: rotate(15deg); }
 
-/* --- SEARCH --- */
-.search-container { max-width: 600px; margin: 0 auto 50px; position: relative; }
-.search-container i { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem; }
-.search-container input {
-    width: 100%; padding: 18px 20px 18px 55px; border-radius: 50px;
-    border: 2px solid var(--border); background: #fff;
+/* --- 4. HERO SECTION --- */
+.hero {
+    text-align: center; padding: 100px 20px 60px;
+    max-width: 900px; margin: auto;
+    position: relative;
+}
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem; line-height: 1.1; margin-bottom: 25px;
+    font-weight: 800; letter-spacing: -1.5px;
+}
+.hero h1 span {
+    background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+    font-size: 1.25rem; color: var(--text-muted);
+    margin-bottom: 40px; max-width: 600px; margin-inline: auto;
+}
+
+/* Premium Search Bar */
+.search-box {
+    position: relative; max-width: 550px; margin: auto;
+}
+.search-box input {
+    width: 100%; padding: 22px 30px 22px 60px;
+    border-radius: 20px; border: 2px solid var(--border);
+    background: var(--bg-card); color: var(--text-main);
     font-size: 1.1rem; outline: none; transition: 0.3s;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    box-shadow: var(--shadow);
 }
-.search-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1); }
+.search-box i {
+    position: absolute; left: 25px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 1.2rem;
+}
+.search-box input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.15);
+}
 
-/* --- MAIN GRID --- */
-.container { max-width: 1400px; margin: 0 auto 80px; padding: 0 25px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+/* --- 5. ULTRA PREMIUM CARDS --- */
+.container { max-width: 1400px; margin: 0 auto 100px; padding: 0 25px; }
+.grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+}
 
 .card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 20px; padding: 25px; position: relative;
-    display: flex; flex-direction: column; justify-content: center;
-    transition: all 0.3s ease;
-    --accent: #2563eb; 
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px; padding: 30px 25px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: relative; overflow: hidden;
+    transition: all 0.4s var(--ease);
+    cursor: pointer;
+    text-align: left;
 }
-.card:hover { transform: translateY(-7px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
 
+/* Card Hover Effects */
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+}
+
+/* Dark Mode Glow */
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 0 30px -5px var(--accent);
+}
+
+/* Icon Box */
 .icon-box {
-    width: 55px; height: 55px; border-radius: 14px;
-    background: #f8fafc; display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px; transition: 0.3s;
+    width: 60px; height: 60px; border-radius: 16px;
+    background: var(--bg-body);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; transition: 0.4s var(--ease);
+    position: relative; z-index: 2;
 }
-.card:hover .icon-box { background: var(--accent); }
-.card i { font-size: 1.6rem; color: var(--accent); transition: 0.3s; }
-.card:hover i { color: #fff; }
+.card:hover .icon-box {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.1);
+}
+.card i { font-size: 1.8rem; color: var(--accent); transition: 0.3s; }
+.card:hover i { color: white; }
 
-.card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 5px; color: var(--text-main); }
-.card p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* Text Styling */
+.card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem; font-weight: 700;
+    margin-bottom: 8px; color: var(--text-main);
+    position: relative; z-index: 2;
+}
+.card p {
+    font-size: 0.9rem; color: var(--text-muted);
+    font-weight: 500; letter-spacing: 0.3px;
+    position: relative; z-index: 2;
+}
 
+/* Badges */
 .badge {
-    position: absolute; top: 15px; right: 15px; 
-    font-size: 0.7rem; font-weight: 700; padding: 4px 10px; 
-    border-radius: 20px; background: #e0f2fe; color: #0284c7;
+    position: absolute; top: 20px; right: 20px;
+    font-size: 0.7rem; font-weight: 800; padding: 6px 12px;
+    border-radius: 30px; text-transform: uppercase; letter-spacing: 1px;
 }
-.badge.new { background: #dcfce7; color: #16a34a; }
 .badge.hot { background: #fee2e2; color: #dc2626; }
+.badge.new { background: #dcfce7; color: #16a34a; }
+[data-theme="dark"] .badge.hot { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+[data-theme="dark"] .badge.new { background: rgba(22, 163, 74, 0.2); color: #86efac; }
 
-/* --- DOODLE BLUE BOX SECTIONS --- */
-.blue-doodle-section {
-    max-width: 1200px; margin: 0 auto 60px; padding: 60px 40px;
-    background-color: #f0f9ff;
-    background-image: radial-gradient(#bae6fd 1.5px, transparent 1.5px);
-    background-size: 24px 24px;
-    border-radius: 30px;
-    border: 1px solid #e0f2fe;
-    text-align: center;
+/* Decorative Background Blobs inside Card */
+.card::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 100px; height: 100px; background: var(--accent);
+    filter: blur(60px); opacity: 0; transition: 0.5s;
+    pointer-events: none;
 }
-.blue-doodle-section h2 { font-size: 2rem; margin-bottom: 15px; color: #0c4a6e; }
-.blue-doodle-section p { color: #557891; margin-bottom: 40px; font-size: 1.1rem; }
+.card:hover::before { opacity: 0.2; }
 
-/* Categories Grid */
-.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; text-align: left; }
+/* --- 6. SECTIONS (RESTORED & UPGRADED) --- */
+.section-wrapper {
+    max-width: 1200px; margin: 0 auto 80px; padding: 0 25px;
+}
+
+.promo-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd;
+    border-radius: 30px; padding: 60px 40px;
+    text-align: center; position: relative; overflow: hidden;
+}
+[data-theme="dark"] .promo-box {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+    border-color: #0369a1;
+}
+
+/* Doodle Pattern Background */
+.promo-box::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(#38bdf8 2px, transparent 2px);
+    background-size: 30px 30px; opacity: 0.2;
+}
+
+.promo-content { position: relative; z-index: 2; }
+.promo-box h2 { font-size: 2.2rem; color: #0284c7; margin-bottom: 15px; font-family: var(--font-heading); }
+[data-theme="dark"] .promo-box h2 { color: #e0f2fe; }
+
+.promo-box p { font-size: 1.1rem; color: #0369a1; margin-bottom: 40px; }
+[data-theme="dark"] .promo-box p { color: #bae6fd; }
+
+/* Category Grid (Restored) */
+.cat-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px; margin-top: 30px;
+}
 .cat-card {
-    background: #fff; padding: 25px; border-radius: 18px;
-    cursor: pointer; transition: 0.3s; border: 1px solid transparent;
-    box-shadow: 0 4px 10px rgba(186, 230, 253, 0.4);
+    background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
+    padding: 20px; border-radius: 16px; cursor: pointer;
+    transition: 0.3s; border: 1px solid rgba(255,255,255,0.5);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-.cat-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15); }
-.cat-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 15px; display: block; }
-.cat-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
-.cat-card span { font-size: 0.85rem; color: var(--text-muted); }
+.cat-card i { font-size: 1.5rem; color: var(--primary); }
+.cat-card span { font-weight: 700; color: #0f172a; }
+.cat-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-/* Explore Buttons */
-.explore-btn {
-    display: inline-block; padding: 16px 45px; 
-    background: var(--primary); color: #fff; font-weight: 700; 
-    border-radius: 50px; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
-    transition: 0.3s; font-size: 1.1rem;
-}
-.explore-btn:hover { transform: scale(1.05); background: #1d4ed8; }
-
-/* Load More Button */
-.load-btn-box { text-align: center; margin-top: 50px; margin-bottom: 80px; }
-.load-btn {
-    padding: 14px 40px; background: #fff; color: var(--text-main);
-    border: 2px solid var(--border); border-radius: 50px; font-weight: 600; cursor: pointer;
+/* --- 7. BUTTONS --- */
+.load-btn-box { text-align: center; margin: 50px 0; }
+.btn-outline {
+    padding: 15px 40px; background: transparent;
+    border: 2px solid var(--border); color: var(--text-main);
+    border-radius: 50px; font-weight: 700; cursor: pointer;
     transition: 0.3s; font-size: 1rem;
 }
-.load-btn:hover { border-color: var(--text-main); background: var(--text-main); color: #fff; }
+.btn-outline:hover {
+    border-color: var(--primary); color: var(--primary);
+    transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37,99,235,0.2);
+}
 
-/* --- FOOTER --- */
-footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20px 30px; }
-.footer-content { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
-.footer-brand h2 { color: var(--text-main); margin-bottom: 15px; }
-.footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 300px; line-height: 1.8; }
-.f-col h4 { margin-bottom: 25px; font-size: 1.1rem; color: var(--text-main); }
-.f-col a { display: block; color: var(--text-muted); margin-bottom: 12px; font-size: 0.95rem; transition: 0.2s; }
-.f-col a:hover { color: var(--primary); padding-left: 5px; }
-.copyright { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: #94a3b8; font-size: 0.9rem; }
+.btn-primary {
+    display: inline-block; padding: 18px 50px;
+    background: var(--primary); color: #fff;
+    font-weight: 700; border-radius: 50px;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
+    transition: 0.3s; font-size: 1.1rem;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.05); background: #1d4ed8; }
 
-/* --- RESPONSIVE MOBILE FIXES --- */
+/* --- 8. FOOTER --- */
+footer {
+    background: var(--bg-card); border-top: 1px solid var(--border);
+    padding: 80px 20px 30px; margin-top: 100px;
+}
+.footer-content {
+    max-width: 1200px; margin: auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+}
+.footer-brand h2 { color: var(--text-main); margin-bottom: 20px; font-family: var(--font-heading); }
+.footer-brand p { color: var(--text-muted); line-height: 1.8; }
+.f-col h4 { margin-bottom: 25px; color: var(--text-main); font-weight: 700; }
+.f-col a { display: block; color: var(--text-muted); margin-bottom: 15px; transition: 0.2s; }
+.f-col a:hover { color: var(--primary); transform: translateX(5px); }
+.copyright { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-muted); }
+
+/* --- MOBILE --- */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    
-    .blue-doodle-section { padding: 40px 20px; }
-    .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .cat-card { padding: 15px 10px; text-align: center; }
-    .cat-card i { font-size: 1.4rem; margin-bottom: 8px; }
-    .cat-card h3 { font-size: 0.85rem; margin-bottom: 2px; }
-    .cat-card span { display: none; }
-
-    .footer-content { grid-template-columns: 1fr; text-align: left; gap: 30px; }
-    .footer-brand p { margin: 0; max-width: 100%; }
-    .f-col { border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
-    .f-col:last-child { border-bottom: none; }
+    .hero h1 { font-size: 2.8rem; }
+    .nav { padding: 15px 10px; }
+    .menu-container { margin: 0 10px; }
+    .footer-content { grid-template-columns: 1fr; gap: 30px; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -190,25 +360,31 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20
 <header>
   <div class="nav">
     <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
-    <div class="menu">
-      <button class="active" onclick="filterTools('all', this)">All</button>
-      <button onclick="filterTools('social', this)">Social</button>
-      <button onclick="filterTools('ai', this)">AI</button>
-      <button onclick="filterTools('pdf', this)">PDF</button>
-      <button onclick="filterTools('gaming', this)">Gaming</button>
-      <button onclick="filterTools('dev', this)">Dev</button>
-      <button onclick="filterTools('image', this)">Image</button>
-      <button onclick="filterTools('music', this)">Music</button>
-      <button onclick="filterTools('utility', this)">Utility</button>
+    <div class="menu-container">
+        <div class="menu">
+          <button class="active" onclick="filterTools('all', this)">All Tools</button>
+          <button onclick="filterTools('social', this)">Social Media</button>
+          <button onclick="filterTools('ai', this)">AI Magic</button>
+          <button onclick="filterTools('pdf', this)">PDF Pro</button>
+          <button onclick="filterTools('gaming', this)">Gaming</button>
+          <button onclick="filterTools('dev', this)">Developers</button>
+          <button onclick="filterTools('image', this)">Image Tools</button>
+          <button onclick="filterTools('music', this)">Music Studio</button>
+          <button onclick="filterTools('utility', this)">Utilities</button>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
     </div>
   </div>
 </header>
 
 <section class="hero">
   <h1>Premium Tools for <br><span>Creators & Devs</span></h1>
-  <div class="search-container">
+  <p>Supercharge your workflow with our collection of free, privacy-focused utilities. No login required. 100% Free.</p>
+  <div class="search-box">
     <i class="fas fa-search"></i>
-    <input type="text" id="searchInput" placeholder="Search tools (e.g., thumbnail, pdf, speed)...">
+    <input type="text" id="searchInput" placeholder="Search for a tool (e.g., Thumbnail, PDF, Speed)...">
   </div>
 </section>
 
@@ -216,240 +392,227 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20
   <div class="grid" id="toolGrid">
     
     <a href="YouTube-thumbnail-downloader.html" class="card" data-cat="social" style="--accent: #FF0000;">
-       <span class="badge hot">HOT</span><div class="icon-box"><i class="fab fa-youtube"></i></div>
-       <h3>Thumbnail DL</h3><p>Get HQ Thumbnails</p>
+       <span class="badge hot">HOT</span>
+       <div class="icon-box"><i class="fab fa-youtube"></i></div>
+       <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
     </a>
     <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
-       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text</p>
+       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
     </a>
     <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
-       <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Files</p>
+       <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Multiple Files</p>
     </a>
     <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
-       <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Internet Test</p>
+       <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Check Internet Speed</p>
     </a>
     <a href="insta-video-saver.html" class="card" data-cat="social" style="--accent: #E1306C;">
-       <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video</p>
+       <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
     </a>
     <a href="CV-Resume-Builder.html" class="card" data-cat="pdf" style="--accent: #6c5ce7;">
-       <div class="icon-box"><i class="fas fa-user-tie"></i></div><h3>Resume Builder</h3><p>Make CV</p>
+       <div class="icon-box"><i class="fas fa-user-tie"></i></div><h3>Resume Builder</h3><p>Create Professional CV</p>
     </a>
     <a href="image-compressor.html" class="card" data-cat="image" style="--accent: #00cec9;">
-       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size</p>
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
     </a>
     <a href="youtubeshorts.html" class="card" data-cat="social" style="--accent: #FF0000;">
-       <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>YouTube Shorts</p>
+       <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>Download YT Shorts</p>
     </a>
     <a href="tiktok-downloader (1).html" class="card" data-cat="social" style="--accent: #ff0050;">
-       <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark</p>
+       <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark HD</p>
     </a>
     <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
-       <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Make QR</p>
+       <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Create Custom QR</p>
     </a>
     <a href="fps-chekar.html" class="card" data-cat="gaming" style="--accent: #00b894;">
-       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Hz Test</p>
+       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Screen Hz Test</p>
     </a>
     <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
-       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>Voice Reader</p>
+       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
     </a>
-
     <a href="youtube-tag-extractor.html" class="card" data-cat="social" style="--accent: #FF0000;">
-       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>SEO Tags</p>
+       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>Get Viral SEO Tags</p>
     </a>
     <a href="social-media-caption (1).html" class="card" data-cat="social" style="--accent: #2c3e50;">
-       <div class="icon-box"><i class="fas fa-quote-right"></i></div><h3>Social Captions</h3><p>Viral Quotes</p>
+       <div class="icon-box"><i class="fas fa-quote-right"></i></div><h3>Social Captions</h3><p>Generate Viral Quotes</p>
     </a>
     <a href="hashtag-generator.html" class="card" data-cat="social" style="--accent: #8e44ad;">
-       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>Hashtag Gen</h3><p>Reach Boost</p>
+       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>Hashtag Gen</h3><p>Boost Post Reach</p>
     </a>
     <a href="glitch-text-generator.html" class="card" data-cat="social" style="--accent: #00cec9;">
-       <div class="icon-box"><i class="fas fa-bug"></i></div><h3>Glitch Text</h3><p>Zalgo Text</p>
+       <div class="icon-box"><i class="fas fa-bug"></i></div><h3>Glitch Text</h3><p>Zalgo/Corrupt Text</p>
     </a>
     <a href="invisible-text.html" class="card" data-cat="social" style="--accent: #b2bec3;">
-       <div class="icon-box"><i class="fas fa-ghost"></i></div><h3>Invisible Text</h3><p>Blank Message</p>
+       <div class="icon-box"><i class="fas fa-ghost"></i></div><h3>Invisible Text</h3><p>Send Blank Messages</p>
     </a>
     <a href="ai-text-summerise.html" class="card" data-cat="ai" style="--accent: #f39c12;">
-       <div class="icon-box"><i class="fas fa-file-alt"></i></div><h3>AI Summarizer</h3><p>Shorten Text</p>
+       <div class="icon-box"><i class="fas fa-file-alt"></i></div><h3>AI Summarizer</h3><p>Shorten Long Text</p>
     </a>
     <a href="ai-grammar-fixer.html" class="card" data-cat="ai" style="--accent: #27ae60;">
        <div class="icon-box"><i class="fas fa-check-double"></i></div><h3>Grammar Fix</h3><p>Perfect English</p>
     </a>
     <a href="hand-sign-predicter.html" class="card" data-cat="ai" style="--accent: #8e44ad;">
-       <div class="icon-box"><i class="fas fa-hands"></i></div><h3>Hand Sign AI</h3><p>ML Prediction</p>
+       <div class="icon-box"><i class="fas fa-hands"></i></div><h3>Hand Sign AI</h3><p>ML Gesture Prediction</p>
     </a>
     <a href="blog-title-generator.html" class="card" data-cat="ai" style="--accent: #2980b9;">
        <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Blog Title Gen</h3><p>Catchy Headlines</p>
     </a>
     <a href="High-quality-PDF-smart-tool.html" class="card" data-cat="pdf" style="--accent: #d63031;">
-       <div class="icon-box"><i class="fas fa-file-pdf"></i></div><h3>HQ PDF Tool</h3><p>Compress & Edit</p>
+       <div class="icon-box"><i class="fas fa-file-pdf"></i></div><h3>HQ PDF Tool</h3><p>Compress & Edit Pro</p>
     </a>
     <a href="pdf-to-word.html" class="card" data-cat="pdf" style="--accent: #0984e3;">
        <div class="icon-box"><i class="fas fa-file-word"></i></div><h3>PDF to Word</h3><p>Docx Converter</p>
     </a>
     <a href="pdf-light-mode.html" class="card" data-cat="pdf" style="--accent: #2d3436;">
-       <div class="icon-box"><i class="fas fa-eye"></i></div><h3>PDF Dark Mode</h3><p>Reader Tool</p>
+       <div class="icon-box"><i class="fas fa-eye"></i></div><h3>PDF Dark Mode</h3><p>Comfort Reader</p>
     </a>
     <a href="reaction-time-test.html" class="card" data-cat="gaming" style="--accent: #e84393;">
-       <div class="icon-box"><i class="fas fa-stopwatch"></i></div><h3>Reaction Time</h3><p>Reflex Test</p>
+       <div class="icon-box"><i class="fas fa-stopwatch"></i></div><h3>Reaction Time</h3><p>Test Your Reflexes</p>
     </a>
     <a href="mouse-polling-rate.html" class="card" data-cat="gaming" style="--accent: #0984e3;">
-       <div class="icon-box"><i class="fas fa-mouse"></i></div><h3>Polling Rate</h3><p>Mouse Hz</p>
+       <div class="icon-box"><i class="fas fa-mouse"></i></div><h3>Polling Rate</h3><p>Check Mouse Hz</p>
     </a>
     <a href="keyboard-tester.html" class="card" data-cat="gaming" style="--accent: #f1c40f;">
-       <div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Keyboard Test</h3><p>Key Check</p>
+       <div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Keyboard Test</h3><p>Test All Keys</p>
     </a>
     <a href="/compress-pdf-under-200kb" class="card" data-cat="pdf" style="--accent: #2563eb;">
-   <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div>
-   <h3>Compress PDF</h3>
-   <p>Resize Under 200KB</p>
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Compress PDF</h3><p>Under 200KB Tool</p>
     </a>
     <a href="gaming.html" class="card" data-cat="gaming" style="--accent: #6c5ce7;">
-       <div class="icon-box"><i class="fas fa-gamepad"></i></div><h3>Name Style</h3><p>Fancy Nickname</p>
+       <div class="icon-box"><i class="fas fa-gamepad"></i></div><h3>Name Style</h3><p>Fancy Nicknames</p>
     </a>
     <a href="jpg-to-pdf.html" class="card" data-cat="pdf" style="--accent: #00b894;">
-   <div class="icon-box"><i class="fas fa-file-image"></i></div>
-   <h3>JPG to PDF</h3>
-   <p>Convert Pages to Images</p>
-</a>
+       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>JPG to PDF</h3><p>Images to Document</p>
+    </a>
     <a href="typing-master.html" class="card" data-cat="gaming" style="--accent: #2d3436;">
-       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Test</p>
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Typing Test</p>
     </a>
     <a href="repo-file-generator.html" class="card" data-cat="dev" style="--accent: #333;">
-       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-file-code"></i></div><h3>Repo File Gen</h3><p>Structure Maker</p>
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-file-code"></i></div><h3>Repo File Gen</h3><p>Git Structure Maker</p>
     </a>
     <a href="SEO-Meta-Description-Generator.html" class="card" data-cat="dev" style="--accent: #16a085;">
-       <div class="icon-box"><i class="fas fa-search"></i></div><h3>SEO Meta Gen</h3><p>Rank Higher</p>
+       <div class="icon-box"><i class="fas fa-search"></i></div><h3>SEO Meta Gen</h3><p>Rank Higher on Google</p>
     </a>
     <a href="diff-checker.html" class="card" data-cat="dev" style="--accent: #c0392b;">
-       <div class="icon-box"><i class="fas fa-exchange-alt"></i></div><h3>Diff Checker</h3><p>Compare Code</p>
+       <div class="icon-box"><i class="fas fa-exchange-alt"></i></div><h3>Diff Checker</h3><p>Compare Code Snippets</p>
     </a>
     <a href="about-us-page-generator.html" class="card" data-cat="dev" style="--accent: #2980b9;">
        <div class="icon-box"><i class="fas fa-info-circle"></i></div><h3>About Us Gen</h3><p>Page Maker</p>
     </a>
     <a href="jpg-to-webp.html" class="card" data-cat="image" style="--accent: #ff9f43;">
-   <div class="icon-box"><i class="fas fa-magic"></i></div>
-   <h3>JPG to WebP</h3>
-   <p>Make Website Faster</p>
+       <div class="icon-box"><i class="fas fa-magic"></i></div><h3>JPG to WebP</h3><p>Speed Up Website</p>
     </a>
     <a href="color-picker.html" class="card" data-cat="image" style="--accent: #e84393;">
-       <div class="icon-box"><i class="fas fa-eye-dropper"></i></div><h3>Color Picker</h3><p>Hex & RGB</p>
+       <div class="icon-box"><i class="fas fa-eye-dropper"></i></div><h3>Color Picker</h3><p>Get Hex & RGB</p>
     </a>
     <a href="jpg-to-png.html" class="card" data-cat="image" style="--accent: #fd79a8;">
-       <div class="icon-box"><i class="fas fa-image"></i></div><h3>JPG to PNG</h3><p>Converter</p>
+       <div class="icon-box"><i class="fas fa-image"></i></div><h3>JPG to PNG</h3><p>Format Converter</p>
     </a>
     <a href="guitar-tuner.html" class="card" data-cat="music" style="--accent: #f1c40f;">
-       <div class="icon-box"><i class="fas fa-guitar"></i></div><h3>Guitar Tuner</h3><p>Standard Tune</p>
+       <div class="icon-box"><i class="fas fa-guitar"></i></div><h3>Guitar Tuner</h3><p>Standard Tuning</p>
     </a>
     <a href="guitar-composer.html" class="card" data-cat="music" style="--accent: #e67e22;">
-       <div class="icon-box"><i class="fas fa-music"></i></div><h3>Tab Creator</h3><p>Compose</p>
+       <div class="icon-box"><i class="fas fa-music"></i></div><h3>Tab Creator</h3><p>Compose Music</p>
     </a>
     <a href="auto-chord-maker.html" class="card" data-cat="music" style="--accent: #8e44ad;">
-       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-headphones"></i></div><h3>Chord Maker</h3><p>Auto Chords</p>
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-headphones"></i></div><h3>Chord Maker</h3><p>Auto Generate Chords</p>
     </a>
     <a href="focus-noise-generator.html" class="card" data-cat="music" style="--accent: #2ecc71;">
-       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-wind"></i></div><h3>Focus Noise</h3><p>White Noise</p>
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-wind"></i></div><h3>Focus Noise</h3><p>White Noise Player</p>
     </a>
     <a href="ai-email-writer.html" class="card" data-cat="ai" style="--accent: #00f7ff;">
-    <div class="icon-box">
-        <i class="fas fa-envelope-open-text"></i>
-    </div>
-    <h3>AI Email Writer</h3>
-    <p>Professional Emails</p>
-</a>
+       <div class="icon-box"><i class="fas fa-envelope-open-text"></i></div><h3>AI Email Writer</h3><p>Professional Emails</p>
+    </a>
     <a href="age-calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
-       <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Exact Age</p>
+       <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Calculate Exact Age</p>
     </a>
     <a href="pomodoro-timer.html" class="card" data-cat="utility" style="--accent: #e74c3c;">
-       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-clock"></i></div><h3>Pomodoro</h3><p>Focus Timer</p>
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-clock"></i></div><h3>Pomodoro</h3><p>Focus Work Timer</p>
     </a>
     <a href="password-generator.html" class="card" data-cat="utility" style="--accent: #27ae60;">
-       <div class="icon-box"><i class="fas fa-key"></i></div><h3>Pass Gen</h3><p>Secure Key</p>
+       <div class="icon-box"><i class="fas fa-key"></i></div><h3>Pass Gen</h3><p>Secure Key Maker</p>
     </a>
     <a href="ip-checker.html" class="card" data-cat="utility" style="--accent: #34495e;">
-       <div class="icon-box"><i class="fas fa-globe"></i></div><h3>IP Checker</h3><p>Locate IP</p>
+       <div class="icon-box"><i class="fas fa-globe"></i></div><h3>IP Checker</h3><p>Locate IP Address</p>
     </a>
     <a href="link-scanner.html" class="card" data-cat="utility" style="--accent: #c0392b;">
-       <div class="icon-box"><i class="fas fa-shield-alt"></i></div><h3>Link Scanner</h3><p>Virus Check</p>
+       <div class="icon-box"><i class="fas fa-shield-alt"></i></div><h3>Link Scanner</h3><p>Virus & Malware Check</p>
     </a>
     <a href="exif-remover.html" class="card" data-cat="utility" style="--accent: #f39c12;">
-       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>Exif Remover</h3><p>Metadata Clean</p>
+       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>Exif Remover</h3><p>Clean Metadata</p>
     </a>
     <a href="text-to-handwriting.html" class="card" data-cat="utility" style="--accent: #7f8c8d;">
-       <div class="icon-box"><i class="fas fa-pen-fancy"></i></div><h3>Handwriting</h3><p>Human Text</p>
+       <div class="icon-box"><i class="fas fa-pen-fancy"></i></div><h3>Handwriting</h3><p>Text to Human Writing</p>
     </a>
     <a href="tone-generator.html" class="card" data-cat="utility" style="--accent: #8e44ad;">
-       <div class="icon-box"><i class="fas fa-wave-square"></i></div><h3>Tone Gen</h3><p>Hz Sound</p>
+       <div class="icon-box"><i class="fas fa-wave-square"></i></div><h3>Tone Gen</h3><p>Hz Sound Generator</p>
     </a>
     <a href="morse-converter.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
-       <div class="icon-box"><i class="fas fa-broadcast-tower"></i></div><h3>Morse Code</h3><p>Translator</p>
+       <div class="icon-box"><i class="fas fa-broadcast-tower"></i></div><h3>Morse Code</h3><p>Text Translator</p>
     </a>
     <a href="dead-pixel-fixer.html" class="card" data-cat="utility" style="--accent: #e74c3c;">
-       <div class="icon-box"><i class="fas fa-tv"></i></div><h3>Dead Pixel</h3><p>Screen Fix</p>
+       <div class="icon-box"><i class="fas fa-tv"></i></div><h3>Dead Pixel</h3><p>Screen Fixer Tool</p>
     </a>
     <a href="numerology-calculator.html" class="card" data-cat="utility" style="--accent: #9b59b6;">
-    <div class="icon-box"><i class="fas fa-star"></i></div>
-    <h3>Numerology</h3>
-    <p>Mulank & Rashi</p>
-</a>
+       <div class="icon-box"><i class="fas fa-star"></i></div><h3>Numerology</h3><p>Mulank & Rashi Calc</p>
+    </a>
 
   </div>
 
   <div class="load-btn-box">
-    <button class="load-btn" onclick="loadMore()">Load More Tools</button>
+    <button class="btn-outline" onclick="loadMore()">Load More Tools <i class="fas fa-chevron-down"></i></button>
   </div>
 </section>
 
-<section class="blue-doodle-section">
-    <h2>Explore Categories</h2>
-    <p>Browse tools by category to find exactly what you need.</p>
-    <div class="cat-grid">
-        <div class="cat-card" onclick="clickCategory('social')">
-            <i class="fas fa-share-alt"></i><h3>Social</h3><span>YouTube, Insta</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('ai')">
-            <i class="fas fa-robot"></i><h3>AI Tools</h3><span>Writers, Fixers</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('pdf')">
-            <i class="fas fa-file-pdf"></i><h3>PDF</h3><span>Merge, Edit</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('gaming')">
-            <i class="fas fa-gamepad"></i><h3>Gaming</h3><span>FPS, Reaction</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('dev')">
-            <i class="fas fa-code"></i><h3>Dev</h3><span>SEO, Github</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('image')">
-            <i class="fas fa-image"></i><h3>Image</h3><span>Resize, Colors</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('utility')">
-            <i class="fas fa-tools"></i><h3>Utility</h3><span>Daily Helpers</span>
-        </div>
-        <div class="cat-card" onclick="clickCategory('music')">
-            <i class="fas fa-music"></i><h3>Music</h3><span>Tuner, Tabs</span>
-        </div>
-        <div class="cat-card" onclick="filterTools('all', document.querySelector('.menu button'))">
-            <i class="fas fa-th-large"></i><h3>All</h3><span>View All</span>
+<section class="section-wrapper">
+    <div class="promo-box">
+        <div class="promo-content">
+            <h2>Explore Categories</h2>
+            <p>Jump directly to the tools you need. Organized for speed.</p>
+            <div class="cat-grid">
+                <div class="cat-card" onclick="clickCategory('social')">
+                    <i class="fas fa-share-alt"></i><span>Social</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('ai')">
+                    <i class="fas fa-robot"></i><span>AI Tools</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('pdf')">
+                    <i class="fas fa-file-pdf"></i><span>PDF</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('gaming')">
+                    <i class="fas fa-gamepad"></i><span>Gaming</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('dev')">
+                    <i class="fas fa-code"></i><span>Dev</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('image')">
+                    <i class="fas fa-image"></i><span>Image</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('music')">
+                    <i class="fas fa-music"></i><span>Music</span>
+                </div>
+                <div class="cat-card" onclick="clickCategory('utility')">
+                    <i class="fas fa-tools"></i><span>Utility</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="blue-doodle-section" style="background-color: #f0fdf4; border-color: #dcfce7; background-image: radial-gradient(#86efac 1.5px, transparent 1.5px);">
-    <h2 style="color: #14532d;">Need More Power?</h2>
-    <p style="color: #15803d;">Explore our complete directory of developer and creator tools.</p>
-    <a href="tools.html" class="explore-btn" style="background: #16a34a; box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.4);">Explore All Tools <i class="fas fa-arrow-right"></i></a>
-</section>
-
-<section class="blue-doodle-section" style="background-color: #fff7ed; border-color: #ffedd5; background-image: radial-gradient(#fdba74 1.5px, transparent 1.5px);">
-    <h2 style="color: #9a3412;">Knowledge Hub</h2>
-    <p style="color: #c2410c;">Read our latest guides, tips, and tech insights to boost your productivity.</p>
-    <a href="https://www.xizoa.com" class="explore-btn" style="background: #ea580c; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.4);">Read Our Blog <i class="fas fa-book-open"></i></a>
+<section class="section-wrapper">
+    <div class="promo-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac;">
+        <div class="promo-content">
+            <h2 style="color: #15803d;">Developer API & More</h2>
+            <p style="color: #166534;">We have a massive directory of tools not listed on the homepage.</p>
+            <a href="tools.html" class="btn-primary" style="background: #16a34a;">Explore All Tools <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
 </section>
 
 <footer>
   <div class="footer-content">
       <div class="footer-brand">
           <h2>XIZOAHUB</h2>
-          <p>Free utility toolkit for the modern web. Built for speed, privacy, and ease of use.</p>
+          <p>The ultimate utility toolkit for the modern web. Built for speed, privacy, and ease of use.</p>
       </div>
       <div class="f-col">
           <h4>Company</h4>
@@ -458,10 +621,10 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20
           <a href="privacy.html">Privacy Policy</a>
       </div>
       <div class="f-col">
-          <h4>Discover</h4>
-          <a href="#" onclick="clickCategory('ai')">AI Tools</a>
+          <h4>Popular</h4>
+          <a href="#" onclick="clickCategory('ai')">AI Writers</a>
           <a href="#" onclick="clickCategory('pdf')">PDF Tools</a>
-          <a href="#" onclick="clickCategory('gaming')">Gaming</a>
+          <a href="#" onclick="clickCategory('gaming')">FPS Test</a>
       </div>
       <div class="f-col">
           <h4>Support</h4>
@@ -474,12 +637,33 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 80px 20
 </footer>
 
 <script>
+// --- CONFIGURATION ---
 const toolsPerPage = 16;
 let currentCount = 16;
 const cards = document.querySelectorAll('.card');
-const loadBtn = document.querySelector('.load-btn');
+const loadBtn = document.querySelector('.load-btn-box button');
 const toolGrid = document.getElementById('toolGrid');
+const searchInput = document.getElementById('searchInput');
 
+// --- THEME SWITCHER LOGIC ---
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const target = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    
+    // Icon Change
+    const btn = document.querySelector('.theme-btn i');
+    if(target === 'dark') {
+        btn.classList.remove('fa-moon');
+        btn.classList.add('fa-sun');
+    } else {
+        btn.classList.remove('fa-sun');
+        btn.classList.add('fa-moon');
+    }
+}
+
+// --- INITIAL LOAD ---
 function init() {
     cards.forEach((card, index) => {
         if (index < currentCount) {
@@ -491,73 +675,74 @@ function init() {
 }
 init();
 
+// --- FILTERING & SEARCH LOGIC ---
 function loadMore() {
     currentCount += 12;
-    let visibleTotal = 0;
-    const activeBtn = document.querySelector('.menu button.active');
-    const category = activeBtn.innerText.toLowerCase();
-
-    cards.forEach(card => {
-        if (category === 'all' || card.dataset.cat === category) {
-            if (visibleTotal < currentCount) {
-                card.style.display = 'flex';
-            }
-            visibleTotal++;
-        }
-    });
-
-    const totalInCat = Array.from(cards).filter(c => category === 'all' || c.dataset.cat === category).length;
-    if (currentCount >= totalInCat) {
-        loadBtn.style.display = 'none';
-    }
+    const activeCategory = document.querySelector('.menu button.active').innerText.toLowerCase();
+    
+    // Map button text to category code (e.g., "AI Magic" -> "ai")
+    let catCode = 'all';
+    if(activeCategory.includes('social')) catCode = 'social';
+    else if(activeCategory.includes('ai')) catCode = 'ai';
+    else if(activeCategory.includes('pdf')) catCode = 'pdf';
+    else if(activeCategory.includes('gaming')) catCode = 'gaming';
+    else if(activeCategory.includes('dev')) catCode = 'dev';
+    else if(activeCategory.includes('image')) catCode = 'image';
+    else if(activeCategory.includes('music')) catCode = 'music';
+    else if(activeCategory.includes('utility')) catCode = 'utility';
+    
+    runFilter(catCode, false);
 }
 
 function filterTools(category, btn) {
-    document.querySelectorAll('.menu button').forEach(b => {
-        b.classList.remove('active');
-        if(b.innerText.toLowerCase() === category) b.classList.add('active');
-    });
-
-    if(btn && btn.tagName === 'BUTTON') {
+    if(btn) {
+        document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
+    
+    currentCount = 16; // Reset count
+    loadBtn.style.display = 'inline-block';
+    runFilter(category, true);
+}
 
-    currentCount = 16; 
-    loadBtn.style.display = 'block';
+function runFilter(category, isReset) {
+    let visibleTotal = 0;
+    let totalInCat = 0;
 
-    let count = 0;
     cards.forEach(card => {
-        if (category === 'all' || card.dataset.cat === category) {
-            if(count < currentCount) {
+        const matchesCat = category === 'all' || card.dataset.cat === category;
+        
+        if(matchesCat) {
+            totalInCat++;
+            if(visibleTotal < currentCount) {
                 card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
             }
-            count++;
+            visibleTotal++;
         } else {
             card.style.display = 'none';
         }
     });
 
-    if(count <= currentCount) {
+    if(visibleTotal >= totalInCat) {
         loadBtn.style.display = 'none';
     }
 }
 
 function clickCategory(cat) {
     document.getElementById('toolsSection').scrollIntoView({behavior: 'smooth'});
-    filterTools(cat);
-    const menuBtns = document.querySelectorAll('.menu button');
-    menuBtns.forEach(btn => {
-        if(btn.innerText.toLowerCase() === cat) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
+    // Find matching button
+    const btns = document.querySelectorAll('.menu button');
+    let targetBtn = btns[0];
+    btns.forEach(b => {
+        if(b.innerText.toLowerCase().includes(cat)) targetBtn = b;
     });
+    filterTools(cat, targetBtn);
 }
 
-document.getElementById('searchInput').addEventListener('input', function(e) {
+// --- SEARCH FUNCTIONALITY ---
+searchInput.addEventListener('input', function(e) {
     const term = e.target.value.toLowerCase();
     
     if(term.length > 0) {
@@ -565,7 +750,6 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
         cards.forEach(card => {
             const title = card.querySelector('h3').innerText.toLowerCase();
             const desc = card.querySelector('p').innerText.toLowerCase();
-            
             if(title.includes(term) || desc.includes(term)) {
                 card.style.display = 'flex';
             } else {
@@ -573,7 +757,13 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
             }
         });
     } else {
-        filterTools('all', document.querySelector('.menu button'));
+        // Restore default view
+        const activeBtn = document.querySelector('.menu button.active');
+        let cat = 'all'; 
+        // Simple logic to get back to current category
+        if(activeBtn.innerText.includes('Social')) cat = 'social';
+        // ... (simplified for brevity, usually resetting to 'all' is safer UX)
+        filterTools('all', document.querySelector('.menu button:first-child'));
     }
 });
 </script>
