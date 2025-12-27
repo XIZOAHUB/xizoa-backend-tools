@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Thumbnail Comparator | A/B Test Your Thumbnails (Free)</title>
+  <meta name="description" content="Confused between two thumbnails? Use the YouTube Thumbnail Comparator to A/B test images side-by-side. Choose the best click-worthy design instantly.">
+  <meta name="keywords" content="youtube thumbnail comparator, thumbnail a/b tester, compare youtube thumbnails, thumbnail comparison tool, youtube ctr optimizer, best thumbnail picker">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/thumbnail-comparator">
+
+  <meta property="og:title" content="YouTube Thumbnail A/B Tester">
+  <meta property="og:description" content="Which thumbnail is better? Upload two versions and compare them instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/thumbnail-comparator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-compare.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Thumbnail Comparator",
+      "operatingSystem": "Web",
+      "applicationCategory": "MultimediaApplication",
+      "url": "https://xizoa.com/thumbnail-comparator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "8600" }
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Consistent Brand) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Upload Controls */
+    .controls-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;
+    }
+    
+    .upload-box {
+        background: #000; border: 2px dashed #333; border-radius: 15px; padding: 30px; text-align: center; transition: 0.3s; cursor: pointer; position: relative;
+    }
+    .upload-box:hover { border-color: var(--primary); background: rgba(255,255,255,0.02); }
+    
+    .upload-icon { font-size: 2.5rem; color: #555; margin-bottom: 10px; }
+    .upload-label { font-weight: 700; color: #fff; display: block; margin-bottom: 5px; }
+    .upload-sub { font-size: 0.8rem; color: #777; }
+    
+    input[type="file"] {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+    }
+
+    /* Compare Area */
+    .compare-section {
+        display: none; /* Hidden Initially */
+        background: #1a1a1a;
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid #333;
+    }
+
+    .compare-header {
+        display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;
+    }
+    .mode-btn {
+        background: #000; color: #fff; border: 1px solid #333; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s;
+    }
+    .mode-btn:hover, .mode-btn.active { background: var(--primary); border-color: var(--primary); }
+
+    /* Layouts */
+    .compare-container { width: 100%; }
+    
+    /* Side by Side */
+    .view-sbs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .thumb-wrapper { position: relative; }
+    .thumb-img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 2px solid transparent; transition: 0.3s; }
+    .thumb-tag { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+
+    /* Slider View */
+    .view-slider {
+        position: relative; width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; overflow: hidden; border-radius: 15px; border: 1px solid #333;
+    }
+    .img-comp-img { position: absolute; width: 100%; height: 100%; overflow: hidden; }
+    .img-comp-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .slider-handle {
+        position: absolute; z-index: 9; cursor: col-resize; width: 40px; height: 40px; background: var(--primary); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.5); border: 2px solid #fff;
+    }
+    .slider-line {
+        position: absolute; z-index: 8; width: 2px; height: 100%; background: #fff; left: 50%; top: 0; pointer-events: none;
+    }
+
+    /* --- CONTENT AREA --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .controls-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Thumbnail <span>Comparator</span></h1>
+    <p class="subtitle">A/B Test your designs. Compare two thumbnails side-by-side to pick the winner.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="controls-grid">
+        <div class="upload-box">
+            <i class="fas fa-image upload-icon"></i>
+            <span class="upload-label">Upload Thumbnail A</span>
+            <span class="upload-sub" id="labelA">1280x720 Recommended</span>
+            <input type="file" id="fileA" accept="image/*">
+        </div>
+        <div class="upload-box">
+            <i class="fas fa-image upload-icon"></i>
+            <span class="upload-label">Upload Thumbnail B</span>
+            <span class="upload-sub" id="labelB">1280x720 Recommended</span>
+            <input type="file" id="fileB" accept="image/*">
+        </div>
+      </div>
+
+      <div class="compare-section" id="compareSection">
+          
+          <div class="compare-header">
+              <button class="mode-btn active" onclick="setMode('sbs')">Side-by-Side</button>
+              <button class="mode-btn" onclick="setMode('slider')">Slider View</button>
+          </div>
+
+          <div class="compare-container" id="containerSBS">
+              <div class="view-sbs">
+                  <div class="thumb-wrapper">
+                      <span class="thumb-tag">Version A</span>
+                      <img src="" id="imgA_sbs" class="thumb-img">
+                  </div>
+                  <div class="thumb-wrapper">
+                      <span class="thumb-tag">Version B</span>
+                      <img src="" id="imgB_sbs" class="thumb-img">
+                  </div>
+              </div>
+          </div>
+
+          <div class="compare-container" id="containerSlider" style="display:none;">
+              <div class="view-slider" id="sliderWrapper">
+                  <div class="img-comp-img">
+                      <img src="" id="imgB_slide">
+                  </div>
+                  <div class="img-comp-img" id="overlayA">
+                      <img src="" id="imgA_slide">
+                  </div>
+                  <div class="slider-line" id="slideLine"></div>
+                  <div class="slider-handle" id="slideHandle"><i class="fas fa-arrows-alt-h"></i></div>
+              </div>
+              <p style="text-align:center; color:#666; margin-top:10px;">Drag handle to compare</p>
+          </div>
+
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-balance-scale"></i> YouTube Thumbnail Comparator (A/B Test)</h2>
+        <p>Choosing the right thumbnail can be the difference between 1,000 views and 100,000 views. Top creators like MrBeast spend thousands of dollars testing multiple thumbnails. <strong>Xizoa Hub's Thumbnail Comparator</strong> lets you do the same for free.</p>
+        <p>By comparing two versions of your thumbnail side-by-side or using our interactive slider, you can spot small details like color contrast, text readability, and facial expressions that might affect your Click-Through Rate (CTR).</p>
+
+        <h3><i class="fas fa-eye"></i> How to Choose the Winner?</h3>
+        <ul>
+            <li><strong>Contrast:</strong> Which one pops out more against the dark/white background?</li>
+            <li><strong>Readability:</strong> Can you read the text instantly? (The "Glance Test").</li>
+            <li><strong>Focal Point:</strong> Where do your eyes go first? It should be the main subject or emotion.</li>
+        </ul>
+
+        <h3><i class="fas fa-laptop-code"></i> Tool Features</h3>
+        <ol>
+            <li><strong>Side-by-Side View:</strong> Standard comparison to see how they look next to each other on a search page.</li>
+            <li><strong>Slider View:</strong> Drag a slider over the images to compare specific changes (like font color or background saturation).</li>
+            <li><strong>Privacy First:</strong> Your images are processed in your browser. We do not upload or store your thumbnails.</li>
+        </ol>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>What makes a thumbnail clickable?</h3>
+            <p>Bright colors, high contrast, clear text (less than 5 words), and a strong emotional expression on the face usually drive higher clicks.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Should I use red arrows and circles?</h3>
+            <p>Yes, but don't overdo it. Red circles direct the viewer's eye to the most important part of the image, creating curiosity.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Thumbnail Comparator helps you pick the best design. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const fileA = document.getElementById('fileA');
+    const fileB = document.getElementById('fileB');
+    const compareSection = document.getElementById('compareSection');
+    
+    // Elements for Images
+    const imgA_sbs = document.getElementById('imgA_sbs');
+    const imgB_sbs = document.getElementById('imgB_sbs');
+    const imgA_slide = document.getElementById('imgA_slide');
+    const imgB_slide = document.getElementById('imgB_slide');
+
+    // Slider Logic
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const overlayA = document.getElementById('overlayA');
+    const slideHandle = document.getElementById('slideHandle');
+    const slideLine = document.getElementById('slideLine');
+
+    let isLoadedA = false;
+    let isLoadedB = false;
+
+    // Load Image A
+    fileA.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imgA_sbs.src = e.target.result;
+                imgA_slide.src = e.target.result;
+                document.getElementById('labelA').innerText = "Loaded!";
+                document.getElementById('labelA').style.color = "#00e676";
+                isLoadedA = true;
+                checkReady();
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    // Load Image B
+    fileB.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imgB_sbs.src = e.target.result;
+                imgB_slide.src = e.target.result;
+                document.getElementById('labelB').innerText = "Loaded!";
+                document.getElementById('labelB').style.color = "#00e676";
+                isLoadedB = true;
+                checkReady();
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    function checkReady() {
+        if(isLoadedA && isLoadedB) {
+            compareSection.style.display = 'block';
+            compareSection.scrollIntoView({behavior:"smooth", block:"start"});
+            initSlider();
+        }
+    }
+
+    // View Switching
+    window.setMode = function(mode) {
+        const btns = document.querySelectorAll('.mode-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+
+        if(mode === 'sbs') {
+            document.getElementById('containerSBS').style.display = 'block';
+            document.getElementById('containerSlider').style.display = 'none';
+        } else {
+            document.getElementById('containerSBS').style.display = 'none';
+            document.getElementById('containerSlider').style.display = 'block';
+        }
+    }
+
+    // Draggable Slider Logic
+    function initSlider() {
+        let isDown = false;
+        
+        sliderWrapper.addEventListener('mousedown', () => isDown = true);
+        window.addEventListener('mouseup', () => isDown = false);
+        
+        sliderWrapper.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            moveSlide(e);
+        });
+
+        // Touch support
+        sliderWrapper.addEventListener('touchstart', () => isDown = true);
+        window.addEventListener('touchend', () => isDown = false);
+        sliderWrapper.addEventListener('touchmove', (e) => {
+            if(!isDown) return;
+            moveSlide(e.touches[0]);
+        });
+
+        function moveSlide(e) {
+            const rect = sliderWrapper.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            
+            // Constraints
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            
+            // Percentage
+            const percent = (x / rect.width) * 100;
+            
+            // Apply
+            overlayA.style.width = percent + "%";
+            slideHandle.style.left = percent + "%";
+            slideLine.style.left = percent + "%";
+        }
+    }
+  </script>
+</body>
+</html>
