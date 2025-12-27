@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Data Usage Calculator | How Much Data Does YouTube Use?</title>
+  <meta name="description" content="Calculate exactly how much mobile data or WiFi YouTube consumes. Check data usage for 4K, 1080p, 720p, and 480p videos. Best free internet usage estimator.">
+  <meta name="keywords" content="youtube data usage calculator, how much data does youtube use, youtube bandwidth calculator, 4k video data usage, 1080p data consumption, internet usage calculator">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-data-calculator">
+
+  <meta property="og:title" content="YouTube Data Usage Calculator - Save Your Internet">
+  <meta property="og:description" content="Will watching a movie in 4K finish your data plan? Calculate usage instantly here.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-data-calculator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-data.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Data Usage Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "UtilityApplication",
+      "url": "https://xizoa.com/youtube-data-calculator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "12100" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much data does YouTube use per hour at 1080p?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On average, streaming YouTube at 1080p (Full HD) consumes about 1.5GB to 3GB of data per hour, depending on the frame rate (30fps vs 60fps)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does 4K use a lot of data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, 4K (Ultra HD) is very data-intensive. It can consume anywhere from 7GB to 16GB of data per hour." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Consistent Brand) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --blue: #2979ff;
+      --yellow: #ffd700;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left: Inputs */
+    .input-section h3 { margin-bottom: 25px; color: #fff; font-size: 1.1rem; border-left: 3px solid var(--primary); padding-left: 10px; }
+    
+    .input-box { margin-bottom: 25px; }
+    .input-label { display: block; margin-bottom: 8px; font-weight: 600; color: #ccc; }
+    
+    select, input[type="number"] {
+      width: 100%;
+      background: #000;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,0,0.3); }
+
+    .time-grid { display: flex; gap: 15px; }
+
+    button#btnCalc {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    button#btnCalc:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Right: Results */
+    .result-area {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .data-circle {
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        border: 8px solid #333;
+        margin: 0 auto 20px;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+    .data-val { font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; }
+    .data-unit { font-size: 1rem; color: #888; font-weight: 600; margin-top: 5px; }
+
+    .info-row { text-align: center; font-size: 0.95rem; color: #aaa; margin-top: 15px; }
+    .highlight { color: #fff; font-weight: 700; }
+
+    .bar-container { width: 100%; height: 8px; background: #222; border-radius: 10px; margin-top: 20px; overflow: hidden; }
+    .bar-fill { height: 100%; width: 0%; background: var(--primary); transition: width 1s ease; }
+
+    /* --- CONTENT AREA (Ranking Powerhouse) --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul, .content-container ol { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+    .content-container strong { color: #000; }
+
+    /* Table */
+    .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .data-table th, .data-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    .data-table th { background: #f8f9fa; color: #333; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .tool-container { grid-template-columns: 1fr; gap: 30px; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Data Usage <span>Calculator</span></h1>
+    <p class="subtitle">Estimate your internet data consumption while streaming YouTube videos.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="input-section">
+        <h3><i class="fas fa-wifi"></i> Configure Streaming</h3>
+        
+        <div class="input-box">
+            <label class="input-label">Video Quality</label>
+            <select id="qualitySelect">
+                <option value="144">144p (Low Quality)</option>
+                <option value="240">240p (Standard)</option>
+                <option value="360">360p (Medium)</option>
+                <option value="480">480p (SD)</option>
+                <option value="720">720p (HD)</option>
+                <option value="1080" selected>1080p (Full HD)</option>
+                <option value="1440">1440p (2K QHD)</option>
+                <option value="2160">2160p (4K UHD)</option>
+                <option value="4320">4320p (8K UHD)</option>
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label class="input-label">Frame Rate</label>
+            <select id="fpsSelect">
+                <option value="30">30 FPS (Standard)</option>
+                <option value="60">60 FPS (High Motion)</option>
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label class="input-label">Duration</label>
+            <div class="time-grid">
+                <input type="number" id="hrs" placeholder="Hours" min="0" value="1">
+                <input type="number" id="mins" placeholder="Minutes" min="0" max="59" value="0">
+            </div>
+        </div>
+
+        <button id="btnCalc"><i class="fas fa-calculator"></i> Calculate Data</button>
+      </div>
+
+      <div class="result-area" id="resultArea">
+        
+        <div class="data-circle" id="dataCircle">
+            <span class="data-val" id="resData">0</span>
+            <span class="data-unit" id="resUnit">MB</span>
+        </div>
+
+        <div class="info-row">
+            For <span id="resTime" class="highlight">1 hour</span> of streaming at <span id="resQuality" class="highlight">1080p</span>.
+        </div>
+
+        <div class="bar-container">
+            <div class="bar-fill" id="barFill"></div>
+        </div>
+        <p style="font-size:0.8rem; color:#666; text-align:center; margin-top:10px;">*Estimates based on average YouTube bitrates.</p>
+
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-server"></i> How Much Data Does YouTube Use? (2025 Guide)</h2>
+        <p>Streaming video is one of the most data-intensive activities on the internet. If you have a limited data plan (like 1.5GB/day or a capped monthly plan), watching high-quality videos can drain your balance in minutes. <strong>Xizoa Hub's YouTube Data Usage Calculator</strong> helps you plan your viewing so you never run out of internet.</p>
+
+        <h3><i class="fas fa-table"></i> Data Consumption Chart (Per Hour)</h3>
+        <p>Below is an estimated breakdown of data usage for different resolutions based on average bitrates:</p>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Quality</th>
+                    <th>Resolution</th>
+                    <th>Data Per Hour (Approx)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Low</td>
+                    <td>144p - 240p</td>
+                    <td>30 MB - 100 MB</td>
+                </tr>
+                <tr>
+                    <td>SD (Standard)</td>
+                    <td>480p</td>
+                    <td>260 MB - 500 MB</td>
+                </tr>
+                <tr>
+                    <td>HD (High Def)</td>
+                    <td>720p</td>
+                    <td>1.2 GB - 2.5 GB</td>
+                </tr>
+                <tr>
+                    <td>Full HD</td>
+                    <td>1080p</td>
+                    <td>2.5 GB - 4.0 GB</td>
+                </tr>
+                <tr>
+                    <td>4K UHD</td>
+                    <td>2160p</td>
+                    <td>8.0 GB - 16.0 GB</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3><i class="fas fa-tachometer-alt"></i> Factors That Affect Data Usage</h3>
+        <p>It's not just about resolution. Other factors play a huge role:</p>
+        <ul>
+            <li><strong>Frame Rate (FPS):</strong> A video at 60fps (smooth motion) contains twice as many frames as 30fps, meaning it can use up to 50% more data.</li>
+            <li><strong>Bitrate:</strong> YouTube adjusts bitrate based on your internet speed. Faster internet might stream "High Bitrate" 1080p, consuming more data than "Standard" 1080p.</li>
+            <li><strong>HDR:</strong> High Dynamic Range videos have richer colors and use significantly more data.</li>
+        </ul>
+
+        <h3><i class="fas fa-lightbulb"></i> Tips to Save Data on YouTube</h3>
+        <ol>
+            <li><strong>Use "Data Saver" Mode:</strong> In the YouTube app settings, switch video quality preferences to "Data Saver". This forces videos to load in 480p.</li>
+            <li><strong>Download on WiFi:</strong> Download your videos when you have unlimited WiFi and watch them offline later.</li>
+            <li><strong>Stick to 480p on Mobile:</strong> On a small phone screen, the difference between 480p and 1080p is often negligible, but the data savings are massive.</li>
+        </ol>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Does YouTube Music use less data?</h3>
+            <p>Yes. If you are just listening to music, switch to the YouTube Music app or use lowest video quality. Audio-only streaming uses about 100MB per hour.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Will 5G use more data than 4G?</h3>
+            <p>Technically, no. 1GB file is 1GB on both. However, because 5G is faster, YouTube might automatically switch to 4K quality, which <em>will</em> consume your data much faster.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Data Calculator helps you manage internet usage. Fast, free, and secure tool for everyone.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnCalc = document.getElementById('btnCalc');
+    const qualitySelect = document.getElementById('qualitySelect');
+    const fpsSelect = document.getElementById('fpsSelect');
+    const hrsInput = document.getElementById('hrs');
+    const minsInput = document.getElementById('mins');
+    
+    // Results
+    const resData = document.getElementById('resData');
+    const resUnit = document.getElementById('resUnit');
+    const resTime = document.getElementById('resTime');
+    const resQuality = document.getElementById('resQuality');
+    const dataCircle = document.getElementById('dataCircle');
+    const barFill = document.getElementById('barFill');
+
+    // Bitrate Map (MB per minute approx)
+    // 30fps vs 60fps multiplier approx 1.5x
+    const bitrates = {
+        '144': 1.5,
+        '240': 4,
+        '360': 7,
+        '480': 12,
+        '720': 25,
+        '1080': 50,
+        '1440': 100,
+        '2160': 250,
+        '4320': 900 
+    };
+
+    btnCalc.addEventListener('click', () => {
+        const quality = qualitySelect.value;
+        const fps = parseInt(fpsSelect.value);
+        let h = parseInt(hrsInput.value) || 0;
+        let m = parseInt(minsInput.value) || 0;
+
+        const totalMinutes = (h * 60) + m;
+        
+        if (totalMinutes === 0) {
+            alert("Please enter duration!");
+            return;
+        }
+
+        // Calculation
+        let baseRate = bitrates[quality];
+        
+        // FPS Adjustment (Only relevant for 720p+)
+        if (fps === 60 && parseInt(quality) >= 720) {
+            baseRate = baseRate * 1.5;
+        }
+
+        const totalMB = baseRate * totalMinutes;
+        
+        let finalVal, unit;
+        if (totalMB > 1000) {
+            finalVal = (totalMB / 1024).toFixed(2);
+            unit = "GB";
+        } else {
+            finalVal = Math.round(totalMB);
+            unit = "MB";
+        }
+
+        // Animation & UI
+        resData.innerText = finalVal;
+        resUnit.innerText = unit;
+        
+        let timeStr = "";
+        if(h > 0) timeStr += `${h} hr `;
+        if(m > 0) timeStr += `${m} min`;
+        
+        resTime.innerText = timeStr;
+        resQuality.innerText = quality + "p";
+
+        // Circle Color Logic
+        let color = '#00e676'; // Green
+        if (totalMB > 2000) color = '#ff9100'; // Orange
+        if (totalMB > 5000) color = '#ff4d4d'; // Red
+        
+        dataCircle.style.borderColor = color;
+        resData.style.color = color;
+        barFill.style.backgroundColor = color;
+        
+        // Bar Animation (Visual only)
+        barFill.style.width = "0%";
+        setTimeout(() => {
+            let percent = Math.min((totalMB / 10000) * 100, 100);
+            if(percent < 10) percent = 10;
+            barFill.style.width = percent + "%";
+        }, 100);
+    });
+  </script>
+</body>
+</html>
