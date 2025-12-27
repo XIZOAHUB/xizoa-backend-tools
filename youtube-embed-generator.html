@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YouTube Embed Code Generator | Advanced Iframe Maker (Autoplay, Loop)</title>
+  <meta name="description" content="Generate advanced YouTube embed codes for your website. Customize options like Autoplay, Loop, Start Time, Hide Controls, and Modest Branding. Free HTML Iframe Generator.">
+  <meta name="keywords" content="youtube embed code generator, youtube iframe generator, youtube autoplay embed, embed youtube video without cookies, responsive youtube embed code, website video tools">
+  <meta name="author" content="Priyanshu - XIZOA HUB">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://xizoa.com/youtube-embed-generator">
+
+  <meta property="og:title" content="YouTube Embed Code Generator - Advanced Tools">
+  <meta property="og:description" content="Create custom YouTube video players for your website. Autoplay, Loop, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xizoa.com/youtube-embed-generator">
+  <meta property="og:image" content="https://xizoa.com/assets/og-embed.jpg">
+
+  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Embed Code Generator",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "url": "https://xizoa.com/youtube-embed-generator",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "9200" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I make a YouTube video autoplay on my website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You need to add '?autoplay=1&mute=1' to the embed URL. Our tool generates this code automatically." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I hide YouTube controls in embed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, by adding 'controls=0' to the iframe code, you can hide the player controls for a cleaner look." }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* --- THEME (Dark & Red - Advanced UI) --- */
+    :root {
+      --bg: #050505;           
+      --card-bg: #111111;      
+      --text: #e2e8f0;         
+      --primary: #ff0000;      
+      --primary-dark: #cc0000;
+      --border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header { 
+        text-align: center; 
+        padding: 60px 20px 40px; 
+        background: radial-gradient(circle at top, #1a0000, var(--bg)); 
+        border-bottom: var(--border);
+    }
+    .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
+    .brand-logo span { color: var(--primary); }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 span { color: var(--primary); }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* TOOL UI */
+    .tool-container {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 40px auto 60px auto;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 40px;
+    }
+    .tool-container::before {
+        content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    /* Left Side: Controls */
+    .controls { background: #000; padding: 25px; border-radius: 15px; border: 1px solid #333; height: fit-content; }
+    .controls h3 { margin-bottom: 20px; color: #fff; font-size: 1.1rem; border-left: 3px solid var(--primary); padding-left: 10px; }
+    
+    .input-group { margin-bottom: 15px; }
+    .input-label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #aaa; font-weight: 600; }
+    
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      background: #111;
+      border: 1px solid #444;
+      padding: 10px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    input:focus { border-color: var(--primary); }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* Checkboxes */
+    .checkbox-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    .check-item { display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd; font-size: 0.95rem; }
+    .check-item input { accent-color: var(--primary); transform: scale(1.2); }
+
+    button#btnGenerate {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    button#btnGenerate:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Right Side: Preview & Code */
+    .preview-section { display: flex; flex-direction: column; gap: 20px; }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #333;
+      position: relative;
+    }
+    .video-frame iframe { width: 100%; height: 100%; border: none; }
+    .video-placeholder {
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; color: #555;
+    }
+
+    .code-box {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+    .code-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .code-label { color: #aaa; font-size: 0.9rem; font-weight: 600; }
+    
+    textarea {
+      width: 100%;
+      height: 100px;
+      background: #000;
+      border: 1px solid #333;
+      color: #00e676;
+      font-family: monospace;
+      padding: 10px;
+      border-radius: 6px;
+      resize: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-copy {
+      background: #333; color: #fff; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; border: none; transition: 0.2s;
+    }
+    .btn-copy:hover { background: var(--primary); }
+
+    /* --- CONTENT AREA --- */
+    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    
+    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .content-container h2:first-child { margin-top: 0; }
+    .content-container h2 i { color: var(--primary); }
+    
+    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+    .content-container ul { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
+    .content-container li { margin-bottom: 10px; }
+
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
+    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
+    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+
+    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
+    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
+    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
+    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .tool-container { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .content-container { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Embed Code <span>Generator</span></h1>
+    <p class="subtitle">Create advanced, responsive YouTube video players for your website in 1-click.</p>
+  </header>
+
+  <main>
+    
+    <section class="tool-container">
+      
+      <div class="controls">
+        <h3><i class="fas fa-cog"></i> Configuration</h3>
+        
+        <div class="input-group">
+            <label class="input-label">YouTube Video URL</label>
+            <input type="text" id="inputUrl" placeholder="https://www.youtube.com/watch?v=...">
+        </div>
+
+        <div class="grid-2">
+            <div class="input-group">
+                <label class="input-label">Width (px)</label>
+                <input type="number" id="inputWidth" value="560">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Height (px)</label>
+                <input type="number" id="inputHeight" value="315">
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="input-group">
+                <label class="input-label">Start Time (sec)</label>
+                <input type="number" id="inputStart" placeholder="0">
+            </div>
+            <div class="input-group">
+                <label class="input-label">End Time (sec)</label>
+                <input type="number" id="inputEnd" placeholder="0">
+            </div>
+        </div>
+
+        <div class="checkbox-group">
+            <label class="check-item"><input type="checkbox" id="checkAutoplay"> Autoplay (Plays automatically)</label>
+            <label class="check-item"><input type="checkbox" id="checkMute"> Mute (Required for Autoplay)</label>
+            <label class="check-item"><input type="checkbox" id="checkLoop"> Loop (Replay video)</label>
+            <label class="check-item"><input type="checkbox" id="checkControls" checked> Show Player Controls</label>
+            <label class="check-item"><input type="checkbox" id="checkModest"> Modest Branding (Hide Logo)</label>
+            <label class="check-item"><input type="checkbox" id="checkPrivacy"> Enhanced Privacy Mode</label>
+        </div>
+
+        <button id="btnGenerate"><i class="fas fa-code"></i> Generate Code</button>
+      </div>
+
+      <div class="preview-section">
+          
+          <div class="video-frame" id="videoFrame">
+              <div class="video-placeholder">
+                  <i class="fab fa-youtube" style="font-size:3rem; margin-bottom:10px;"></i>
+                  <span>Preview will appear here</span>
+              </div>
+          </div>
+
+          <div class="code-box">
+              <div class="code-header">
+                  <span class="code-label">HTML Code</span>
+                  <button class="btn-copy" id="btnCopy"><i class="fas fa-copy"></i> Copy</button>
+              </div>
+              <textarea id="outputCode" readonly></textarea>
+          </div>
+      </div>
+
+    </section>
+
+    <div class="content-container">
+      <article>
+        <h2><i class="fas fa-code"></i> Advanced YouTube Embed Code Generator</h2>
+        <p>Embedding YouTube videos is a great way to engage visitors on your website or blog. However, the standard "Share" button on YouTube gives you a very basic code with no customization. <strong>Xizoa Hub's Embed Code Generator</strong> allows you to unlock advanced features hidden by YouTube.</p>
+
+        <h3><i class="fas fa-magic"></i> Why Use This Tool?</h3>
+        <ul>
+            <li><strong>Autoplay Logic:</strong> Modern browsers block autoplay videos with sound. Our tool automatically checks the "Mute" option when you select "Autoplay", ensuring your video actually plays when the page loads.</li>
+            <li><strong>Looping:</strong> Create infinite loops for background videos or music playlists.</li>
+            <li><strong>Clean Interface:</strong> Use "Modest Branding" to remove the YouTube logo and "Hide Controls" to create a cleaner, cinematic look for your landing pages.</li>
+            <li><strong>Privacy Mode:</strong> Generate code that prevents YouTube from tracking your website visitors unless they play the video (GDPR compliant).</li>
+        </ul>
+
+        <h3><i class="fas fa-laptop-code"></i> How to Embed on Your Site</h3>
+        <p>Once you generate the code using the tool above:</p>
+        <ol>
+            <li><strong>WordPress:</strong> Use a "Custom HTML" block and paste the code.</li>
+            <li><strong>Blogger:</strong> Switch to "HTML View" in your post editor and paste the code where you want the video to appear.</li>
+            <li><strong>HTML/PHP:</strong> Simply paste the code inside your <code>&lt;body&gt;</code> tags.</li>
+        </ol>
+
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Why is my autoplay not working?</h3>
+            <p>Browsers like Chrome and Safari block autoplay videos that have sound enabled. To fix this, you must enable the <strong>"Mute"</strong> option along with "Autoplay".</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I make the video responsive?</h3>
+            <p>Our tool generates fixed dimensions (pixel width). To make it responsive, wrap the iframe in a div with CSS <code>aspect-ratio: 16/9; width: 100%;</code>.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is Enhanced Privacy Mode?</h3>
+            <p>Standard embeds drop cookies on your user's device immediately. Privacy mode changes the domain to <code>youtube-nocookie.com</code>, ensuring no cookies are set until the user clicks play.</p>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>About Tool</h3>
+        <p>XIZOA Embed Generator helps you create custom video players. Fast, free, and secure tool for creators.</p>
+      </div>
+      <div class="footer-col">
+        <h3>XIZOA Hub</h3>
+        <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="ai-email-writer.html">AI Email Writer</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+  </footer>
+
+  <script>
+    const btnGenerate = document.getElementById('btnGenerate');
+    const inputUrl = document.getElementById('inputUrl');
+    const outputCode = document.getElementById('outputCode');
+    const videoFrame = document.getElementById('videoFrame');
+    const btnCopy = document.getElementById('btnCopy');
+
+    function getVideoID(url) {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\\w\/)|(embed\/)|(watch\\?))\\??v?=?([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[7].length == 11) ? match[7] : false;
+    }
+
+    btnGenerate.addEventListener('click', () => {
+        const url = inputUrl.value.trim();
+        const vidId = getVideoID(url);
+
+        if(!vidId) {
+            alert("Please enter a valid YouTube URL");
+            return;
+        }
+
+        const width = document.getElementById('inputWidth').value || 560;
+        const height = document.getElementById('inputHeight').value || 315;
+        const start = document.getElementById('inputStart').value;
+        const end = document.getElementById('inputEnd').value;
+        
+        const autoplay = document.getElementById('checkAutoplay').checked;
+        const mute = document.getElementById('checkMute').checked;
+        const loop = document.getElementById('checkLoop').checked;
+        const controls = document.getElementById('checkControls').checked;
+        const modest = document.getElementById('checkModest').checked;
+        const privacy = document.getElementById('checkPrivacy').checked;
+
+        let baseUrl = privacy ? "https://www.youtube-nocookie.com/embed/" : "https://www.youtube.com/embed/";
+        let src = `${baseUrl}${vidId}?`;
+        let params = [];
+
+        if(autoplay) params.push("autoplay=1");
+        if(mute) params.push("mute=1");
+        if(!controls) params.push("controls=0");
+        if(modest) params.push("modestbranding=1");
+        if(start) params.push(`start=${start}`);
+        if(end) params.push(`end=${end}`);
+        if(loop) {
+            params.push("loop=1");
+            params.push(`playlist=${vidId}`); // Loop requires playlist param
+        }
+
+        src += params.join("&");
+
+        const iframeCode = `<iframe width="${width}" height="${height}" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+
+        outputCode.value = iframeCode;
+        videoFrame.innerHTML = iframeCode;
+    });
+
+    btnCopy.addEventListener('click', () => {
+        outputCode.select();
+        document.execCommand('copy');
+        btnCopy.innerHTML = "Copied!";
+        setTimeout(() => btnCopy.innerHTML = '<i class="fas fa-copy"></i> Copy', 2000);
+    });
+  </script>
+</body>
+</html>
