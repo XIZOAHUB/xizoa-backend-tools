@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Social Media & YouTube Tools - XIZOAHUB</title>
+<meta name="description" content="Free YouTube, Instagram, and TikTok tools. Downloaders, Tag Generators, Calculators & More.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- SAME CSS AS INDEX.HTML --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --primary: #2563eb;
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+    --primary: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background-color: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; transition: 0.3s; }
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; z-index: -1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+a { text-decoration: none; color: inherit; }
+header { position: sticky; top: 0; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav { max-width: 1400px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+.theme-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.theme-btn:hover { background: var(--border); transform: rotate(15deg); }
+
+/* Hero */
+.hero { text-align: center; padding: 80px 20px 60px; max-width: 900px; margin: auto; }
+.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+.hero h1 span { background: linear-gradient(135deg, #FF0000 0%, #ff9f43 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; }
+
+/* Grid */
+.container { max-width: 1400px; margin: 0 auto 100px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 30px 25px;
+    display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden;
+    transition: all 0.4s var(--ease); cursor: pointer; opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--accent); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); }
+.icon-box { width: 60px; height: 60px; border-radius: 16px; background: var(--bg-body); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: 0.4s; position: relative; z-index: 2; }
+.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1); }
+.card i { font-size: 1.8rem; color: var(--accent); transition: 0.3s; }
+.card:hover i { color: white; }
+.card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 2; }
+.card p { font-size: 0.9rem; color: var(--text-muted); position: relative; z-index: 2; }
+.badge { position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 30px; }
+.badge.hot { background: #fee2e2; color: #dc2626; }
+.card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: var(--accent); filter: blur(60px); opacity: 0; transition: 0.5s; pointer-events: none; }
+.card:hover::before { opacity: 0.2; }
+
+/* Buttons & Footer */
+.back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border); color: var(--text-muted); font-weight: 600; margin-bottom: 20px; transition: 0.3s; }
+.back-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 40px 20px; margin-top: 80px; text-align: center; color: var(--text-muted); }
+
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
+    <div class="controls">
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
+  <h1>Social Media & <br><span>YouTube Tools</span></h1>
+  <p>Collection of 26 premium tools for Content Creators. <br>Calculators, Downloaders, Generators & Analytics.</p>
+</section>
+
+<section class="container">
+  <div class="grid" id="toolGrid">
+    
+    <a href="YouTube-thumbnail-downloader.html" class="card" style="--accent: #FF0000;">
+       <span class="badge hot">HOT</span>
+       <div class="icon-box"><i class="fab fa-youtube"></i></div>
+       <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
+    </a>
+    
+    <a href="insta-video-saver.html" class="card" style="--accent: #E1306C;">
+       <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
+    </a>
+    
+    <a href="youtubeshorts.html" class="card" style="--accent: #FF0000;">
+       <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>Download YT Shorts</p>
+    </a>
+    
+    <a href="tiktok-downloader.html" class="card" style="--accent: #ff0050;">
+       <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark HD</p>
+    </a>
+    
+    <a href="youtube-tag-extractor.html" class="card" style="--accent: #FF0000;">
+       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>Get Viral SEO Tags</p>
+    </a>
+
+    <a href="youtube-tag-generator.html" class="card" style="--accent: #ff6b81;">
+       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>YT Tag Gen</h3><p>SEO Keyword Maker</p>
+    </a>
+
+    <a href="youtube-money-calculator.html" class="card" style="--accent: #2ecc71;">
+       <div class="icon-box"><i class="fas fa-dollar-sign"></i></div><h3>Money Calc</h3><p>Estimate Earnings</p>
+    </a>
+
+    <a href="youtube-title-analyzer.html" class="card" style="--accent: #2f3542;">
+       <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Title Analyzer</h3><p>Check Title Score</p>
+    </a>
+
+    <a href="hashtag-generator.html" class="card" style="--accent: #8e44ad;">
+       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>Hashtag Gen</h3><p>Boost Post Reach</p>
+    </a>
+
+    <a href="social-media-caption.html" class="card" style="--accent: #2c3e50;">
+       <div class="icon-box"><i class="fas fa-quote-right"></i></div><h3>Social Captions</h3><p>Generate Viral Quotes</p>
+    </a>
+
+    <a href="youtube-chapter-generator.html" class="card" style="--accent: #ff4757;">
+       <div class="icon-box"><i class="fas fa-list-ol"></i></div><h3>YT Chapters</h3><p>Auto Chapter Maker</p>
+    </a>
+
+    <a href="youtube-description-generator.html" class="card" style="--accent: #341f97;">
+       <div class="icon-box"><i class="fas fa-align-left"></i></div><h3>Desc Gen</h3><p>Auto Descriptions</p>
+    </a>
+
+    <a href="youtube-embed-generator.html" class="card" style="--accent: #576574;">
+        <div class="icon-box"><i class="fas fa-code"></i></div><h3>Embed Gen</h3><p>Create Embed Code</p>
+    </a>
+
+    <a href="thumbnail-comparator.html" class="card" style="--accent: #e55039;">
+        <div class="icon-box"><i class="fas fa-images"></i></div><h3>Thumbnail Compare</h3><p>A/B Testing Tool</p>
+    </a>
+
+    <a href="youtube-data-calculator.html" class="card" style="--accent: #c23616;">
+        <div class="icon-box"><i class="fas fa-chart-pie"></i></div><h3>YT Data Calc</h3><p>Channel Analytics</p>
+    </a>
+
+    <a href="youtube-engagement-calculator.html" class="card" style="--accent: #192a56;">
+        <div class="icon-box"><i class="fas fa-users"></i></div><h3>Engage Rate</h3><p>Measure Interactions</p>
+    </a>
+
+    <a href="youtube-growth-calculator.html" class="card" style="--accent: #44bd32;">
+        <div class="icon-box"><i class="fas fa-chart-line"></i></div><h3>Growth Calc</h3><p>Predict Success</p>
+    </a>
+
+    <a href="youtube-hashtag-generator.html" class="card" style="--accent: #8c7ae6;">
+        <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>YT Hashtags</h3><p>Discover Tags</p>
+    </a>
+
+    <a href="youtube-idea-generator.html" class="card" style="--accent: #fbc531;">
+        <div class="icon-box"><i class="fas fa-lightbulb"></i></div><h3>Video Ideas</h3><p>Content Inspiration</p>
+    </a>
+
+    <a href="youtube-name-generator.html" class="card" style="--accent: #9c88ff;">
+        <div class="icon-box"><i class="fas fa-id-card"></i></div><h3>Channel Name</h3><p>Brand Generator</p>
+    </a>
+
+    <a href="youtube-script-generator.html" class="card" style="--accent: #0097e6;">
+        <div class="icon-box"><i class="fas fa-scroll"></i></div><h3>Script Gen</h3><p>AI Video Scripts</p>
+    </a>
+
+    <a href="youtube-speed-calculator.html" class="card" style="--accent: #e1b12c;">
+        <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Speed Calc</h3><p>Video Duration</p>
+    </a>
+
+    <a href="youtube-subscribe-link-generator.html" class="card" style="--accent: #c0392b;">
+        <div class="icon-box"><i class="fas fa-link"></i></div><h3>Sub Link Gen</h3><p>Auto-Sub URL</p>
+    </a>
+
+    <a href="youtube-thumbnail-previewer.html" class="card" style="--accent: #dcdde1;">
+        <div class="icon-box"><i class="fas fa-image"></i></div><h3>Thumb Preview</h3><p>Check Layouts</p>
+    </a>
+
+    <a href="glitch-text-generator.html" class="card" style="--accent: #00cec9;">
+       <div class="icon-box"><i class="fas fa-bug"></i></div><h3>Glitch Text</h3><p>Zalgo/Corrupt Text</p>
+    </a>
+
+    <a href="invisible-text.html" class="card" style="--accent: #b2bec3;">
+       <div class="icon-box"><i class="fas fa-ghost"></i></div><h3>Invisible Text</h3><p>Send Blank Messages</p>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+</footer>
+
+<script>
+// Theme Toggle Logic
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const target = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    
+    const btn = document.querySelector('.theme-btn i');
+    if(target === 'dark') {
+        btn.classList.remove('fa-moon');
+        btn.classList.add('fa-sun');
+    } else {
+        btn.classList.remove('fa-sun');
+        btn.classList.add('fa-moon');
+    }
+}
+
+// Staggered Animation Logic
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.05}s`;
+});
+</script>
+
+</body>
+</html>
