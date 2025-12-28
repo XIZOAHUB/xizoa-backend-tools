@@ -190,6 +190,12 @@ header {
     gap: 30px;
 }
 
+/* New Animation for Smooth Loading */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -199,6 +205,10 @@ header {
     transition: all 0.4s var(--ease);
     cursor: pointer;
     text-align: left;
+    
+    /* Animation defaults */
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* Card Hover Effects */
@@ -396,43 +406,16 @@ footer {
        <div class="icon-box"><i class="fab fa-youtube"></i></div>
        <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
     </a>
-    <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
-       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
-    </a>
-    <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
-       <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Multiple Files</p>
-    </a>
-    <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
-       <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Check Internet Speed</p>
-    </a>
     <a href="insta-video-saver.html" class="card" data-cat="social" style="--accent: #E1306C;">
        <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
-    </a>
-    <a href="CV-Resume-Builder.html" class="card" data-cat="pdf" style="--accent: #6c5ce7;">
-       <div class="icon-box"><i class="fas fa-user-tie"></i></div><h3>Resume Builder</h3><p>Create Professional CV</p>
-    </a>
-    <a href="image-compressor.html" class="card" data-cat="image" style="--accent: #00cec9;">
-       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
     </a>
     <a href="youtubeshorts.html" class="card" data-cat="social" style="--accent: #FF0000;">
        <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>Download YT Shorts</p>
     </a>
-    <a href="tiktok-downloader (1).html" class="card" data-cat="social" style="--accent: #ff0050;">
+    <a href="tiktok-downloader.html" class="card" data-cat="social" style="--accent: #ff0050;">
        <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark HD</p>
     </a>
-    <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
-       <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Create Custom QR</p>
-    </a>
-    <a href="fps-chekar.html" class="card" data-cat="gaming" style="--accent: #00b894;">
-       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Screen Hz Test</p>
-    </a>
-    <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
-       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
-    </a>
-    <a href="youtube-tag-extractor.html" class="card" data-cat="social" style="--accent: #FF0000;">
-       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>Get Viral SEO Tags</p>
-    </a>
-    <a href="social-media-caption (1).html" class="card" data-cat="social" style="--accent: #2c3e50;">
+    <a href="social-media-caption.html" class="card" data-cat="social" style="--accent: #2c3e50;">
        <div class="icon-box"><i class="fas fa-quote-right"></i></div><h3>Social Captions</h3><p>Generate Viral Quotes</p>
     </a>
     <a href="hashtag-generator.html" class="card" data-cat="social" style="--accent: #8e44ad;">
@@ -443,6 +426,37 @@ footer {
     </a>
     <a href="invisible-text.html" class="card" data-cat="social" style="--accent: #b2bec3;">
        <div class="icon-box"><i class="fas fa-ghost"></i></div><h3>Invisible Text</h3><p>Send Blank Messages</p>
+    </a>
+    <a href="youtube-tag-extractor.html" class="card" data-cat="social" style="--accent: #FF0000;">
+       <div class="icon-box"><i class="fas fa-tags"></i></div><h3>Tag Extractor</h3><p>Get Viral SEO Tags</p>
+    </a>
+    <a href="youtube-chapter-generator.html" class="card" data-cat="social" style="--accent: #ff4757;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-list-ol"></i></div><h3>YT Chapters</h3><p>Auto Chapter Maker</p>
+    </a>
+    <a href="youtube-tag-generator.html" class="card" data-cat="social" style="--accent: #ff6b81;">
+       <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>YT Tag Gen</h3><p>SEO Keyword Maker</p>
+    </a>
+    <a href="youtube-title-analyzer.html" class="card" data-cat="social" style="--accent: #2f3542;">
+       <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Title Analyzer</h3><p>Check Title Score</p>
+    </a>
+    <a href="youtube-money-calculator.html" class="card" data-cat="social" style="--accent: #2ecc71;">
+       <div class="icon-box"><i class="fas fa-dollar-sign"></i></div><h3>Money Calc</h3><p>Estimate Earnings</p>
+    </a>
+    <a href="youtube-description-generator.html" class="card" data-cat="social" style="--accent: #341f97;">
+       <div class="icon-box"><i class="fas fa-align-left"></i></div><h3>Desc Gen</h3><p>Auto Descriptions</p>
+    </a>
+    <a href="youtube-embed-generator.html" class="card" data-cat="social" style="--accent: #576574;">
+        <div class="icon-box"><i class="fas fa-code"></i></div><h3>Embed Gen</h3><p>Create Embed Code</p>
+    </a>
+    <a href="thumbnail-comparator.html" class="card" data-cat="social" style="--accent: #e55039;">
+        <div class="icon-box"><i class="fas fa-images"></i></div><h3>Thumbnail Compare</h3><p>A/B Testing Tool</p>
+    </a>
+
+    <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
+       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
+    </a>
+    <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
+       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
     </a>
     <a href="ai-text-summerise.html" class="card" data-cat="ai" style="--accent: #f39c12;">
        <div class="icon-box"><i class="fas fa-file-alt"></i></div><h3>AI Summarizer</h3><p>Shorten Long Text</p>
@@ -456,6 +470,16 @@ footer {
     <a href="blog-title-generator.html" class="card" data-cat="ai" style="--accent: #2980b9;">
        <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Blog Title Gen</h3><p>Catchy Headlines</p>
     </a>
+    <a href="ai-email-writer.html" class="card" data-cat="ai" style="--accent: #00f7ff;">
+       <div class="icon-box"><i class="fas fa-envelope-open-text"></i></div><h3>AI Email Writer</h3><p>Professional Emails</p>
+    </a>
+
+    <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
+       <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Multiple Files</p>
+    </a>
+    <a href="CV-Resume-Builder.html" class="card" data-cat="pdf" style="--accent: #6c5ce7;">
+       <div class="icon-box"><i class="fas fa-user-tie"></i></div><h3>Resume Builder</h3><p>Create Professional CV</p>
+    </a>
     <a href="High-quality-PDF-smart-tool.html" class="card" data-cat="pdf" style="--accent: #d63031;">
        <div class="icon-box"><i class="fas fa-file-pdf"></i></div><h3>HQ PDF Tool</h3><p>Compress & Edit Pro</p>
     </a>
@@ -464,6 +488,16 @@ footer {
     </a>
     <a href="pdf-light-mode.html" class="card" data-cat="pdf" style="--accent: #2d3436;">
        <div class="icon-box"><i class="fas fa-eye"></i></div><h3>PDF Dark Mode</h3><p>Comfort Reader</p>
+    </a>
+    <a href="compress-pdf-under-200kb.html" class="card" data-cat="pdf" style="--accent: #2563eb;">
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Compress PDF</h3><p>Under 200KB Tool</p>
+    </a>
+    <a href="jpg-to-pdf.html" class="card" data-cat="pdf" style="--accent: #00b894;">
+       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>JPG to PDF</h3><p>Images to Document</p>
+    </a>
+
+    <a href="fps-chekar.html" class="card" data-cat="gaming" style="--accent: #00b894;">
+       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Screen Hz Test</p>
     </a>
     <a href="reaction-time-test.html" class="card" data-cat="gaming" style="--accent: #e84393;">
        <div class="icon-box"><i class="fas fa-stopwatch"></i></div><h3>Reaction Time</h3><p>Test Your Reflexes</p>
@@ -474,18 +508,13 @@ footer {
     <a href="keyboard-tester.html" class="card" data-cat="gaming" style="--accent: #f1c40f;">
        <div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Keyboard Test</h3><p>Test All Keys</p>
     </a>
-    <a href="/compress-pdf-under-200kb" class="card" data-cat="pdf" style="--accent: #2563eb;">
-       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Compress PDF</h3><p>Under 200KB Tool</p>
-    </a>
     <a href="gaming.html" class="card" data-cat="gaming" style="--accent: #6c5ce7;">
        <div class="icon-box"><i class="fas fa-gamepad"></i></div><h3>Name Style</h3><p>Fancy Nicknames</p>
-    </a>
-    <a href="jpg-to-pdf.html" class="card" data-cat="pdf" style="--accent: #00b894;">
-       <div class="icon-box"><i class="fas fa-file-image"></i></div><h3>JPG to PDF</h3><p>Images to Document</p>
     </a>
     <a href="typing-master.html" class="card" data-cat="gaming" style="--accent: #2d3436;">
        <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Typing Test</p>
     </a>
+
     <a href="repo-file-generator.html" class="card" data-cat="dev" style="--accent: #333;">
        <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-file-code"></i></div><h3>Repo File Gen</h3><p>Git Structure Maker</p>
     </a>
@@ -498,6 +527,19 @@ footer {
     <a href="about-us-page-generator.html" class="card" data-cat="dev" style="--accent: #2980b9;">
        <div class="icon-box"><i class="fas fa-info-circle"></i></div><h3>About Us Gen</h3><p>Page Maker</p>
     </a>
+    <a href="hash-generator.html" class="card" data-cat="dev" style="--accent: #535c68;">
+        <div class="icon-box"><i class="fas fa-lock"></i></div><h3>Hash Generator</h3><p>MD5, SHA1 Encrypt</p>
+    </a>
+    <a href="json-formatter.html" class="card" data-cat="dev" style="--accent: #f6e58d;">
+        <div class="icon-box"><i class="fas fa-code-branch"></i></div><h3>JSON Format</h3><p>Prettify JSON</p>
+    </a>
+    <a href="lorem-ipsum-generator.html" class="card" data-cat="dev" style="--accent: #95afc0;">
+        <div class="icon-box"><i class="fas fa-paragraph"></i></div><h3>Lorem Ipsum</h3><p>Dummy Text Gen</p>
+    </a>
+
+    <a href="image-compressor.html" class="card" data-cat="image" style="--accent: #00cec9;">
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
+    </a>
     <a href="jpg-to-webp.html" class="card" data-cat="image" style="--accent: #ff9f43;">
        <div class="icon-box"><i class="fas fa-magic"></i></div><h3>JPG to WebP</h3><p>Speed Up Website</p>
     </a>
@@ -507,6 +549,7 @@ footer {
     <a href="jpg-to-png.html" class="card" data-cat="image" style="--accent: #fd79a8;">
        <div class="icon-box"><i class="fas fa-image"></i></div><h3>JPG to PNG</h3><p>Format Converter</p>
     </a>
+
     <a href="guitar-tuner.html" class="card" data-cat="music" style="--accent: #f1c40f;">
        <div class="icon-box"><i class="fas fa-guitar"></i></div><h3>Guitar Tuner</h3><p>Standard Tuning</p>
     </a>
@@ -519,10 +562,14 @@ footer {
     <a href="focus-noise-generator.html" class="card" data-cat="music" style="--accent: #2ecc71;">
        <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-wind"></i></div><h3>Focus Noise</h3><p>White Noise Player</p>
     </a>
-    <a href="ai-email-writer.html" class="card" data-cat="ai" style="--accent: #00f7ff;">
-       <div class="icon-box"><i class="fas fa-envelope-open-text"></i></div><h3>AI Email Writer</h3><p>Professional Emails</p>
+
+    <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
+       <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Check Internet Speed</p>
     </a>
-    <a href="age-calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
+    <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
+       <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Create Custom QR</p>
+    </a>
+    <a href="age_calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
        <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Calculate Exact Age</p>
     </a>
     <a href="pomodoro-timer.html" class="card" data-cat="utility" style="--accent: #e74c3c;">
@@ -554,6 +601,61 @@ footer {
     </a>
     <a href="numerology-calculator.html" class="card" data-cat="utility" style="--accent: #9b59b6;">
        <div class="icon-box"><i class="fas fa-star"></i></div><h3>Numerology</h3><p>Mulank & Rashi Calc</p>
+    </a>
+    <a href="bmi-calculator.html" class="card" data-cat="utility" style="--accent: #686de0;">
+        <div class="icon-box"><i class="fas fa-weight"></i></div><h3>BMI Calc</h3><p>Body Mass Index</p>
+    </a>
+    <a href="case-converter.html" class="card" data-cat="utility" style="--accent: #4834d4;">
+        <div class="icon-box"><i class="fas fa-font"></i></div><h3>Case Converter</h3><p>Upper/Lowercase</p>
+    </a>
+    <a href="emi-calculator.html" class="card" data-cat="utility" style="--accent: #be2edd;">
+        <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div><h3>EMI Calc</h3><p>Loan Calculator</p>
+    </a>
+    <a href="gst-calculator.html" class="card" data-cat="utility" style="--accent: #eb4d4b;">
+        <div class="icon-box"><i class="fas fa-calculator"></i></div><h3>GST Calc</h3><p>Tax Calculator</p>
+    </a>
+    <a href="percentage-calculator.html" class="card" data-cat="utility" style="--accent: #6ab04c;">
+        <div class="icon-box"><i class="fas fa-percent"></i></div><h3>Percent Calc</h3><p>Easy Math Tool</p>
+    </a>
+    <a href="unit-converter.html" class="card" data-cat="utility" style="--accent: #30336b;">
+        <div class="icon-box"><i class="fas fa-balance-scale"></i></div><h3>Unit Converter</h3><p>All-in-One Convert</p>
+    </a>
+    <a href="word-counter.html" class="card" data-cat="utility" style="--accent: #e056fd;">
+        <div class="icon-box"><i class="fas fa-file-alt"></i></div><h3>Word Counter</h3><p>Count Words/Chars</p>
+    </a>
+    <a href="world-clock.html" class="card" data-cat="utility" style="--accent: #22a6b3;">
+        <div class="icon-box"><i class="fas fa-globe-americas"></i></div><h3>World Clock</h3><p>International Time</p>
+    </a>
+
+    <a href="youtube-data-calculator.html" class="card" data-cat="social" style="--accent: #c23616;">
+        <div class="icon-box"><i class="fas fa-chart-pie"></i></div><h3>YT Data Calc</h3><p>Channel Analytics</p>
+    </a>
+    <a href="youtube-engagement-calculator.html" class="card" data-cat="social" style="--accent: #192a56;">
+        <div class="icon-box"><i class="fas fa-users"></i></div><h3>Engage Rate</h3><p>Measure Interactions</p>
+    </a>
+    <a href="youtube-growth-calculator.html" class="card" data-cat="social" style="--accent: #44bd32;">
+        <div class="icon-box"><i class="fas fa-chart-line"></i></div><h3>Growth Calc</h3><p>Predict Success</p>
+    </a>
+    <a href="youtube-hashtag-generator.html" class="card" data-cat="social" style="--accent: #8c7ae6;">
+        <div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>YT Hashtags</h3><p>Discover Tags</p>
+    </a>
+    <a href="youtube-idea-generator.html" class="card" data-cat="social" style="--accent: #fbc531;">
+        <div class="icon-box"><i class="fas fa-lightbulb"></i></div><h3>Video Ideas</h3><p>Content Inspiration</p>
+    </a>
+    <a href="youtube-name-generator.html" class="card" data-cat="social" style="--accent: #9c88ff;">
+        <div class="icon-box"><i class="fas fa-id-card"></i></div><h3>Channel Name</h3><p>Brand Generator</p>
+    </a>
+    <a href="youtube-script-generator.html" class="card" data-cat="social" style="--accent: #0097e6;">
+        <div class="icon-box"><i class="fas fa-scroll"></i></div><h3>Script Gen</h3><p>AI Video Scripts</p>
+    </a>
+    <a href="youtube-speed-calculator.html" class="card" data-cat="social" style="--accent: #e1b12c;">
+        <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Speed Calc</h3><p>Video Duration</p>
+    </a>
+    <a href="youtube-subscribe-link-generator.html" class="card" data-cat="social" style="--accent: #c0392b;">
+        <div class="icon-box"><i class="fas fa-link"></i></div><h3>Sub Link Gen</h3><p>Auto-Sub URL</p>
+    </a>
+    <a href="youtube-thumbnail-previewer.html" class="card" data-cat="social" style="--accent: #dcdde1;">
+        <div class="icon-box"><i class="fas fa-image"></i></div><h3>Thumb Preview</h3><p>Check Layouts</p>
     </a>
 
   </div>
@@ -629,7 +731,7 @@ footer {
       <div class="f-col">
           <h4>Support</h4>
           <a href="disclaimer.html">Disclaimer</a>
-          <a href="terms (1).html">Terms of Use</a>
+          <a href="terms.html">Terms of Use</a>
           <a href="https://github.com/XIZOAHUB">GitHub</a>
       </div>
   </div>
@@ -638,7 +740,6 @@ footer {
 
 <script>
 // --- CONFIGURATION ---
-const toolsPerPage = 16;
 let currentCount = 16;
 const cards = document.querySelectorAll('.card');
 const loadBtn = document.querySelector('.load-btn-box button');
@@ -665,9 +766,12 @@ function toggleTheme() {
 
 // --- INITIAL LOAD ---
 function init() {
+    // Show first 16 cards with staggered delay
     cards.forEach((card, index) => {
         if (index < currentCount) {
             card.style.display = 'flex';
+            // Add initial animation delay
+            card.style.animationDelay = `${index * 0.05}s`;
         } else {
             card.style.display = 'none';
         }
@@ -677,10 +781,12 @@ init();
 
 // --- FILTERING & SEARCH LOGIC ---
 function loadMore() {
-    currentCount += 12;
+    // Load ALL tools by setting count very high
+    currentCount = 1000; 
+    
     const activeCategory = document.querySelector('.menu button.active').innerText.toLowerCase();
     
-    // Map button text to category code (e.g., "AI Magic" -> "ai")
+    // Map button text to category code
     let catCode = 'all';
     if(activeCategory.includes('social')) catCode = 'social';
     else if(activeCategory.includes('ai')) catCode = 'ai';
@@ -691,23 +797,25 @@ function loadMore() {
     else if(activeCategory.includes('music')) catCode = 'music';
     else if(activeCategory.includes('utility')) catCode = 'utility';
     
-    runFilter(catCode, false);
+    runFilter(catCode);
 }
 
 function filterTools(category, btn) {
     if(btn) {
         document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        // Reset count when changing category
+        currentCount = 16;
+        loadBtn.style.display = 'inline-block';
     }
     
-    currentCount = 16; // Reset count
-    loadBtn.style.display = 'inline-block';
-    runFilter(category, true);
+    runFilter(category);
 }
 
-function runFilter(category, isReset) {
+function runFilter(category) {
     let visibleTotal = 0;
     let totalInCat = 0;
+    let delayCounter = 0; // For staggered animation
 
     cards.forEach(card => {
         const matchesCat = category === 'all' || card.dataset.cat === category;
@@ -715,7 +823,17 @@ function runFilter(category, isReset) {
         if(matchesCat) {
             totalInCat++;
             if(visibleTotal < currentCount) {
-                card.style.display = 'flex';
+                // If card was hidden, we animate it
+                if(card.style.display === 'none') {
+                    card.style.display = 'flex';
+                    card.style.animation = 'none'; // Reset animation
+                    card.offsetHeight; // Trigger reflow
+                    card.style.animation = `fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards`;
+                    card.style.animationDelay = `${delayCounter * 0.05}s`; // Staggered delay
+                    delayCounter++;
+                } else {
+                    card.style.display = 'flex';
+                }
             } else {
                 card.style.display = 'none';
             }
@@ -732,7 +850,6 @@ function runFilter(category, isReset) {
 
 function clickCategory(cat) {
     document.getElementById('toolsSection').scrollIntoView({behavior: 'smooth'});
-    // Find matching button
     const btns = document.querySelectorAll('.menu button');
     let targetBtn = btns[0];
     btns.forEach(b => {
@@ -747,23 +864,22 @@ searchInput.addEventListener('input', function(e) {
     
     if(term.length > 0) {
         loadBtn.style.display = 'none';
+        let delay = 0;
         cards.forEach(card => {
             const title = card.querySelector('h3').innerText.toLowerCase();
             const desc = card.querySelector('p').innerText.toLowerCase();
             if(title.includes(term) || desc.includes(term)) {
                 card.style.display = 'flex';
+                card.style.animation = `fadeInUp 0.5s ease forwards`;
+                card.style.animationDelay = `${delay * 0.05}s`;
+                delay++;
             } else {
                 card.style.display = 'none';
             }
         });
     } else {
-        // Restore default view
         const activeBtn = document.querySelector('.menu button.active');
-        let cat = 'all'; 
-        // Simple logic to get back to current category
-        if(activeBtn.innerText.includes('Social')) cat = 'social';
-        // ... (simplified for brevity, usually resetting to 'all' is safer UX)
-        filterTools('all', document.querySelector('.menu button:first-child'));
+        if(activeBtn) activeBtn.click();
     }
 });
 </script>
