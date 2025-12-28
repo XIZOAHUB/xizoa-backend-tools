@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gaming, Image & Music Tools - XIZOAHUB</title>
+<meta name="description" content="Free tools for Gamers, Designers & Musicians. FPS Test, Image Compressor, Guitar Tuner & More.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- SAME CSS AS INDEX.HTML --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --primary: #2563eb;
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+    --primary: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background-color: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; transition: 0.3s; }
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; z-index: -1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+a { text-decoration: none; color: inherit; }
+header { position: sticky; top: 0; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav { max-width: 1400px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+.theme-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.theme-btn:hover { background: var(--border); transform: rotate(15deg); }
+
+/* Hero */
+.hero { text-align: center; padding: 80px 20px 60px; max-width: 900px; margin: auto; }
+.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+.hero h1 span { background: linear-gradient(135deg, #00b894 0%, #0984e3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; }
+
+/* Grid */
+.container { max-width: 1400px; margin: 0 auto 100px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 30px 25px;
+    display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden;
+    transition: all 0.4s var(--ease); cursor: pointer; opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--accent); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); }
+.icon-box { width: 60px; height: 60px; border-radius: 16px; background: var(--bg-body); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: 0.4s; position: relative; z-index: 2; }
+.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1); }
+.card i { font-size: 1.8rem; color: var(--accent); transition: 0.3s; }
+.card:hover i { color: white; }
+.card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 2; }
+.card p { font-size: 0.9rem; color: var(--text-muted); position: relative; z-index: 2; }
+.badge { position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 30px; }
+.badge.new { background: #dcfce7; color: #16a34a; }
+.card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: var(--accent); filter: blur(60px); opacity: 0; transition: 0.5s; pointer-events: none; }
+.card:hover::before { opacity: 0.2; }
+
+/* Buttons & Footer */
+.back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border); color: var(--text-muted); font-weight: 600; margin-bottom: 20px; transition: 0.3s; }
+.back-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 40px 20px; margin-top: 80px; text-align: center; color: var(--text-muted); }
+
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
+    <div class="controls">
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Tools</a>
+  <h1>Gaming, Image & <br><span>Music Studio</span></h1>
+  <p>Test your gaming gear, compress images, or tune your guitar. <br>Everything you need for media and play.</p>
+</section>
+
+<section class="container">
+  <div class="grid" id="toolGrid">
+    
+    <a href="fps-chekar.html" class="card" style="--accent: #00b894;">
+       <div class="icon-box"><i class="fas fa-crosshairs"></i></div><h3>FPS Checker</h3><p>Screen Hz Test</p>
+    </a>
+    
+    <a href="reaction-time-test.html" class="card" style="--accent: #e84393;">
+       <div class="icon-box"><i class="fas fa-stopwatch"></i></div><h3>Reaction Time</h3><p>Test Your Reflexes</p>
+    </a>
+    
+    <a href="mouse-polling-rate.html" class="card" style="--accent: #0984e3;">
+       <div class="icon-box"><i class="fas fa-mouse"></i></div><h3>Polling Rate</h3><p>Check Mouse Hz</p>
+    </a>
+    
+    <a href="keyboard-tester.html" class="card" style="--accent: #f1c40f;">
+       <div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Keyboard Test</h3><p>Test All Keys</p>
+    </a>
+    
+    <a href="typing-master.html" class="card" style="--accent: #2d3436;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Typing Test</p>
+    </a>
+    
+    <a href="gaming.html" class="card" style="--accent: #6c5ce7;">
+       <div class="icon-box"><i class="fas fa-gamepad"></i></div><h3>Name Style</h3><p>Fancy Nicknames</p>
+    </a>
+
+
+    <a href="image-compressor.html" class="card" style="--accent: #00cec9;">
+       <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
+    </a>
+    
+    <a href="jpg-to-webp.html" class="card" style="--accent: #ff9f43;">
+       <div class="icon-box"><i class="fas fa-magic"></i></div><h3>JPG to WebP</h3><p>Speed Up Website</p>
+    </a>
+    
+    <a href="color-picker.html" class="card" style="--accent: #e84393;">
+       <div class="icon-box"><i class="fas fa-eye-dropper"></i></div><h3>Color Picker</h3><p>Get Hex & RGB</p>
+    </a>
+    
+    <a href="jpg-to-png.html" class="card" style="--accent: #fd79a8;">
+       <div class="icon-box"><i class="fas fa-image"></i></div><h3>JPG to PNG</h3><p>Format Converter</p>
+    </a>
+
+
+    <a href="guitar-tuner.html" class="card" style="--accent: #f1c40f;">
+       <div class="icon-box"><i class="fas fa-guitar"></i></div><h3>Guitar Tuner</h3><p>Standard Tuning</p>
+    </a>
+    
+    <a href="guitar-composer.html" class="card" style="--accent: #e67e22;">
+       <div class="icon-box"><i class="fas fa-music"></i></div><h3>Tab Creator</h3><p>Compose Music</p>
+    </a>
+    
+    <a href="auto-chord-maker.html" class="card" style="--accent: #8e44ad;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-headphones"></i></div><h3>Chord Maker</h3><p>Auto Generate Chords</p>
+    </a>
+    
+    <a href="focus-noise-generator.html" class="card" style="--accent: #2ecc71;">
+       <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-wind"></i></div><h3>Focus Noise</h3><p>White Noise Player</p>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="copyright">© 2025 XIZOAHUB TOOLS. All Rights Reserved.</div>
+</footer>
+
+<script>
+// Theme Toggle Logic
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const target = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    
+    const btn = document.querySelector('.theme-btn i');
+    if(target === 'dark') {
+        btn.classList.remove('fa-moon');
+        btn.classList.add('fa-sun');
+    } else {
+        btn.classList.remove('fa-sun');
+        btn.classList.add('fa-moon');
+    }
+}
+
+// Staggered Animation Logic
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.05}s`;
+});
+</script>
+
+</body>
+</html>
