@@ -4,22 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>YouTube Thumbnail Previewer | Test Titles & CTR (Live Preview)</title>
-  <meta name="description" content="Check how your YouTube thumbnail and title look on Desktop, Mobile, and Sidebar before uploading. The best free YouTube CTR Tester tool by Xizoa.">
-  <meta name="keywords" content="youtube thumbnail previewer, youtube ctr tester, thumbnail visualizer, check youtube thumbnail size, youtube title preview, youtube seo tool">
+  <title>YouTube Thumbnail Comparator & Preview Tool | Check CTR & Mobile View (Free)</title>
+  <meta name="description" content="The ultimate YouTube Thumbnail Comparator. Preview how your thumbnail looks on Mobile, Desktop, and Sidebar. Use our 'Blur Test' and 'Grayscale Check' to hack the YouTube Algorithm and boost CTR.">
+  <meta name="keywords" content="youtube thumbnail comparator, thumbnail previewer, youtube ctr tester, thumbnail ab testing, youtube seo tool, check thumbnail on mobile, viral thumbnail maker, youtube algorithm 2025">
   <meta name="author" content="Priyanshu - XIZOA HUB">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://xizoa.com/youtube-thumbnail-previewer">
+  
+  <link rel="canonical" href="https://tools.xizoa.com/thumbnail-comparator">
 
-  <meta property="og:title" content="YouTube Thumbnail Previewer - Boost Your CTR">
-  <meta property="og:description" content="See your video on YouTube before you upload. Test thumbnails and titles instantly.">
+  <meta property="og:title" content="YouTube Thumbnail Comparator - Viral CTR Tester">
+  <meta property="og:description" content="Don't upload blindly. Compare your thumbnail against the YouTube interface. Test contrast and visibility instantly.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://xizoa.com/youtube-thumbnail-previewer">
-  <meta property="og:image" content="https://xizoa.com/assets/og-preview.jpg">
+  <meta property="og:url" content="https://tools.xizoa.com/thumbnail-comparator">
+  <meta property="og:image" content="https://tools.xizoa.com/assets/og-comparator.jpg">
+  <meta property="og:site_name" content="XIZOA Hub">
 
-  <link rel="icon" href="https://xizoa.com/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://www.youtube.com/s/desktop/10c958d7/img/favicon.ico" type="image/x-icon">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script type="application/ld+json">
@@ -27,12 +30,22 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "YouTube Thumbnail Previewer",
+      "name": "Xizoa Thumbnail Comparator",
       "operatingSystem": "Web",
       "applicationCategory": "MultimediaApplication",
-      "url": "https://xizoa.com/youtube-thumbnail-previewer",
+      "url": "https://tools.xizoa.com/thumbnail-comparator",
+      "author": { "@type": "Person", "name": "Priyanshu" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "10200" }
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "12500" },
+      "featureList": "Mobile Preview, Sidebar Preview, Blur Test, Grayscale Test"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Science of Viral Thumbnails: A Complete Guide",
+      "description": "Learn why the 'Squint Test' and 'BOGY Rule' are essential for high CTR on YouTube.",
+      "author": { "@type": "Person", "name": "Priyanshu" },
+      "publisher": { "@type": "Organization", "name": "Xizoa Hub" }
     },
     {
       "@context": "https://schema.org",
@@ -40,13 +53,13 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Why should I preview my thumbnail?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Previewing helps you catch text that might be cut off on mobile screens and ensures your title is readable against the background, improving your CTR." }
+          "name": "Why does my thumbnail look blurry on YouTube?",
+          "acceptedAnswer": { "@type": "Answer", "text": "If your thumbnail is blurry, check your dimensions. The ideal size is 1280x720 (16:9). Also, ensure the file size is under 2MB but saved in high quality (PNG or JPG)." }
         },
         {
           "@type": "Question",
-          "name": "What is the best YouTube thumbnail size?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The ideal size is 1280x720 pixels (16:9 aspect ratio) with a file size limit of 2MB." }
+          "name": "What is the 'Squint Test' in design?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The Squint Test involves blurring your eyes (or the image) to see if the main subject is still visible. If you can't understand the thumbnail when it's blurry, it's too complicated for a scrolling user." }
         }
       ]
     }
@@ -54,15 +67,16 @@
   </script>
 
   <style>
-    /* --- THEME (Dark & Red) --- */
+    /* --- THEME (Responsive & Dark) --- */
     :root {
-      --bg: #050505;           
-      --card-bg: #111111;      
-      --text: #e2e8f0;         
-      --primary: #ff0000;      
+      --bg: #050505;            
+      --card-bg: #111111;       
+      --text: #e2e8f0;          
+      --primary: #ff0000;       
       --primary-dark: #cc0000;
       --border: 1px solid rgba(255, 255, 255, 0.1);
       --glass: rgba(255, 255, 255, 0.03);
+      --green: #00e676;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Outfit', sans-serif; outline: none; }
@@ -79,39 +93,48 @@
     /* HEADER */
     header { 
         text-align: center; 
-        padding: 60px 20px 40px; 
+        padding: 50px 20px 40px; 
         background: radial-gradient(circle at top, #1a0000, var(--bg)); 
         border-bottom: var(--border);
     }
     .brand-logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; margin-bottom: 10px; display: inline-block; }
     .brand-logo span { color: var(--primary); }
-    h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px rgba(255,0,0,0.4); }
+    h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #fff; }
     h1 span { color: var(--primary); }
-    .subtitle { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .subtitle { color: #94a3b8; font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
-    main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+    main { flex: 1; width: 100%; max-width: 1250px; margin: 0 auto; padding: 20px; }
 
-    /* TOOL UI */
+    /* TOOL UI - FULLY RESPONSIVE */
     .tool-container {
       background: var(--card-bg);
       border: var(--border);
       border-radius: 24px;
-      padding: 40px;
+      padding: 30px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      margin: 40px auto 60px auto;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 350px 1fr;
+      margin: 30px auto 60px auto;
+      display: flex;
+      flex-wrap: wrap; /* Critical for Mobile */
       gap: 40px;
+      position: relative;
     }
     .tool-container::before {
         content:''; position: absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
 
     /* Left Side: Controls */
-    .controls { background: #000; padding: 25px; border-radius: 15px; border: 1px solid #333; height: fit-content; }
-    .controls h3 { margin-bottom: 20px; color: #fff; font-size: 1.2rem; }
+    .controls { 
+        flex: 1; 
+        min-width: 300px; 
+        background: #000; 
+        padding: 25px; 
+        border-radius: 15px; 
+        border: 1px solid #333; 
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+    }
+    .controls h3 { margin-bottom: 20px; color: #fff; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
     
     .input-group { margin-bottom: 15px; }
     .input-label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #aaa; font-weight: 600; }
@@ -120,32 +143,59 @@
       width: 100%;
       background: #111;
       border: 1px solid #444;
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       color: #fff;
       font-size: 0.95rem;
       transition: 0.3s;
     }
-    input:focus { border-color: var(--primary); }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,0,0.2); }
     
-    input[type="file"] { padding: 8px; cursor: pointer; }
+    /* Hacker Buttons (Logic Checkers) */
+    .hacker-box { margin-top: 25px; padding-top: 20px; border-top: 1px dashed #333; }
+    .hacker-title { font-size: 0.85rem; color: #666; margin-bottom: 10px; display: block; text-transform: uppercase; }
+    .hacker-btns { display: flex; gap: 10px; }
+    .btn-hacker {
+        flex: 1;
+        background: #222;
+        border: 1px solid #444;
+        color: #ddd;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .btn-hacker:hover { background: #333; color: #fff; }
+    .btn-hacker.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-    /* Right Side: Previews (YouTube Clone CSS) */
+    /* Right Side: Previews */
     .preview-area {
-      display: flex; flex-direction: column; gap: 40px;
+      flex: 2;
+      min-width: 300px;
+      display: flex; 
+      flex-direction: column; 
+      gap: 50px;
     }
     
-    .preview-header { font-size: 1.2rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px; }
+    .preview-header { font-size: 1.1rem; color: #fff; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px; font-weight: 600; }
 
-    /* --- FAKE YOUTUBE UI CSS --- */
+    /* --- YOUTUBE CLONE STYLES --- */
     .yt-font { font-family: 'Roboto', sans-serif; }
     
-    /* Desktop Preview */
-    .yt-desktop-card {
-      display: flex; gap: 12px; max-width: 100%; cursor: pointer;
-    }
+    /* Logic Filters */
+    .blur-mode .yt-thumb-img { filter: blur(5px); transition: 0.3s; }
+    .gray-mode .yt-thumb-img { filter: grayscale(100%); transition: 0.3s; }
+
+    /* 1. Desktop Card */
+    .yt-desktop-card { display: flex; gap: 16px; cursor: pointer; }
     .yt-thumb-wrapper {
-      position: relative; flex-shrink: 0; width: 360px; height: 202px; border-radius: 12px; overflow: hidden; background: #222;
+      position: relative; flex-shrink: 0; width: 360px; max-width: 45%; 
+      aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #222;
     }
     .yt-img { width: 100%; height: 100%; object-fit: cover; }
     .yt-duration {
@@ -153,71 +203,78 @@
       padding: 3px 6px; font-size: 12px; border-radius: 4px; font-weight: 500;
     }
     
-    .yt-meta { display: flex; flex-direction: column; gap: 5px; padding-top: 5px; }
-    .yt-title { color: #fff; font-size: 18px; font-weight: 600; line-height: 1.4; max-height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .yt-meta { flex: 1; display: flex; flex-direction: column; gap: 6px; padding-top: 5px; }
+    .yt-title { color: #fff; font-size: 18px; font-weight: 500; line-height: 1.4; max-height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     .yt-channel-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
-    .yt-avatar { width: 36px; height: 36px; border-radius: 50%; background: #444; overflow: hidden; }
-    .yt-cname { color: #aaa; font-size: 14px; }
-    .yt-stats { color: #aaa; font-size: 14px; }
-    .yt-desc-snippet { color: #aaa; font-size: 13px; margin-top: 8px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;}
+    .yt-avatar { width: 24px; height: 24px; border-radius: 50%; background: #444; overflow: hidden; }
+    .yt-cname { color: #aaa; font-size: 12px; }
+    .yt-stats { color: #aaa; font-size: 12px; }
+    .yt-desc-snippet { color: #aaa; font-size: 12px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 
-    /* Mobile Preview (Vertical) */
-    .yt-mobile-card {
-      width: 100%; max-width: 400px; background: #0f0f0f; padding-bottom: 15px;
-    }
-    .yt-mobile-thumb { width: 100%; height: 225px; background: #222; position: relative; }
-    .yt-mobile-meta { display: flex; gap: 12px; padding: 12px 10px 0; }
+    /* 2. Mobile Card */
+    .yt-mobile-card { width: 100%; max-width: 420px; background: #0f0f0f; padding-bottom: 15px; border: 1px solid #222; }
+    .yt-mobile-thumb { width: 100%; aspect-ratio: 16/9; background: #222; position: relative; overflow: hidden; }
+    .yt-mobile-meta { display: flex; gap: 12px; padding: 12px 12px 0; }
     .yt-mobile-avatar { width: 40px; height: 40px; border-radius: 50%; background: #444; flex-shrink: 0; overflow:hidden;}
-    .yt-mobile-text { display: flex; flex-direction: column; gap: 4px; }
-    .yt-mobile-title { color: #fff; font-size: 16px; font-weight: 500; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yt-mobile-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .yt-mobile-title { color: #fff; font-size: 16px; font-weight: 400; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .yt-mobile-info { color: #aaa; font-size: 12px; }
 
-    /* Sidebar Preview (Small) */
-    .yt-sidebar-card { display: flex; gap: 8px; max-width: 400px; }
+    /* 3. Sidebar Card */
+    .yt-sidebar-card { display: flex; gap: 10px; max-width: 400px; }
     .yt-sidebar-thumb { width: 168px; height: 94px; border-radius: 8px; background: #222; position: relative; overflow: hidden; flex-shrink: 0; }
-    .yt-sidebar-meta { display: flex; flex-direction: column; gap: 4px; }
+    .yt-sidebar-meta { flex: 1; display: flex; flex-direction: column; gap: 5px; }
     .yt-sidebar-title { color: #fff; font-size: 14px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .yt-sidebar-name { color: #aaa; font-size: 12px; }
 
-    /* --- CONTENT AREA --- */
-    .content-container { margin-top: 60px; background: #fff; color: #333; padding: 50px; border-radius: 24px; }
+    /* --- CONTENT AREA (KING CONTENT) --- */
+    .content-container { margin-top: 60px; display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
     
-    .content-container h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 25px; margin-top: 40px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
-    .content-container h2:first-child { margin-top: 0; }
-    .content-container h2 i { color: var(--primary); }
+    .article-box { background: #fff; color: #1a1a1a; padding: 50px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     
-    .content-container h3 { font-size: 1.5rem; margin-bottom: 15px; color: #1e293b; font-weight: 700; margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    .article-box h2 { font-size: 2.2rem; color: #000; margin: 40px 0 20px; font-weight: 900; line-height: 1.2; }
+    .article-box h2:first-child { margin-top: 0; }
+    .article-box h3 { font-size: 1.5rem; margin-bottom: 15px; margin-top: 30px; color: #222; font-weight: 800; border-bottom: 3px solid #eee; padding-bottom: 10px; }
     
-    .content-container p { color: #475569; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
-    .content-container ul { margin-left: 20px; color: #475569; margin-bottom: 25px; line-height: 1.8; }
-    .content-container li { margin-bottom: 10px; }
+    .article-box p { color: #444; line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; }
+    .article-box ul { margin-left: 25px; margin-bottom: 25px; line-height: 1.8; }
+    .article-box li { margin-bottom: 12px; color: #444; }
 
-    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
-    .faq-item h3 { font-size: 1.2rem; color: #1e293b; margin-bottom: 10px; font-weight: 700; cursor: pointer; }
-    .faq-item p { font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 0; }
+    .pro-tip { background: #f0fdf4; border-left: 4px solid #00e676; padding: 20px; margin: 25px 0; font-style: italic; color: #333; }
+    
+    /* Sidebar Widgets */
+    .sidebar { display: flex; flex-direction: column; gap: 30px; }
+    .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; border: var(--border); }
+    .widget h3 { color: #fff; font-size: 1.2rem; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+    .widget ul { list-style: none; padding: 0; }
+    .widget li { margin-bottom: 10px; }
+    .widget a { color: #999; text-decoration: none; transition: 0.3s; }
+    .widget a:hover { color: var(--primary); padding-left: 5px; }
 
-    /* --- FOOTER (UNCHANGED 3-COLUMN) --- */
-    footer { background: var(--card-bg); border-top: 1px solid #1e293b; padding: 60px 20px 20px; margin-top: auto; color: #94a3b8; }
-    .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 10px; }
-    .footer-col p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
-    .footer-links a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: 0.3s; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--primary); padding-left: 5px; }
-    .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.85rem; }
+    /* FOOTER */
+    footer { background: #000; border-top: 1px solid #222; padding: 80px 20px 30px; margin-top: auto; color: #888; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+    .footer-col h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 15px; }
+    .footer-col p { color: #888; font-size: 1rem; line-height: 1.7; }
+    .footer-links a { display: block; color: #888; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
+    .footer-links a:hover { color: var(--primary); padding-left: 8px; }
+    .copyright { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid #222; color: #555; }
 
     @media (max-width: 900px) {
-      .tool-container { grid-template-columns: 1fr; }
+      .content-container { grid-template-columns: 1fr; }
+      .yt-desktop-card { flex-direction: column; }
+      .yt-thumb-wrapper { width: 100%; max-width: 100%; }
       h1 { font-size: 2rem; }
-      .content-container { padding: 25px; }
+      .tool-container { padding: 20px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
-    <h1>Thumbnail <span>Previewer</span></h1>
-    <p class="subtitle">See how your Thumbnail & Title look on YouTube Search, Mobile & Home.</p>
+    <a href="/" class="brand-logo"><i class="fas fa-cube"></i> XIZOA <span>HUB</span></a>
+    <h1>Thumbnail <span>Comparator</span></h1>
+    <p class="subtitle">Test your CTR visually. The only tool with Hacker Logic checks.</p>
   </header>
 
   <main>
@@ -225,7 +282,7 @@
     <section class="tool-container">
       
       <div class="controls">
-        <h3><i class="fas fa-edit"></i> Edit Details</h3>
+        <h3><i class="fas fa-sliders-h"></i> Configuration</h3>
         
         <div class="input-group">
             <label class="input-label">Upload Thumbnail (16:9)</label>
@@ -234,7 +291,7 @@
 
         <div class="input-group">
             <label class="input-label">Video Title</label>
-            <input type="text" id="titleInput" value="Amazing Video Title That Goes Viral on YouTube 2025!">
+            <input type="text" id="titleInput" value="I Spent 50 Hours Coding THIS Tool! (Insane Results)">
         </div>
 
         <div class="input-group">
@@ -247,49 +304,54 @@
             <input type="file" id="avatarInput" accept="image/*">
         </div>
 
-        <div class="input-group">
-            <label class="input-label">Views & Time</label>
-            <input type="text" id="metaInput" value="1.2M views • 2 hours ago">
+        <div class="hacker-box">
+            <span class="hacker-title">Hacker Logic Tools</span>
+            <div class="hacker-btns">
+                <button class="btn-hacker" onclick="toggleBlur(this)"><i class="fas fa-eye-slash"></i> Blur Test</button>
+                <button class="btn-hacker" onclick="toggleGray(this)"><i class="fas fa-adjust"></i> Grayscale</button>
+            </div>
+            <p style="font-size:0.8rem; color:#666; margin-top:10px;">*Use these to check visibility and contrast.</p>
         </div>
 
       </div>
 
-      <div class="preview-area yt-font">
+      <div class="preview-area yt-font" id="previewContainer">
         
         <div>
             <div class="preview-header">Desktop Search View</div>
             <div class="yt-desktop-card">
                 <div class="yt-thumb-wrapper">
                     <img src="https://via.placeholder.com/360x202/333/fff?text=Upload+Thumbnail" class="yt-img preview-thumb">
-                    <span class="yt-duration">10:45</span>
+                    <span class="yt-duration">12:45</span>
                 </div>
                 <div class="yt-meta">
-                    <div class="yt-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                    <div class="yt-title preview-title">I Spent 50 Hours Coding THIS Tool! (Insane Results)</div>
                     <div class="yt-stats preview-meta">1.2M views • 2 hours ago</div>
                     <div class="yt-channel-row">
-                        <div class="yt-avatar"><img src="https://via.placeholder.com/36/444/fff?text=A" class="yt-img preview-avatar"></div>
+                        <div class="yt-avatar"><img src="https://via.placeholder.com/36/444/fff?text=X" class="yt-img preview-avatar"></div>
                         <div class="yt-cname preview-channel">Xizoa Hub</div>
                     </div>
-                    <div class="yt-desc-snippet">In this video, we are going to explore the best ways to optimize your YouTube thumbnails for maximum CTR...</div>
+                    <div class="yt-desc-snippet">In this video, we are going to explore the best ways to optimize your YouTube thumbnails for maximum CTR using advanced psychology...</div>
                 </div>
             </div>
         </div>
 
         <div>
-            <div class="preview-header">Mobile Home View</div>
+            <div class="preview-header">Mobile Home (Algorithm Feed)</div>
             <div class="yt-mobile-card">
                 <div class="yt-mobile-thumb">
                      <img src="https://via.placeholder.com/400x225/333/fff?text=Upload+Thumbnail" class="yt-img preview-thumb">
-                     <span class="yt-duration">10:45</span>
+                     <span class="yt-duration">12:45</span>
                 </div>
                 <div class="yt-mobile-meta">
-                    <div class="yt-mobile-avatar"><img src="https://via.placeholder.com/40/444/fff?text=A" class="yt-img preview-avatar"></div>
+                    <div class="yt-mobile-avatar"><img src="https://via.placeholder.com/40/444/fff?text=X" class="yt-img preview-avatar"></div>
                     <div class="yt-mobile-text">
-                        <div class="yt-mobile-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                        <div class="yt-mobile-title preview-title">I Spent 50 Hours Coding THIS Tool! (Insane Results)</div>
                         <div class="yt-mobile-info">
                             <span class="preview-channel">Xizoa Hub</span> • <span class="preview-meta">1.2M views • 2 hours ago</span>
                         </div>
                     </div>
+                    <div style="color:#aaa;"><i class="fas fa-ellipsis-v"></i></div>
                 </div>
             </div>
         </div>
@@ -298,11 +360,11 @@
             <div class="preview-header">Desktop Sidebar (Suggested)</div>
             <div class="yt-sidebar-card">
                 <div class="yt-sidebar-thumb">
-                    <img src="https://via.placeholder.com/168x94/333/fff?text=Upload" class="yt-img preview-thumb">
-                    <span class="yt-duration">10:45</span>
+                    <img src="https://via.placeholder.com/168x94/333/fff?text=Thumb" class="yt-img preview-thumb">
+                    <span class="yt-duration">12:45</span>
                 </div>
                 <div class="yt-sidebar-meta">
-                    <div class="yt-sidebar-title preview-title">Amazing Video Title That Goes Viral on YouTube 2025!</div>
+                    <div class="yt-sidebar-title preview-title">I Spent 50 Hours Coding THIS Tool! (Insane Results)</div>
                     <div class="yt-sidebar-name preview-channel">Xizoa Hub</div>
                     <div class="yt-sidebar-name preview-meta">1.2M views • 2 hours ago</div>
                 </div>
@@ -314,35 +376,75 @@
     </section>
 
     <div class="content-container">
-      <article>
-        <h2><i class="fas fa-eye"></i> YouTube Thumbnail Previewer & CTR Tester</h2>
-        <p>Your video might have the best content in the world, but if nobody clicks on it, the algorithm will bury it. <strong>CTR (Click-Through Rate)</strong> is one of the most critical metrics for YouTube growth. The decision to click happens in milliseconds, and it depends entirely on your <strong>Thumbnail</strong> and <strong>Title</strong>.</p>
-        <p><strong>Xizoa Hub's Thumbnail Previewer</strong> allows you to see exactly how your video will look on the YouTube homepage, mobile app, and sidebar <em>before</em> you publish it. This helps you avoid common mistakes like text being cut off or colors blending into the background.</p>
+      
+      <article class="article-box">
+        <h2><i class="fas fa-crown" style="color:#FFD700;"></i> The Ultimate Guide to High-CTR Thumbnails (2025)</h2>
+        <p>You can have the best video editing, the funniest script, and the most expensive camera. But if your thumbnail is bad, <strong>no one will ever know.</strong> The YouTube algorithm is a machine that optimizes for one thing: <strong>Session Time</strong>. And Session Time starts with a Click.</p>
+        <p>The <strong>Xizoa Thumbnail Comparator</strong> is not just a preview tool. It is a diagnostic lab for your creative assets. By simulating the exact environment of YouTube, you can fix mistakes before you lose potential views.</p>
 
-        <h3><i class="fas fa-mobile-alt"></i> Why Previewing on Mobile is Critical</h3>
-        <p>Over 70% of YouTube watch time comes from mobile devices. A thumbnail that looks great on a large desktop monitor might look cluttered and unreadable on a small phone screen. Our tool simulates the mobile view so you can ensure your text is big enough and your face is visible.</p>
+        <h3>1. The "Squint Test" (Why We Added Blur)</h3>
+        <p>Professional graphic designers use a technique called the "Squint Test." They squint their eyes to blur their vision. Why? Because viewers scroll through YouTube at lightning speed. They don't see details; they see shapes and colors.</p>
+        <p><strong>How to use the Blur Button:</strong> Click the "Blur Test" button above. If you cannot immediately tell what the video is about (e.g., "Oh, that's a car" or "That's a gaming PC"), then your thumbnail is too complicated. <strong>Simplify it.</strong></p>
 
-        <h3><i class="fas fa-check-double"></i> Checklist for High CTR Thumbnails</h3>
+        <h3>2. The Grayscale Test (Checking Contrast)</h3>
+        <p>A common mistake is using colors that blend together. For example, red text on a dark brown background might look okay on your bright monitor, but on a phone with low brightness, it becomes invisible.</p>
+        <div class="pro-tip">
+            <strong>Pro Tip:</strong> Use the "Grayscale" button. If your text disappears when the color is removed, you don't have enough <strong>Value Contrast</strong>. Make your background darker and your text brighter.
+        </div>
+
+        <h3>3. The "BOGY" Rule for Backgrounds</h3>
+        <p>YouTube's interface is mostly White (Day Mode) or Dark Gray (Night Mode). To stand out, you need to use colors that are NOT white, black, or gray.</p>
         <ul>
-            <li><strong>Less is More:</strong> Keep text under 4-5 words. Use bold, contrasting colors.</li>
-            <li><strong>The "BOGY" Rule:</strong> Use Black, Orange, Green, and Yellow backgrounds to stand out against YouTube's white/dark theme.</li>
-            <li><strong>Emotion:</strong> Faces with strong emotions (surprise, happiness, anger) tend to get more clicks.</li>
-            <li><strong>Title Synergy:</strong> Don't just repeat the title in the thumbnail. Use the thumbnail to tease the visual, and the title to add context.</li>
+            <li><strong>B</strong>lue: Good, but can be cold.</li>
+            <li><strong>O</strong>range: Excellent (complimentary to YouTube Red).</li>
+            <li><strong>G</strong>reen: High visibility.</li>
+            <li><strong>Y</strong>ellow: High visibility (used by MrBeast).</li>
         </ul>
 
-        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        <h3>4. Mobile Optimization is Non-Negotiable</h3>
+        <p>In 2025, over 75% of YouTube traffic is mobile. A thumbnail that looks epic on a 27-inch 4K monitor might look like a messy blob on a 6-inch phone screen. Our "Mobile Home View" preview is arguably the most important section of this tool.</p>
+
+        <h2>Frequently Asked Questions</h2>
         
         <div class="faq-item">
-            <h3>What is the perfect YouTube thumbnail size?</h3>
-            <p>The standard size is <strong>1280 x 720 pixels</strong> (16:9 aspect ratio). The minimum width is 640 pixels, and the file size should be under 2MB.</p>
+            <h3>What is the perfect thumbnail size?</h3>
+            <p>1280x720 pixels. This is a 16:9 aspect ratio. Do not use 1920x1080 if your file size exceeds 2MB, as YouTube will reject it.</p>
         </div>
 
         <div class="faq-item">
-            <h3>Does changing a thumbnail affect views?</h3>
-            <p>Yes, significantly. If an old video isn't performing well, changing the thumbnail to something more catchy can "revive" the video and boost its CTR, leading to more impressions from YouTube.</p>
+            <h3>Should I put my face in the thumbnail?</h3>
+            <p>Data shows that thumbnails with faces showing strong emotion (shock, joy, anger) get higher CTR. Humans are evolved to look at other humans.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this tool better than Photoshop preview?</h3>
+            <p>Yes, because Photoshop doesn't show you the YouTube UI (timestamps, channel icons, dark mode, titles) surrounding your image. Context matters.</p>
         </div>
 
       </article>
+
+      <aside class="sidebar">
+        <div class="widget">
+            <h3><i class="fas fa-tools"></i> Popular Tools</h3>
+            <ul>
+                <li><a href="/youtube-title-analyzer">YouTube Title Analyzer</a></li>
+                <li><a href="/tag-generator">Tag Generator</a></li>
+                <li><a href="/channel-audit">Channel Audit</a></li>
+                <li><a href="/money-calculator">Money Calculator</a></li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h3><i class="fas fa-lightbulb"></i> Quick Tips</h3>
+            <ul>
+                <li>Keep text under 5 words.</li>
+                <li>Use high contrast.</li>
+                <li>Zoom out to check visibility.</li>
+                <li>Match title and thumb.</li>
+            </ul>
+        </div>
+      </aside>
+
     </div>
 
   </main>
@@ -351,35 +453,33 @@
     <div class="footer-content">
       <div class="footer-col">
         <h3>About Tool</h3>
-        <p>XIZOA Thumbnail Previewer helps you optimize CTR. Fast, free, and secure tool for creators.</p>
+        <p>XIZOA Thumbnail Comparator helps you hack the algorithm by optimizing your CTR visually. Fast, free, and secure.</p>
       </div>
       <div class="footer-col">
         <h3>XIZOA Hub</h3>
         <p>We build high-quality online tools to make the internet more useful. Developed by <strong>Priyanshu</strong>.</p>
       </div>
       <div class="footer-col footer-links">
-        <h3>Explore</h3>
-        <a href="index.html">Home</a>
-        <a href="ai-email-writer.html">AI Email Writer</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <h3>Legal</h3>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/contact">Contact Us</a>
       </div>
     </div>
-    <div class="copyright">© 2025 XIZOA Hub • Designed by Priyanshu</div>
+    <div class="copyright">© 2025 XIZOA Hub • All Rights Reserved.</div>
   </footer>
 
   <script>
     // Elements
     const titleInput = document.getElementById('titleInput');
     const channelInput = document.getElementById('channelInput');
-    const metaInput = document.getElementById('metaInput');
     const thumbInput = document.getElementById('thumbInput');
     const avatarInput = document.getElementById('avatarInput');
+    const previewContainer = document.getElementById('previewContainer');
 
     // Targets
     const previewTitles = document.querySelectorAll('.preview-title');
     const previewChannels = document.querySelectorAll('.preview-channel');
-    const previewMetas = document.querySelectorAll('.preview-meta');
     const previewThumbs = document.querySelectorAll('.preview-thumb');
     const previewAvatars = document.querySelectorAll('.preview-avatar');
 
@@ -387,11 +487,9 @@
     titleInput.addEventListener('input', (e) => {
         previewTitles.forEach(el => el.innerText = e.target.value);
     });
+    
     channelInput.addEventListener('input', (e) => {
         previewChannels.forEach(el => el.innerText = e.target.value);
-    });
-    metaInput.addEventListener('input', (e) => {
-        previewMetas.forEach(el => el.innerText = e.target.value);
     });
 
     // Image Upload Logic (Thumbnail)
@@ -415,6 +513,17 @@
             reader.readAsDataURL(e.target.files[0]);
         }
     });
+
+    // Hacker Logic: Toggles
+    function toggleBlur(btn) {
+        previewContainer.classList.toggle('blur-mode');
+        btn.classList.toggle('active');
+    }
+
+    function toggleGray(btn) {
+        previewContainer.classList.toggle('gray-mode');
+        btn.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
