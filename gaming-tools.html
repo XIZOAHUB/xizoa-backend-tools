@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-12HYTMR09W');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gaming Tools - XIZOAHUB</title>
+<meta name="description" content="Free gaming utilities: FPS Checker, Mouse Polling Rate Test, Reaction Time Test, Keyboard Tester & more.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- CORE VARIABLES & CSS (Same as Home) --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.8);
+    --primary: #2563eb;
+    --sidebar-width: 280px;
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+[data-theme="dark"] {
+    --bg-body: #050505; --bg-card: #121212; --text-main: #f8fafc; --text-muted: #94a3b8; --border: #2d2d2d; --glass: rgba(18, 18, 18, 0.8); --primary: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background-color: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; }
+
+/* Grid Background */
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; z-index: -1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+a { text-decoration: none; color: inherit; }
+
+/* --- HEADER & SIDEBAR --- */
+header { position: sticky; top: 0; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav { max-width: 1400px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.nav-left { display: flex; align-items: center; gap: 15px; }
+.logo { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.icon-btn:hover { background: var(--border); transform: translateY(-2px); }
+
+/* Sidebar Logic */
+.sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1001; opacity: 0; visibility: hidden; transition: 0.3s; backdrop-filter: blur(3px); }
+.sidebar-overlay.active { opacity: 1; visibility: visible; }
+.sidebar { position: fixed; top: 0; left: -100%; width: var(--sidebar-width); height: 100%; background: var(--bg-card); border-right: 1px solid var(--border); z-index: 1002; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); padding: 25px; display: flex; flex-direction: column; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
+.sidebar.active { left: 0; }
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.close-btn { font-size: 1.5rem; background: none; border: none; color: var(--text-muted); cursor: pointer; }
+.sidebar-links { display: flex; flex-direction: column; gap: 15px; }
+.sidebar-link { display: flex; align-items: center; gap: 15px; padding: 12px 15px; border-radius: 12px; color: var(--text-main); font-weight: 600; transition: 0.2s; }
+.sidebar-link:hover { background: var(--bg-body); color: var(--primary); }
+.sidebar-link.active { background: rgba(37, 99, 235, 0.1); color: var(--primary); }
+
+/* --- PAGE HEADER --- */
+.page-header { text-align: center; padding: 60px 20px 40px; }
+.page-header h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 10px; font-weight: 800; }
+.page-header p { font-size: 1.2rem; color: var(--text-muted); }
+
+/* --- GRID & CARDS --- */
+.container { max-width: 1400px; margin: 0 auto 80px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 30px 25px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all 0.4s var(--ease); cursor: pointer; }
+.card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--accent); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); }
+.icon-box { width: 60px; height: 60px; border-radius: 16px; background: var(--bg-body); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: 0.4s var(--ease); }
+.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1); }
+.card i { font-size: 1.8rem; color: var(--accent); transition: 0.3s; }
+.card:hover i { color: white; }
+.card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+.card p { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+
+/* Badge */
+.badge { position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 30px; text-transform: uppercase; }
+.badge.hot { background: #fee2e2; color: #dc2626; }
+.badge.new { background: #dcfce7; color: #16a34a; }
+
+/* Footer */
+footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 50px 20px; text-align: center; margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
+        <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sidebar-links">
+        <a href="/" class="sidebar-link"><i class="fas fa-home"></i> Home</a>
+        <a href="social-tools.html" class="sidebar-link"><i class="fas fa-share-alt"></i> Social Media</a>
+        <a href="ai-tools.html" class="sidebar-link"><i class="fas fa-robot"></i> AI Tools</a>
+        <a href="gaming-tools.html" class="sidebar-link active"><i class="fas fa-gamepad"></i> Gaming Tools</a>
+        <a href="all-tools.html" class="sidebar-link"><i class="fas fa-th-large"></i> All Tools</a>
+    </div>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="nav-left">
+        <button class="icon-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
+    </div>
+    <div class="nav-right">
+        <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+    <h1>Gaming Tools</h1>
+    <p>Optimize your setup and test your skills.</p>
+</section>
+
+<section class="container">
+  <div class="grid">
+      
+      <a href="fps-chekar.html" class="card" style="--accent: #00b894;">
+         <div class="icon-box"><i class="fas fa-crosshairs"></i></div>
+         <h3>FPS Checker</h3><p>Screen Hz Test</p>
+      </a>
+
+      <a href="reaction-time-test.html" class="card" style="--accent: #e84393;">
+         <div class="icon-box"><i class="fas fa-stopwatch"></i></div>
+         <h3>Reaction Time</h3><p>Test Your Reflexes</p>
+      </a>
+
+      <a href="mouse-polling-rate.html" class="card" style="--accent: #0984e3;">
+         <div class="icon-box"><i class="fas fa-mouse"></i></div>
+         <h3>Polling Rate</h3><p>Check Mouse Hz</p>
+      </a>
+
+      <a href="keyboard-tester.html" class="card" style="--accent: #f1c40f;">
+         <span class="badge hot">PRO</span><div class="icon-box"><i class="fas fa-keyboard"></i></div>
+         <h3>Keyboard Test</h3><p>Test All Keys</p>
+      </a>
+
+      <a href="gaming.html" class="card" style="--accent: #6c5ce7;">
+         <div class="icon-box"><i class="fas fa-gamepad"></i></div>
+         <h3>Gaming Name Style</h3><p>Fancy Nicknames</p>
+      </a>
+
+      <a href="typing-master.html" class="card" style="--accent: #d63031;">
+         <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div>
+         <h3>Typing Master</h3><p>Speed Typing Test</p>
+      </a>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 XIZOAHUB TOOLS. All Rights Reserved.</p>
+</footer>
+
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const target = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    
+    const btn = document.querySelector('.nav-right .icon-btn i');
+    if(target === 'dark') {
+        btn.classList.remove('fa-moon'); btn.classList.add('fa-sun');
+    } else {
+        btn.classList.remove('fa-sun'); btn.classList.add('fa-moon');
+    }
+}
+
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
