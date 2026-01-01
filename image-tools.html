@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-12HYTMR09W');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Studio - XIZOAHUB Tools</title>
+<meta name="description" content="Free Image Tools: Compress Images, Convert JPG to WebP/PNG, Pick Colors and more.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- THEME VARIABLES --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --primary: #00cec9; /* Image Theme Color (Cyan/Teal) */
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+    --primary: #00b894;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; transition: 0.3s; }
+
+/* Background Pattern */
+body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: linear-gradient(30deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; z-index: -1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* --- HEADER --- */
+header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+.nav { max-width: 1200px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+
+.theme-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.theme-btn:hover { transform: rotate(15deg); background: var(--border); }
+
+/* --- HERO SECTION --- */
+.hero { text-align: center; padding: 80px 20px 50px; }
+.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--primary); }
+.hero p { color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: auto; }
+
+/* --- GRID & CARDS --- */
+.container { max-width: 1200px; margin: 0 auto 100px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+
+.card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px;
+    padding: 35px 30px; display: flex; flex-direction: column; align-items: flex-start;
+    position: relative; overflow: hidden; transition: all 0.4s var(--ease);
+    opacity: 0; animation: fadeInUp 0.6s forwards;
+}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+
+/* Icon Box Styling */
+.icon-box {
+    width: 65px; height: 65px; border-radius: 18px; background: var(--bg-body);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
+    transition: 0.4s; font-size: 1.8rem; color: var(--accent);
+}
+.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1); }
+
+.card h3 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+.card p { color: var(--text-muted); font-size: 1rem; }
+
+/* Badge for Hot Tools */
+.badge {
+    position: absolute; top: 20px; right: 20px;
+    font-size: 0.7rem; font-weight: 800; padding: 5px 10px;
+    border-radius: 30px; background: #dcfce7; color: #16a34a;
+}
+
+/* Footer */
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); margin-top: auto; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><i class="fas fa-images"></i>XIZOA IMAGE</a>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="index.html" style="font-weight: 600; font-size: 0.9rem;">Home</a>
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+    <h1>Professional <br><span>Image Studio</span></h1>
+    <p>Compress, convert, and optimize your photos instantly. Privacy-first processing directly in your browser.</p>
+</section>
+
+<section class="container">
+    <div class="grid" id="imageGrid">
+        </div>
+</section>
+
+<footer>
+    <p>© 2025 XIZOAHUB TOOLS. Image Processing Unit.</p>
+</footer>
+
+<script>
+// --- THEME LOGIC ---
+function toggleTheme() {
+    const html = document.documentElement;
+    const target = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    document.querySelector('.theme-btn i').className = target === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+// --- IMAGE TOOLS DATA ---
+const imageTools = [
+    { 
+        title: "Img Compressor", 
+        desc: "Reduce image size without losing quality.", 
+        link: "image-compressor.html", 
+        icon: "fas fa-compress-arrows-alt", 
+        color: "#00cec9",
+        badge: "POPULAR"
+    },
+    { 
+        title: "JPG to WebP", 
+        desc: "Convert for faster website loading.", 
+        link: "jpg-to-webp.html", 
+        icon: "fas fa-magic", 
+        color: "#ff9f43" 
+    },
+    { 
+        title: "Color Picker", 
+        desc: "Extract Hex & RGB codes from screen.", 
+        link: "color-picker.html", 
+        icon: "fas fa-eye-dropper", 
+        color: "#e84393" 
+    },
+    { 
+        title: "JPG to PNG", 
+        desc: "Convert background-ready formats.", 
+        link: "jpg-to-png.html", 
+        icon: "fas fa-image", 
+        color: "#fd79a8" 
+    },
+    { 
+        title: "Exif Remover", 
+        desc: "Remove location data for privacy.", 
+        link: "exif-remover.html", 
+        icon: "fas fa-shield-alt", 
+        color: "#f39c12" 
+    },
+    { 
+        title: "JPG to PDF", 
+        desc: "Convert images to PDF document.", 
+        link: "jpg-to-pdf.html", 
+        icon: "fas fa-file-pdf", 
+        color: "#00b894" 
+    }
+];
+
+// --- RENDER FUNCTION ---
+const grid = document.getElementById('imageGrid');
+imageTools.forEach((tool, index) => {
+    let badgeHTML = tool.badge ? `<span class="badge">${tool.badge}</span>` : '';
+    
+    grid.innerHTML += `
+    <a href="${tool.link}" class="card" style="--accent: ${tool.color}; animation-delay: ${index * 0.1}s">
+        ${badgeHTML}
+        <div class="icon-box"><i class="${tool.icon}"></i></div>
+        <h3>${tool.title}</h3>
+        <p>${tool.desc}</p>
+    </a>
+    `;
+});
+</script>
+
+</body>
+</html>
