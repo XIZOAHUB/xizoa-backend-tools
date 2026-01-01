@@ -7,332 +7,509 @@
 
 <url>
   <loc>https://tools.xizoa.com/</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/social-tools</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/ai-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/pdf-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/gaming-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/social-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/dev-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/developer-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/image-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/music-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/media-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/utility-tools.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/YouTube-thumbnail-downloader.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/ai-tools</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/insta-video-saver.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/pdf-tools</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtubeshorts.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/contact</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/tiktok-downloader.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/about</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/social-media-caption.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/YouTube-thumbnail-downloader</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/hashtag-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtubeshorts</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/glitch-text-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/insta-video-saver</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/invisible-text.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/tiktok-downloader</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/thumbnail-comparator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/youtube-chapter-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-tag-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-data-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-money-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-description-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-script-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-embed-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-idea-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-engagement-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/AI-Paraphraser</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-growth-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/text-to-speech</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-hashtag-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-title-analyzer</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-idea-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/repo-file-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-money-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/privacy</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-name-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/gaming-tools</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-script-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/disclaimer</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-speed-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/terms</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
+  <loc>https://tools.xizoa.com/youtube-subscribe-link-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-description-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/youtube-tag-extractor.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-tag-extractor</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/youtube-tag-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-chapter-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/youtube-thumbnail-previewer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-embed-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/youtube-title-analyzer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/AI-Paraphraser.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/thumbnail-comparator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/text-to-speech.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/social-media-caption</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/ai-text-summerise.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/hashtag-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/ai-grammar-fixer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/glitch-text-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/hand-sign-predicter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/invisible-text</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/blog-title-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-data-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/ai-email-writer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/pdf-merger.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-engagement-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/CV-Resume-Builder.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-growth-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/High-quality-PDF-smart-tool.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-hashtag-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/pdf-to-word.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-name-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/pdf-light-mode.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-speed-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/compress-pdf-under-200kb.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-subscribe-link-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/jpg-to-pdf.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/fps-chekar.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/youtube-thumbnail-previewer</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/reaction-time-test.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/ai-text-summerise</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/mouse-polling-rate.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/ai-grammar-fixer</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/keyboard-tester.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/hand-sign-predicter</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/gaming.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/blog-title-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/typing-master.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/repo-file-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/ai-email-writer</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/SEO-Meta-Description-Generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/pdf-merger</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/diff-checker.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/CV-Resume-Builder</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/about-us-page-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/High-quality-PDF-smart-tool</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/hash-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/pdf-to-word</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/json-formatter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/pdf-light-mode</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/lorem-ipsum-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/image-compressor.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/compress-pdf-under-200kb</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/jpg-to-webp.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/jpg-to-pdf</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/color-picker.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/image-compressor</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/jpg-to-png.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/guitar-tuner.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/tools</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/guitar-composer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/text-to-handwriting</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/auto-chord-maker.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/json-formatter</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/focus-noise-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/fps-chekar</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/tone-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/speed-test.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/reaction-time-test</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/qr-code-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/mouse-polling-rate</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/age-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/keyboard-tester</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/pomodoro-timer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/gaming</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/password-generator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/typing-master</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://tools.xizoa.com/ip-checker.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/jpg-to-png</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tools.xizoa.com/link-scanner.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/password-generator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tools.xizoa.com/exif-remover.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/ip-checker</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tools.xizoa.com/text-to-handwriting.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/age-calculator</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tools.xizoa.com/morse-converter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tools.xizoa.com/auto-chord-maker</loc>
-  <lastmod>2026-01-01T16:30:07+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tools.xizoa.com/dead-pixel-fixer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
+<url>
+  <loc>https://tools.xizoa.com/numerology-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/bmi-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/case-converter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/emi-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/gst-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/percentage-calculator.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/unit-converter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/word-counter.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/world-clock.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://tools.xizoa.com/about.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/contact.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/privacy.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/disclaimer.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://tools.xizoa.com/terms.html</loc>
+  <lastmod>2026-01-01T16:30:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+
 </urlset>
