@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-12HYTMR09W');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Studio - XIZOAHUB Tools</title>
+<meta name="description" content="Free Music Tools: Guitar Tuner, Tab Composer, Chord Generator and Focus Noise.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- THEME VARIABLES (Same as Home) --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --primary: #f1c40f; /* Music Theme Color (Yellow/Gold) */
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+    --primary: #f39c12;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; transition: 0.3s; }
+
+/* Grid Background */
+body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 30px 30px; opacity: 0.5; z-index: -1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* --- HEADER --- */
+header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+.nav { max-width: 1200px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+
+.theme-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.theme-btn:hover { transform: rotate(15deg); background: var(--border); }
+
+/* --- HERO SECTION --- */
+.hero { text-align: center; padding: 80px 20px 50px; }
+.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--primary); }
+.hero p { color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: auto; }
+
+/* --- GRID & CARDS --- */
+.container { max-width: 1200px; margin: 0 auto 100px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+
+.card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px;
+    padding: 35px 30px; display: flex; flex-direction: column; align-items: flex-start;
+    position: relative; overflow: hidden; transition: all 0.4s var(--ease);
+    opacity: 0; animation: fadeInUp 0.6s forwards;
+}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+
+.icon-box {
+    width: 65px; height: 65px; border-radius: 18px; background: var(--bg-body);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
+    transition: 0.4s; font-size: 1.8rem; color: var(--accent);
+}
+.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1) rotate(-5deg); }
+
+.card h3 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+.card p { color: var(--text-muted); font-size: 1rem; }
+
+/* Footer */
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); margin-top: auto; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><i class="fas fa-music"></i>XIZOA MUSIC</a>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="index.html" style="font-weight: 600; font-size: 0.9rem;">Home</a>
+        <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+    <h1>Your Digital <br><span>Music Studio</span></h1>
+    <p>Essential tools for musicians, composers, and productivity seekers. Tune, write, and focus entirely free.</p>
+</section>
+
+<section class="container">
+    <div class="grid" id="musicGrid">
+        </div>
+</section>
+
+<footer>
+    <p>© 2025 XIZOAHUB TOOLS. Crafted for Musicians.</p>
+</footer>
+
+<script>
+// --- THEME LOGIC ---
+function toggleTheme() {
+    const html = document.documentElement;
+    const target = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', target);
+    document.querySelector('.theme-btn i').className = target === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+// --- MUSIC TOOLS DATA ---
+const musicTools = [
+    { 
+        title: "Guitar Tuner", 
+        desc: "Standard EADGBE Tuning with visual feedback.", 
+        link: "guitar-tuner.html", 
+        icon: "fas fa-guitar", 
+        color: "#f1c40f" 
+    },
+    { 
+        title: "Guitar Tab Creator", 
+        desc: "Compose & edit guitar tabs easily.", 
+        link: "guitar-composer.html", 
+        icon: "fas fa-music", 
+        color: "#e67e22" 
+    },
+    { 
+        title: "Chord Maker", 
+        desc: "Auto generate chord progressions.", 
+        link: "auto-chord-maker.html", 
+        icon: "fas fa-headphones", 
+        color: "#8e44ad" 
+    },
+    { 
+        title: "Focus Noise", 
+        desc: "White noise generator for deep focus.", 
+        link: "focus-noise-generator.html", 
+        icon: "fas fa-wind", 
+        color: "#2ecc71" 
+    }
+];
+
+// --- RENDER FUNCTION ---
+const grid = document.getElementById('musicGrid');
+musicTools.forEach((tool, index) => {
+    grid.innerHTML += `
+    <a href="${tool.link}" class="card" style="--accent: ${tool.color}; animation-delay: ${index * 0.1}s">
+        <div class="icon-box"><i class="${tool.icon}"></i></div>
+        <h3>${tool.title}</h3>
+        <p>${tool.desc}</p>
+    </a>
+    `;
+});
+</script>
+
+</body>
+</html>
