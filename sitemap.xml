@@ -1,459 +1,356 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-12HYTMR09W');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap - XIZOAHUB Navigation</title>
+<meta name="description" content="Complete overview of all pages and tools available on XIZOAHUB.">
+<link rel="icon" href="favicon.ico">
 
-  <url>
-    <loc>https://tools.xizoa.com/</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/tools.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/about.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/contact.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/privacy.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/disclaimer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/terms.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.50</priority>
-  </url>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <url>
-    <loc>https://tools.xizoa.com/YouTube-thumbnail-downloader.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/insta-video-saver.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtubeshorts.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/tiktok-downloader.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/social-media-caption.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/hashtag-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/glitch-text-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/invisible-text.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-tag-extractor.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-chapter-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-tag-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-title-analyzer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-money-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-description-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-embed-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/thumbnail-comparator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-data-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-engagement-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-growth-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-hashtag-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-idea-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-name-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-script-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-speed-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-subscribe-link-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/youtube-thumbnail-previewer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+<style>
+/* --- THEME VARIABLES --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --primary: #2563eb;
+    --glass: rgba(255, 255, 255, 0.7);
+}
 
-  <url>
-    <loc>https://tools.xizoa.com/AI-Paraphraser.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/text-to-speech.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/ai-text-summerise.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/ai-grammar-fixer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/hand-sign-predicter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/blog-title-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/ai-email-writer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+}
 
-  <url>
-    <loc>https://tools.xizoa.com/pdf-merger.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/CV-Resume-Builder.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/High-quality-PDF-smart-tool.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/pdf-to-word.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/pdf-light-mode.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/compress-pdf-under-200kb.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/jpg-to-pdf.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-body); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; }
+a { text-decoration: none; color: inherit; transition: 0.2s; }
 
-  <url>
-    <loc>https://tools.xizoa.com/fps-chekar.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/reaction-time-test.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/mouse-polling-rate.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/keyboard-tester.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/gaming.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/typing-master.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+/* --- HEADER --- */
+header {
+    background: var(--glass); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border); padding: 15px 25px;
+    position: sticky; top: 0; z-index: 1000;
+}
+.nav { max-width: 1000px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
 
-  <url>
-    <loc>https://tools.xizoa.com/repo-file-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/SEO-Meta-Description-Generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/diff-checker.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/about-us-page-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/hash-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/json-formatter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/lorem-ipsum-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+/* --- SITEMAP CONTAINER --- */
+.container { max-width: 1000px; margin: 40px auto; padding: 0 25px; }
 
-  <url>
-    <loc>https://tools.xizoa.com/image-compressor.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/jpg-to-webp.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/color-picker.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/jpg-to-png.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+.search-box {
+    margin-bottom: 40px; position: relative;
+}
+.search-box input {
+    width: 100%; padding: 15px 20px 15px 50px; border-radius: 12px;
+    border: 2px solid var(--border); background: var(--bg-card);
+    color: var(--text-main); font-size: 1.1rem; outline: none;
+}
+.search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.search-box input:focus { border-color: var(--primary); }
 
-  <url>
-    <loc>https://tools.xizoa.com/guitar-tuner.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/guitar-composer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/auto-chord-maker.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/focus-noise-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+/* --- TREE STRUCTURE --- */
+.sitemap-tree {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px;
+}
 
-  <url>
-    <loc>https://tools.xizoa.com/speed-test.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/qr-code-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/age_calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/pomodoro-timer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/password-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/ip-checker.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/link-scanner.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/exif-remover.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/text-to-handwriting.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/tone-generator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/morse-converter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/dead-pixel-fixer.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/numerology-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/bmi-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/case-converter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/emi-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/gst-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/percentage-calculator.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/unit-converter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/word-counter.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tools.xizoa.com/world-clock.html</loc>
-    <lastmod>2025-12-28</lastmod>
-    <priority>0.80</priority>
-  </url>
+.tree-section { margin-bottom: 30px; }
+.tree-title {
+    font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
+    margin-bottom: 15px; color: var(--primary); border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
 
-</urlset>
+.link-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+.s-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 8px;
+    color: var(--text-muted); font-size: 0.95rem;
+    border: 1px solid transparent;
+}
+.s-link:hover {
+    background: var(--bg-body); color: var(--text-main);
+    border-color: var(--border); transform: translateX(5px);
+}
+.s-link i { font-size: 0.8rem; color: var(--primary); opacity: 0.7; }
+
+/* --- XML GENERATOR BOX --- */
+.xml-box {
+    margin-top: 50px; padding: 30px; background: #1e293b; color: white;
+    border-radius: 20px; text-align: center;
+}
+.xml-box h3 { font-family: var(--font-heading); margin-bottom: 10px; }
+.xml-box p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
+.btn-xml {
+    background: #2563eb; color: white; padding: 12px 25px; border: none;
+    border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+.btn-xml:hover { background: #3b82f6; }
+
+/* Modal for Code */
+.modal {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-content {
+    background: #1e293b; width: 100%; max-width: 600px;
+    border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;
+    max-height: 80vh;
+}
+.modal-header { padding: 15px 20px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; color: white; }
+.modal-body { padding: 0; overflow-y: auto; }
+textarea {
+    width: 100%; height: 300px; background: #1e293b; color: #a5b4fc;
+    border: none; padding: 20px; font-family: monospace; resize: none; outline: none;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <a href="index.html" class="logo"><i class="fas fa-sitemap"></i> Sitemap</a>
+        <a href="index.html" style="font-weight: 600; font-size: 0.9rem;">Back Home</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="sitemapSearch" placeholder="Search for a page...">
+    </div>
+
+    <div class="sitemap-tree" id="sitemapContent">
+        </div>
+
+    <div class="xml-box">
+        <h3>Admin Tool: XML Generator</h3>
+        <p>Need to update Google Search Console? Click below to generate the XML code for all these tools instantly.</p>
+        <button class="btn-xml" onclick="generateXML()"><i class="fas fa-code"></i> Get XML Code</button>
+    </div>
+</div>
+
+<div class="modal" id="xmlModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span>Copy this to sitemap.xml</span>
+            <button onclick="document.getElementById('xmlModal').style.display='none'" style="background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="modal-body">
+            <textarea id="xmlOutput" readonly></textarea>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 40px;">
+    <p>© 2025 XIZOAHUB. All Pages Listed.</p>
+</footer>
+
+<script>
+// --- MASTER DATA (All your pages) ---
+// Add static pages first, then categories
+const sitemapData = {
+    "Main Pages": [
+        { name: "Home", link: "index.html" },
+        { name: "All Tools Directory", link: "tools.html" },
+        { name: "About Us", link: "about.html" },
+        { name: "Contact Us", link: "contact.html" },
+        { name: "Privacy Policy", link: "privacy.html" },
+        { name: "Terms of Use", link: "terms.html" },
+        { name: "Disclaimer", link: "disclaimer.html" },
+        { name: "Music Studio", link: "music-studio.html" },
+        { name: "Image Studio", link: "image-tools.html" }
+    ],
+    "Social Media Tools": [
+        { name: "Thumbnail Downloader", link: "YouTube-thumbnail-downloader.html" },
+        { name: "Insta Saver", link: "insta-video-saver.html" },
+        { name: "Shorts Saver", link: "youtubeshorts.html" },
+        { name: "TikTok Saver", link: "tiktok-downloader.html" },
+        { name: "Social Captions", link: "social-media-caption.html" },
+        { name: "Hashtag Generator", link: "hashtag-generator.html" },
+        { name: "Glitch Text", link: "glitch-text-generator.html" },
+        { name: "Invisible Text", link: "invisible-text.html" },
+        { name: "Tag Extractor", link: "youtube-tag-extractor.html" },
+        { name: "YT Chapters", link: "youtube-chapter-generator.html" },
+        { name: "YT Tag Gen", link: "youtube-tag-generator.html" },
+        { name: "YT Title Analyzer", link: "youtube-title-analyzer.html" },
+        { name: "YT Money Calc", link: "youtube-money-calculator.html" },
+        { name: "YT Description", link: "youtube-description-generator.html" },
+        { name: "Embed Gen", link: "youtube-embed-generator.html" },
+        { name: "Thumbnail Compare", link: "thumbnail-comparator.html" },
+        { name: "YT Data Calc", link: "youtube-data-calculator.html" },
+        { name: "Engagement Rate", link: "youtube-engagement-calculator.html" },
+        { name: "Growth Calc", link: "youtube-growth-calculator.html" },
+        { name: "YT Hashtags", link: "youtube-hashtag-generator.html" },
+        { name: "Video Ideas", link: "youtube-idea-generator.html" },
+        { name: "Channel Name", link: "youtube-name-generator.html" },
+        { name: "Script Gen", link: "youtube-script-generator.html" },
+        { name: "YT Speed Calc", link: "youtube-speed-calculator.html" },
+        { name: "Sub Link Gen", link: "youtube-subscribe-link-generator.html" },
+        { name: "Thumb Preview", link: "youtube-thumbnail-previewer.html" }
+    ],
+    "AI Magic": [
+        { name: "AI Paraphraser", link: "AI-Paraphraser.html" },
+        { name: "Text to Speech", link: "text-to-speech.html" },
+        { name: "AI Summarizer", link: "ai-text-summerise.html" },
+        { name: "Grammar Fix", link: "ai-grammar-fixer.html" },
+        { name: "Hand Sign AI", link: "hand-sign-predicter.html" },
+        { name: "Blog Title Gen", link: "blog-title-generator.html" },
+        { name: "AI Email Writer", link: "ai-email-writer.html" }
+    ],
+    "PDF Tools": [
+        { name: "PDF Merger", link: "pdf-merger.html" },
+        { name: "Resume Builder", link: "CV-Resume-Builder.html" },
+        { name: "HQ PDF Tool", link: "High-quality-PDF-smart-tool.html" },
+        { name: "PDF to Word", link: "pdf-to-word.html" },
+        { name: "PDF Dark Mode", link: "pdf-light-mode.html" },
+        { name: "Compress PDF", link: "compress-pdf-under-200kb.html" },
+        { name: "JPG to PDF", link: "jpg-to-pdf.html" }
+    ],
+    "Utilities": [
+        { name: "Net Speed", link: "speed-test.html" },
+        { name: "QR Generator", link: "qr-code-generator.html" },
+        { name: "Age Calculator", link: "age_calculator.html" },
+        { name: "Pomodoro Timer", link: "pomodoro-timer.html" },
+        { name: "Password Gen", link: "password-generator.html" },
+        { name: "IP Checker", link: "ip-checker.html" },
+        { name: "Link Scanner", link: "link-scanner.html" },
+        { name: "Exif Remover", link: "exif-remover.html" },
+        { name: "Handwriting", link: "text-to-handwriting.html" },
+        { name: "Tone Gen", link: "tone-generator.html" },
+        { name: "Morse Code", link: "morse-converter.html" },
+        { name: "Dead Pixel Fix", link: "dead-pixel-fixer.html" },
+        { name: "Numerology", link: "numerology-calculator.html" },
+        { name: "BMI Calc", link: "bmi-calculator.html" },
+        { name: "Case Converter", link: "case-converter.html" },
+        { name: "EMI Calc", link: "emi-calculator.html" },
+        { name: "GST Calc", link: "gst-calculator.html" },
+        { name: "Percent Calc", link: "percentage-calculator.html" },
+        { name: "Unit Converter", link: "unit-converter.html" },
+        { name: "Word Counter", link: "word-counter.html" },
+        { name: "World Clock", link: "world-clock.html" }
+    ],
+    "Developers": [
+        { name: "Repo File Gen", link: "repo-file-generator.html" },
+        { name: "SEO Meta Gen", link: "SEO-Meta-Description-Generator.html" },
+        { name: "Diff Checker", link: "diff-checker.html" },
+        { name: "About Us Gen", link: "about-us-page-generator.html" },
+        { name: "Hash Generator", link: "hash-generator.html" },
+        { name: "JSON Format", link: "json-formatter.html" },
+        { name: "Lorem Ipsum", link: "lorem-ipsum-generator.html" }
+    ],
+    "Gaming": [
+        { name: "FPS Checker", link: "fps-chekar.html" },
+        { name: "Reaction Time", link: "reaction-time-test.html" },
+        { name: "Polling Rate", link: "mouse-polling-rate.html" },
+        { name: "Keyboard Test", link: "keyboard-tester.html" },
+        { name: "Gaming Name", link: "gaming.html" },
+        { name: "Typing Master", link: "typing-master.html" }
+    ],
+    "Image Tools": [
+        { name: "Img Compressor", link: "image-compressor.html" },
+        { name: "JPG to WebP", link: "jpg-to-webp.html" },
+        { name: "Color Picker", link: "color-picker.html" },
+        { name: "JPG to PNG", link: "jpg-to-png.html" }
+    ],
+    "Music": [
+        { name: "Guitar Tuner", link: "guitar-tuner.html" },
+        { name: "Guitar Tabs", link: "guitar-composer.html" },
+        { name: "Chord Maker", link: "auto-chord-maker.html" },
+        { name: "Focus Noise", link: "focus-noise-generator.html" }
+    ]
+};
+
+// --- RENDER HTML SITEMAP ---
+function renderSitemap(filter = "") {
+    const container = document.getElementById('sitemapContent');
+    let html = '';
+    const search = filter.toLowerCase();
+
+    for (const [category, pages] of Object.entries(sitemapData)) {
+        // Filter pages based on search
+        const filteredPages = pages.filter(p => p.name.toLowerCase().includes(search));
+
+        if (filteredPages.length > 0) {
+            html += `
+            <div class="tree-section">
+                <div class="tree-title"><i class="fas fa-folder-open"></i> ${category}</div>
+                <div class="link-list">
+            `;
+            
+            filteredPages.forEach(page => {
+                html += `
+                <a href="${page.link}" class="s-link">
+                    <i class="fas fa-link"></i> ${page.name}
+                </a>`;
+            });
+
+            html += `</div></div>`;
+        }
+    }
+    
+    if(html === '') html = '<p style="text-align:center; color:var(--text-muted)">No pages found.</p>';
+    container.innerHTML = html;
+}
+
+// Initial Render
+renderSitemap();
+
+// Search Event
+document.getElementById('sitemapSearch').addEventListener('input', (e) => {
+    renderSitemap(e.target.value);
+});
+
+// --- ADVANCED: XML GENERATOR ---
+function generateXML() {
+    // Change this to your real domain
+    const baseURL = "https://xizoahub.com/"; 
+    const date = new Date().toISOString().split('T')[0];
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+    // Loop through all data
+    for (const [category, pages] of Object.entries(sitemapData)) {
+        pages.forEach(page => {
+            xml += '  <url>\n';
+            xml += `    <loc>${baseURL}${page.link}</loc>\n`;
+            xml += `    <lastmod>${date}</lastmod>\n`;
+            xml += '    <changefreq>monthly</changefreq>\n';
+            xml += '    <priority>0.8</priority>\n';
+            xml += '  </url>\n';
+        });
+    }
+
+    xml += '</urlset>';
+
+    document.getElementById('xmlOutput').value = xml;
+    document.getElementById('xmlModal').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
