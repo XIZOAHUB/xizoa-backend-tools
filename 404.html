@@ -1,27 +1,343 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found | XIZOA HUB</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: #0a0f1a; color: #fff; font-family: 'Outfit', sans-serif;
-      height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 0;
-    }
-    h1 { font-size: 8rem; margin: 0; color: #00f7ff; text-shadow: 0 0 30px rgba(0, 247, 255, 0.5); }
-    p { font-size: 1.5rem; color: #888; margin-bottom: 30px; }
-    a {
-      padding: 15px 30px; background: #00f7ff; color: #000; text-decoration: none;
-      font-weight: 700; border-radius: 50px; transition: 0.3s;
-    }
-    a:hover { box-shadow: 0 0 20px #00f7ff; transform: scale(1.05); }
-  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-12HYTMR09W');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>404 - Page Not Found | XIZOAHUB</title>
+<meta name="description" content="Oops! The page you are looking for doesn't exist. Play a game while you are here.">
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* --- CORE VARIABLES (MATCHING YOUR THEME) --- */
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --bg-body: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --glass: rgba(255, 255, 255, 0.7);
+    --primary: #2563eb;
+    --danger: #e74c3c;
+}
+
+[data-theme="dark"] {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2d2d2d;
+    --glass: rgba(18, 18, 18, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    overflow: hidden; /* Prevent scrolling while playing */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background Grid */
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 30px 30px; opacity: 0.5; z-index: -1;
+}
+
+/* --- HEADER --- */
+header {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 15px 25px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 10;
+}
+.logo {
+    font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
+    display: flex; align-items: center; gap: 10px; color: var(--text-main); text-decoration: none;
+}
+.logo i { color: #fff; background: var(--primary); padding: 8px; border-radius: 8px; }
+
+.home-btn {
+    padding: 10px 20px; border-radius: 50px; background: var(--primary); color: white;
+    font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: 0.3s;
+}
+.home-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,99,235,0.3); }
+
+/* --- GAME CONTAINER --- */
+.game-wrapper {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; width: 100%;
+}
+
+.error-text {
+    text-align: center; margin-bottom: 20px; z-index: 5;
+}
+.error-text h1 { font-family: var(--font-heading); font-size: 4rem; line-height: 1; color: var(--text-main); }
+.error-text p { color: var(--text-muted); font-size: 1.1rem; margin-top: 5px; }
+
+canvas {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px -5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 60vh;
+}
+
+.controls-hint {
+    margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);
+    background: var(--bg-card); padding: 8px 15px; border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* --- OVERLAY FOR GAME OVER --- */
+#overlay {
+    position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center; display: none; pointer-events: none;
+}
+.game-msg {
+    font-family: var(--font-heading); font-size: 2rem; font-weight: 800;
+    color: var(--danger); text-shadow: 2px 2px 0px var(--bg-card);
+}
+.score-final { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-main); }
+.restart-btn {
+    pointer-events: auto;
+    background: var(--text-main); color: var(--bg-card);
+    padding: 10px 25px; border: none; border-radius: 50px;
+    font-weight: 700; cursor: pointer; margin-top: 10px;
+}
+
+</style>
 </head>
 <body>
-  <h1>404</h1>
-  <p>Oops! This page got lost in the matrix.</p>
-  <a href="index.html">Go Back Home</a>
+
+<header>
+    <a href="index.html" class="logo"><i class="fas fa-cube"></i> XIZOAHUB</a>
+    <a href="index.html" class="home-btn">Go Home</a>
+</header>
+
+<div class="game-wrapper">
+    <div class="error-text">
+        <h1>404</h1>
+        <p>Page not found, but the bird is here!</p>
+    </div>
+
+    <canvas id="gameCanvas" width="320" height="480"></canvas>
+    
+    <div id="overlay">
+        <div class="game-msg">GAME OVER</div>
+        <div class="score-final">Score: <span id="finalScore">0</span></div>
+        <button class="restart-btn" onclick="resetGame()">Play Again</button>
+    </div>
+
+    <div class="controls-hint">
+        <i class="fas fa-hand-pointer"></i> Tap, Click or Spacebar to Jump
+    </div>
+</div>
+
+<script>
+// --- GAME LOGIC ---
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const overlay = document.getElementById("overlay");
+const finalScoreEl = document.getElementById("finalScore");
+
+// Get Theme Colors dynamically
+const styles = getComputedStyle(document.body);
+let colorPrimary = styles.getPropertyValue('--primary').trim();
+let colorText = styles.getPropertyValue('--text-main').trim();
+let colorBorder = styles.getPropertyValue('--border').trim();
+
+// Variables
+let frames = 0;
+let score = 0;
+let gameState = "START"; // START, PLAY, OVER
+
+const bird = {
+    x: 50,
+    y: 150,
+    w: 20,
+    h: 20,
+    radius: 10,
+    speed: 0,
+    gravity: 0.25,
+    jump: 4.6,
+    
+    draw: function() {
+        ctx.fillStyle = colorPrimary;
+        // Drawing a rounded bird (circle)
+        ctx.beginPath();
+        ctx.arc(this.x + this.radius, this.y + this.radius, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+    },
+    
+    update: function() {
+        // Physics
+        this.speed += this.gravity;
+        this.y += this.speed;
+
+        // Floor Collision
+        if(this.y + this.h >= canvas.height) {
+            this.y = canvas.height - this.h;
+            gameOver();
+        }
+        // Ceiling Collision
+        if(this.y < 0) {
+            this.y = 0;
+            this.speed = 0;
+        }
+    },
+    
+    flap: function() {
+        this.speed = -this.jump;
+    }
+};
+
+const pipes = {
+    position: [],
+    w: 40,
+    h: 150, // default height, will randomize
+    gap: 120, // Gap between top and bottom pipe
+    dx: 2, // Speed
+    
+    draw: function() {
+        ctx.fillStyle = colorText; 
+        
+        for(let i = 0; i < this.position.length; i++) {
+            let p = this.position[i];
+            
+            // Top Pipe
+            ctx.fillRect(p.x, 0, this.w, p.y);
+            
+            // Bottom Pipe
+            ctx.fillRect(p.x, p.y + this.gap, this.w, canvas.height - p.y - this.gap);
+        }
+    },
+    
+    update: function() {
+        // Add new pipe every 120 frames
+        if(frames % 120 === 0) {
+            this.position.push({
+                x: canvas.width,
+                y: Math.random() * (canvas.height - this.gap - 50) + 20 // Random height
+            });
+        }
+        
+        for(let i = 0; i < this.position.length; i++) {
+            let p = this.position[i];
+            p.x -= this.dx; // Move pipe left
+            
+            // Collision Logic
+            // Horizontal check
+            if(bird.x + bird.w > p.x && bird.x < p.x + this.w) {
+                // Vertical check (hit top pipe OR hit bottom pipe)
+                if(bird.y < p.y || bird.y + bird.h > p.y + this.gap) {
+                    gameOver();
+                }
+            }
+            
+            // Remove pipes that went off screen
+            if(p.x + this.w <= 0) {
+                this.position.shift();
+                score++;
+                // Slight speed increase
+                if(score % 5 === 0) this.dx += 0.2;
+            }
+        }
+    }
+};
+
+function drawScore() {
+    ctx.fillStyle = colorText;
+    ctx.font = "700 30px " + styles.getPropertyValue('--font-heading');
+    ctx.fillText(score, canvas.width / 2 - 10, 50);
+}
+
+function drawStartScreen() {
+    ctx.fillStyle = colorText;
+    ctx.font = "20px " + styles.getPropertyValue('--font-main');
+    ctx.fillText("Tap or Space to Start", 60, canvas.height/2);
+}
+
+function gameOver() {
+    gameState = "OVER";
+    overlay.style.display = "block";
+    finalScoreEl.innerText = score;
+}
+
+function resetGame() {
+    bird.y = 150;
+    bird.speed = 0;
+    pipes.position = [];
+    score = 0;
+    frames = 0;
+    pipes.dx = 2;
+    gameState = "START";
+    overlay.style.display = "none";
+    loop();
+}
+
+function loop() {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    bird.draw();
+    
+    if(gameState === "PLAY") {
+        bird.update();
+        pipes.update();
+        pipes.draw();
+        drawScore();
+        frames++;
+        requestAnimationFrame(loop);
+    } else if(gameState === "START") {
+        drawStartScreen();
+    }
+}
+
+// Controls
+function inputAction(e) {
+    if(e.type === 'keydown' && e.code !== 'Space') return;
+    
+    if(gameState === "START") {
+        gameState = "PLAY";
+        loop();
+        bird.flap();
+    } else if(gameState === "PLAY") {
+        bird.flap();
+    }
+}
+
+window.addEventListener("keydown", inputAction);
+canvas.addEventListener("click", inputAction);
+canvas.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // prevent scroll
+    inputAction(e);
+}, {passive: false});
+
+// Initial Render
+loop();
+
+</script>
+
 </body>
 </html>
