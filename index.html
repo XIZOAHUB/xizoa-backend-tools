@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-12HYTMR09W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,7 +15,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>xizoahub premium tools</title>
+<meta name="theme-color" content="#2563eb">
+<title>XizoaHub Premium Tools - Free Online Utilities</title>
 <meta name="description" content="Top 12 essential online tools for creators: YouTube Downloader, AI Writers, PDF Tools. Free & Secure.">
 <link rel="icon" href="favicon.ico">
 
@@ -70,7 +75,7 @@ body::before {
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 button { cursor: pointer; border: none; font-family: inherit; }
 
-/* --- 3. HEADER (PREMIUM 3-DOT + SUBSCRIBE) --- */
+/* --- 3. HEADER --- */
 header {
     position: sticky; top: 0; z-index: 1000;
     background: var(--glass);
@@ -111,7 +116,7 @@ header {
 }
 .icon-btn:hover { background: var(--bg-card); border-color: var(--primary); color: var(--primary); }
 
-/* --- 4. SIDEBAR (OFF-CANVAS DRAWER) --- */
+/* --- 4. SIDEBAR --- */
 .sidebar-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.5);
     z-index: 1001; opacity: 0; visibility: hidden;
@@ -177,6 +182,10 @@ header {
     color: var(--text-muted); font-size: 1.2rem;
 }
 .search-container input:focus { border-color: var(--primary); box-shadow: 0 5px 25px rgba(37,99,235,0.15); }
+.search-container label {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
 
 /* --- 6. TOOLS GRID (Top 12) --- */
 .container { max-width: 1300px; margin: 0 auto 50px; padding: 0 25px; }
@@ -199,20 +208,22 @@ header {
 }
 .card:hover .icon-box { background: var(--accent); color: #fff; transform: scale(1.1) rotate(-5deg); }
 
-.card h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+/* FIX: Heading Structure (changed to h2 in html, style handles it) */
+.card h2 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
 .card p { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 
+/* FIX: Badge Contrast Improved */
 .badge {
     position: absolute; top: 15px; right: 15px; font-size: 0.65rem;
     font-weight: 800; padding: 5px 10px; border-radius: 20px;
     text-transform: uppercase; letter-spacing: 0.5px;
 }
-.badge.hot { background: rgba(220,38,38,0.1); color: #dc2626; }
-.badge.new { background: rgba(22,163,74,0.1); color: #16a34a; }
+/* Improved Contrast Colors */
+.badge.hot { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.badge.new { background: #dcfce7; color: #14532d; border: 1px solid #bbf7d0; }
 
 /* --- 7. BOTTOM SECTIONS --- */
 
-/* Load More Button Style */
 .load-btn-box { text-align: center; margin: 30px 0 80px; }
 .btn-outline {
     padding: 15px 40px; background: transparent;
@@ -247,7 +258,7 @@ header {
 .promo-box p { font-size: 1.1rem; color: #0369a1; margin-bottom: 40px; }
 [data-theme="dark"] .promo-box p { color: #bae6fd; }
 
-/* The "Waterfall" Category Grid */
+/* Category Grid */
 .cat-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px; margin-top: 30px;
@@ -296,7 +307,7 @@ footer {
 <aside class="sidebar">
     <div class="sidebar-header">
         <h3>Menu</h3>
-        <button class="icon-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        <button class="icon-btn" onclick="toggleSidebar()" aria-label="Close Sidebar"><i class="fas fa-times"></i></button>
     </div>
     
     <nav class="sidebar-nav">
@@ -310,8 +321,8 @@ footer {
     <div class="sidebar-sub">
         <h4><i class="fas fa-paper-plane"></i> Updates</h4>
         <p>Get the latest tools delivered to your inbox.</p>
-        <input type="email" placeholder="Enter your email...">
-        <button class="btn-primary" style="width: 100%; border-radius: 10px; padding: 12px;">Subscribe</button>
+        <input type="email" placeholder="Enter your email..." aria-label="Email Address">
+        <button class="btn-primary" style="width: 100%; border-radius: 10px; padding: 12px;" aria-label="Subscribe Newsletter">Subscribe</button>
     </div>
 </aside>
 
@@ -320,15 +331,15 @@ footer {
     <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
     
     <div class="nav-icons">
-        <button class="btn-subscribe" onclick="toggleSidebar()">
+        <button class="btn-subscribe" onclick="toggleSidebar()" aria-label="Subscribe">
             <i class="fas fa-bell"></i> <span>Subscribe</span>
         </button>
 
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">
+        <button class="icon-btn theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
         </button>
 
-        <button class="icon-btn" onclick="toggleSidebar()">
+        <button class="icon-btn" onclick="toggleSidebar()" aria-label="Open Menu">
             <i class="fas fa-ellipsis-v"></i>
         </button>
     </div>
@@ -340,6 +351,7 @@ footer {
       <h1>Premium Tools for <br><span>Creators & Devs</span></h1>
 
       <div class="search-container">
+        <label for="searchInput">Search tools</label>
         <i class="fas fa-search"></i>
         <input type="text" id="searchInput" placeholder="Search tools (e.g. YouTube, PDF)...">
       </div>
@@ -351,40 +363,40 @@ footer {
         <a href="YouTube-thumbnail-downloader.html" class="card" data-cat="social" style="--accent: #FF0000;">
            <span class="badge hot">HOT</span>
            <div class="icon-box"><i class="fab fa-youtube"></i></div>
-           <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
+           <h2>Thumbnail DL</h2><p>Get High Quality Thumbnails</p>
         </a>
         <a href="insta-video-saver.html" class="card" data-cat="social" style="--accent: #E1306C;">
-           <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
+           <div class="icon-box"><i class="fab fa-instagram"></i></div><h2>Insta Saver</h2><p>Reels & Video Download</p>
         </a>
         <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
-           <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
+           <div class="icon-box"><i class="fas fa-robot"></i></div><h2>AI Paraphraser</h2><p>Rewrite Text Humanly</p>
         </a>
         <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
-           <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
+           <div class="icon-box"><i class="fas fa-volume-up"></i></div><h2>Text to Speech</h2><p>AI Voice Reader</p>
         </a>
         <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
-           <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Multiple Files</p>
+           <div class="icon-box"><i class="fas fa-layer-group"></i></div><h2>PDF Merger</h2><p>Combine Multiple Files</p>
         </a>
         <a href="compress-pdf-under-200kb.html" class="card" data-cat="pdf" style="--accent: #2563eb;">
-           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Compress PDF</h3><p>Under 200KB Tool</p>
+           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h2>Compress PDF</h2><p>Under 200KB Tool</p>
         </a>
         <a href="image-compressor.html" class="card" data-cat="utility" style="--accent: #00cec9;">
-           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
+           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h2>Img Compressor</h2><p>Reduce Size Instantly</p>
         </a>
         <a href="password-generator.html" class="card" data-cat="utility" style="--accent: #27ae60;">
-           <div class="icon-box"><i class="fas fa-key"></i></div><h3>Pass Gen</h3><p>Secure Key Maker</p>
+           <div class="icon-box"><i class="fas fa-key"></i></div><h2>Pass Gen</h2><p>Secure Key Maker</p>
         </a>
         <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
-           <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Check Internet Speed</p>
+           <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h2>Net Speed</h2><p>Check Internet Speed</p>
         </a>
         <a href="age_calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
-           <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Calculate Exact Age</p>
+           <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h2>Age Calc</h2><p>Calculate Exact Age</p>
         </a>
         <a href="typing-master.html" class="card" data-cat="gaming" style="--accent: #2d3436;">
-           <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Typing Test</p>
+           <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h2>Typing Master</h2><p>Speed Typing Test</p>
         </a>
         <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
-           <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Create Custom QR</p>
+           <div class="icon-box"><i class="fas fa-qrcode"></i></div><h2>QR Gen</h2><p>Create Custom QR</p>
         </a>
 
       </div>
@@ -443,7 +455,6 @@ footer {
         <script>
         (function() {
           const linkUrl = "https://www.xizoa.com";
-          // UPGRADED WIDGET HTML TO MATCH 'promo-box' UI
           const widgetHtml = `
             <div class="promo-box" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fdba74; margin-top: 20px;">
               <div class="promo-content">
@@ -515,7 +526,7 @@ const cards = document.querySelectorAll('.card');
 searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     cards.forEach(card => {
-        const title = card.querySelector('h3').innerText.toLowerCase();
+        const title = card.querySelector('h2').innerText.toLowerCase(); // Updated to check H2
         if(title.includes(term)) card.style.display = 'flex';
         else card.style.display = 'none';
     });
