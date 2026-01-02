@@ -10,28 +10,32 @@
 </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>XIZOAHUB TOOLS </title>
-<meta name="description" content="Premium Free Tools for Creators: YouTube Thumbnail Downloader, Viral Tag Generator, Script Writer & More. No Login Required.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>xizoahub premium tools</title>
+<meta name="description" content="Top 12 essential online tools for creators: YouTube Downloader, AI Writers, PDF Tools. Free & Secure.">
 <link rel="icon" href="favicon.ico">
 
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-/* --- CORE VARIABLES --- */
+/* --- 1. CORE VARIABLES --- */
 :root {
     --font-main: 'Outfit', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
-    --bg-body: #f0f4f8;
+    
+    /* Light Theme */
+    --bg-body: #f8fafc;
     --bg-card: #ffffff;
     --text-main: #0f172a;
     --text-muted: #64748b;
     --border: #e2e8f0;
-    --glass: rgba(255, 255, 255, 0.8);
+    --glass: rgba(255, 255, 255, 0.85);
     --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    --sidebar-width: 300px;
     --ease: cubic-bezier(0.23, 1, 0.32, 1);
-    --sidebar-width: 280px;
 }
 
 [data-theme="dark"] {
@@ -40,36 +44,33 @@
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --border: #2d2d2d;
-    --glass: rgba(18, 18, 18, 0.8);
+    --glass: rgba(18, 18, 18, 0.85);
     --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
 }
 
+/* --- 2. GLOBAL RESET --- */
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
 body {
-    background-color: var(--bg-body);
-    color: var(--text-main);
-    font-family: var(--font-main);
-    line-height: 1.6;
+    background: var(--bg-body); color: var(--text-main);
+    font-family: var(--font-main); line-height: 1.6;
     overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Background Grid Pattern */
+/* Grid Pattern Background */
 body::before {
-    content: "";
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.4; z-index: -1;
-    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 30px 30px; opacity: 0.5; z-index: -1;
+    mask-image: linear-gradient(to bottom, black, transparent);
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+button { cursor: pointer; border: none; font-family: inherit; }
 
-/* --- HEADER --- */
+/* --- 3. HEADER (PREMIUM 3-DOT + SUBSCRIBE) --- */
 header {
     position: sticky; top: 0; z-index: 1000;
     background: var(--glass);
@@ -82,348 +83,390 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.nav-left { display: flex; align-items: center; gap: 15px; }
-
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.6rem; font-weight: 700;
-    color: var(--text-main);
+    font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
     display: flex; align-items: center; gap: 10px;
 }
-.logo i { 
-    color: #fff; background: var(--primary);
-    padding: 8px; border-radius: 8px;
+.logo i { color: var(--primary); font-size: 1.4rem; }
+
+/* Google Style Subscribe Button */
+.btn-subscribe {
+    background: var(--primary); color: #fff;
+    padding: 10px 24px; border-radius: 50px;
+    font-weight: 600; font-size: 0.95rem;
+    transition: 0.3s var(--ease);
+    display: inline-flex; align-items: center; gap: 8px;
 }
+.btn-subscribe:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
 
-.nav-right { display: flex; align-items: center; gap: 12px; }
+/* Icons Group */
+.nav-icons { display: flex; align-items: center; gap: 15px; }
 
-/* Icon Buttons (Theme & Menu) */
 .icon-btn {
     width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid var(--border); background: var(--bg-card);
-    color: var(--text-main); cursor: pointer;
+    background: transparent; color: var(--text-main);
+    border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
-    transition: 0.3s; font-size: 1.1rem;
+    font-size: 1.1rem; transition: 0.3s;
 }
-.icon-btn:hover { background: var(--border); transform: translateY(-2px); }
+.icon-btn:hover { background: var(--bg-card); border-color: var(--primary); color: var(--primary); }
 
-/* --- SIDEBAR --- */
+/* --- 4. SIDEBAR (OFF-CANVAS DRAWER) --- */
 .sidebar-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); z-index: 1001;
-    opacity: 0; visibility: hidden; transition: 0.3s;
-    backdrop-filter: blur(3px);
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 1001; opacity: 0; visibility: hidden;
+    transition: 0.3s; backdrop-filter: blur(3px);
 }
 .sidebar-overlay.active { opacity: 1; visibility: visible; }
 
 .sidebar {
-    position: fixed; top: 0; left: -100%; /* Hidden by default */
-    width: var(--sidebar-width); height: 100%;
-    background: var(--bg-card); border-right: 1px solid var(--border);
-    z-index: 1002; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    padding: 25px; display: flex; flex-direction: column;
-    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    position: fixed; top: 0; right: -100%; width: var(--sidebar-width); height: 100%;
+    background: var(--bg-card); z-index: 1002;
+    padding: 30px; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    transition: 0.4s var(--ease); display: flex; flex-direction: column;
 }
-.sidebar.active { left: 0; }
+.sidebar.active { right: 0; }
 
-.sidebar-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 40px;
-}
-.close-btn {
-    font-size: 1.5rem; background: none; border: none;
-    color: var(--text-muted); cursor: pointer;
-}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.sidebar-header h3 { font-family: var(--font-heading); font-size: 1.4rem; }
 
-.sidebar-links { display: flex; flex-direction: column; gap: 15px; }
-.sidebar-link {
-    display: flex; align-items: center; gap: 15px;
-    padding: 12px 15px; border-radius: 12px;
-    color: var(--text-main); font-weight: 600;
-    transition: 0.2s;
+.sidebar-nav { display: flex; flex-direction: column; gap: 20px; }
+.sidebar-nav a {
+    font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; gap: 15px;
+    padding: 10px; border-radius: 10px; transition: 0.2s;
 }
-.sidebar-link i { width: 25px; color: var(--primary); }
-.sidebar-link:hover { background: var(--bg-body); color: var(--primary); }
-.sidebar-link.active { background: rgba(37, 99, 235, 0.1); color: var(--primary); }
+.sidebar-nav a:hover { background: var(--bg-body); color: var(--primary); transform: translateX(5px); }
+.sidebar-nav a i { width: 25px; color: var(--text-muted); }
 
-/* --- HERO --- */
-.hero {
-    text-align: center; padding: 80px 20px 50px;
-    max-width: 900px; margin: auto;
+/* Sidebar Subscribe Box */
+.sidebar-sub {
+    margin-top: auto; background: var(--bg-body);
+    padding: 20px; border-radius: 20px; text-align: center;
+    border: 1px solid var(--border);
 }
+.sidebar-sub h4 { margin-bottom: 10px; font-family: var(--font-heading); }
+.sidebar-sub p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
+.sidebar-sub input {
+    width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+    margin-bottom: 10px; background: var(--bg-card); color: var(--text-main); outline: none;
+}
+.sidebar-sub button { width: 100%; }
+
+/* --- 5. HERO & SEARCH --- */
+.hero { text-align: center; padding: 100px 20px 60px; max-width: 800px; margin: auto; }
 .hero h1 {
-    font-family: var(--font-heading);
-    font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;
-    font-weight: 800;
+    font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.1;
+    margin-bottom: 20px; font-weight: 800;
 }
 .hero h1 span {
-    background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.hero p {
-    font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;
-}
+.hero p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; }
 
-/* --- CARDS (Original UI) --- */
-.container { max-width: 1400px; margin: 0 auto 80px; padding: 0 25px; }
-.grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 30px;
+/* Premium Search */
+.search-container { position: relative; max-width: 500px; margin: auto; }
+.search-container input {
+    width: 100%; padding: 20px 20px 20px 55px; border-radius: 50px;
+    border: 2px solid var(--border); background: var(--bg-card);
+    color: var(--text-main); font-size: 1.05rem; outline: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s;
 }
+.search-container i {
+    position: absolute; left: 25px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 1.2rem;
+}
+.search-container input:focus { border-color: var(--primary); box-shadow: 0 5px 25px rgba(37,99,235,0.15); }
+
+/* --- 6. TOOLS GRID (Top 12) --- */
+.container { max-width: 1300px; margin: 0 auto 50px; padding: 0 25px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
 
 .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 24px; padding: 30px 25px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 24px; padding: 25px;
     display: flex; flex-direction: column; align-items: flex-start;
-    position: relative; overflow: hidden;
-    transition: all 0.4s var(--ease);
+    position: relative; overflow: hidden; transition: 0.4s var(--ease);
     cursor: pointer;
 }
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--accent);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-}
+.card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+[data-theme="dark"] .card:hover { box-shadow: 0 0 25px -5px var(--primary); }
 
 .icon-box {
-    width: 60px; height: 60px; border-radius: 16px;
-    background: var(--bg-body);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px; transition: 0.4s var(--ease);
+    width: 55px; height: 55px; border-radius: 14px; background: var(--bg-body);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 15px;
+    font-size: 1.6rem; color: var(--accent); transition: 0.3s;
 }
-.card:hover .icon-box { background: var(--accent); color: white; transform: scale(1.1); }
-.card i { font-size: 1.8rem; color: var(--accent); transition: 0.3s; }
-.card:hover i { color: white; }
+.card:hover .icon-box { background: var(--accent); color: #fff; transform: scale(1.1) rotate(-5deg); }
 
-.card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+.card h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
 .card p { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 
 .badge {
-    position: absolute; top: 20px; right: 20px;
-    font-size: 0.7rem; font-weight: 800; padding: 6px 12px;
-    border-radius: 30px; text-transform: uppercase;
+    position: absolute; top: 15px; right: 15px; font-size: 0.65rem;
+    font-weight: 800; padding: 5px 10px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 0.5px;
 }
-.badge.hot { background: #fee2e2; color: #dc2626; }
-.badge.new { background: #dcfce7; color: #16a34a; }
+.badge.hot { background: rgba(220,38,38,0.1); color: #dc2626; }
+.badge.new { background: rgba(22,163,74,0.1); color: #16a34a; }
 
-/* --- EXPLORE CATEGORIES (8 ITEMS) --- */
-.section-wrapper { max-width: 1200px; margin: 0 auto 80px; padding: 0 25px; }
+/* --- 7. BOTTOM SECTIONS --- */
+
+/* Load More Button Style */
+.load-btn-box { text-align: center; margin: 30px 0 80px; }
+.btn-outline {
+    padding: 15px 40px; background: transparent;
+    border: 2px solid var(--border); color: var(--text-main);
+    border-radius: 50px; font-weight: 700; cursor: pointer;
+    transition: 0.3s; font-size: 1rem; display: inline-block;
+}
+.btn-outline:hover {
+    border-color: var(--primary); color: var(--primary);
+    transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37,99,235,0.2);
+}
+.btn-primary {
+    display: inline-block; padding: 18px 50px;
+    background: var(--primary); color: #fff;
+    font-weight: 700; border-radius: 50px;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
+    transition: 0.3s; font-size: 1.1rem;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.05); background: var(--primary-hover); }
+
+/* Section Wrapper & Promo Box */
+.section-wrapper { max-width: 1200px; margin: 0 auto 50px; padding: 0 25px; }
 
 .promo-box {
-    border-radius: 30px; padding: 50px 30px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd; border-radius: 30px; padding: 60px 40px;
     text-align: center; position: relative; overflow: hidden;
 }
-
-.promo-box.blue {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border: 1px solid #bae6fd;
-}
-[data-theme="dark"] .promo-box.blue {
-    background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
-    border-color: #0369a1;
-}
-.promo-box.blue::after {
-    content: ""; position: absolute; inset: 0;
-    background-image: radial-gradient(#38bdf8 2px, transparent 2px);
-    background-size: 30px 30px; opacity: 0.2; pointer-events: none;
-}
-
-.promo-content { position: relative; z-index: 2; }
-.promo-box h2 { font-family: var(--font-heading); margin-bottom: 10px; font-size: 2rem; color: #0284c7; }
+[data-theme="dark"] .promo-box { background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%); border-color: #0369a1; }
+.promo-box h2 { font-family: var(--font-heading); font-size: 2.2rem; color: #0284c7; margin-bottom: 15px; }
 [data-theme="dark"] .promo-box h2 { color: #e0f2fe; }
-.promo-box p { font-size: 1.1rem; margin-bottom: 25px; color: #0369a1; }
+.promo-box p { font-size: 1.1rem; color: #0369a1; margin-bottom: 40px; }
 [data-theme="dark"] .promo-box p { color: #bae6fd; }
 
+/* The "Waterfall" Category Grid */
 .cat-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px; margin-top: 30px; position: relative; z-index: 2;
+    gap: 15px; margin-top: 30px;
 }
 .cat-card {
-    background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
     padding: 20px; border-radius: 16px; cursor: pointer;
     transition: 0.3s; border: 1px solid rgba(255,255,255,0.5);
     display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-[data-theme="dark"] .cat-card { background: rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.1); }
+[data-theme="dark"] .cat-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
 .cat-card i { font-size: 1.5rem; color: var(--primary); }
-.cat-card span { font-weight: 700; color: #0f172a; }
-[data-theme="dark"] .cat-card span { color: #fff; }
-.cat-card:hover { transform: translateY(-5px); background: #fff; }
-[data-theme="dark"] .cat-card:hover { background: #1e293b; }
+.cat-card span { font-weight: 700; color: var(--text-main); }
+.cat-card:hover { transform: translateY(-5px); background: var(--bg-card); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary); }
 
-/* --- GREEN BANNER --- */
-.promo-box.green {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border: 1px solid #86efac;
-}
-[data-theme="dark"] .promo-box.green {
-    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-    border-color: #059669;
-}
-.promo-box.green::after {
-    content: ""; position: absolute; inset: 0;
-    background-image: radial-gradient(#22c55e 2px, transparent 2px);
-    background-size: 30px 30px; opacity: 0.15; pointer-events: none;
-}
-.promo-box.green h2 { color: #15803d; }
-.promo-box.green p { color: #166534; }
-[data-theme="dark"] .promo-box.green h2 { color: #dcfce7; }
-[data-theme="dark"] .promo-box.green p { color: #86efac; }
-
-/* --- FOOTER --- */
+/* --- 8. FOOTER --- */
 footer {
     background: var(--bg-card); border-top: 1px solid var(--border);
-    padding: 80px 20px 30px; margin-top: 80px;
+    padding: 80px 20px 30px; margin-top: 50px;
 }
 .footer-content {
     max-width: 1200px; margin: auto;
     display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+    text-align: left;
 }
 .footer-brand h2 { color: var(--text-main); margin-bottom: 20px; font-family: var(--font-heading); }
-.footer-brand p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
-.f-col h4 { margin-bottom: 25px; color: var(--text-main); font-weight: 700; font-family: var(--font-heading); }
-.f-col a { display: block; color: var(--text-muted); margin-bottom: 12px; transition: 0.2s; font-size: 0.95rem; }
+.footer-brand p { color: var(--text-muted); line-height: 1.8; }
+.f-col h4 { margin-bottom: 25px; color: var(--text-main); font-weight: 700; }
+.f-col a { display: block; color: var(--text-muted); margin-bottom: 15px; transition: 0.2s; }
 .f-col a:hover { color: var(--primary); transform: translateX(5px); }
-.copyright { 
-    text-align: center; margin-top: 60px; padding-top: 30px; 
-    border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;
-}
+.copyright { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-muted); }
+
 @media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .btn-subscribe span { display: none; }
+    .btn-subscribe { padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; }
     .footer-content { grid-template-columns: 1fr; gap: 30px; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
 <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-<div class="sidebar">
+
+<aside class="sidebar">
     <div class="sidebar-header">
-        <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
-        <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        <h3>Menu</h3>
+        <button class="icon-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
     </div>
-    <div class="sidebar-links">
-        <a href="/" class="sidebar-link active"><i class="fas fa-home"></i> Home</a>
-        <a href="all-tools.html" class="sidebar-link"><i class="fas fa-th-large"></i> All Tools</a>
-        <div style="border-top: 1px solid var(--border); margin: 10px 0;"></div>
-        <a href="social-tools.html" class="sidebar-link"><i class="fas fa-share-alt"></i> Social Media</a>
-        <a href="ai-tools.html" class="sidebar-link"><i class="fas fa-robot"></i> AI Tools</a>
-        <a href="pdf-tools.html" class="sidebar-link"><i class="fas fa-file-pdf"></i> PDF Tools</a>
-        <div style="border-top: 1px solid var(--border); margin: 10px 0;"></div>
-        <a href="contact.html" class="sidebar-link"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="about.html" class="sidebar-link"><i class="fas fa-info-circle"></i> About Us</a>
+    
+    <nav class="sidebar-nav">
+        <a href="/" style="color: var(--primary); background: var(--bg-body);"><i class="fas fa-home"></i> Home</a>
+        <a href="tools.html"><i class="fas fa-th-large"></i> All Tools Library</a>
+        <a href="about.html"><i class="fas fa-user-astronaut"></i> About Us</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://github.com/XIZOAHUB"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+
+    <div class="sidebar-sub">
+        <h4><i class="fas fa-paper-plane"></i> Updates</h4>
+        <p>Get the latest tools delivered to your inbox.</p>
+        <input type="email" placeholder="Enter your email...">
+        <button class="btn-primary" style="width: 100%; border-radius: 10px; padding: 12px;">Subscribe</button>
     </div>
-</div>
+</aside>
 
 <header>
   <div class="nav">
-    <div class="nav-left">
-        <button class="icon-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-        <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
-    </div>
-    <div class="nav-right">
-        <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    <a href="/" class="logo"><i class="fas fa-cube"></i>XIZOAHUB</a>
+    
+    <div class="nav-icons">
+        <button class="btn-subscribe" onclick="toggleSidebar()">
+            <i class="fas fa-bell"></i> <span>Subscribe</span>
+        </button>
+
+        <button class="icon-btn theme-btn" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <button class="icon-btn" onclick="toggleSidebar()">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
     </div>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Premium Tools for <br><span>Creators & Growth</span></h1>
-  <p>The most powerful free tools for YouTube, Instagram, and AI content creation.</p>
-</section>
+<main>
+    <section class="hero">
+      <h1>Premium Tools for <br><span>Creators & Devs</span></h1>
 
-<section class="container">
-  <div class="grid">
-    <a href="YouTube-thumbnail-downloader.html" class="card" style="--accent: #FF0000;">
-       <span class="badge hot">HOT</span><div class="icon-box"><i class="fab fa-youtube"></i></div>
-       <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
-    </a>
-    <a href="youtubeshorts.html" class="card" style="--accent: #FF0000;">
-       <div class="icon-box"><i class="fas fa-play-circle"></i></div><h3>Shorts Saver</h3><p>Download YT Shorts</p>
-    </a>
-    <a href="insta-video-saver.html" class="card" style="--accent: #E1306C;">
-       <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
-    </a>
-    <a href="tiktok-downloader.html" class="card" style="--accent: #ff0050;">
-       <div class="icon-box"><i class="fab fa-tiktok"></i></div><h3>TikTok Saver</h3><p>No Watermark HD</p>
-    </a>
-    <a href="youtube-tag-generator.html" class="card" style="--accent: #ff6b81;">
-       <span class="badge new">SEO</span><div class="icon-box"><i class="fas fa-hashtag"></i></div><h3>YT Tag Gen</h3><p>Viral Keyword Maker</p>
-    </a>
-    <a href="youtube-money-calculator.html" class="card" style="--accent: #2ecc71;">
-       <div class="icon-box"><i class="fas fa-dollar-sign"></i></div><h3>YT Money Calc</h3><p>Estimate Earnings</p>
-    </a>
-    <a href="youtube-script-generator.html" class="card" style="--accent: #0097e6;">
-        <span class="badge new">AI</span><div class="icon-box"><i class="fas fa-scroll"></i></div><h3>Script Gen</h3><p>AI Video Scripts</p>
-    </a>
-    <a href="youtube-idea-generator.html" class="card" style="--accent: #fbc531;">
-        <div class="icon-box"><i class="fas fa-lightbulb"></i></div><h3>Video Ideas</h3><p>Content Inspiration</p>
-    </a>
-    <a href="AI-Paraphraser.html" class="card" style="--accent: #10a37f;">
-       <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
-    </a>
-    <a href="text-to-speech.html" class="card" style="--accent: #d35400;">
-       <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
-    </a>
-    <a href="youtube-title-analyzer.html" class="card" style="--accent: #2f3542;">
-       <div class="icon-box"><i class="fas fa-heading"></i></div><h3>Title Analyzer</h3><p>Check Title Score</p>
-    </a>
-    <a href="repo-file-generator.html" class="card" style="--accent: #333;">
-       <div class="icon-box"><i class="fas fa-file-code"></i></div><h3>Repo File Gen</h3><p>Git Structure Maker</p>
-    </a>
-  </div>
-</section>
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search tools (e.g. YouTube, PDF)...">
+      </div>
+    </section>
 
-<section class="section-wrapper">
-    <div class="promo-box blue">
-        <div class="promo-content">
-            <h2>Explore Categories</h2>
-            <p>Jump directly to the tools you need. Organized for speed.</p>
-            <div class="cat-grid">
-                <div class="cat-card" onclick="window.location.href='social-tools.html'">
-                    <i class="fas fa-share-alt"></i><span>Social</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='ai-tools.html'">
-                    <i class="fas fa-robot"></i><span>AI Magic</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='pdf-tools.html'">
-                    <i class="fas fa-file-pdf"></i><span>PDF Pro</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='gaming-tools.html'">
-                    <i class="fas fa-gamepad"></i><span>Gaming</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='dev-tools.html'">
-                    <i class="fas fa-code"></i><span>Dev Tools</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='image-tools.html'">
-                    <i class="fas fa-image"></i><span>Image Tools</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='music-tools.html'">
-                    <i class="fas fa-music"></i><span>Music Studio</span>
-                </div>
-                <div class="cat-card" onclick="window.location.href='utility-tools.html'">
-                    <i class="fas fa-tools"></i><span>Utilities</span>
+    <section class="container" id="toolsSection">
+      <div class="grid" id="toolGrid">
+        
+        <a href="YouTube-thumbnail-downloader.html" class="card" data-cat="social" style="--accent: #FF0000;">
+           <span class="badge hot">HOT</span>
+           <div class="icon-box"><i class="fab fa-youtube"></i></div>
+           <h3>Thumbnail DL</h3><p>Get High Quality Thumbnails</p>
+        </a>
+        <a href="insta-video-saver.html" class="card" data-cat="social" style="--accent: #E1306C;">
+           <div class="icon-box"><i class="fab fa-instagram"></i></div><h3>Insta Saver</h3><p>Reels & Video Download</p>
+        </a>
+        <a href="AI-Paraphraser.html" class="card" data-cat="ai" style="--accent: #10a37f;">
+           <div class="icon-box"><i class="fas fa-robot"></i></div><h3>AI Paraphraser</h3><p>Rewrite Text Humanly</p>
+        </a>
+        <a href="text-to-speech.html" class="card" data-cat="ai" style="--accent: #d35400;">
+           <div class="icon-box"><i class="fas fa-volume-up"></i></div><h3>Text to Speech</h3><p>AI Voice Reader</p>
+        </a>
+        <a href="pdf-merger.html" class="card" data-cat="pdf" style="--accent: #e17055;">
+           <div class="icon-box"><i class="fas fa-layer-group"></i></div><h3>PDF Merger</h3><p>Combine Multiple Files</p>
+        </a>
+        <a href="compress-pdf-under-200kb.html" class="card" data-cat="pdf" style="--accent: #2563eb;">
+           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Compress PDF</h3><p>Under 200KB Tool</p>
+        </a>
+        <a href="image-compressor.html" class="card" data-cat="utility" style="--accent: #00cec9;">
+           <div class="icon-box"><i class="fas fa-compress-arrows-alt"></i></div><h3>Img Compressor</h3><p>Reduce Size Instantly</p>
+        </a>
+        <a href="password-generator.html" class="card" data-cat="utility" style="--accent: #27ae60;">
+           <div class="icon-box"><i class="fas fa-key"></i></div><h3>Pass Gen</h3><p>Secure Key Maker</p>
+        </a>
+        <a href="speed-test.html" class="card" data-cat="utility" style="--accent: #2ecc71;">
+           <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div><h3>Net Speed</h3><p>Check Internet Speed</p>
+        </a>
+        <a href="age_calculator.html" class="card" data-cat="utility" style="--accent: #3498db;">
+           <div class="icon-box"><i class="fas fa-birthday-cake"></i></div><h3>Age Calc</h3><p>Calculate Exact Age</p>
+        </a>
+        <a href="typing-master.html" class="card" data-cat="gaming" style="--accent: #2d3436;">
+           <span class="badge new">NEW</span><div class="icon-box"><i class="fas fa-keyboard"></i></div><h3>Typing Master</h3><p>Speed Typing Test</p>
+        </a>
+        <a href="qr-code-generator.html" class="card" data-cat="utility" style="--accent: #2c3e50;">
+           <div class="icon-box"><i class="fas fa-qrcode"></i></div><h3>QR Gen</h3><p>Create Custom QR</p>
+        </a>
+
+      </div>
+
+      <div class="load-btn-box">
+        <a href="tools.html" class="btn-outline">View All Tools Collection <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </section>
+
+    <section class="section-wrapper">
+        <div class="promo-box">
+            <div class="promo-content">
+                <h2>Explore Categories</h2>
+                <p>Jump directly to the tools you need. Organized for speed.</p>
+                <div class="cat-grid">
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-share-alt"></i><span>Social</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-robot"></i><span>AI Tools</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-file-pdf"></i><span>PDF</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-gamepad"></i><span>Gaming</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-code"></i><span>Dev</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-image"></i><span>Image</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-music"></i><span>Music</span>
+                    </div>
+                    <div class="cat-card" onclick="window.location.href='tools.html'">
+                        <i class="fas fa-tools"></i><span>Utility</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section-wrapper">
-    <div class="promo-box green">
-        <div class="promo-content">
-            <h2>Developer API & More</h2>
-            <p>We have a massive directory of tools not listed on the homepage.</p>
-            <a href="all-tools.html" style="display: inline-block; padding: 15px 35px; background: #16a34a; color: white; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);">Explore All Tools <i class="fas fa-arrow-right"></i></a>
+    <section class="section-wrapper">
+        <div class="promo-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac;">
+            <div class="promo-content">
+                <h2 style="color: #15803d;">Developer API & More</h2>
+                <p style="color: #166534;">We have a massive directory of tools not listed on the homepage.</p>
+                <a href="tools.html" class="btn-primary" style="background: #16a34a;">Explore All Tools <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="section-wrapper">
+        <script>
+        (function() {
+          const linkUrl = "https://www.xizoa.com";
+          // UPGRADED WIDGET HTML TO MATCH 'promo-box' UI
+          const widgetHtml = `
+            <div class="promo-box" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fdba74; margin-top: 20px;">
+              <div class="promo-content">
+                <h2 style="color: #9a3412;">Knowledge Hub</h2>
+                <p style="color: #c2410c;">Read our latest guides, tips, and tech insights.</p>
+                <a href="${linkUrl}" class="btn-primary" style="background: #ea580c; box-shadow: 0 10px 20px -5px rgba(234, 88, 12, 0.4);">
+                   Read Our Blog <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          `;
+          document.write(widgetHtml);
+        })();
+        </script>
+    </section>
+
+</main>
 
 <footer>
   <div class="footer-content">
       <div class="footer-brand">
           <h2>XIZOAHUB TOOLS</h2>
-          <p>The ultimate utility toolkit for the modern web. Built for speed, privacy, and ease of use. No login required.</p>
+          <p>The ultimate utility toolkit for the modern web. Built for speed, privacy, and ease of use.</p>
       </div>
       <div class="f-col">
           <h4>Company</h4>
@@ -433,9 +476,9 @@ footer {
       </div>
       <div class="f-col">
           <h4>Popular</h4>
-          <a href="ai-tools.html">AI Writers</a>
-          <a href="pdf-tools.html">PDF Tools</a>
-          <a href="gaming-tools.html">FPS Test</a>
+          <a href="tools.html">AI Writers</a>
+          <a href="tools.html">PDF Tools</a>
+          <a href="tools.html">Gaming Tools</a>
       </div>
       <div class="f-col">
           <h4>Support</h4>
@@ -448,28 +491,35 @@ footer {
 </footer>
 
 <script>
-// --- THEME SWITCHER ---
+// --- SIDEBAR LOGIC ---
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('active');
+    document.querySelector('.sidebar-overlay').classList.toggle('active');
+}
+
+// --- THEME LOGIC ---
 function toggleTheme() {
     const html = document.documentElement;
     const current = html.getAttribute('data-theme');
     const target = current === 'light' ? 'dark' : 'light';
     html.setAttribute('data-theme', target);
     
-    const btn = document.querySelector('.nav-right .icon-btn i');
-    if(target === 'dark') {
-        btn.classList.remove('fa-moon'); btn.classList.add('fa-sun');
-    } else {
-        btn.classList.remove('fa-sun'); btn.classList.add('fa-moon');
-    }
+    const btn = document.querySelector('.theme-btn i');
+    btn.className = target === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-// --- SIDEBAR TOGGLE ---
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.querySelector('.sidebar-overlay');
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
+// --- SEARCH LOGIC ---
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.card');
+
+searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        if(title.includes(term)) card.style.display = 'flex';
+        else card.style.display = 'none';
+    });
+});
 </script>
 
 </body>
